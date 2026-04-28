@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  },
+  "godotTools.editorPath.godot4": "c:\\DDJV\\Godot_v4.6-stable_mono_win64\\Godot_v4.6-stable_mono_win64.exe"
+}
