@@ -286,10 +286,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xofes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pebck")
 }],
 "loop": false,
 "name": &"coyote",
-"speed": 25.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -529,6 +532,7 @@ animations = [{
 script = ExtResource("1_glpr6")
 _body = NodePath("CharacterBody2D")
 _sprite = NodePath("CharacterBody2D/AnimatedSprite2D")
+CoyoteJumpBoost = 0.5
 CoyoteDuration = 0.4
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=483047354]
