@@ -1,59 +1,64 @@
-[gd_scene format=3 uid="uid://b8xmgsfst08oh"]
+[gd_scene format=3 uid="uid://b4cvnpc4yu0dq"]
 
-[ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://EddysGym/character.tscn" id="1_syc0r"]
-[ext_resource type="PackedScene" uid="uid://pue1ltk72mhu" path="res://EddysGym/segment_orange.tscn" id="2_jrjt0"]
-[ext_resource type="PackedScene" uid="uid://b1nmkx4f0k88m" path="res://EddysGym/boite_jaune.tscn" id="3_sjrbf"]
+[ext_resource type="Texture2D" uid="uid://dce6jp2twmyxk" path="res://Assets/Multi_Platformer_Tileset_Free/GrassLand/Background/GrassLand_Background_1.png" id="1_lj2eg"]
+[ext_resource type="PackedScene" uid="uid://dlxb4besiqvnx" path="res://AntoineGym/Niveaux/Platform.tscn" id="1_wdkol"]
+[ext_resource type="Texture2D" uid="uid://kok8251qdfv3" path="res://Assets/GrassLand/Background/GrassLand_Background_2.png" id="2_pw0ik"]
+[ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://EddysGym/character.tscn" id="5_pw0ik"]
 
-[node name="Node2D" type="Node2D" unique_id=572917195]
+[node name="Niveau1" type="Node2D" unique_id=1948467130]
 
-[node name="Character" parent="." unique_id=2089619249 instance=ExtResource("1_syc0r")]
-position = Vector2(503, -39)
+[node name="ColorRect" type="ColorRect" parent="." unique_id=820423914]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(14.305645, 8.100929)
+color = Color(0, 0.7058824, 1, 1)
 
-[node name="SegmentOrange" parent="." unique_id=942799615 instance=ExtResource("2_jrjt0")]
-position = Vector2(-29, 49)
-scale = Vector2(16.671799, -1.4022713)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1112890696]
+offset_right = 368.0
+offset_bottom = 208.0
+scale = Vector2(1.5651199, 1.576416)
+texture = ExtResource("1_lj2eg")
 
-[node name="BoiteJaune" parent="." unique_id=1535752220 instance=ExtResource("3_sjrbf")]
-position = Vector2(230, 4)
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=896497736]
+offset_top = 119.0
+offset_right = 240.0
+offset_bottom = 327.0
+scale = Vector2(1.047092, 1.0039158)
+texture = ExtResource("2_pw0ik")
 
-[node name="BoiteJaune2" parent="." unique_id=1500175014 instance=ExtResource("3_sjrbf")]
-position = Vector2(228, -39)
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1149308135]
+offset_left = 251.0
+offset_top = 119.0
+offset_right = 491.0
+offset_bottom = 327.0
+texture = ExtResource("2_pw0ik")
 
-[node name="BoiteJaune3" parent="." unique_id=1549198634 instance=ExtResource("3_sjrbf")]
-position = Vector2(229, -81)
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=2128781903]
+offset_left = 491.0
+offset_top = 119.0
+offset_right = 731.0
+offset_bottom = 327.0
+texture = ExtResource("2_pw0ik")
 
-[node name="BoiteJaune4" parent="." unique_id=1556603838 instance=ExtResource("3_sjrbf")]
-position = Vector2(233, -122)
+[node name="Platform" parent="." unique_id=1318340789 instance=ExtResource("1_wdkol")]
+position = Vector2(304, 183)
+scale = Vector2(9.6, 1)
 
-[node name="BoiteJaune6" parent="." unique_id=1993403561 instance=ExtResource("3_sjrbf")]
-position = Vector2(290, 4)
+[node name="Platform2" parent="." unique_id=906269010 instance=ExtResource("1_wdkol")]
+position = Vector2(195, 111)
+scale = Vector2(1, 8.200001)
 
-[node name="BoiteJaune7" parent="." unique_id=2048279677 instance=ExtResource("3_sjrbf")]
-position = Vector2(170, 4)
+[node name="Platform3" parent="." unique_id=2137468160 instance=ExtResource("1_wdkol")]
+position = Vector2(292, 274)
+scale = Vector2(26.368948, 0.85726047)
 
-[node name="BoiteJaune8" parent="." unique_id=1367042372 instance=ExtResource("3_sjrbf")]
-position = Vector2(166, -37)
+[node name="Platform4" parent="." unique_id=1018335727 instance=ExtResource("1_wdkol")]
+position = Vector2(41, 129)
+scale = Vector2(1, 13.44)
 
-[node name="BoiteJaune9" parent="." unique_id=1399295545 instance=ExtResource("3_sjrbf")]
-position = Vector2(290, -37)
+[node name="Platform5" parent="." unique_id=983859626 instance=ExtResource("1_wdkol")]
+position = Vector2(540, 135)
+scale = Vector2(1, 12.800001)
 
-[node name="BoiteJaune10" parent="." unique_id=725762260 instance=ExtResource("3_sjrbf")]
-position = Vector2(291, -78)
-
-[node name="BoiteJaune11" parent="." unique_id=1382027615 instance=ExtResource("3_sjrbf")]
-position = Vector2(167, -78)
-
-[node name="BoiteJaune12" parent="." unique_id=1523163920 instance=ExtResource("3_sjrbf")]
-position = Vector2(171, -119)
-
-[node name="BoiteJaune13" parent="." unique_id=292685347 instance=ExtResource("3_sjrbf")]
-position = Vector2(298, -119)
-
-[node name="BoiteJaune15" parent="." unique_id=1090245992 instance=ExtResource("3_sjrbf")]
-position = Vector2(298, -155)
-
-[node name="BoiteJaune16" parent="." unique_id=379314403 instance=ExtResource("3_sjrbf")]
-position = Vector2(353, 2)
-
-[node name="BoiteJaune17" parent="." unique_id=1023169743 instance=ExtResource("3_sjrbf")]
-position = Vector2(106, 3)
+[node name="Character" parent="." unique_id=2089619249 instance=ExtResource("5_pw0ik")]
+position = Vector2(331, 139)

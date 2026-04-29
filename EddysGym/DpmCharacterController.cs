@@ -36,6 +36,16 @@ public partial class DpmCharacterController : Node2D
     [Export]
     public float CoyoteDuration = 0.15f;
 
+    [ExportGroup("Dash")]
+    [Export]
+    public float DashSpeed = 900.0f;
+
+    [Export]
+    public float DashDuration = 0.30f;
+
+    [Export]
+    public float DashCooldown = 0.35f;
+
     [ExportGroup("Physics")]
     [Export]
     public float FallSpeedCap = 1000.0f;
@@ -57,6 +67,13 @@ public partial class DpmCharacterController : Node2D
     private bool _coyoteAlreadyUsed = false;
     private bool _coyoteJumpTriggered = false;
 
+    private bool _dashRequested = false;
+    private bool _dashing = false;
+    private float _dashTimeLeft = 0.0f;
+    private float _dashCooldownLeft = 0.0f;
+    private float _dashDir = 1.0f;
+    private bool _airDashUsed = false;
+
     public override void _Ready()
     {
         _body.EnsureValid();
@@ -65,8 +82,20 @@ public partial class DpmCharacterController : Node2D
         EnsureInputActions();
         _gravityForce = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 
-        if (_sprite.SpriteFrames != null && _sprite.SpriteFrames.HasAnimation("idle"))
-            _sprite.Play("idle");
+        _sprite.Play("idle");
+        _sprite.FlipH = true; // flip car sprite dessiné vers la gauche
+    }
+
+    private void UpdateFacing()
+    {
+        if (_dashing)
+            return;
+
+        if (Mathf.Abs(_moveAxis) <= 0.1f)
+            return;
+
+        _facingDir = _moveAxis > 0.0f ? 1.0f : -1.0f;
+        _sprite.FlipH = _facingDir > 0.0f; // flip = regarde à droite
     }
 
     public override void _PhysicsProcess(double delta)
@@ -78,17 +107,11 @@ public partial class DpmCharacterController : Node2D
 
         ReadInputs();
         UpdateCoyoteState(fDelta);
+        UpdateDashState(fDelta);
 
-        float velX = Mathf.MoveToward(
-            _body.Velocity.X,
-            _moveAxis * MoveSpeed,
-            MoveAcceleration * fDelta
-        );
+        Vector2 velocity = _dashing ? ComputeDashVelocity() : ComputeNormalVelocity(fDelta);
 
-        float velY = ComputeVerticalVelocity(fDelta);
-        velY = ClampFall(velY);
-
-        _body.Velocity = new Vector2(velX, velY);
+        _body.Velocity = velocity;
         _body.MoveAndSlide();
 
         UpdateFacing();
@@ -100,6 +123,7 @@ public partial class DpmCharacterController : Node2D
         AddActionIfMissing("move_left", Key.A);
         AddActionIfMissing("move_right", Key.D);
         AddActionIfMissing("jump", Key.W);
+        AddActionIfMissing("dash", Key.Space);
     }
 
     private static void AddActionIfMissing(string action, Key key)
@@ -117,6 +141,7 @@ public partial class DpmCharacterController : Node2D
         _jumpRequested = Input.IsActionJustPressed("jump");
         _jumpReleased = Input.IsActionJustReleased("jump");
         _jumpHeld = Input.IsActionPressed("jump");
+        _dashRequested = Input.IsActionJustPressed("dash");
     }
 
     private void UpdateCoyoteState(float delta)
@@ -129,6 +154,7 @@ public partial class DpmCharacterController : Node2D
             _coyoteAlreadyUsed = false;
             _hasJumped = false;
             _coyoteJumpTriggered = false;
+            _airDashUsed = false;
         }
         else
         {
@@ -137,6 +163,66 @@ public partial class DpmCharacterController : Node2D
 
         _coyoteActive = _coyoteTimeLeft > 0.0f && !_coyoteAlreadyUsed;
         _groundedLastFrame = grounded;
+    }
+
+    private void UpdateDashState(float delta)
+    {
+        _dashCooldownLeft = Mathf.Max(_dashCooldownLeft - delta, 0.0f);
+
+        if (_dashing)
+        {
+            _dashTimeLeft -= delta;
+            if (_dashTimeLeft <= 0.0f)
+            {
+                _dashing = false;
+                _dashCooldownLeft = DashCooldown;
+            }
+            return;
+        }
+
+        if (_dashRequested && CanDash())
+            StartDash();
+    }
+
+    private bool CanDash()
+    {
+        if (_dashCooldownLeft > 0.0f)
+            return false;
+
+        if (!_body.IsOnFloor() && _airDashUsed)
+            return false;
+
+        return true;
+    }
+
+    private void StartDash()
+    {
+        _dashing = true;
+        _dashTimeLeft = DashDuration;
+        _dashDir = _facingDir;
+        _jumpOngoing = false;
+
+        if (!_body.IsOnFloor())
+            _airDashUsed = true;
+    }
+
+    private Vector2 ComputeDashVelocity()
+    {
+        return new Vector2(_dashDir * DashSpeed, 0.0f);
+    }
+
+    private Vector2 ComputeNormalVelocity(float delta)
+    {
+        float velX = Mathf.MoveToward(
+            _body.Velocity.X,
+            _moveAxis * MoveSpeed,
+            MoveAcceleration * delta
+        );
+
+        float velY = ComputeVerticalVelocity(delta);
+        velY = ClampFall(velY);
+
+        return new Vector2(velX, velY);
     }
 
     private bool CanJump()
@@ -182,34 +268,25 @@ public partial class DpmCharacterController : Node2D
         return Mathf.Min(velY, FallSpeedCap);
     }
 
-    private void UpdateFacing()
-    {
-        if (Mathf.Abs(_moveAxis) <= 0.1f)
-            return;
-
-        _facingDir = _moveAxis > 0.0f ? 1.0f : -1.0f;
-        _sprite.FlipH = _facingDir > 0.0f;
-    }
-
     private void UpdateAnimation()
     {
         string anim = DetermineAnim();
 
-        if (_sprite.SpriteFrames == null || !_sprite.SpriteFrames.HasAnimation(anim))
+        if (_sprite.Animation == anim)
             return;
 
-        if (_sprite.Animation != anim)
-        {
-            _sprite.Stop();
-            _sprite.Animation = anim;
-            _sprite.Frame = 0;
-            _sprite.FrameProgress = 0.0f;
-            _sprite.Play();
-        }
+        _sprite.Stop();
+        _sprite.Animation = anim;
+        _sprite.Frame = 0;
+        _sprite.FrameProgress = 0.0f;
+        _sprite.Play();
     }
 
     private string DetermineAnim()
     {
+        if (_dashing)
+            return "dash";
+
         if (_body.IsOnFloor())
         {
             _coyoteJumpTriggered = false;
@@ -222,24 +299,12 @@ public partial class DpmCharacterController : Node2D
 
         if (_body.Velocity.Y < 0.0f)
         {
-            if (
-                _coyoteJumpTriggered
-                && _sprite.SpriteFrames != null
-                && _sprite.SpriteFrames.HasAnimation("coyote")
-            )
+            if (_coyoteJumpTriggered)
                 return "coyote";
 
             return "jump";
         }
 
-        if (_body.Velocity.Y >= 0.0f)
-        {
-            if (_sprite.SpriteFrames != null && _sprite.SpriteFrames.HasAnimation("fall"))
-                return "fall";
-
-            return "jump";
-        }
-
-        return "idle";
+        return "fall";
     }
 }
