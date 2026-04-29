@@ -6,12 +6,54 @@
 
 [node name="Node2D" type="Node2D" unique_id=572917195]
 
+[node name="Character" parent="." unique_id=2089619249 instance=ExtResource("1_syc0r")]
+position = Vector2(503, -39)
+
 [node name="SegmentOrange" parent="." unique_id=942799615 instance=ExtResource("2_jrjt0")]
 position = Vector2(-29, 49)
-scale = Vector2(9.395947, -1.4022713)
-
-[node name="Character" parent="." unique_id=2089619249 instance=ExtResource("1_syc0r")]
-position = Vector2(-14, -88)
+scale = Vector2(16.671799, -1.4022713)
 
 [node name="BoiteJaune" parent="." unique_id=1535752220 instance=ExtResource("3_sjrbf")]
 position = Vector2(230, 4)
+
+[node name="BoiteJaune2" parent="." unique_id=1500175014 instance=ExtResource("3_sjrbf")]
+position = Vector2(228, -39)
+
+[node name="BoiteJaune3" parent="." unique_id=1549198634 instance=ExtResource("3_sjrbf")]
+position = Vector2(229, -81)
+
+[node name="BoiteJaune4" parent="." unique_id=1556603838 instance=ExtResource("3_sjrbf")]
+position = Vector2(233, -122)
+
+[node name="BoiteJaune6" parent="." unique_id=1993403561 instance=ExtResource("3_sjrbf")]
+position = Vector2(290, 4)
+
+[node name="BoiteJaune7" parent="." unique_id=2048279677 instance=ExtResource("3_sjrbf")]
+position = Vector2(170, 4)
+
+[node name="BoiteJaune8" parent="." unique_id=1367042372 instance=ExtResource("3_sjrbf")]
+position = Vector2(166, -37)
+
+[node name="BoiteJaune9" parent="." unique_id=1399295545 instance=ExtResource("3_sjrbf")]
+position = Vector2(290, -37)
+
+[node name="BoiteJaune10" parent="." unique_id=725762260 instance=ExtResource("3_sjrbf")]
+position = Vector2(291, -78)
+
+[node name="BoiteJaune11" parent="." unique_id=1382027615 instance=ExtResource("3_sjrbf")]
+position = Vector2(167, -78)
+
+[node name="BoiteJaune12" parent="." unique_id=1523163920 instance=ExtResource("3_sjrbf")]
+position = Vector2(171, -119)
+
+[node name="BoiteJaune13" parent="." unique_id=292685347 instance=ExtResource("3_sjrbf")]
+position = Vector2(298, -119)
+
+[node name="BoiteJaune15" parent="." unique_id=1090245992 instance=ExtResource("3_sjrbf")]
+position = Vector2(298, -155)
+
+[node name="BoiteJaune16" parent="." unique_id=379314403 instance=ExtResource("3_sjrbf")]
+position = Vector2(353, 2)
+
+[node name="BoiteJaune17" parent="." unique_id=1023169743 instance=ExtResource("3_sjrbf")]
+position = Vector2(106, 3)
