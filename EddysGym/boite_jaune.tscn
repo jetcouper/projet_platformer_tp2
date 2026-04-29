@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b1nmkx4f0k88m"]
+
+[ext_resource type="Texture2D" uid="uid://0oradi347vpj" path="res://Assets/Multi_Platformer_Tileset_Free/GrassLand/Props/GrassLand_TallGrass_2.png" id="1_2n8tg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_25tpt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(60, 40)
+
+[node name="BoiteJaune" type="RigidBody2D" unique_id=1535752220]
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_25tpt")
+gravity_scale = 0.3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1132465369]
+shape = SubResource("RectangleShape2D_1")
+debug_color = Color(1, 0.9, 0, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=780206625]
+scale = Vector2(4.150953, 2.5265617)
+texture = ExtResource("1_2n8tg")

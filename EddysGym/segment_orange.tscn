@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://pue1ltk72mhu"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1"]
+a = Vector2(-60, 0)
+b = Vector2(60, 0)
+
+[node name="SegmentOrange" type="AnimatableBody2D" unique_id=942799615]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1321839668]
+shape = SubResource("SegmentShape2D_1")
+debug_color = Color(1, 0.5, 0, 0.42)
+
+[node name="Line2D" type="Line2D" parent="." unique_id=548652035]
+points = PackedVector2Array(-60, 0, 60, 0)
+width = 20.0
+default_color = Color(0.50980395, 0.2901961, 0.35686275, 1)

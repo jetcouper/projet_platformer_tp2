@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b8xmgsfst08oh"]
+
+[ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://EddysGym/character.tscn" id="1_syc0r"]
+[ext_resource type="PackedScene" uid="uid://pue1ltk72mhu" path="res://EddysGym/segment_orange.tscn" id="2_jrjt0"]
+[ext_resource type="PackedScene" uid="uid://b1nmkx4f0k88m" path="res://EddysGym/boite_jaune.tscn" id="3_sjrbf"]
+
+[node name="Node2D" type="Node2D" unique_id=572917195]
+
+[node name="SegmentOrange" parent="." unique_id=942799615 instance=ExtResource("2_jrjt0")]
+position = Vector2(-29, 49)
+scale = Vector2(9.395947, -1.4022713)
+
+[node name="Character" parent="." unique_id=2089619249 instance=ExtResource("1_syc0r")]
+position = Vector2(-14, -88)
+
+[node name="BoiteJaune" parent="." unique_id=1535752220 instance=ExtResource("3_sjrbf")]
+position = Vector2(230, 4)

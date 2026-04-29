@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beemfom7ge4ms"
-path="res://.godot/imported/icon.svg-04da248881e9832b9f593cb14370b65e.ctex"
+uid="uid://drdyfad0mo5u1"
+path="res://.godot/imported/from idle.png-d55497a33e5929213b5f4300e5c5cd00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Library/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-04da248881e9832b9f593cb14370b65e.ctex"]
+source_file="res://Assets/character/walk/from idle.png"
+dest_files=["res://.godot/imported/from idle.png-d55497a33e5929213b5f4300e5c5cd00.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

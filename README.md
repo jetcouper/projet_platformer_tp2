@@ -7,4 +7,3 @@ TP2 en Jeux vidéo, création d'un platformer sur Godot.
 |Paul-EdouardFort   |Fortin    |Paul-Édouard   |                  |
 |EddyHUART          |Huart     |Eddy           |                  |
 |jetcouper          |Dextraze  |Antoine        |                  |
-
