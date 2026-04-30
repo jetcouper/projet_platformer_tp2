@@ -53,6 +53,10 @@ public partial class DpmCharacterController : Node2D
     [Export]
     public float ClimbSpeed = 250.0f;
 
+    [ExportGroup("Shoot")]
+    [Export]
+    public float ShootDuration = 0.6f;
+
     [ExportGroup("Physics")]
     [Export]
     public float FallSpeedCap = 1000.0f;
@@ -77,6 +81,10 @@ public partial class DpmCharacterController : Node2D
 
     private bool _inLadderZone;
     private bool _onLadder;
+
+    private bool _shootJustPressed;
+    private bool _shooting;
+    private float _shootTimeLeft;
 
     private float _gravityForce;
 
@@ -119,12 +127,29 @@ public partial class DpmCharacterController : Node2D
         UpdateCoyote(fDelta);
         UpdateLadder();
         UpdateDash(fDelta);
+        UpdateShoot(fDelta);
 
         _body.Velocity = ComputeVelocity(fDelta);
         _body.MoveAndSlide();
 
         UpdateFacing();
         UpdateAnimation();
+    }
+
+    private void UpdateShoot(float delta)
+    {
+        if (_shooting)
+        {
+            _shootTimeLeft -= delta;
+            if (_shootTimeLeft <= 0.0f)
+                _shooting = false;
+        }
+
+        if (_shootJustPressed && !_shooting)
+        {
+            _shooting = true;
+            _shootTimeLeft = ShootDuration;
+        }
     }
 
     private static void EnsureInputActions()
@@ -135,6 +160,7 @@ public partial class DpmCharacterController : Node2D
         AddIfMissing("move_down", Key.S);
         AddIfMissing("jump", Key.W);
         AddIfMissing("dash", Key.Space);
+        AddIfMissingMouse("shoot", MouseButton.Left);
     }
 
     private static void AddIfMissing(string action, Key key)
@@ -145,6 +171,14 @@ public partial class DpmCharacterController : Node2D
         InputMap.ActionAddEvent(action, new InputEventKey { PhysicalKeycode = key });
     }
 
+    private static void AddIfMissingMouse(string action, MouseButton button)
+    {
+        if (InputMap.HasAction(action))
+            return;
+        InputMap.AddAction(action);
+        InputMap.ActionAddEvent(action, new InputEventMouseButton { ButtonIndex = button });
+    }
+
     private void ReadInputs()
     {
         _moveAxis = Input.GetAxis("move_left", "move_right");
@@ -152,6 +186,7 @@ public partial class DpmCharacterController : Node2D
         _jumpJustPressed = Input.IsActionJustPressed("jump");
         _jumpHeld = Input.IsActionPressed("jump");
         _dashJustPressed = Input.IsActionJustPressed("dash");
+        _shootJustPressed = Input.IsActionJustPressed("shoot");
     }
 
     private void UpdateCoyote(float delta)
@@ -292,16 +327,32 @@ public partial class DpmCharacterController : Node2D
     {
         if (_dashing)
             return;
-        if (Mathf.Abs(_moveAxis) <= 0.1f)
-            return;
 
-        _facingDir = _moveAxis > 0.0f ? 1.0f : -1.0f;
-        _sprite.FlipH = _facingDir > 0.0f;
+        if (Mathf.Abs(_moveAxis) > 0.1f)
+            _facingDir = _moveAxis > 0.0f ? 1.0f : -1.0f;
+
+        Vector2 scale = _sprite.Scale;
+        scale.X = Mathf.Abs(scale.X) * -_facingDir;
+        _sprite.Scale = scale;
+    }
+
+    private void UpdateSpriteOffset(string anim)
+    {
+        float offsetX = 0.0f;
+
+        if (anim == "shoot")
+            offsetX = _facingDir < 0.0f ? -58.0f : -58.0f;
+
+        _sprite.Offset = new Vector2(offsetX, 0.0f);
     }
 
     private void UpdateAnimation()
     {
         string anim = DetermineAnim();
+        UpdateSpriteOffset(anim);
+
+        if (_sprite.Animation != anim)
+            _sprite.Play(anim);
 
         if (_onLadder)
         {
@@ -311,18 +362,12 @@ public partial class DpmCharacterController : Node2D
             else
                 _sprite.Pause();
         }
-
-        if (_sprite.Animation == anim)
-            return;
-
-        _sprite.Animation = anim;
-        _sprite.Frame = 0;
-        _sprite.FrameProgress = 0.0f;
-        _sprite.Play();
     }
 
     private string DetermineAnim()
     {
+        if (_shooting)
+            return "shoot";
         if (_dashing)
             return "dash";
         if (_onLadder)
