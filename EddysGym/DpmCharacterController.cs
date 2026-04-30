@@ -10,6 +10,9 @@ public partial class DpmCharacterController : Node2D
     [Export]
     private AnimatedSprite2D _sprite;
 
+    [Export]
+    private Area2D _ladder;
+
     [ExportGroup("Movement")]
     [Export]
     public float MoveSpeed = 400.0f;
@@ -18,9 +21,6 @@ public partial class DpmCharacterController : Node2D
     public float MoveAcceleration = 4000.0f;
 
     [ExportGroup("Jump")]
-    [Export]
-    public float CoyoteJumpBoost = 1.0f;
-
     [Export]
     public float JumpInitialVelocity = -200.0f;
 
@@ -36,43 +36,49 @@ public partial class DpmCharacterController : Node2D
     [Export]
     public float CoyoteDuration = 0.15f;
 
+    [Export]
+    public float CoyoteJumpBoost = 1.0f;
+
     [ExportGroup("Dash")]
     [Export]
     public float DashSpeed = 900.0f;
 
     [Export]
-    public float DashDuration = 0.30f;
+    public float DashDuration = 0.50f;
 
     [Export]
     public float DashCooldown = 0.35f;
+
+    [ExportGroup("Climb")]
+    [Export]
+    public float ClimbSpeed = 250.0f;
 
     [ExportGroup("Physics")]
     [Export]
     public float FallSpeedCap = 1000.0f;
 
-    private float _moveAxis = 0.0f;
+    private float _moveAxis;
+    private float _verticalAxis;
+    private bool _jumpJustPressed;
+    private bool _jumpHeld;
+    private bool _dashJustPressed;
+
     private float _facingDir = 1.0f;
-    private float _coyoteTimeLeft = 0.0f;
-    private float _jumpHoldTime = 0.0f;
-    private float _gravityForce = 0.0f;
 
-    private bool _jumpRequested = false;
-    private bool _jumpReleased = false;
-    private bool _jumpHeld = false;
-    private bool _jumpOngoing = false;
-    private bool _hasJumped = false;
+    private float _coyoteTimeLeft;
+    private float _jumpHoldTime;
+    private bool _jumpOngoing;
 
-    private bool _groundedLastFrame = false;
-    private bool _coyoteActive = false;
-    private bool _coyoteAlreadyUsed = false;
-    private bool _coyoteJumpTriggered = false;
-
-    private bool _dashRequested = false;
-    private bool _dashing = false;
-    private float _dashTimeLeft = 0.0f;
-    private float _dashCooldownLeft = 0.0f;
+    private bool _dashing;
+    private float _dashTimeLeft;
+    private float _dashCooldownLeft;
     private float _dashDir = 1.0f;
-    private bool _airDashUsed = false;
+    private bool _airDashUsed;
+
+    private bool _inLadderZone;
+    private bool _onLadder;
+
+    private float _gravityForce;
 
     public override void _Ready()
     {
@@ -83,19 +89,23 @@ public partial class DpmCharacterController : Node2D
         _gravityForce = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 
         _sprite.Play("idle");
-        _sprite.FlipH = true; // flip car sprite dessiné vers la gauche
-    }
 
-    private void UpdateFacing()
-    {
-        if (_dashing)
-            return;
-
-        if (Mathf.Abs(_moveAxis) <= 0.1f)
-            return;
-
-        _facingDir = _moveAxis > 0.0f ? 1.0f : -1.0f;
-        _sprite.FlipH = _facingDir > 0.0f; // flip = regarde à droite
+        if (_ladder != null)
+        {
+            _ladder.BodyEntered += body =>
+            {
+                if (body == _body)
+                    _inLadderZone = true;
+            };
+            _ladder.BodyExited += body =>
+            {
+                if (body == _body)
+                {
+                    _inLadderZone = false;
+                    _onLadder = false;
+                }
+            };
+        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -106,31 +116,31 @@ public partial class DpmCharacterController : Node2D
         float fDelta = (float)delta;
 
         ReadInputs();
-        UpdateCoyoteState(fDelta);
-        UpdateDashState(fDelta);
+        UpdateCoyote(fDelta);
+        UpdateLadder();
+        UpdateDash(fDelta);
 
-        Vector2 velocity = _dashing ? ComputeDashVelocity() : ComputeNormalVelocity(fDelta);
-
-        _body.Velocity = velocity;
+        _body.Velocity = ComputeVelocity(fDelta);
         _body.MoveAndSlide();
 
         UpdateFacing();
         UpdateAnimation();
     }
 
-    private void EnsureInputActions()
+    private static void EnsureInputActions()
     {
-        AddActionIfMissing("move_left", Key.A);
-        AddActionIfMissing("move_right", Key.D);
-        AddActionIfMissing("jump", Key.W);
-        AddActionIfMissing("dash", Key.Space);
+        AddIfMissing("move_left", Key.A);
+        AddIfMissing("move_right", Key.D);
+        AddIfMissing("move_up", Key.W);
+        AddIfMissing("move_down", Key.S);
+        AddIfMissing("jump", Key.W);
+        AddIfMissing("dash", Key.Space);
     }
 
-    private static void AddActionIfMissing(string action, Key key)
+    private static void AddIfMissing(string action, Key key)
     {
         if (InputMap.HasAction(action))
             return;
-
         InputMap.AddAction(action);
         InputMap.ActionAddEvent(action, new InputEventKey { PhysicalKeycode = key });
     }
@@ -138,34 +148,61 @@ public partial class DpmCharacterController : Node2D
     private void ReadInputs()
     {
         _moveAxis = Input.GetAxis("move_left", "move_right");
-        _jumpRequested = Input.IsActionJustPressed("jump");
-        _jumpReleased = Input.IsActionJustReleased("jump");
+        _verticalAxis = Input.GetAxis("move_up", "move_down");
+        _jumpJustPressed = Input.IsActionJustPressed("jump");
         _jumpHeld = Input.IsActionPressed("jump");
-        _dashRequested = Input.IsActionJustPressed("dash");
+        _dashJustPressed = Input.IsActionJustPressed("dash");
     }
 
-    private void UpdateCoyoteState(float delta)
+    private void UpdateCoyote(float delta)
     {
-        bool grounded = _body.IsOnFloor() && _body.Velocity.Y >= -1.0f;
-
-        if (grounded)
+        if (_body.IsOnFloor() && _body.Velocity.Y >= -1.0f)
         {
             _coyoteTimeLeft = CoyoteDuration;
-            _coyoteAlreadyUsed = false;
-            _hasJumped = false;
-            _coyoteJumpTriggered = false;
             _airDashUsed = false;
         }
         else
         {
             _coyoteTimeLeft = Mathf.Max(_coyoteTimeLeft - delta, 0.0f);
         }
-
-        _coyoteActive = _coyoteTimeLeft > 0.0f && !_coyoteAlreadyUsed;
-        _groundedLastFrame = grounded;
     }
 
-    private void UpdateDashState(float delta)
+    private void UpdateLadder()
+    {
+        if (!_inLadderZone)
+        {
+            _onLadder = false;
+            return;
+        }
+
+        if (_onLadder && _body.IsOnFloor() && _verticalAxis >= 0.0f)
+        {
+            _onLadder = false;
+            return;
+        }
+
+        bool upPressed = Input.IsActionPressed("move_up");
+        bool downPressed = Input.IsActionPressed("move_down");
+        bool wantsToClimb = upPressed || (downPressed && !_body.IsOnFloor());
+
+        if (!_onLadder && wantsToClimb)
+        {
+            _onLadder = true;
+            _jumpOngoing = false;
+            _body.GlobalPosition = new Vector2(_ladder.GlobalPosition.X, _body.GlobalPosition.Y);
+            _body.Velocity = Vector2.Zero;
+        }
+
+        if (_onLadder && _jumpJustPressed && !upPressed)
+        {
+            _onLadder = false;
+            _body.Velocity = new Vector2(_body.Velocity.X, JumpInitialVelocity);
+            _jumpOngoing = true;
+            _jumpHoldTime = 0.0f;
+        }
+    }
+
+    private void UpdateDash(float delta)
     {
         _dashCooldownLeft = Mathf.Max(_dashCooldownLeft - delta, 0.0f);
 
@@ -180,7 +217,7 @@ public partial class DpmCharacterController : Node2D
             return;
         }
 
-        if (_dashRequested && CanDash())
+        if (_dashJustPressed && CanDash())
             StartDash();
     }
 
@@ -188,10 +225,10 @@ public partial class DpmCharacterController : Node2D
     {
         if (_dashCooldownLeft > 0.0f)
             return false;
-
+        if (_onLadder)
+            return false;
         if (!_body.IsOnFloor() && _airDashUsed)
             return false;
-
         return true;
     }
 
@@ -201,81 +238,83 @@ public partial class DpmCharacterController : Node2D
         _dashTimeLeft = DashDuration;
         _dashDir = _facingDir;
         _jumpOngoing = false;
-
         if (!_body.IsOnFloor())
             _airDashUsed = true;
     }
 
-    private Vector2 ComputeDashVelocity()
+    private Vector2 ComputeVelocity(float delta)
     {
-        return new Vector2(_dashDir * DashSpeed, 0.0f);
-    }
+        if (_dashing)
+            return new Vector2(_dashDir * DashSpeed, 0.0f);
 
-    private Vector2 ComputeNormalVelocity(float delta)
-    {
+        if (_onLadder)
+            return new Vector2(0.0f, _verticalAxis * ClimbSpeed);
+
         float velX = Mathf.MoveToward(
             _body.Velocity.X,
             _moveAxis * MoveSpeed,
             MoveAcceleration * delta
         );
-
-        float velY = ComputeVerticalVelocity(delta);
-        velY = ClampFall(velY);
-
+        float velY = Mathf.Min(ComputeVerticalVelocity(delta), FallSpeedCap);
         return new Vector2(velX, velY);
-    }
-
-    private bool CanJump()
-    {
-        return _body.IsOnFloor() || _coyoteActive;
     }
 
     private float ComputeVerticalVelocity(float delta)
     {
         float velY = _body.Velocity.Y + _gravityForce * delta;
 
-        if (_jumpRequested && CanJump())
+        bool canJump = _body.IsOnFloor() || _coyoteTimeLeft > 0.0f;
+        if (_jumpJustPressed && canJump)
         {
-            bool isCoyoteJump = !_body.IsOnFloor() && _coyoteActive;
-
-            velY = JumpInitialVelocity * (isCoyoteJump ? CoyoteJumpBoost : 1.0f);
+            bool isCoyote = !_body.IsOnFloor();
+            velY = JumpInitialVelocity * (isCoyote ? CoyoteJumpBoost : 1.0f);
             _jumpOngoing = true;
             _jumpHoldTime = 0.0f;
             _coyoteTimeLeft = 0.0f;
-            _coyoteAlreadyUsed = true;
-            _hasJumped = true;
-            _coyoteJumpTriggered = isCoyoteJump;
         }
 
         if (_jumpOngoing && _jumpHeld)
         {
             _jumpHoldTime += delta;
-
             if (_jumpHoldTime < JumpSustainMaxTime)
                 velY = Mathf.Max(velY + JumpSustainForce, JumpMaxVelocity);
             else
                 _jumpOngoing = false;
         }
 
-        if (_jumpReleased)
+        if (!_jumpHeld)
             _jumpOngoing = false;
 
         return velY;
     }
 
-    private float ClampFall(float velY)
+    private void UpdateFacing()
     {
-        return Mathf.Min(velY, FallSpeedCap);
+        if (_dashing)
+            return;
+        if (Mathf.Abs(_moveAxis) <= 0.1f)
+            return;
+
+        _facingDir = _moveAxis > 0.0f ? 1.0f : -1.0f;
+        _sprite.FlipH = _facingDir > 0.0f;
     }
 
     private void UpdateAnimation()
     {
         string anim = DetermineAnim();
 
+        if (_onLadder)
+        {
+            bool moving = Mathf.Abs(_verticalAxis) > 0.1f;
+            if (moving)
+                _sprite.Play();
+            else
+                _sprite.Pause();
+        }
+
         if (_sprite.Animation == anim)
             return;
 
-        _sprite.Stop();
         _sprite.Animation = anim;
         _sprite.Frame = 0;
         _sprite.FrameProgress = 0.0f;
@@ -286,25 +325,12 @@ public partial class DpmCharacterController : Node2D
     {
         if (_dashing)
             return "dash";
+        if (_onLadder)
+            return "climb";
 
         if (_body.IsOnFloor())
-        {
-            _coyoteJumpTriggered = false;
+            return Mathf.Abs(_body.Velocity.X) > 5.0f ? "walk" : "idle";
 
-            if (Mathf.Abs(_body.Velocity.X) > 5.0f)
-                return "walk";
-
-            return "idle";
-        }
-
-        if (_body.Velocity.Y < 0.0f)
-        {
-            if (_coyoteJumpTriggered)
-                return "coyote";
-
-            return "jump";
-        }
-
-        return "fall";
+        return _body.Velocity.Y < 0.0f ? "jump" : "fall";
     }
 }

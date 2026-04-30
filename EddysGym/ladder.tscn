@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://djx83jhit1b2b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_apjnm"]
+size = Vector2(9.844313, 47.852173)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n4qb6"]
+load_path = "res://.godot/imported/ladder.png-8e43fe610f034c02c367126663bbc43a.ctex"
+
+[node name="Ladder" type="Area2D" unique_id=1774158747]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=589228416]
+position = Vector2(2.000001, -45.76335)
+scale = Vector2(1.9300483, 5.9668493)
+shape = SubResource("RectangleShape2D_apjnm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1308860201]
+position = Vector2(0.9999995, -47)
+scale = Vector2(0.21896186, 0.75083447)
+texture = SubResource("CompressedTexture2D_n4qb6")

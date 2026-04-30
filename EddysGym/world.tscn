@@ -3,9 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://dce6jp2twmyxk" path="res://Assets/Multi_Platformer_Tileset_Free/GrassLand/Background/GrassLand_Background_1.png" id="1_lj2eg"]
 [ext_resource type="PackedScene" uid="uid://dlxb4besiqvnx" path="res://AntoineGym/Niveaux/Platform.tscn" id="1_wdkol"]
 [ext_resource type="Texture2D" uid="uid://kok8251qdfv3" path="res://Assets/GrassLand/Background/GrassLand_Background_2.png" id="2_pw0ik"]
+[ext_resource type="PackedScene" uid="uid://djx83jhit1b2b" path="res://EddysGym/ladder.tscn" id="4_apjnm"]
 [ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://EddysGym/character.tscn" id="5_pw0ik"]
 
-[node name="Niveau1" type="Node2D" unique_id=1948467130]
+[node name="niveau" type="Node2D" unique_id=1948467130]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=820423914]
 offset_right = 40.0
@@ -60,5 +61,9 @@ scale = Vector2(1, 13.44)
 position = Vector2(540, 135)
 scale = Vector2(1, 12.800001)
 
-[node name="Character" parent="." unique_id=2089619249 instance=ExtResource("5_pw0ik")]
+[node name="Ladder" parent="." unique_id=809541922 instance=ExtResource("4_apjnm")]
+position = Vector2(502, 169)
+
+[node name="Character" parent="." unique_id=2089619249 node_paths=PackedStringArray("_ladder") instance=ExtResource("5_pw0ik")]
 position = Vector2(331, 139)
+_ladder = NodePath("../Ladder")
