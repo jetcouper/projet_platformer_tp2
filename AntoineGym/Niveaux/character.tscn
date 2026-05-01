@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://cu7apmg845ikc"]
-
-[ext_resource type="Script" uid="uid://bmyf72pe1q7wa" path="res://EddysGym/DpmCharacterController.cs" id="1_fijdw"]
-
-[node name="Character" type="Node2D" unique_id=2089619249 node_paths=PackedStringArray("_body", "_sprite")]
-script = ExtResource("1_fijdw")
-_body = NodePath("")
-_sprite = NodePath("")

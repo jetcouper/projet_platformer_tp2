@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://b4cvnpc4yu0dq"]
+
+[ext_resource type="Texture2D" uid="uid://dce6jp2twmyxk" path="res://Assets/Background/GrassLand_Background_1.png" id="1_lj2eg"]
+[ext_resource type="PackedScene" uid="uid://dlxb4besiqvnx" path="res://Gyms/AntoineGym/Niveaux/Platform.tscn" id="1_wdkol"]
+[ext_resource type="PackedScene" uid="uid://djx83jhit1b2b" path="res://Gyms/EddysGym/scene/ladder.tscn" id="4_apjnm"]
+[ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://Gyms/EddysGym/scene/character.tscn" id="5_pw0ik"]
+[ext_resource type="PackedScene" uid="uid://b1nmkx4f0k88m" path="res://Gyms/EddysGym/scene/boite_jaune.tscn" id="5_uue8x"]
+
+[node name="niveau" type="Node2D" unique_id=1948467130]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=820423914]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(14.305645, 8.100929)
+color = Color(0, 0.7058824, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1112890696]
+offset_right = 368.0
+offset_bottom = 208.0
+scale = Vector2(1.5651199, 1.576416)
+texture = ExtResource("1_lj2eg")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=896497736]
+offset_top = 119.0
+offset_right = 240.0
+offset_bottom = 327.0
+scale = Vector2(1.047092, 1.0039158)
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1149308135]
+offset_left = 251.0
+offset_top = 119.0
+offset_right = 491.0
+offset_bottom = 327.0
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=2128781903]
+offset_left = 491.0
+offset_top = 119.0
+offset_right = 731.0
+offset_bottom = 327.0
+
+[node name="Platform" parent="." unique_id=1318340789 instance=ExtResource("1_wdkol")]
+position = Vector2(304, 183)
+scale = Vector2(9.6, 1)
+
+[node name="Platform2" parent="." unique_id=906269010 instance=ExtResource("1_wdkol")]
+position = Vector2(195, 111)
+scale = Vector2(1, 8.200001)
+
+[node name="Platform3" parent="." unique_id=2137468160 instance=ExtResource("1_wdkol")]
+position = Vector2(292, 274)
+scale = Vector2(26.368948, 0.85726047)
+
+[node name="Platform4" parent="." unique_id=1018335727 instance=ExtResource("1_wdkol")]
+position = Vector2(41, 129)
+scale = Vector2(1, 13.44)
+
+[node name="Platform5" parent="." unique_id=983859626 instance=ExtResource("1_wdkol")]
+position = Vector2(540, 135)
+scale = Vector2(1, 12.800001)
+
+[node name="Ladder" parent="." unique_id=809541922 instance=ExtResource("4_apjnm")]
+position = Vector2(502, 169)
+
+[node name="Character" parent="." unique_id=2089619249 node_paths=PackedStringArray("_ladder") instance=ExtResource("5_pw0ik")]
+position = Vector2(331, 139)
+_ladder = NodePath("../Ladder")
+
+[node name="BoiteJaune" parent="." unique_id=1535752220 instance=ExtResource("5_uue8x")]
+position = Vector2(120, 234)
