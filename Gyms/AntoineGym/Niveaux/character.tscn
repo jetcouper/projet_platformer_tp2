@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cu7apmg845ikc"]
+
+[ext_resource type="Script" uid="uid://bmyf72pe1q7wa" path="res://Gyms/EddysGym/DpmCharacterController.cs" id="1_4276j"]
+[ext_resource type="PackedScene" uid="uid://c3wvjfa3fryyl" path="res://Gyms/AntoineGym/Niveaux/Player.tscn" id="2_w2oyg"]
+
+[node name="Character" type="Node2D" unique_id=2089619249 node_paths=PackedStringArray("_body", "_sprite")]
+script = ExtResource("1_4276j")
+_body = NodePath("CharacterBody2D")
+_sprite = NodePath("CharacterBody2D/AnimatedSprite2D")
+CoyoteDuration = 1.5
+CoyoteJumpBoost = 2.5
+
+[node name="CharacterBody2D" parent="." unique_id=1757976238 instance=ExtResource("2_w2oyg")]
