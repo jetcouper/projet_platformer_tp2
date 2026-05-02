@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://cn54yw0orfkvy"]
 
-<<<<<<< HEAD:AntoineGym/Niveaux/niveau1.tscn
 [ext_resource type="Texture2D" uid="uid://d2tg3pdddmgsu" path="res://Assets/GrassLand/Background/GrassLand_Background_3.png" id="1_acehy"]
 [ext_resource type="Script" uid="uid://c6n630jsdpd61" path="res://Library/DCM/DcmWindSystem.cs" id="1_mqn2c"]
 [ext_resource type="Texture2D" uid="uid://dvilcpi6ns4ex" path="res://Assets/Multi_Platformer_Tileset_Free/GrassLand/Background/GrassLand_Cloud_1.png" id="2_7iq8t"]
@@ -346,12 +345,6 @@ texture = ExtResource("13_2uobi")
 
 [sub_resource type="TileSet" id="TileSet_hf5l1"]
 sources/0 = SubResource("TileSetAtlasSource_2uobi")
-=======
-[ext_resource type="Texture2D" uid="uid://dce6jp2twmyxk" path="res://Assets/Background/GrassLand_Background_1.png" id="1_lj2eg"]
-[ext_resource type="PackedScene" uid="uid://dlxb4besiqvnx" path="res://Gyms/AntoineGym/Niveaux/Platform.tscn" id="1_wdkol"]
-[ext_resource type="Texture2D" uid="uid://kok8251qdfv3" path="res://Assets/GrassLand/Background/GrassLand_Background_2.png" id="2_pw0ik"]
-[ext_resource type="PackedScene" uid="uid://c3wvjfa3fryyl" path="res://Gyms/AntoineGym/Niveaux/Player.tscn" id="3_lj2eg"]
->>>>>>> 6bd377dd01dee19b3aa1c0224bcd8cd6f3e382d6:Gyms/AntoineGym/Niveaux/niveau1.tscn
 
 [node name="Niveau1" type="Node2D" unique_id=1948467130]
 
