@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://1yyqa8rg4axk" path="res://Assets/Characters/player/jump/jump.png" id="3_tnj3t"]
 [ext_resource type="Texture2D" uid="uid://desx7jf67b05l" path="res://Assets/Characters/player/walk/walk.png" id="3_wfnr8"]
 [ext_resource type="Texture2D" uid="uid://bdmid6i6eypk3" path="res://Assets/Characters/player/arial-dash/aerial dash.png" id="4_c47op"]
+[ext_resource type="Script" uid="uid://b7rhbyv1vrdam" path="res://Gyms/EddysGym/src/DpmHealth.cs" id="10_3qvrq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjt0s"]
 radius = 30.0
@@ -753,12 +754,14 @@ animations = [{
 "speed": 17.0
 }]
 
-[node name="Character" type="Node2D" unique_id=2089619249 node_paths=PackedStringArray("_body", "_sprite")]
-script = ExtResource("1_glpr6")
-_body = NodePath("CharacterBody2D")
-_sprite = NodePath("CharacterBody2D/AnimatedSprite2D")
-CoyoteDuration = 1.5
-CoyoteJumpBoost = 2.5
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3qvrq"]
+bg_color = Color(0.1254902, 0.69411767, 0.13333334, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Character" type="Node2D" unique_id=2089619249]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=483047354]
 floor_constant_speed = true
@@ -775,8 +778,29 @@ animation = &"shoot"
 scale = Vector2(1.284437, 1.60103)
 zoom = Vector2(2, 2)
 
-[node name="DcmBulletSpawner" type="Node2D" parent="." unique_id=1948672311 node_paths=PackedStringArray("Player", "Sprite")]
+[node name="DpmHealth" type="Node2D" parent="CharacterBody2D" unique_id=421729039 node_paths=PackedStringArray("_body", "_sprite", "_healthBar")]
+script = ExtResource("10_3qvrq")
+_body = NodePath("..")
+_sprite = NodePath("../AnimatedSprite2D")
+_healthBar = NodePath("HealthBar")
+
+[node name="HealthBar" type="ProgressBar" parent="CharacterBody2D/DpmHealth" unique_id=2129573936]
+offset_left = -281.00003
+offset_top = -179.0
+offset_right = -221.00003
+offset_bottom = -169.0
+rotation = 0.00025324523
+scale = Vector2(0.7663565, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_3qvrq")
+show_percentage = false
+
+[node name="DpmCharacterController" type="Node2D" parent="CharacterBody2D" unique_id=581987753 node_paths=PackedStringArray("_body", "_sprite")]
+script = ExtResource("1_glpr6")
+_body = NodePath("..")
+_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="DcmBulletSpawner" type="Node2D" parent="CharacterBody2D" unique_id=1948672311 node_paths=PackedStringArray("Player", "Sprite")]
 script = ExtResource("1_spawner")
 WeaponScene = ExtResource("1_projscene")
-Player = NodePath("..")
-Sprite = NodePath("../CharacterBody2D/AnimatedSprite2D")
+Player = NodePath("../..")
+Sprite = NodePath("../AnimatedSprite2D")
