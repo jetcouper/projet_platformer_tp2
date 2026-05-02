@@ -10,9 +10,6 @@ public partial class DpmCharacterController : Node2D
     [Export]
     private AnimatedSprite2D _sprite;
 
-    [Export]
-    private Area2D _ladder;
-
     [ExportGroup("Movement")]
     [Export]
     public float MoveSpeed = 400.0f;
@@ -82,6 +79,8 @@ public partial class DpmCharacterController : Node2D
     private bool _inLadderZone;
     private bool _onLadder;
 
+    private Area2D _currentLadder;
+
     private bool _shootJustPressed;
     private bool _shooting;
     private float _shootTimeLeft;
@@ -97,23 +96,6 @@ public partial class DpmCharacterController : Node2D
         _gravityForce = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 
         _sprite.Play("idle");
-
-        if (_ladder != null)
-        {
-            _ladder.BodyEntered += body =>
-            {
-                if (body == _body)
-                    _inLadderZone = true;
-            };
-            _ladder.BodyExited += body =>
-            {
-                if (body == _body)
-                {
-                    _inLadderZone = false;
-                    _onLadder = false;
-                }
-            };
-        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -224,7 +206,10 @@ public partial class DpmCharacterController : Node2D
         {
             _onLadder = true;
             _jumpOngoing = false;
-            _body.GlobalPosition = new Vector2(_ladder.GlobalPosition.X, _body.GlobalPosition.Y);
+            _body.GlobalPosition = new Vector2(
+                _currentLadder.GlobalPosition.X,
+                _body.GlobalPosition.Y
+            );
             _body.Velocity = Vector2.Zero;
         }
 
@@ -234,6 +219,25 @@ public partial class DpmCharacterController : Node2D
             _body.Velocity = new Vector2(_body.Velocity.X, JumpInitialVelocity);
             _jumpOngoing = true;
             _jumpHoldTime = 0.0f;
+        }
+    }
+
+    public void OnLadderEntered(Node body, Area2D ladder)
+    {
+        if (body == _body)
+        {
+            _inLadderZone = true;
+            _currentLadder = ladder;
+        }
+    }
+
+    public void OnLadderExited(Node body, Area2D ladder)
+    {
+        if (body == _body && _currentLadder == ladder)
+        {
+            _inLadderZone = false;
+            _onLadder = false;
+            _currentLadder = null;
         }
     }
 
