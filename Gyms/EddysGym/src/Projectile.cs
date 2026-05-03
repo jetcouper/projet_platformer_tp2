@@ -82,7 +82,9 @@ public partial class Projectile : RigidBody2D
         if (body == _player)
             return;
 
-        // Destruction par une collision
+        if (body is BoiteJaune)
+            return;
+
         QueueFree();
     }
 }

@@ -34,6 +34,7 @@ animations = [{
 }]
 
 [node name="Projectile" type="RigidBody2D" unique_id=1770685157 node_paths=PackedStringArray("ScreenNotifier")]
+collision_layer = 8
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_gx23l")
 gravity_scale = 0.0

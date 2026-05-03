@@ -28,6 +28,11 @@ window/size/window_height_override=1080
 
 project/assembly_name="TP2"
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_4="projectile"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

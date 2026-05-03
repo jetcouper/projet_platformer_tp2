@@ -13,9 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://dkfahhx8to5ge" path="res://Assets/Characters/player/shoot/1x atk_char.png" id="7_vckfi"]
 [ext_resource type="Script" uid="uid://b7rhbyv1vrdam" path="res://Gyms/EddysGym/src/DpmHealth.cs" id="10_3qvrq"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vckfi"]
+radius = 19.21
+height = 62.2
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjt0s"]
-radius = 34.483162
-height = 68.966324
+radius = 24.5
+height = 52.25
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cr4s"]
 atlas = ExtResource("2_47qly")
@@ -788,7 +792,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lphiu")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk",
 "speed": 15.0
 }]
@@ -801,16 +805,18 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="Character" type="CharacterBody2D" unique_id=804579613]
+collision_mask = 9
 
 [node name="StandingCollision" type="CollisionShape2D" parent="." unique_id=2049849905]
-shape = SubResource("CapsuleShape2D_pjt0s")
+position = Vector2(-8, -4)
+shape = SubResource("CapsuleShape2D_vckfi")
 
 [node name="CrouchingCollision" type="CollisionShape2D" parent="." unique_id=982420263]
-position = Vector2(0, 15)
-scale = Vector2(1.1019871, 0.5643445)
+position = Vector2(-7, 1)
 shape = SubResource("CapsuleShape2D_pjt0s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1144174108]
+position = Vector2(-10, -2)
 sprite_frames = SubResource("SpriteFrames_xc4g8")
 animation = &"walk"
 
@@ -839,6 +845,8 @@ _standingHitbox = NodePath("../StandingCollision")
 _crouchingHitbox = NodePath("../CrouchingCollision")
 MoveSpeed = 300.0
 MoveAcceleration = 2000.0
+JumpMaxVelocity = -700.0
+JumpSustainForce = -23.0
 DashSpeed = 600.0
 DashDuration = 0.25
 

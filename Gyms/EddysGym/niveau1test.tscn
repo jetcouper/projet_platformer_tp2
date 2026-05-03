@@ -17,8 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://ds30rf63ou6le" path="res://Assets/Terrain/GrassLand_Bush.png" id="15_sdodr"]
 [ext_resource type="Texture2D" uid="uid://bgrdlll8mdurv" path="res://Assets/Terrain/GrassLand_Tree.png" id="16_naeqe"]
 [ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://Gyms/EddysGym/scene/character.tscn" id="18_cyv1h"]
-[ext_resource type="PackedScene" path="res://Gyms/EddysGym/scene/ladder.tscn" id="18_ys48a"]
+[ext_resource type="PackedScene" uid="uid://djx83jhit1b2b" path="res://Gyms/EddysGym/scene/ladder.tscn" id="18_ys48a"]
 [ext_resource type="Script" uid="uid://cnpfya41g2r1e" path="res://Gyms/EddysGym/src/MedLadder.cs" id="19_cyv1h"]
+[ext_resource type="PackedScene" uid="uid://b1nmkx4f0k88m" path="res://Gyms/EddysGym/scene/boite_jaune.tscn" id="20_mjvsv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_bhcew")
@@ -1022,3 +1023,6 @@ position = Vector2(324, 2223)
 script = ExtResource("19_cyv1h")
 Player = NodePath("../Character")
 Ladders = [NodePath("../Avant/Ladder")]
+
+[node name="BoiteJaune" parent="." unique_id=1535752220 instance=ExtResource("20_mjvsv")]
+position = Vector2(919, 2296)
