@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://sy6k0m30cmjs"]
 
-[ext_resource type="Texture2D" uid="uid://dpeyn6j6g078" path="res://Assets/GrassLand/Details/GrassLand_Entry_3.png" id="1_yjk2n"]
-[ext_resource type="Texture2D" uid="uid://dyprlv8bk0y6i" path="res://Assets/GrassLand/Details/GrassLand_Entry_1.png" id="2_f08ak"]
-[ext_resource type="Texture2D" uid="uid://j3i3lonanw7o" path="res://Assets/GrassLand/Terrain/Grassland_Terrain_Tileset.png" id="3_bbm8b"]
-[ext_resource type="Texture2D" uid="uid://ceviy35owgot0" path="res://Assets/Multi_Platformer_Tileset_Free/GrassLand/Terrain/Grassland_Terrain_47Tiles.png" id="4_kn1ol"]
-[ext_resource type="Texture2D" uid="uid://cx71usfn0h8u" path="res://Assets/Multi_Platformer_Tileset_Free/GrassLand/Terrain/Grassland_Terrain_BgdTiles.png" id="5_lnty6"]
-[ext_resource type="Texture2D" uid="uid://cu5on7qkj05ce" path="res://Assets/Multi_Platformer_Tileset_Free/GrassLand/Terrain/Grassland_Terrain_ExtraTiles.png" id="6_7457e"]
+[ext_resource type="Texture2D" uid="uid://dpeyn6j6g078" path="res://Assets/Terrain/GrassLand_Entry_3.png" id="1_yjk2n"]
+[ext_resource type="Texture2D" uid="uid://dyprlv8bk0y6i" path="res://Assets/Terrain/GrassLand_Entry_1.png" id="2_f08ak"]
+[ext_resource type="Texture2D" uid="uid://j3i3lonanw7o" path="res://Assets/Terrain/Grassland_Terrain_Tileset.png" id="3_bbm8b"]
+[ext_resource type="Texture2D" uid="uid://duuh72dod5u4p" path="res://Assets/Terrain/Grassland_Terrain_47Tiles.png" id="4_kn1ol"]
+[ext_resource type="Texture2D" uid="uid://khxg81gj88sn" path="res://Assets/Terrain/Grassland_Terrain_BgdTiles.png" id="5_lnty6"]
+[ext_resource type="Texture2D" uid="uid://p0lwp8qyi5v7" path="res://Assets/Terrain/Grassland_Terrain_ExtraTiles.png" id="6_7457e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjk2n"]
 texture = ExtResource("1_yjk2n")
