@@ -18,7 +18,6 @@ distance = 2.0
 [node name="Gym_Charlee" type="Node2D" unique_id=879015536]
 
 [node name="Sans Cervelle" parent="." unique_id=439115043 node_paths=PackedStringArray("Character") instance=ExtResource("1_3yh6g")]
-visible = false
 scale = Vector2(2, 2)
 Character = NodePath("../Character")
 
@@ -61,6 +60,7 @@ shape = SubResource("WorldBoundaryShape2D_4xu8j")
 position = Vector2(403, 1)
 
 [node name="Goomba_2_0" parent="." unique_id=1227190931 node_paths=PackedStringArray("Character") instance=ExtResource("3_vjd2e")]
+visible = false
 position = Vector2(191, 70)
 scale = Vector2(1.5, 1.5)
 Character = NodePath("../Character")

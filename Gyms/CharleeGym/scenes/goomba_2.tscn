@@ -59,9 +59,9 @@ scale = Vector2(2, 2)
 script = ExtResource("1_b8miq")
 Speed = 50.0
 Scale_Anim = 1.0
-Vies = 2
 WalkTowardsPlayer = NodePath("WalkTowardsPlayer")
 Sprite = NodePath("AnimatedSprite2D")
+Vies = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1242434330]
 material = SubResource("ShaderMaterial_vss3n")
@@ -77,6 +77,8 @@ shape = SubResource("CapsuleShape2D_bti62")
 rect = Rect2(-10, -6, 20, 12)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1689580267]
+collision_layer = 16
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=661542955]
 rotation = 1.5707964

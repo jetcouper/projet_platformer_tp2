@@ -32,6 +32,7 @@ project/assembly_name="TP2"
 
 2d_physics/layer_1="player"
 2d_physics/layer_4="projectile"
+2d_physics/layer_5="ennemis"
 
 [physics]
 
