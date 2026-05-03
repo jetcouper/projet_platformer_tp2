@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://pg5lk2xqe5sl"]
+
+[ext_resource type="Shader" uid="uid://blgw1vc4cga8u" path="res://Gyms/CharleeGym/scripts/Helpers/EnemyDamageShader.gdshader" id="1_0ydie"]
+[ext_resource type="Script" uid="uid://bfdx1e7g0j46x" path="res://Gyms/CharleeGym/scripts/Goomba.cs" id="1_b8miq"]
+[ext_resource type="Texture2D" uid="uid://bypxb65jbh83" path="res://Assets/Enemies/Bee/Bee.png" id="1_e7k1a"]
+[ext_resource type="Script" uid="uid://dwes68dnbdax7" path="res://Gyms/CharleeGym/scripts/Helpers/WalkTowardsPlayer.cs" id="3_b8miq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vss3n"]
+shader = ExtResource("1_0ydie")
+shader_parameter/flash_strength = 0.0
+shader_parameter/death_strength = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8miq"]
+atlas = ExtResource("1_e7k1a")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vss3n"]
+atlas = ExtResource("1_e7k1a")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s6mv"]
+atlas = ExtResource("1_e7k1a")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huxvq"]
+atlas = ExtResource("1_e7k1a")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_huxvq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8miq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vss3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s6mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huxvq")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bti62"]
+radius = 6.0
+height = 19.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ifc6"]
+radius = 7.0
+height = 23.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1227190931 node_paths=PackedStringArray("WalkTowardsPlayer", "Sprite")]
+scale = Vector2(2, 2)
+script = ExtResource("1_b8miq")
+Speed = 50.0
+Scale_Anim = 1.0
+Vies = 2
+WalkTowardsPlayer = NodePath("WalkTowardsPlayer")
+Sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1242434330]
+material = SubResource("ShaderMaterial_vss3n")
+sprite_frames = SubResource("SpriteFrames_huxvq")
+animation = &"walk"
+frame_progress = 0.266863
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1393172090]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_bti62")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2008701578]
+rect = Rect2(-10, -6, 20, 12)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1689580267]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=661542955]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1ifc6")
+
+[node name="WalkTowardsPlayer" type="Node2D" parent="." unique_id=330469100 node_paths=PackedStringArray("OwnerNode")]
+script = ExtResource("3_b8miq")
+OwnerNode = NodePath("..")
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_Begin_walk"]
+[connection signal="body_entered" from="Area2D" to="." method="Take_Damage"]
