@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c4ekpeesvy0b6"]
+
+[ext_resource type="PackedScene" uid="uid://0agvrdgbh0rg" path="res://Gyms/CharleeGym/scenes/sans_cervelle.tscn" id="1_3yh6g"]
+[ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://Gyms/EddysGym/scene/character.tscn" id="2_vjd2e"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h8q46"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4xu8j"]
+distance = 2.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_57p78"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4xu8j"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oqluo"]
+
+[node name="Gym_Charlee" type="Node2D" unique_id=879015536]
+
+[node name="Sans Cervelle" parent="." unique_id=439115043 node_paths=PackedStringArray("Character") instance=ExtResource("1_3yh6g")]
+scale = Vector2(2, 2)
+Is_Active = true
+Speed = 10.0
+Character = NodePath("../Character")
+
+[node name="Boundaries" type="Node2D" parent="." unique_id=1658159782]
+
+[node name="MurBas" type="StaticBody2D" parent="Boundaries" unique_id=1362469229]
+physics_material_override = SubResource("PhysicsMaterial_h8q46")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/MurBas" unique_id=213158875]
+position = Vector2(2, 164)
+shape = SubResource("WorldBoundaryShape2D_4xu8j")
+
+[node name="MurLeft" type="StaticBody2D" parent="Boundaries" unique_id=1930154242]
+physics_material_override = SubResource("PhysicsMaterial_57p78")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/MurLeft" unique_id=1489298204]
+position = Vector2(-575, 0)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_4xu8j")
+
+[node name="MurHaut" type="StaticBody2D" parent="Boundaries" unique_id=1164745336]
+physics_material_override = SubResource("PhysicsMaterial_4xu8j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/MurHaut" unique_id=591910120]
+position = Vector2(0, -320)
+rotation = -3.1415925
+shape = SubResource("WorldBoundaryShape2D_4xu8j")
+
+[node name="MurRight" type="StaticBody2D" parent="Boundaries" unique_id=2141959147]
+physics_material_override = SubResource("PhysicsMaterial_oqluo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/MurRight" unique_id=1811044290]
+position = Vector2(575, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_4xu8j")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=961521174]
+
+[node name="Character" parent="." unique_id=2089619249 instance=ExtResource("2_vjd2e")]
+position = Vector2(403, 1)
