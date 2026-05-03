@@ -1,7 +1,7 @@
 using Godot;
 using Utils;
 
-public partial class DpmCharacterController : Node2D
+public partial class DpmCharacterControllerAntoine : CharacterBody2D
 {
     [ExportGroup("Reference")]
     [Export]
@@ -11,10 +11,7 @@ public partial class DpmCharacterController : Node2D
     private AnimatedSprite2D _sprite;
 
     [Export]
-    private CollisionShape2D _standingHitbox;
-
-    [Export]
-    private CollisionShape2D _crouchingHitbox;
+    private Area2D _ladder;
 
     [ExportGroup("Movement")]
     [Export]
@@ -69,8 +66,6 @@ public partial class DpmCharacterController : Node2D
     private bool _jumpJustPressed;
     private bool _jumpHeld;
     private bool _dashJustPressed;
-    private bool _crouchHeld;
-    private bool _isCrouching;
 
     private float _facingDir = 1.0f;
 
@@ -87,8 +82,6 @@ public partial class DpmCharacterController : Node2D
     private bool _inLadderZone;
     private bool _onLadder;
 
-    private Area2D _currentLadder;
-
     private bool _shootJustPressed;
     private bool _shooting;
     private float _shootTimeLeft;
@@ -99,13 +92,28 @@ public partial class DpmCharacterController : Node2D
     {
         _body.EnsureValid();
         _sprite.EnsureValid();
-        _standingHitbox.EnsureValid();
-        _crouchingHitbox.EnsureValid();
 
         EnsureInputActions();
         _gravityForce = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 
         _sprite.Play("idle");
+
+        if (_ladder != null)
+        {
+            _ladder.BodyEntered += body =>
+            {
+                if (body == _body)
+                    _inLadderZone = true;
+            };
+            _ladder.BodyExited += body =>
+            {
+                if (body == _body)
+                {
+                    _inLadderZone = false;
+                    _onLadder = false;
+                }
+            };
+        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -116,8 +124,6 @@ public partial class DpmCharacterController : Node2D
         float fDelta = (float)delta;
 
         ReadInputs();
-
-        UpdateCrouch();
         UpdateCoyote(fDelta);
         UpdateLadder();
         UpdateDash(fDelta);
@@ -128,27 +134,6 @@ public partial class DpmCharacterController : Node2D
 
         UpdateFacing();
         UpdateAnimation();
-    }
-
-    private void UpdateCrouch()
-    {
-        if (!_standingHitbox.IsValid() || !_crouchingHitbox.IsValid())
-            return;
-
-        // Le joueur s'accroupit s'il touche le sol et maintient la touche
-        if (_crouchHeld && _body.IsOnFloor() && !_isCrouching && !_onLadder)
-        {
-            _isCrouching = true;
-            _standingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
-            _crouchingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
-        }
-        // Le joueur se lève s'il lâche la touche ou s'il n'est plus au sol
-        else if ((!_crouchHeld || !_body.IsOnFloor()) && _isCrouching)
-        {
-            _isCrouching = false;
-            _standingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
-            _crouchingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
-        }
     }
 
     private void UpdateShoot(float delta)
@@ -164,8 +149,6 @@ public partial class DpmCharacterController : Node2D
         {
             _shooting = true;
             _shootTimeLeft = ShootDuration;
-            if (_sprite.Animation == "shoot")
-                _sprite.Play("shoot");
         }
     }
 
@@ -200,7 +183,6 @@ public partial class DpmCharacterController : Node2D
     {
         _moveAxis = Input.GetAxis("move_left", "move_right");
         _verticalAxis = Input.GetAxis("move_up", "move_down");
-        _crouchHeld = Input.IsActionPressed("move_down");
         _jumpJustPressed = Input.IsActionJustPressed("jump");
         _jumpHeld = Input.IsActionPressed("jump");
         _dashJustPressed = Input.IsActionJustPressed("dash");
@@ -242,12 +224,7 @@ public partial class DpmCharacterController : Node2D
         {
             _onLadder = true;
             _jumpOngoing = false;
-            if (_isCrouching)
-                _crouchHeld = false;
-            _body.GlobalPosition = new Vector2(
-                _currentLadder.GlobalPosition.X,
-                _body.GlobalPosition.Y
-            );
+            _body.GlobalPosition = new Vector2(_ladder.GlobalPosition.X, _body.GlobalPosition.Y);
             _body.Velocity = Vector2.Zero;
         }
 
@@ -257,25 +234,6 @@ public partial class DpmCharacterController : Node2D
             _body.Velocity = new Vector2(_body.Velocity.X, JumpInitialVelocity);
             _jumpOngoing = true;
             _jumpHoldTime = 0.0f;
-        }
-    }
-
-    public void OnLadderEntered(Node body, Area2D ladder)
-    {
-        if (body == _body)
-        {
-            _inLadderZone = true;
-            _currentLadder = ladder;
-        }
-    }
-
-    public void OnLadderExited(Node body, Area2D ladder)
-    {
-        if (body == _body && _currentLadder == ladder)
-        {
-            _inLadderZone = false;
-            _onLadder = false;
-            _currentLadder = null;
         }
     }
 
@@ -326,11 +284,10 @@ public partial class DpmCharacterController : Node2D
 
         if (_onLadder)
             return new Vector2(0.0f, _verticalAxis * ClimbSpeed);
-        float currentMoveSpeed = _isCrouching ? MoveSpeed * 0.5f : MoveSpeed;
 
         float velX = Mathf.MoveToward(
             _body.Velocity.X,
-            _moveAxis * currentMoveSpeed,
+            _moveAxis * MoveSpeed,
             MoveAcceleration * delta
         );
         float velY = Mathf.Min(ComputeVerticalVelocity(delta), FallSpeedCap);
@@ -415,9 +372,6 @@ public partial class DpmCharacterController : Node2D
             return "dash";
         if (_onLadder)
             return "climb";
-
-        if (_isCrouching)
-            return "crouch";
 
         if (_body.IsOnFloor())
             return Mathf.Abs(_body.Velocity.X) > 5.0f ? "walk" : "idle";

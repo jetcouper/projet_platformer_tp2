@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkfahhx8to5ge"
-path="res://.godot/imported/1x atk_char.png-3fb8f40503dc6832ca2677f44e39eec0.ctex"
+uid="uid://p0lwp8qyi5v7"
+path="res://.godot/imported/Grassland_Terrain_ExtraTiles.png-595423212c493d16891f780c14b55345.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/player/shoot/1x atk_char.png"
-dest_files=["res://.godot/imported/1x atk_char.png-3fb8f40503dc6832ca2677f44e39eec0.ctex"]
+source_file="res://Assets/Terrain/Grassland_Terrain_ExtraTiles.png"
+dest_files=["res://.godot/imported/Grassland_Terrain_ExtraTiles.png-595423212c493d16891f780c14b55345.ctex"]
 
 [params]
 

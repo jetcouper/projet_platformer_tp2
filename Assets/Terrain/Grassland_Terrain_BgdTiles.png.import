@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkfahhx8to5ge"
-path="res://.godot/imported/1x atk_char.png-3fb8f40503dc6832ca2677f44e39eec0.ctex"
+uid="uid://khxg81gj88sn"
+path="res://.godot/imported/Grassland_Terrain_BgdTiles.png-96b6579f60c06e96dfd3b4fff716a9f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/player/shoot/1x atk_char.png"
-dest_files=["res://.godot/imported/1x atk_char.png-3fb8f40503dc6832ca2677f44e39eec0.ctex"]
+source_file="res://Assets/Terrain/Grassland_Terrain_BgdTiles.png"
+dest_files=["res://.godot/imported/Grassland_Terrain_BgdTiles.png-96b6579f60c06e96dfd3b4fff716a9f9.ctex"]
 
 [params]
 

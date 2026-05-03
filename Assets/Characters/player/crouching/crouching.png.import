@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkfahhx8to5ge"
-path="res://.godot/imported/1x atk_char.png-3fb8f40503dc6832ca2677f44e39eec0.ctex"
+uid="uid://bgeu5i603jioi"
+path="res://.godot/imported/crouching.png-55989f5d9c1fd8c941983022b0766583.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/player/shoot/1x atk_char.png"
-dest_files=["res://.godot/imported/1x atk_char.png-3fb8f40503dc6832ca2677f44e39eec0.ctex"]
+source_file="res://Assets/Characters/player/crouching/crouching.png"
+dest_files=["res://.godot/imported/crouching.png-55989f5d9c1fd8c941983022b0766583.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkfahhx8to5ge"
-path="res://.godot/imported/1x atk_char.png-3fb8f40503dc6832ca2677f44e39eec0.ctex"
+uid="uid://bb4odsr7a87g5"
+path="res://.godot/imported/1x_atk_char.png-811bec0d040aeb869655e06c65b2d973.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/player/shoot/1x atk_char.png"
-dest_files=["res://.godot/imported/1x atk_char.png-3fb8f40503dc6832ca2677f44e39eec0.ctex"]
+source_file="res://Assets/Characters/player/shoot/1x_atk_char.png"
+dest_files=["res://.godot/imported/1x_atk_char.png-811bec0d040aeb869655e06c65b2d973.ctex"]
 
 [params]
 
