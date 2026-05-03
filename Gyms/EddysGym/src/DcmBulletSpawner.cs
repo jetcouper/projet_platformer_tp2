@@ -58,9 +58,9 @@ public partial class DcmBulletSpawner : Node2D
         Vector2 spawnPos = bodyRef.GlobalPosition + new Vector2(dir * SpawnOffsetX, 0.0f);
 
         Projectile bullet = WeaponScene.Instantiate<Projectile>();
-
-        GetTree().CurrentScene.AddChild(bullet);
         bullet.GlobalPosition = spawnPos;
+        GetTree().CurrentScene.AddChild(bullet);
+
         bullet.Launch(dir, bodyRef);
         activeWeapon = bullet;
 

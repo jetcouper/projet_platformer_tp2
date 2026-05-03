@@ -14,8 +14,8 @@
 [ext_resource type="Script" uid="uid://b7rhbyv1vrdam" path="res://Gyms/EddysGym/src/DpmHealth.cs" id="10_3qvrq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjt0s"]
-radius = 30.0
-height = 60.0
+radius = 34.483162
+height = 68.966324
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cr4s"]
 atlas = ExtResource("2_47qly")
@@ -104,22 +104,6 @@ region = Rect2(53, 100, 53, 50)
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8h4p"]
 atlas = ExtResource("4_gqs53")
 region = Rect2(106, 100, 53, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fnnwo"]
-atlas = ExtResource("4_gqs53")
-region = Rect2(0, 150, 53, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ebkbb"]
-atlas = ExtResource("4_gqs53")
-region = Rect2(53, 150, 53, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j7o5p"]
-atlas = ExtResource("4_gqs53")
-region = Rect2(106, 150, 53, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dyt2u"]
-atlas = ExtResource("4_gqs53")
-region = Rect2(0, 200, 53, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdmlp"]
 atlas = ExtResource("4_c47op")
@@ -503,21 +487,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t8h4p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fnnwo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ebkbb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j7o5p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dyt2u")
 }],
 "loop": false,
-"name": &"crouching",
+"name": &"crouch",
 "speed": 15.0
 }, {
 "frames": [{
@@ -830,14 +802,17 @@ corner_radius_bottom_left = 10
 
 [node name="Character" type="CharacterBody2D" unique_id=804579613]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049849905]
+[node name="StandingCollision" type="CollisionShape2D" parent="." unique_id=2049849905]
+shape = SubResource("CapsuleShape2D_pjt0s")
+
+[node name="CrouchingCollision" type="CollisionShape2D" parent="." unique_id=982420263]
+position = Vector2(0, 15)
+scale = Vector2(1.1019871, 0.5643445)
 shape = SubResource("CapsuleShape2D_pjt0s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1144174108]
 sprite_frames = SubResource("SpriteFrames_xc4g8")
-animation = &"shoot"
-frame = 6
-frame_progress = 1.0
+animation = &"walk"
 
 [node name="DpmHealth" type="Node2D" parent="." unique_id=421729039 node_paths=PackedStringArray("_body", "_sprite", "_healthBar")]
 script = ExtResource("10_3qvrq")
@@ -856,10 +831,16 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_3qvrq")
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="DpmCharacterController" type="Node2D" parent="." unique_id=581987753 node_paths=PackedStringArray("_body", "_sprite")]
+[node name="DpmCharacterController" type="Node2D" parent="." unique_id=581987753 node_paths=PackedStringArray("_body", "_sprite", "_standingHitbox", "_crouchingHitbox")]
 script = ExtResource("1_glpr6")
 _body = NodePath("..")
 _sprite = NodePath("../AnimatedSprite2D")
+_standingHitbox = NodePath("../StandingCollision")
+_crouchingHitbox = NodePath("../CrouchingCollision")
+MoveSpeed = 300.0
+MoveAcceleration = 2000.0
+DashSpeed = 600.0
+DashDuration = 0.25
 
 [node name="DcmBulletSpawner" type="Node2D" parent="." unique_id=1948672311 node_paths=PackedStringArray("Player", "Sprite")]
 script = ExtResource("1_spawner")

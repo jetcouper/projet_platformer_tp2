@@ -3,16 +3,16 @@ using Godot;
 public partial class Projectile : RigidBody2D
 {
     [Export]
-    public float Speed = 200.0f;
+    public float Speed = 350.0f;
 
     [Export]
     public float Damage = 1.0f;
 
     [Export]
-    public float Lifetime = 3.0f; // Condition 1 : Temps maximum
+    public float Lifetime = 4.0f; // Condition 1 : Temps maximum
 
     [Export]
-    public float MaxDistance = 800.0f; // Condition 2 : Distance maximale
+    public float MaxDistance = 3000.0f; // Condition 2 : Distance maximale
 
     [Export]
     public VisibleOnScreenNotifier2D ScreenNotifier;
@@ -46,9 +46,6 @@ public partial class Projectile : RigidBody2D
         ContactMonitor = true;
         MaxContactsReported = 4;
         BodyEntered += OnBodyEntered;
-
-        if (LinearVelocity.Length() < 1.0f)
-            LinearVelocity = new Vector2(_direction * Speed, 0.0f);
 
         // Destruction à la sortie d'écran
         if (ScreenNotifier != null)
