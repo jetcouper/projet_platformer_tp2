@@ -19,9 +19,7 @@ public partial class MedLadder : Node
         if (!Player.IsValid())
             return;
 
-        _playerController =
-            Player.GetNodeOrNull("CharacterBody2D/DpmCharacterController")
-            as DpmCharacterController;
+        _playerController = Player.GetNodeOrNull<DpmCharacterController>("DpmCharacterController");
 
         _playerController.EnsureValid();
 
