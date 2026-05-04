@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://c4ekpeesvy0b6"]
 
-[ext_resource type="PackedScene" uid="uid://0agvrdgbh0rg" path="res://Gyms/CharleeGym/scenes/sans_cervelle.tscn" id="1_3yh6g"]
+[ext_resource type="PackedScene" uid="uid://dkhwmamsed73n" path="res://Gyms/CharleeGym/scenes/Chevalier.tscn" id="2_3yh6g"]
 [ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://Gyms/EddysGym/scene/character.tscn" id="2_vjd2e"]
-[ext_resource type="PackedScene" uid="uid://pg5lk2xqe5sl" path="res://Gyms/CharleeGym/scenes/goomba_2.tscn" id="3_vjd2e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h8q46"]
 
@@ -16,10 +15,6 @@ distance = 2.0
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oqluo"]
 
 [node name="Gym_Charlee" type="Node2D" unique_id=879015536]
-
-[node name="Sans Cervelle" parent="." unique_id=439115043 node_paths=PackedStringArray("Character") instance=ExtResource("1_3yh6g")]
-scale = Vector2(2, 2)
-Character = NodePath("../Character")
 
 [node name="Boundaries" type="Node2D" parent="." unique_id=1658159782]
 
@@ -58,10 +53,7 @@ shape = SubResource("WorldBoundaryShape2D_4xu8j")
 
 [node name="Character" parent="." unique_id=2089619249 instance=ExtResource("2_vjd2e")]
 position = Vector2(403, 1)
+collision_mask = 1
 
-[node name="Goomba_2_0" parent="." unique_id=1227190931 node_paths=PackedStringArray("Character") instance=ExtResource("3_vjd2e")]
-visible = false
-position = Vector2(191, 70)
-scale = Vector2(1.5, 1.5)
+[node name="Chevalier" parent="." unique_id=981682141 node_paths=PackedStringArray("Character") instance=ExtResource("2_3yh6g")]
 Character = NodePath("../Character")
-Scale_Anim = 0.9
