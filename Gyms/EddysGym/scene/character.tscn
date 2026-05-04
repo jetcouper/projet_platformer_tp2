@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bdmid6i6eypk3" path="res://Assets/Characters/player/arial-dash/aerial dash.png" id="4_c47op"]
 [ext_resource type="Texture2D" uid="uid://bgeu5i603jioi" path="res://Assets/Characters/player/crouching/crouching.png" id="4_gqs53"]
 [ext_resource type="Texture2D" uid="uid://dkfahhx8to5ge" path="res://Assets/Characters/player/shoot/1x atk_char.png" id="7_vckfi"]
+[ext_resource type="Texture2D" uid="uid://bj67r62a3chuq" path="res://Assets/Characters/player/slide/sprite sheets/slide_char.png" id="8_q2x0q"]
 [ext_resource type="Script" uid="uid://b7rhbyv1vrdam" path="res://Gyms/EddysGym/src/DpmHealth.cs" id="10_3qvrq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vckfi"]
@@ -108,6 +109,14 @@ region = Rect2(53, 100, 53, 50)
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8h4p"]
 atlas = ExtResource("4_gqs53")
 region = Rect2(106, 100, 53, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnnwo"]
+atlas = ExtResource("8_q2x0q")
+region = Rect2(0, 320, 96, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebkbb"]
+atlas = ExtResource("8_q2x0q")
+region = Rect2(192, 256, 96, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdmlp"]
 atlas = ExtResource("4_c47op")
@@ -498,6 +507,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_fnnwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebkbb")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_ebkbb")
+}],
+"loop": true,
+"name": &"crouch_walk",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mdmlp")
 }, {
 "duration": 1.0,
@@ -825,9 +848,10 @@ position = Vector2(-7, 1)
 shape = SubResource("CapsuleShape2D_pjt0s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1144174108]
-position = Vector2(-10, -2)
+auto_translate_mode = 1
+position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_xc4g8")
-animation = &"die"
+animation = &"crouch_walk"
 
 [node name="DpmHealth" type="Node2D" parent="." unique_id=421729039 node_paths=PackedStringArray("_body", "_sprite", "_healthBar")]
 script = ExtResource("10_3qvrq")

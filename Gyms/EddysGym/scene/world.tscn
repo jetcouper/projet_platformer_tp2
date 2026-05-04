@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://b4cvnpc4yu0dq"]
+[gd_scene format=3 uid="uid://baofjt1425mvl"]
 
 [ext_resource type="Texture2D" uid="uid://dce6jp2twmyxk" path="res://Assets/Background/GrassLand_Background_1.png" id="1_lj2eg"]
 [ext_resource type="PackedScene" uid="uid://dlxb4besiqvnx" path="res://Gyms/AntoineGym/Niveaux/Platform.tscn" id="1_wdkol"]
-[ext_resource type="PackedScene" uid="uid://djx83jhit1b2b" path="res://Gyms/EddysGym/ladder.tscn" id="4_apjnm"]
+[ext_resource type="PackedScene" uid="uid://djx83jhit1b2b" path="res://Gyms/EddysGym/scene/ladder.tscn" id="4_apjnm"]
 [ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://Gyms/EddysGym/scene/character.tscn" id="5_pw0ik"]
 [ext_resource type="PackedScene" uid="uid://b1nmkx4f0k88m" path="res://Gyms/EddysGym/scene/boite_jaune.tscn" id="5_uue8x"]
 [ext_resource type="Script" uid="uid://cnpfya41g2r1e" path="res://Gyms/EddysGym/src/MedLadder.cs" id="6_8yxfh"]
