@@ -157,6 +157,10 @@ region = Rect2(416, 50, 104, 50)
 atlas = ExtResource("4_c47op")
 region = Rect2(520, 50, 104, 50)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_psfov"]
+atlas = ExtResource("3_tnj3t")
+region = Rect2(128, 400, 64, 80)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ytkw4"]
 atlas = ExtResource("3_tnj3t")
 region = Rect2(0, 240, 64, 80)
@@ -196,10 +200,6 @@ region = Rect2(0, 400, 64, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3fasc"]
 atlas = ExtResource("3_tnj3t")
 region = Rect2(64, 400, 64, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_psfov"]
-atlas = ExtResource("3_tnj3t")
-region = Rect2(128, 400, 64, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83jrx"]
 atlas = ExtResource("3_tnj3t")
@@ -539,6 +539,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_psfov")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pebck")
 }, {
 "duration": 1.0,
@@ -808,6 +816,7 @@ corner_radius_bottom_left = 10
 collision_mask = 9
 
 [node name="StandingCollision" type="CollisionShape2D" parent="." unique_id=2049849905]
+light_mask = 2
 position = Vector2(-8, -4)
 shape = SubResource("CapsuleShape2D_vckfi")
 
@@ -818,7 +827,7 @@ shape = SubResource("CapsuleShape2D_pjt0s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1144174108]
 position = Vector2(-10, -2)
 sprite_frames = SubResource("SpriteFrames_xc4g8")
-animation = &"walk"
+animation = &"die"
 
 [node name="DpmHealth" type="Node2D" parent="." unique_id=421729039 node_paths=PackedStringArray("_body", "_sprite", "_healthBar")]
 script = ExtResource("10_3qvrq")

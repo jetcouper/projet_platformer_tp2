@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1nmkx4f0k88m"]
 
 [ext_resource type="Texture2D" uid="uid://ojcvuvci7iv8" path="res://Assets/Objects/08-Box/Box Pieces 1.png" id="1_02mkx"]
-[ext_resource type="Script" uid="uid://bnefdrt6sum7u" path="res://Gyms/EddysGym/src/BoiteJaune.cs" id="1_g26fv"]
+[ext_resource type="Script" uid="uid://bcqkfpsresxbs" path="res://Gyms/EddysGym/src/DpmReflectiveSurface.cs" id="1_g26fv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cd4oe"]
 bounce = 1.0
@@ -14,6 +14,7 @@ physics_material_override = SubResource("PhysicsMaterial_cd4oe")
 script = ExtResource("1_g26fv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1132465369]
+light_mask = 16
 shape = SubResource("RectangleShape2D_1")
 debug_color = Color(1, 0.9, 0, 0.42)
 

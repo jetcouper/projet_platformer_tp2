@@ -19,6 +19,7 @@ public partial class Projectile : RigidBody2D
 
     private float _direction = 1.0f;
     private Node2D _player;
+    private bool _hasBounced = false;
 
     private float _timeLeft;
     private Vector2 _startPosition;
@@ -79,11 +80,21 @@ public partial class Projectile : RigidBody2D
 
     private void OnBodyEntered(Node body)
     {
-        if (body == _player)
+        // Surface réflective : ricoche, ne détruit pas la balle
+        if (body is DpmReflectiveSurface surf)
+        {
+            if (!surf.IsActive)
+                return;
+
+            _hasBounced = true;
+            return; // Rebondit
+        }
+
+        if (body == _player && !_hasBounced)
             return;
 
-        if (body is BoiteJaune)
-            return;
+        DpmHealth health = body.GetNodeOrNull<DpmHealth>("DpmHealth");
+        health?.TakeDamage((int)Damage);
 
         QueueFree();
     }

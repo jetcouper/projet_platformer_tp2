@@ -12,26 +12,47 @@ public partial class DpmHealth : Node2D
     private ProgressBar _healthBar;
 
     [Export]
-    public int MaxHealth = 3;
+    public int MaxLives = 3;
 
-    private int _health;
+    [Export]
+    public float MaxHealthPercent = 100.0f;
 
-    public bool IsDead => _health <= 0;
+    [Export]
+    public float DamagePercent = 10.0f; // pourcentage de dégats retiré
+    private int _lives;
+    private float _healthPercent;
+
+    public bool IsDead => _lives <= 0;
 
     public override void _Ready()
     {
-        _health = MaxHealth;
+        _lives = MaxLives;
+        _healthPercent = MaxHealthPercent;
         UpdateBar();
     }
-
-    public override void _PhysicsProcess(double delta) { }
 
     public void TakeDamage(int amount)
     {
         if (IsDead || amount <= 0)
             return;
 
+        // Retire un pourcentage par point de dégât
+        _healthPercent -= DamagePercent * amount;
+
+        // Si barre de dégats a 0 ->  perte 1 point de vie
+        if (_healthPercent <= 0.0f)
+        {
+            _lives--;
+            GD.Print($"Une vie perdue! Vies restantes: {_lives}");
+
+            if (_lives > 0)
+                _healthPercent = MaxHealthPercent; // recharge la barre
+            else
+                _healthPercent = 0.0f;
+        }
+
         UpdateBar();
+
         if (IsDead)
             Die();
     }
@@ -40,8 +61,8 @@ public partial class DpmHealth : Node2D
     {
         if (_healthBar != null)
         {
-            _healthBar.MaxValue = MaxHealth;
-            _healthBar.Value = _health;
+            _healthBar.MaxValue = MaxHealthPercent;
+            _healthBar.Value = _healthPercent;
         }
     }
 
