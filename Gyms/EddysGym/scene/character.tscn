@@ -853,11 +853,12 @@ position = Vector2(-2, -3)
 sprite_frames = SubResource("SpriteFrames_xc4g8")
 animation = &"crouch_walk"
 
-[node name="DpmHealth" type="Node2D" parent="." unique_id=421729039 node_paths=PackedStringArray("_body", "_sprite", "_healthBar")]
+[node name="DpmHealth" type="Node2D" parent="." unique_id=421729039 node_paths=PackedStringArray("_body", "_sprite", "_healthBar", "_invincibilityTimer")]
 script = ExtResource("10_3qvrq")
 _body = NodePath("..")
 _sprite = NodePath("../AnimatedSprite2D")
 _healthBar = NodePath("HealthBar")
+_invincibilityTimer = NodePath("Timer")
 
 [node name="HealthBar" type="ProgressBar" parent="DpmHealth" unique_id=2129573936]
 offset_left = -23.0
@@ -869,6 +870,8 @@ scale = Vector2(0.7663565, 1)
 theme_override_styles/fill = SubResource("StyleBoxFlat_3qvrq")
 show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="DpmHealth" unique_id=970470046]
 
 [node name="DpmCharacterController" type="Node2D" parent="." unique_id=581987753 node_paths=PackedStringArray("_body", "_sprite", "_standingHitbox", "_crouchingHitbox")]
 script = ExtResource("1_glpr6")
