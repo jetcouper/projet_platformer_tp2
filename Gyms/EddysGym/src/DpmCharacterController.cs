@@ -16,6 +16,9 @@ public partial class DpmCharacterController : Node2D
     [Export]
     private CollisionShape2D _crouchingHitbox;
 
+    [Export]
+    public DpmHealth Health;
+
     [ExportGroup("Movement")]
     [Export]
     public float MoveSpeed = 400.0f;
@@ -92,8 +95,9 @@ public partial class DpmCharacterController : Node2D
     private bool _shootJustPressed;
     private bool _shooting;
     private float _shootTimeLeft;
-
     private float _gravityForce;
+
+    private bool _isDead;
 
     public override void _Ready()
     {
@@ -114,6 +118,19 @@ public partial class DpmCharacterController : Node2D
             return;
 
         float fDelta = (float)delta;
+        if (Health != null)
+            _isDead = Health.IsDead;
+
+        if (_isDead)
+        {
+            Vector2 v = _body.Velocity;
+            v.X = Mathf.MoveToward(v.X, 0.0f, MoveAcceleration * fDelta);
+            v.Y = Mathf.Min(v.Y + _gravityForce * fDelta, FallSpeedCap);
+            _body.Velocity = v;
+            _body.MoveAndSlide();
+            UpdateAnimation();
+            return;
+        }
 
         ReadInputs();
 
@@ -409,6 +426,8 @@ public partial class DpmCharacterController : Node2D
 
     private string DetermineAnim()
     {
+        if (_isDead)
+            return "die";
         if (_shooting)
             return "shoot";
         if (_dashing)

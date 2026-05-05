@@ -1,4 +1,5 @@
 using Godot;
+using Utils;
 
 public partial class DpmHealth : Node2D
 {
@@ -31,6 +32,11 @@ public partial class DpmHealth : Node2D
     private float _healthPercent;
 
     public bool IsDead => _lives <= 0;
+
+    public void SetDead(bool value)
+    {
+        _lives = value ? 0 : 1;
+    }
 
     public override void _Ready()
     {
@@ -68,7 +74,7 @@ public partial class DpmHealth : Node2D
 
         if (IsDead)
         {
-            Die();
+            GD.Print("Mort!");
         }
         else
         {
@@ -102,10 +108,5 @@ public partial class DpmHealth : Node2D
             _healthBar.MaxValue = MaxHealthPercent;
             _healthBar.Value = _healthPercent;
         }
-    }
-
-    private void Die()
-    {
-        _sprite.Play("die");
     }
 }
