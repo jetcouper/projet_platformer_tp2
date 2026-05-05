@@ -56,7 +56,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_pd5em")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"inactive",
 "speed": 5.0
 }]
 
@@ -79,7 +79,7 @@ Vies = 5
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=91325112]
 material = SubResource("ShaderMaterial_ervlq")
 sprite_frames = SubResource("SpriteFrames_yfss7")
-animation = &"walk"
+animation = &"inactive"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1015953862]
 position = Vector2(0, 1)

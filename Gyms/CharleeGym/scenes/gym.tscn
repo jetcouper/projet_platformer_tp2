@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dkhwmamsed73n" path="res://Gyms/CharleeGym/scenes/Chevalier.tscn" id="2_3yh6g"]
 [ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://Gyms/EddysGym/scene/character.tscn" id="2_vjd2e"]
+[ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="3_vjd2e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h8q46"]
 
@@ -57,3 +58,6 @@ collision_mask = 1
 
 [node name="Chevalier" parent="." unique_id=981682141 node_paths=PackedStringArray("Character") instance=ExtResource("2_3yh6g")]
 Character = NodePath("../Character")
+
+[node name="Projectile" parent="." unique_id=1627085932 instance=ExtResource("3_vjd2e")]
+position = Vector2(-67, 8)

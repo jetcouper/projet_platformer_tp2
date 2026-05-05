@@ -42,7 +42,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_huxvq")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"inactive",
 "speed": 5.0
 }]
 
@@ -66,8 +66,7 @@ Vies = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1242434330]
 material = SubResource("ShaderMaterial_vss3n")
 sprite_frames = SubResource("SpriteFrames_huxvq")
-animation = &"walk"
-frame_progress = 0.266863
+animation = &"inactive"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1393172090]
 rotation = 1.5707964
