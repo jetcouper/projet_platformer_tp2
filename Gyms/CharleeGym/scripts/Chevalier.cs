@@ -4,68 +4,89 @@ using Godot;
 
 public partial class Chevalier : Enemy
 {
-	[ExportGroup("Attack")]
-	[Export]
-	public float MaxWait;
+    [ExportGroup("Attack")]
+    [Export]
+    public float MaxWait;
 
-	[Export]
-	public Timer Timer;
+    [Export]
+    public Timer Timer;
 
-	[Export]
-	public CharacterBody2D Character;
-	private float NextShot;
-	private int _Direction_Faced;
+    [Export]
+    public CharacterBody2D Character;
 
-	private float _Gravity_Force = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
+    [Export]
+    public Sprite2D Shield;
 
-	public override void _Ready()
-	{
-		Timer.Timeout += Attack;
-		RestartTimer();
-	}
+    [Export]
+    public DpmReflectiveSurface Shield_Body;
 
-	public override void _PhysicsProcess(double delta)
-	{
-		float _DirectionX = Mathf.Sign(Character.GlobalPosition.X - GlobalPosition.X);
-		int _Direction_Temp = _DirectionX < 0 ? 1 : -1;
-		if (_Direction_Temp != _Direction_Faced)
-		{
-			Sprite.FlipH = _Direction_Temp < 0;
-			_Direction_Faced = _Direction_Temp;
-		}
+    [Export]
+    public PackedScene ProjectileScene;
+    private float NextShot;
+    private int _Direction_Faced;
 
-		Velocity = new Vector2(Velocity.X, Velocity.Y + _Gravity_Force);
+    private float _Gravity_Force = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 
-		MoveAndSlide();
-	}
+    public override void _Ready()
+    {
+        Timer.Timeout += Attack;
+        RestartTimer();
+    }
 
-	public void RandomNextShot()
-	{
-		Random rand = new Random();
+    public override void _PhysicsProcess(double delta)
+    {
+        float _DirectionX = Mathf.Sign(Character.GlobalPosition.X - GlobalPosition.X);
+        int _Direction_Temp = _DirectionX < 0 ? 1 : -1;
+        if (_Direction_Temp != _Direction_Faced)
+        {
+            Sprite.FlipH = _Direction_Temp < 0;
+            _Direction_Faced = _Direction_Temp;
+        }
 
-		NextShot = (float)(rand.NextDouble() * MaxWait);
-	}
+        Velocity = new Vector2(0, Velocity.Y + _Gravity_Force);
 
-	public void RestartTimer()
-	{
-		Sprite.Play("idle");
-		RandomNextShot();
-		Timer.WaitTime = NextShot;
-		Timer.Start();
-	}
+        MoveAndSlide();
+        GlobalPosition = GlobalPosition.Round();
+    }
 
-	public async void Attack()
-	{
-		Sprite.Play("attack");
+    public void RandomNextShot()
+    {
+        Random rand = new Random();
 
-		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+        NextShot = (float)(rand.NextDouble() * MaxWait);
+    }
 
-		Shoot();
+    public void RestartTimer()
+    {
+        Shield.Visible = true;
+        Shield_Body.SetActive(true);
+        Sprite.Play("inactive");
+        RandomNextShot();
+        Timer.WaitTime = NextShot;
+        Timer.Start();
+    }
 
-		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+    public async void Attack()
+    {
+        Shield.Visible = false;
+        Shield_Body.SetActive(false);
 
-		RestartTimer();
-	}
+        Sprite.Play("active");
 
-	public void Shoot() { }
+        await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+
+        Shoot();
+
+        await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+
+        RestartTimer();
+    }
+
+    public void Shoot()
+    {
+        ProjectileArc projectile = ProjectileScene.Instantiate<ProjectileArc>();
+        GetParent().AddChild(projectile);
+        projectile.GlobalPosition = GlobalPosition + new Vector2(-_Direction_Faced * 20, -10);
+        projectile.LinearVelocity = new Vector2(-_Direction_Faced * 200, -300);
+    }
 }
