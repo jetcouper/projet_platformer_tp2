@@ -109,6 +109,7 @@ public partial class DpmCharacterController : Node2D
         EnsureInputActions();
         _gravityForce = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 
+        PlaySpawnTween();
         _sprite.Play("idle");
     }
 
@@ -145,6 +146,19 @@ public partial class DpmCharacterController : Node2D
 
         UpdateFacing();
         UpdateAnimation();
+    }
+
+    private void PlaySpawnTween()
+    {
+        Vector2 currentScale = _sprite.Scale;
+        Vector2 finalScale = new(-Mathf.Abs(currentScale.X), currentScale.Y);
+        _sprite.Scale = finalScale * 0.5f;
+        _sprite.Modulate = new Color(1, 1, 1, 0);
+
+        Tween tween = CreateTween();
+        tween.SetParallel(true);
+        tween.TweenProperty(_sprite, "modulate:a", 1.0f, 2.0f);
+        tween.TweenProperty(_sprite, "scale", finalScale, 2.0f);
     }
 
     private void UpdateCrouch()
