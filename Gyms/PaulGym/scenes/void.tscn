@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ci1iyhhqseijm"]
+
+[ext_resource type="Script" uid="uid://bvrwssvpibpb1" path="res://Gyms/PaulGym/src/Void.cs" id="1_xewq4"]
+
+[sub_resource type="Gradient" id="Gradient_xewq4"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w4scm"]
+gradient = SubResource("Gradient_xewq4")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4scm"]
+size = Vector2(62, 56)
+
+[node name="Void" type="Area2D" unique_id=164950147]
+script = ExtResource("1_xewq4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2036235106]
+position = Vector2(28, 23)
+rotation = -1.5707964
+texture = SubResource("GradientTexture2D_w4scm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1235527097]
+position = Vector2(28, 28)
+shape = SubResource("RectangleShape2D_w4scm")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
