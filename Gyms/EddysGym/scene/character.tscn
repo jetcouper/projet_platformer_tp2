@@ -1011,6 +1011,8 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdf5r"]
+
 [node name="Character" type="CharacterBody2D" unique_id=804579613]
 collision_mask = 9
 
@@ -1079,3 +1081,8 @@ drag_top_margin = 0.25
 drag_right_margin = 0.25
 drag_bottom_margin = 0.25
 editor_draw_drag_margin = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=727593718]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=259062818]
+shape = SubResource("RectangleShape2D_vdf5r")

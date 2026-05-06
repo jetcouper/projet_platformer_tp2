@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://djx83jhit1b2b" path="res://Gyms/EddysGym/scene/ladder.tscn" id="18_ys48a"]
 [ext_resource type="Script" uid="uid://cnpfya41g2r1e" path="res://Gyms/EddysGym/src/MedLadder.cs" id="19_cyv1h"]
 [ext_resource type="PackedScene" uid="uid://b1nmkx4f0k88m" path="res://Gyms/EddysGym/scene/boite_jaune.tscn" id="20_mjvsv"]
+[ext_resource type="PackedScene" uid="uid://ci1iyhhqseijm" path="res://Gyms/PaulGym/scenes/void.tscn" id="21_m32q7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_bhcew")
@@ -1026,3 +1027,8 @@ Ladders = [NodePath("../Avant/Ladder")]
 
 [node name="BoiteJaune" parent="." unique_id=1535752220 instance=ExtResource("20_mjvsv")]
 position = Vector2(919, 2296)
+
+[node name="Void" parent="." unique_id=164950147 node_paths=PackedStringArray("player") instance=ExtResource("21_m32q7")]
+position = Vector2(90, 2253)
+scale = Vector2(1.5200014, 1.7200003)
+player = NodePath("../Character")
