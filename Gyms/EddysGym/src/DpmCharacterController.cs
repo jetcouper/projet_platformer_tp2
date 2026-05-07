@@ -16,6 +16,9 @@ public partial class DpmCharacterController : Node2D
     [Export]
     public DpmHealth Health;
 
+    [Export]
+    public DpmExperience Experience;
+
     [ExportGroup("Movement")]
     [Export]
     public float MoveSpeed = 400.0f;

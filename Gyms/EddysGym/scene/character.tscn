@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bj67r62a3chuq" path="res://Assets/Characters/player/slide/sprite sheets/slide_char.png" id="8_q2x0q"]
 [ext_resource type="Script" uid="uid://b7rhbyv1vrdam" path="res://Gyms/EddysGym/src/DpmHealth.cs" id="10_3qvrq"]
 [ext_resource type="Script" uid="uid://mpouixj6ga6q" path="res://Gyms/EddysGym/src/DpmCharacterAnimator.cs" id="13_6r40n"]
+[ext_resource type="Script" uid="uid://t1myclkkheqe" path="res://Gyms/EddysGym/src/DpmExperience.cs" id="16_bjevp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cr4s"]
 atlas = ExtResource("2_47qly")
@@ -1037,12 +1038,13 @@ shape = SubResource("CapsuleShape2D_vckfi")
 position = Vector2(-7, 1)
 shape = SubResource("CapsuleShape2D_pjt0s")
 
-[node name="DpmCharacterController" type="Node2D" parent="." unique_id=581987753 node_paths=PackedStringArray("_body", "_standingHitbox", "_crouchingHitbox", "Health")]
+[node name="DpmCharacterController" type="Node2D" parent="." unique_id=581987753 node_paths=PackedStringArray("_body", "_standingHitbox", "_crouchingHitbox", "Health", "Experience")]
 script = ExtResource("1_glpr6")
 _body = NodePath("..")
 _standingHitbox = NodePath("../StandingCollision")
 _crouchingHitbox = NodePath("../CrouchingCollision")
 Health = NodePath("../DpmHealth")
+Experience = NodePath("../DpmExperience")
 MoveSpeed = 300.0
 MoveAcceleration = 2000.0
 JumpMaxVelocity = -700.0
@@ -1080,6 +1082,10 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="DpmHealth" unique_id=970470046]
+
+[node name="DpmExperience" type="Node2D" parent="." unique_id=89598934]
+position = Vector2(-2, -3)
+script = ExtResource("16_bjevp")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=442458063]
 scale = Vector2(1.284437, 1.60103)

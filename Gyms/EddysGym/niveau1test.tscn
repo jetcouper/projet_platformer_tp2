@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b1nmkx4f0k88m" path="res://Gyms/EddysGym/scene/boite_jaune.tscn" id="20_mjvsv"]
 [ext_resource type="PackedScene" uid="uid://ci1iyhhqseijm" path="res://Gyms/PaulGym/scenes/void.tscn" id="21_m32q7"]
 [ext_resource type="PackedScene" uid="uid://dsmck4tamocsh" path="res://Gyms/PaulGym/scenes/Levier.tscn" id="22_trelr"]
+[ext_resource type="PackedScene" uid="uid://cyx52wgl40nde" path="res://Gyms/EddysGym/scene/hud.tscn" id="23_wru85"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_bhcew")
@@ -354,8 +355,10 @@ sources/0 = SubResource("TileSetAtlasSource_2uobi")
 [node name="Niveau1" type="Node2D" unique_id=1948467130]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=820423914]
-offset_right = 5000.0
-offset_bottom = 2500.0
+offset_left = 1.0
+offset_top = 9.0
+offset_right = 5001.0
+offset_bottom = 2509.0
 color = Color(0.16078432, 0.6784314, 1, 1)
 
 [node name="DCM_WindSystem" type="Node2D" parent="." unique_id=713434064]
@@ -1011,9 +1014,6 @@ physics_material_override = SubResource("PhysicsMaterial_mqn2c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bordure2" unique_id=268655103]
 shape = SubResource("WorldBoundaryShape2D_7iq8t")
 
-[node name="Character" parent="." unique_id=804579613 instance=ExtResource("18_cyv1h")]
-position = Vector2(324, 2223)
-
 [node name="Papillons" type="TileMapLayer" parent="." unique_id=1811027575 node_paths=PackedStringArray("Ladders")]
 tile_map_data = PackedByteArray("AACmAI4AAAAAAAAAAACjAI4AAAAAAAAAAACkAIsAAAAAAAAAAAChAIkAAAAAAAAAAACgAIsAAAAAAAAAAACmAIsAAAAAAAAAAACyAI8AAAAAAAAAAACCAI0AAAAAAAAAAACAAI0AAAAAAAAAAAB/AI4AAAAAAAAAAACBAI8AAAAAAAAAAACHAIIAAAAAAAAAAACSAIIAAAAAAAAAAABpAIQAAAAAAAAAAABeAIQAAAAAAAAAAABaAIQAAAAAAAAAAABXAH4AAAAAAAAAAABUAHsAAAAAAAAAAABGAHsAAAAAAAAAAABBAHsAAAAAAAAAAAA8AIQAAAAAAAAAAAAuAIQAAAAAAAAAAAA0AIQAAAAAAAAAAAAlAIYAAAAAAAAAAAAuAIsAAAAAAAAAAAAyAIsAAAAAAAAAAAAWAI0AAAAAAAAAAAAQAI0AAAAAAAAAAAANAI0AAAAAAAAAAAAeAJEAAAAAAAAAAAAmAIoAAAAAAAAAAAAeAHQAAAAAAAAAAAAoAHMAAAAAAAAAAAAyAHMAAAAAAAAAAAA+AGgAAAAAAAAAAABFAGgAAAAAAAAAAABWAGoAAAAAAAAAAAA7AGsAAAAAAAAAAAAqAF8AAAAAAAAAAAAkAF8AAAAAAAAAAAAYAF8AAAAAAAAAAAASAF8AAAAAAAAAAACiAHsAAAAAAAAAAACqAHgAAAAAAAAAAACuAHUAAAAAAAAAAACyAHUAAAAAAAAAAACyAIkAAAAAAAAAAACrAIMAAAAAAAAAAADIAJAAAAAAAAAAAADYAJEAAAAAAAAAAADxAIYAAAAAAAAAAAD1AIMAAAAAAAAAAAACAYMAAAAAAAAAAAARAX8AAAAAAAAAAAANAYYAAAAAAAAAAAAaAX8AAAAAAAAAAAAjAX8AAAAAAAAAAAAQAYQAAAAAAAAAAAAvAX0AAAAAAAAAAAA2AXwAAAAAAAAAAAAzAXcAAAAAAAAAAAAuAZAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hf5l1")
@@ -1037,3 +1037,10 @@ player = NodePath("../Character")
 [node name="Levier" parent="." unique_id=1212460187 node_paths=PackedStringArray("player") instance=ExtResource("22_trelr")]
 position = Vector2(486, 2297)
 player = NodePath("../Character")
+
+[node name="Hud" parent="." unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("23_wru85")]
+position = Vector2(268, 220)
+Player = NodePath("../Character")
+
+[node name="Character" parent="." unique_id=804579613 instance=ExtResource("18_cyv1h")]
+position = Vector2(324, 2223)

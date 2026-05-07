@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cyx52wgl40nde"]
+
+[ext_resource type="Script" uid="uid://bfnnlv4sjnj6t" path="res://Gyms/EddysGym/src/DpmHud.cs" id="1_nhqd2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6iev"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntngr"]
+bg_color = Color(0.08627451, 0.019607844, 0.8901961, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="Hud" type="Node2D" unique_id=573723219 node_paths=PackedStringArray("XpBar")]
+script = ExtResource("1_nhqd2")
+XpBar = NodePath("CanvasLayer/ProgressBar")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=988593720]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1243074712]
+offset_left = 61.0
+offset_top = 69.0
+offset_right = 236.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_s6iev")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ntngr")
+show_percentage = false
