@@ -8,9 +8,6 @@ public partial class DpmCharacterController : Node2D
     private CharacterBody2D _body;
 
     [Export]
-    private AnimatedSprite2D _sprite;
-
-    [Export]
     private CollisionShape2D _standingHitbox;
 
     [Export]
@@ -67,15 +64,22 @@ public partial class DpmCharacterController : Node2D
     [Export]
     public float FallSpeedCap = 1000.0f;
 
-    private float _moveAxis;
-    private float _verticalAxis;
+    // Etats expose
+    public float MoveAxis { get; private set; }
+    public float VerticalAxis { get; private set; }
+    public float FacingDir { get; private set; } = 1.0f;
+    public bool IsCrouching { get; private set; }
+    public bool IsDashing => _dashing;
+    public bool IsShooting => _shooting;
+    public bool IsOnLadder => _onLadder;
+    public bool IsDead { get; private set; }
+    public CharacterBody2D Body => _body;
+
+    // Etats interne
     private bool _jumpJustPressed;
     private bool _jumpHeld;
     private bool _dashJustPressed;
     private bool _crouchHeld;
-    private bool _isCrouching;
-
-    private float _facingDir = 1.0f;
 
     private float _coyoteTimeLeft;
     private float _jumpHoldTime;
@@ -89,47 +93,40 @@ public partial class DpmCharacterController : Node2D
 
     private bool _inLadderZone;
     private bool _onLadder;
-
     private Area2D _currentLadder;
 
     private bool _shootJustPressed;
     private bool _shooting;
     private float _shootTimeLeft;
-    private float _gravityForce;
 
-    private bool _isDead;
+    private float _gravityForce;
 
     public override void _Ready()
     {
         _body.EnsureValid();
-        _sprite.EnsureValid();
         _standingHitbox.EnsureValid();
         _crouchingHitbox.EnsureValid();
 
         EnsureInputActions();
         _gravityForce = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
-
-        PlaySpawnTween();
-        _sprite.Play("idle");
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        if (!_body.IsValid() || !_sprite.IsValid())
+        if (!_body.IsValid())
             return;
 
         float fDelta = (float)delta;
         if (Health != null)
-            _isDead = Health.IsDead;
+            IsDead = Health.IsDead;
 
-        if (_isDead)
+        if (IsDead)
         {
             Vector2 v = _body.Velocity;
             v.X = Mathf.MoveToward(v.X, 0.0f, MoveAcceleration * fDelta);
             v.Y = Mathf.Min(v.Y + _gravityForce * fDelta, FallSpeedCap);
             _body.Velocity = v;
             _body.MoveAndSlide();
-            UpdateAnimation();
             return;
         }
 
@@ -145,38 +142,23 @@ public partial class DpmCharacterController : Node2D
         _body.MoveAndSlide();
 
         UpdateFacing();
-        UpdateAnimation();
-    }
-
-    private void PlaySpawnTween()
-    {
-        Vector2 currentScale = _sprite.Scale;
-        Vector2 finalScale = new(-Mathf.Abs(currentScale.X), currentScale.Y);
-        _sprite.Scale = finalScale * 0.5f;
-        _sprite.Modulate = new Color(1, 1, 1, 0);
-
-        Tween tween = CreateTween();
-        tween.SetParallel(true);
-        tween.TweenProperty(_sprite, "modulate:a", 1.0f, 2.0f);
-        tween.TweenProperty(_sprite, "scale", finalScale, 2.0f);
     }
 
     private void UpdateCrouch()
     {
         if (!_standingHitbox.IsValid() || !_crouchingHitbox.IsValid())
             return;
-
         // Le joueur s'accroupit s'il touche le sol et maintient la touche
-        if (_crouchHeld && _body.IsOnFloor() && !_isCrouching && !_onLadder)
+        if (_crouchHeld && _body.IsOnFloor() && !IsCrouching && !_onLadder)
         {
-            _isCrouching = true;
+            IsCrouching = true;
             _standingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
             _crouchingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
         }
         // Le joueur se lève s'il lâche la touche ou s'il n'est plus au sol
-        else if ((!_crouchHeld || !_body.IsOnFloor()) && _isCrouching)
+        else if ((!_crouchHeld || !_body.IsOnFloor()) && IsCrouching)
         {
-            _isCrouching = false;
+            IsCrouching = false;
             _standingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
             _crouchingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
         }
@@ -195,8 +177,6 @@ public partial class DpmCharacterController : Node2D
         {
             _shooting = true;
             _shootTimeLeft = ShootDuration;
-            if (_sprite.Animation == "shoot")
-                _sprite.Play("shoot");
         }
     }
 
@@ -229,8 +209,8 @@ public partial class DpmCharacterController : Node2D
 
     private void ReadInputs()
     {
-        _moveAxis = Input.GetAxis("move_left", "move_right");
-        _verticalAxis = Input.GetAxis("move_up", "move_down");
+        MoveAxis = Input.GetAxis("move_left", "move_right");
+        VerticalAxis = Input.GetAxis("move_up", "move_down");
         _crouchHeld = Input.IsActionPressed("move_down");
         _jumpJustPressed = Input.IsActionJustPressed("jump");
         _jumpHeld = Input.IsActionPressed("jump");
@@ -259,7 +239,7 @@ public partial class DpmCharacterController : Node2D
             return;
         }
 
-        if (_onLadder && _body.IsOnFloor() && _verticalAxis >= 0.0f)
+        if (_onLadder && _body.IsOnFloor() && VerticalAxis >= 0.0f)
         {
             _onLadder = false;
             return;
@@ -273,7 +253,7 @@ public partial class DpmCharacterController : Node2D
         {
             _onLadder = true;
             _jumpOngoing = false;
-            if (_isCrouching)
+            if (IsCrouching)
                 _crouchHeld = false;
             _body.GlobalPosition = new Vector2(
                 _currentLadder.GlobalPosition.X,
@@ -344,7 +324,7 @@ public partial class DpmCharacterController : Node2D
     {
         _dashing = true;
         _dashTimeLeft = DashDuration;
-        _dashDir = _facingDir;
+        _dashDir = FacingDir;
         _jumpOngoing = false;
         if (!_body.IsOnFloor())
             _airDashUsed = true;
@@ -356,12 +336,13 @@ public partial class DpmCharacterController : Node2D
             return new Vector2(_dashDir * DashSpeed, 0.0f);
 
         if (_onLadder)
-            return new Vector2(0.0f, _verticalAxis * ClimbSpeed);
-        float currentMoveSpeed = _isCrouching ? MoveSpeed * 0.5f : MoveSpeed;
+            return new Vector2(0.0f, VerticalAxis * ClimbSpeed);
+
+        float currentMoveSpeed = IsCrouching ? MoveSpeed * 0.5f : MoveSpeed;
 
         float velX = Mathf.MoveToward(
             _body.Velocity.X,
-            _moveAxis * currentMoveSpeed,
+            MoveAxis * currentMoveSpeed,
             MoveAcceleration * delta
         );
         float velY = Mathf.Min(ComputeVerticalVelocity(delta), FallSpeedCap);
@@ -402,59 +383,7 @@ public partial class DpmCharacterController : Node2D
         if (_dashing)
             return;
 
-        if (Mathf.Abs(_moveAxis) > 0.1f)
-            _facingDir = _moveAxis > 0.0f ? 1.0f : -1.0f;
-
-        Vector2 scale = _sprite.Scale;
-        scale.X = Mathf.Abs(scale.X) * -_facingDir;
-        _sprite.Scale = scale;
-    }
-
-    private void UpdateSpriteOffset(string anim)
-    {
-        float offsetX = 0.0f;
-
-        if (anim == "shoot")
-            offsetX = _facingDir < 0.0f ? -58.0f : -58.0f;
-
-        _sprite.Offset = new Vector2(offsetX, 0.0f);
-    }
-
-    private void UpdateAnimation()
-    {
-        string anim = DetermineAnim();
-        UpdateSpriteOffset(anim);
-
-        if (_sprite.Animation != anim)
-            _sprite.Play(anim);
-
-        if (_onLadder)
-        {
-            bool moving = Mathf.Abs(_verticalAxis) > 0.1f;
-            if (moving)
-                _sprite.Play();
-            else
-                _sprite.Pause();
-        }
-    }
-
-    private string DetermineAnim()
-    {
-        if (_isDead)
-            return "die";
-        if (_shooting)
-            return "shoot";
-        if (_dashing)
-            return "dash";
-        if (_onLadder)
-            return "climb";
-
-        if (_isCrouching)
-            return Mathf.Abs(_body.Velocity.X) > 5.0f ? "crouch_walk" : "crouch";
-
-        if (_body.IsOnFloor())
-            return Mathf.Abs(_body.Velocity.X) > 5.0f ? "walk" : "idle";
-
-        return _body.Velocity.Y < 0.0f ? "jump" : "fall";
+        if (Mathf.Abs(MoveAxis) > 0.1f)
+            FacingDir = MoveAxis > 0.0f ? 1.0f : -1.0f;
     }
 }

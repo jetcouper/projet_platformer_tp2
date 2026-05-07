@@ -14,14 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bj2jkyfk2idlt" path="res://Assets/Characters/player/die/hard hit.png" id="7_vdf5r"]
 [ext_resource type="Texture2D" uid="uid://bj67r62a3chuq" path="res://Assets/Characters/player/slide/sprite sheets/slide_char.png" id="8_q2x0q"]
 [ext_resource type="Script" uid="uid://b7rhbyv1vrdam" path="res://Gyms/EddysGym/src/DpmHealth.cs" id="10_3qvrq"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vckfi"]
-radius = 19.21
-height = 62.2
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjt0s"]
-radius = 24.5
-height = 52.25
+[ext_resource type="Script" uid="uid://mpouixj6ga6q" path="res://Gyms/EddysGym/src/DpmCharacterAnimator.cs" id="13_6r40n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cr4s"]
 atlas = ExtResource("2_47qly")
@@ -1004,6 +997,16 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdf5r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vckfi"]
+radius = 19.21
+height = 62.2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjt0s"]
+radius = 24.5
+height = 52.25
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3qvrq"]
 bg_color = Color(0.1254902, 0.69411767, 0.13333334, 1)
 corner_radius_top_left = 10
@@ -1011,10 +1014,19 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdf5r"]
-
 [node name="Character" type="CharacterBody2D" unique_id=804579613]
 collision_mask = 9
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1144174108]
+auto_translate_mode = 1
+position = Vector2(-2, -3)
+sprite_frames = SubResource("SpriteFrames_xc4g8")
+animation = &"die"
+
+[node name="Collisions" type="Area2D" parent="." unique_id=727593718]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions" unique_id=259062818]
+shape = SubResource("RectangleShape2D_vdf5r")
 
 [node name="StandingCollision" type="CollisionShape2D" parent="." unique_id=2049849905]
 light_mask = 2
@@ -1025,11 +1037,29 @@ shape = SubResource("CapsuleShape2D_vckfi")
 position = Vector2(-7, 1)
 shape = SubResource("CapsuleShape2D_pjt0s")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1144174108]
-auto_translate_mode = 1
-position = Vector2(-2, -3)
-sprite_frames = SubResource("SpriteFrames_xc4g8")
-animation = &"die"
+[node name="DpmCharacterController" type="Node2D" parent="." unique_id=581987753 node_paths=PackedStringArray("_body", "_standingHitbox", "_crouchingHitbox", "Health")]
+script = ExtResource("1_glpr6")
+_body = NodePath("..")
+_standingHitbox = NodePath("../StandingCollision")
+_crouchingHitbox = NodePath("../CrouchingCollision")
+Health = NodePath("../DpmHealth")
+MoveSpeed = 300.0
+MoveAcceleration = 2000.0
+JumpMaxVelocity = -700.0
+JumpSustainForce = -23.0
+DashSpeed = 600.0
+DashDuration = 0.25
+
+[node name="DpmCharacterAnimator" type="Node2D" parent="." unique_id=1766069725 node_paths=PackedStringArray("_controller", "_sprite")]
+script = ExtResource("13_6r40n")
+_controller = NodePath("../DpmCharacterController")
+_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="DcmBulletSpawner" type="Node2D" parent="." unique_id=1948672311 node_paths=PackedStringArray("Player", "Sprite")]
+script = ExtResource("1_spawner")
+WeaponScene = ExtResource("1_projscene")
+Player = NodePath("..")
+Sprite = NodePath("../AnimatedSprite2D")
 
 [node name="DpmHealth" type="Node2D" parent="." unique_id=421729039 node_paths=PackedStringArray("_body", "_sprite", "_healthBar", "_invincibilityTimer")]
 script = ExtResource("10_3qvrq")
@@ -1051,26 +1081,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="DpmHealth" unique_id=970470046]
 
-[node name="DpmCharacterController" type="Node2D" parent="." unique_id=581987753 node_paths=PackedStringArray("_body", "_sprite", "_standingHitbox", "_crouchingHitbox", "Health")]
-script = ExtResource("1_glpr6")
-_body = NodePath("..")
-_sprite = NodePath("../AnimatedSprite2D")
-_standingHitbox = NodePath("../StandingCollision")
-_crouchingHitbox = NodePath("../CrouchingCollision")
-Health = NodePath("../DpmHealth")
-MoveSpeed = 300.0
-MoveAcceleration = 2000.0
-JumpMaxVelocity = -700.0
-JumpSustainForce = -23.0
-DashSpeed = 600.0
-DashDuration = 0.25
-
-[node name="DcmBulletSpawner" type="Node2D" parent="." unique_id=1948672311 node_paths=PackedStringArray("Player", "Sprite")]
-script = ExtResource("1_spawner")
-WeaponScene = ExtResource("1_projscene")
-Player = NodePath("..")
-Sprite = NodePath("../AnimatedSprite2D")
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=442458063]
 scale = Vector2(1.284437, 1.60103)
 zoom = Vector2(2, 2)
@@ -1081,8 +1091,3 @@ drag_top_margin = 0.25
 drag_right_margin = 0.25
 drag_bottom_margin = 0.25
 editor_draw_drag_margin = true
-
-[node name="Area2D" type="Area2D" parent="." unique_id=727593718]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=259062818]
-shape = SubResource("RectangleShape2D_vdf5r")
