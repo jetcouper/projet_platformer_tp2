@@ -20,7 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://djx83jhit1b2b" path="res://Gyms/EddysGym/scene/ladder.tscn" id="18_ys48a"]
 [ext_resource type="Script" uid="uid://cnpfya41g2r1e" path="res://Gyms/EddysGym/src/MedLadder.cs" id="19_cyv1h"]
 [ext_resource type="PackedScene" uid="uid://b1nmkx4f0k88m" path="res://Gyms/EddysGym/scene/boite_jaune.tscn" id="20_mjvsv"]
-[ext_resource type="PackedScene" uid="uid://ci1iyhhqseijm" path="res://Gyms/PaulGym/scenes/void.tscn" id="21_m32q7"]
+[ext_resource type="PackedScene" uid="uid://ci1iyhhqseijm" path="res://Gyms/PaulGym/scenes/Void.tscn" id="21_m32q7"]
+[ext_resource type="PackedScene" uid="uid://dsmck4tamocsh" path="res://Gyms/PaulGym/scenes/Levier.tscn" id="22_trelr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_bhcew")
@@ -1031,4 +1032,8 @@ position = Vector2(919, 2296)
 [node name="Void" parent="." unique_id=164950147 node_paths=PackedStringArray("player") instance=ExtResource("21_m32q7")]
 position = Vector2(90, 2253)
 scale = Vector2(1.5200014, 1.7200003)
+player = NodePath("../Character")
+
+[node name="Levier" parent="." unique_id=1212460187 node_paths=PackedStringArray("player") instance=ExtResource("22_trelr")]
+position = Vector2(486, 2297)
 player = NodePath("../Character")
