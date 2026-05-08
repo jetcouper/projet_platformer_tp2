@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dsmck4tamocsh" path="res://Gyms/PaulGym/scenes/Levier.tscn" id="22_trelr"]
 [ext_resource type="PackedScene" uid="uid://cyx52wgl40nde" path="res://Gyms/EddysGym/scene/hud.tscn" id="23_wru85"]
 [ext_resource type="PackedScene" uid="uid://c3vfx7gpw2tlm" path="res://Gyms/EddysGym/scene/fountain.tscn" id="24_bhcew"]
+[ext_resource type="PackedScene" uid="uid://cd7d8sy3otj1x" path="res://Gyms/EddysGym/scene/brazier.tscn" id="25_6t7uu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_bhcew")
@@ -1044,7 +1045,13 @@ position = Vector2(268, 220)
 Player = NodePath("../Character")
 
 [node name="Fountain" parent="." unique_id=1292127794 instance=ExtResource("24_bhcew")]
-position = Vector2(1669, 2058)
+position = Vector2(1663, 2058)
+
+[node name="Brazier" parent="." unique_id=2007872452 instance=ExtResource("25_6t7uu")]
+position = Vector2(1507, 2015)
 
 [node name="Character" parent="." unique_id=804579613 instance=ExtResource("18_cyv1h")]
 position = Vector2(324, 2223)
+
+[node name="Brazier2" parent="." unique_id=1794660711 instance=ExtResource("25_6t7uu")]
+position = Vector2(813, 1742)

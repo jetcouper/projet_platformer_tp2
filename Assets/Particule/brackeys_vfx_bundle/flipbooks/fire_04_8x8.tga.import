@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drn22bvvdf4re"
-path="res://.godot/imported/bar-red.png-81b6ffc698208cb44df9c940ba6b8102.ctex"
+uid="uid://dishnlu87d6p5"
+path="res://.godot/imported/fire_04_8x8.tga-ec745d57116ceee949b7748e76f6065a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/bar-red.png"
-dest_files=["res://.godot/imported/bar-red.png-81b6ffc698208cb44df9c940ba6b8102.ctex"]
+source_file="res://Assets/Particule/brackeys_vfx_bundle/flipbooks/fire_04_8x8.tga"
+dest_files=["res://.godot/imported/fire_04_8x8.tga-ec745d57116ceee949b7748e76f6065a.ctex"]
 
 [params]
 

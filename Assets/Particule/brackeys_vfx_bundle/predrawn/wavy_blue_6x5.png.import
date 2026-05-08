@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drn22bvvdf4re"
-path="res://.godot/imported/bar-red.png-81b6ffc698208cb44df9c940ba6b8102.ctex"
+uid="uid://vwhr8jhcgyai"
+path="res://.godot/imported/wavy_blue_6x5.png-befe0469f472653e35f85339b500b913.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/bar-red.png"
-dest_files=["res://.godot/imported/bar-red.png-81b6ffc698208cb44df9c940ba6b8102.ctex"]
+source_file="res://Assets/Particule/brackeys_vfx_bundle/predrawn/wavy_blue_6x5.png"
+dest_files=["res://.godot/imported/wavy_blue_6x5.png-befe0469f472653e35f85339b500b913.ctex"]
 
 [params]
 

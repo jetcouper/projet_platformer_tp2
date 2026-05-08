@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drn22bvvdf4re"
-path="res://.godot/imported/bar-red.png-81b6ffc698208cb44df9c940ba6b8102.ctex"
+uid="uid://c38m7an5jdeml"
+path="res://.godot/imported/spark_07_a.png-3991bb753e9bab83df84c8fac638f5a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/bar-red.png"
-dest_files=["res://.godot/imported/bar-red.png-81b6ffc698208cb44df9c940ba6b8102.ctex"]
+source_file="res://Assets/Particule/brackeys_vfx_bundle/particles/alpha/spark_07_a.png"
+dest_files=["res://.godot/imported/spark_07_a.png-3991bb753e9bab83df84c8fac638f5a8.ctex"]
 
 [params]
 

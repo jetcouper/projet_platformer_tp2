@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drn22bvvdf4re"
-path="res://.godot/imported/bar-red.png-81b6ffc698208cb44df9c940ba6b8102.ctex"
+uid="uid://b6teqqpe8s8pg"
+path="res://.godot/imported/effect_02_a.png-9050d61e612583611acd77d7b031cee8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/bar-red.png"
-dest_files=["res://.godot/imported/bar-red.png-81b6ffc698208cb44df9c940ba6b8102.ctex"]
+source_file="res://Assets/Particule/brackeys_vfx_bundle/particles/alpha/effect_02_a.png"
+dest_files=["res://.godot/imported/effect_02_a.png-9050d61e612583611acd77d7b031cee8.ctex"]
 
 [params]
 

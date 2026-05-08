@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drn22bvvdf4re"
-path="res://.godot/imported/bar-red.png-81b6ffc698208cb44df9c940ba6b8102.ctex"
+uid="uid://n6n5htgfmlax"
+path="res://.godot/imported/fire_ring_6x5.png-a4edf7eaa30bca8f53a63f89bf4e1f2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/bar-red.png"
-dest_files=["res://.godot/imported/bar-red.png-81b6ffc698208cb44df9c940ba6b8102.ctex"]
+source_file="res://Assets/Particule/brackeys_vfx_bundle/predrawn/fire_ring_6x5.png"
+dest_files=["res://.godot/imported/fire_ring_6x5.png-a4edf7eaa30bca8f53a63f89bf4e1f2d.ctex"]
 
 [params]
 

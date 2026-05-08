@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cd7d8sy3otj1x"]
+
+[ext_resource type="Texture2D" uid="uid://cftr6wy5qtgsc" path="res://Assets/Brazier/brazier.png" id="1_3tnc8"]
+[ext_resource type="PackedScene" uid="uid://bpl2x2nhs3h0v" path="res://Gyms/EddysGym/scene/fire.tscn" id="2_dc7l3"]
+[ext_resource type="Texture2D" uid="uid://blltsmgwqfvpk" path="res://Assets/Particule/brackeys_vfx_bundle/particles/opague/fire_02.png" id="3_peno2"]
+
+[sub_resource type="Curve" id="Curve_peno2"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -0.8882892), 0.0, 0.0, 0, 0, Vector2(0.43127364, -0.23404872), 0.0, 0.0, 0, 0, Vector2(0.9886508, -0.952749), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Brazier" type="Node2D" unique_id=2007872452]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1729820746]
+texture = ExtResource("1_3tnc8")
+
+[node name="Fire" parent="Sprite2D" unique_id=596702865 instance=ExtResource("2_dc7l3")]
+modulate = Color(1, 1, 0.43529412, 1)
+position = Vector2(0, -141)
+amount = 6
+texture = ExtResource("3_peno2")
+preprocess = 1.02
+speed_scale = 0.15
+explosiveness = 0.0
+randomness = 0.01
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 9.96
+initial_velocity_min = 0.0
+initial_velocity_max = 17.2
+angular_velocity_curve = SubResource("Curve_peno2")

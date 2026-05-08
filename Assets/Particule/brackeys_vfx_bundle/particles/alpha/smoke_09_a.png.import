@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drn22bvvdf4re"
-path="res://.godot/imported/bar-red.png-81b6ffc698208cb44df9c940ba6b8102.ctex"
+uid="uid://bbnpae1on7yfo"
+path="res://.godot/imported/smoke_09_a.png-4167b4b3472cac7dd0f3bba3d0682f1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/bar-red.png"
-dest_files=["res://.godot/imported/bar-red.png-81b6ffc698208cb44df9c940ba6b8102.ctex"]
+source_file="res://Assets/Particule/brackeys_vfx_bundle/particles/alpha/smoke_09_a.png"
+dest_files=["res://.godot/imported/smoke_09_a.png-4167b4b3472cac7dd0f3bba3d0682f1a.ctex"]
 
 [params]
 
