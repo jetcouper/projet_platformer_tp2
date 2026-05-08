@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drn22bvvdf4re"
-path="res://.godot/imported/bar-red.png-e191b9d3ff77fb6c60ce8ee881638711.ctex"
+uid="uid://d1gmanq57k3rw"
+path="res://.godot/imported/fountain.png-9955dce298f0662543dd8e061a5181e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/bar-red.png"
-dest_files=["res://.godot/imported/bar-red.png-e191b9d3ff77fb6c60ce8ee881638711.ctex"]
+source_file="res://Assets/Fountain/fountain.png"
+dest_files=["res://.godot/imported/fountain.png-9955dce298f0662543dd8e061a5181e6.ctex"]
 
 [params]
 

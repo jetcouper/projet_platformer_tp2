@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ci1iyhhqseijm" path="res://Gyms/PaulGym/scenes/void.tscn" id="21_m32q7"]
 [ext_resource type="PackedScene" uid="uid://dsmck4tamocsh" path="res://Gyms/PaulGym/scenes/Levier.tscn" id="22_trelr"]
 [ext_resource type="PackedScene" uid="uid://cyx52wgl40nde" path="res://Gyms/EddysGym/scene/hud.tscn" id="23_wru85"]
+[ext_resource type="PackedScene" uid="uid://c3vfx7gpw2tlm" path="res://Gyms/EddysGym/scene/fountain.tscn" id="24_bhcew"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_bhcew")
@@ -1041,6 +1042,9 @@ player = NodePath("../Character")
 [node name="Hud" parent="." unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("23_wru85")]
 position = Vector2(268, 220)
 Player = NodePath("../Character")
+
+[node name="Fountain" parent="." unique_id=1292127794 instance=ExtResource("24_bhcew")]
+position = Vector2(1227, 1913)
 
 [node name="Character" parent="." unique_id=804579613 instance=ExtResource("18_cyv1h")]
 position = Vector2(324, 2223)
