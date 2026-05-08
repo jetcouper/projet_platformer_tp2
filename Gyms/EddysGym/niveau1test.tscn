@@ -1045,13 +1045,13 @@ position = Vector2(268, 220)
 Player = NodePath("../Character")
 
 [node name="Fountain" parent="." unique_id=1292127794 instance=ExtResource("24_bhcew")]
-position = Vector2(1663, 2058)
+position = Vector2(1063, 1609)
 
 [node name="Brazier" parent="." unique_id=2007872452 instance=ExtResource("25_6t7uu")]
 position = Vector2(1507, 2015)
 
-[node name="Character" parent="." unique_id=804579613 instance=ExtResource("18_cyv1h")]
-position = Vector2(324, 2223)
-
 [node name="Brazier2" parent="." unique_id=1794660711 instance=ExtResource("25_6t7uu")]
 position = Vector2(813, 1742)
+
+[node name="Character" parent="." unique_id=804579613 instance=ExtResource("18_cyv1h")]
+position = Vector2(596, 1817)
