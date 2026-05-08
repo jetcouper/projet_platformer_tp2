@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ullc186am0yu" path="res://Assets/Terrain/Animated/GrassLand_WaterSurfaceAnim.png" id="12_l1h2m"]
 [ext_resource type="Texture2D" uid="uid://bnod5wllmnio0" path="res://Assets/Terrain/Animated/GrassLand_WaterBubbles.png" id="12_m0t3x"]
 [ext_resource type="Texture2D" uid="uid://fkqbpdsq07e8" path="res://Assets/Terrain/Animated/GrassLand_Butterfly.png" id="13_2uobi"]
+[ext_resource type="Texture2D" uid="uid://chq4r7cty0260" path="res://Assets/Bird_v002_blue_and_yellow_small.png" id="18_xwg87"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("7_acehy")
@@ -330,6 +331,75 @@ sources/1 = SubResource("TileSetAtlasSource_hf5l1")
 sources/3 = SubResource("TileSetAtlasSource_cj1vp")
 sources/4 = SubResource("TileSetAtlasSource_oh0ro")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhdfd"]
+atlas = ExtResource("18_xwg87")
+region = Rect2(0, 147, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsiuy"]
+atlas = ExtResource("18_xwg87")
+region = Rect2(32, 147, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oha3a"]
+atlas = ExtResource("18_xwg87")
+region = Rect2(64, 147, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rpvq"]
+atlas = ExtResource("18_xwg87")
+region = Rect2(96, 147, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ji2s"]
+atlas = ExtResource("18_xwg87")
+region = Rect2(0, 147, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6db6"]
+atlas = ExtResource("18_xwg87")
+region = Rect2(32, 147, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oatcf"]
+atlas = ExtResource("18_xwg87")
+region = Rect2(64, 147, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrdk5"]
+atlas = ExtResource("18_xwg87")
+region = Rect2(96, 147, 32, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qk4x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhdfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsiuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oha3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rpvq")
+}],
+"loop": true,
+"name": &"moveLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ji2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6db6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oatcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrdk5")
+}],
+"loop": true,
+"name": &"moveRight",
+"speed": 5.0
+}]
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mqn2c"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7iq8t"]
@@ -543,6 +613,108 @@ texture = ExtResource("3_mfn6e")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 384, 208)
+
+[node name="DCM_BirdSystem" type="Node2D" parent="." unique_id=1302654658]
+script = ExtResource("1_mqn2c")
+
+[node name="Oiseau" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=1381921875]
+position = Vector2(1799, 1566)
+sprite_frames = SubResource("SpriteFrames_2qk4x")
+animation = &"moveLeft"
+
+[node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau" unique_id=1661644565 node_paths=PackedStringArray("node")]
+script = ExtResource("3_nbi3u")
+node = NodePath("..")
+
+[node name="Oiseau2" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=669561140]
+position = Vector2(1157, 2172)
+sprite_frames = SubResource("SpriteFrames_2qk4x")
+animation = &"moveLeft"
+
+[node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau2" unique_id=1115495224 node_paths=PackedStringArray("node")]
+script = ExtResource("3_nbi3u")
+node = NodePath("..")
+
+[node name="Oiseau3" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=435329019]
+position = Vector2(1447, 1774)
+sprite_frames = SubResource("SpriteFrames_2qk4x")
+animation = &"moveLeft"
+
+[node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau3" unique_id=20578357 node_paths=PackedStringArray("node")]
+script = ExtResource("3_nbi3u")
+node = NodePath("..")
+
+[node name="Oiseau4" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=2131158766]
+position = Vector2(918, 1813)
+sprite_frames = SubResource("SpriteFrames_2qk4x")
+animation = &"moveLeft"
+
+[node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau4" unique_id=1889033739 node_paths=PackedStringArray("node")]
+script = ExtResource("3_nbi3u")
+node = NodePath("..")
+
+[node name="Oiseau5" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=1587009880]
+position = Vector2(2305, 1818)
+sprite_frames = SubResource("SpriteFrames_2qk4x")
+animation = &"moveLeft"
+
+[node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau5" unique_id=415912539 node_paths=PackedStringArray("node")]
+script = ExtResource("3_nbi3u")
+node = NodePath("..")
+
+[node name="Oiseau6" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=533608645]
+position = Vector2(2360, 2052)
+sprite_frames = SubResource("SpriteFrames_2qk4x")
+animation = &"moveLeft"
+
+[node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau6" unique_id=1810259693 node_paths=PackedStringArray("node")]
+script = ExtResource("3_nbi3u")
+node = NodePath("..")
+
+[node name="Oiseau7" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=1176405539]
+position = Vector2(2509, 2129)
+sprite_frames = SubResource("SpriteFrames_2qk4x")
+animation = &"moveLeft"
+
+[node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau7" unique_id=927953234 node_paths=PackedStringArray("node")]
+script = ExtResource("3_nbi3u")
+node = NodePath("..")
+
+[node name="Oiseau8" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=798249447]
+position = Vector2(3072, 2014)
+sprite_frames = SubResource("SpriteFrames_2qk4x")
+animation = &"moveLeft"
+
+[node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau8" unique_id=288382544 node_paths=PackedStringArray("node")]
+script = ExtResource("3_nbi3u")
+node = NodePath("..")
+
+[node name="Oiseau9" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=967639586]
+position = Vector2(3912, 1823)
+sprite_frames = SubResource("SpriteFrames_2qk4x")
+animation = &"moveLeft"
+
+[node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau9" unique_id=391230126 node_paths=PackedStringArray("node")]
+script = ExtResource("3_nbi3u")
+node = NodePath("..")
+
+[node name="Oiseau10" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=464394968]
+position = Vector2(3259, 1755)
+sprite_frames = SubResource("SpriteFrames_2qk4x")
+animation = &"moveLeft"
+
+[node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau10" unique_id=429194903 node_paths=PackedStringArray("node")]
+script = ExtResource("3_nbi3u")
+node = NodePath("..")
+
+[node name="Oiseau11" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=653405297]
+position = Vector2(3782, 2038)
+sprite_frames = SubResource("SpriteFrames_2qk4x")
+animation = &"moveLeft"
+
+[node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau11" unique_id=1917137565 node_paths=PackedStringArray("node")]
+script = ExtResource("3_nbi3u")
+node = NodePath("..")
 
 [node name="Bordure1" type="StaticBody2D" parent="." unique_id=1185280014]
 position = Vector2(0, 1702)
