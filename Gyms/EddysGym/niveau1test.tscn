@@ -997,7 +997,7 @@ scale = Vector2(0.758276, 1.0423611)
 texture = ExtResource("16_naeqe")
 
 [node name="Ladder" parent="Avant" unique_id=1774158747 instance=ExtResource("18_ys48a")]
-position = Vector2(403, 2165)
+position = Vector2(219, 2160)
 
 [node name="Bordure1" type="StaticBody2D" parent="." unique_id=1185280014]
 position = Vector2(0, 1702)
@@ -1044,7 +1044,7 @@ position = Vector2(268, 220)
 Player = NodePath("../Character")
 
 [node name="Fountain" parent="." unique_id=1292127794 instance=ExtResource("24_bhcew")]
-position = Vector2(1227, 1913)
+position = Vector2(1669, 2058)
 
 [node name="Character" parent="." unique_id=804579613 instance=ExtResource("18_cyv1h")]
 position = Vector2(324, 2223)
