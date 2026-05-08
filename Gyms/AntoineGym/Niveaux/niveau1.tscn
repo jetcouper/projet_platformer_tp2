@@ -530,6 +530,20 @@ texture = ExtResource("3_215a4")
 [node name="CharacterBody2D" parent="." unique_id=1757976238 instance=ExtResource("3_lj2eg")]
 position = Vector2(158, 2224)
 
+[node name="MontagneRocheAvant" type="Parallax2D" parent="." unique_id=549560578]
+scroll_scale = Vector2(1.2, 0.95)
+repeat_size = Vector2(384, 0)
+repeat_times = 10
+
+[node name="Sprite" type="Sprite2D" parent="MontagneRocheAvant" unique_id=282957325]
+texture_repeat = 2
+position = Vector2(500, 2112)
+scale = Vector2(2, 2)
+texture = ExtResource("3_mfn6e")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 384, 208)
+
 [node name="Bordure1" type="StaticBody2D" parent="." unique_id=1185280014]
 position = Vector2(0, 1702)
 rotation = 1.5707964
