@@ -76,6 +76,7 @@ public partial class DpmCharacterController : Node2D
     public bool IsShooting => _shooting;
     public bool IsOnLadder => _onLadder;
     public bool IsDead { get; private set; }
+    public bool IsHealing { get; set; }
     public CharacterBody2D Body => _body;
 
     // Etats interne

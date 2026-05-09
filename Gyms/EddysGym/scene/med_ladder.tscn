@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c477onhrym73a"]
+
+[ext_resource type="Script" uid="uid://cnpfya41g2r1e" path="res://Gyms/EddysGym/src/MedLadder.cs" id="1_cea4k"]
+
+[node name="MedLadder" type="Node2D" unique_id=22173457 node_paths=PackedStringArray("Player", "Ladders")]
+script = ExtResource("1_cea4k")
+Player = NodePath("")
+Ladders = [NodePath("")]

@@ -96,6 +96,14 @@ public partial class DpmCharacterAnimator : Node2D
 
         CharacterBody2D body = _controller.Body;
 
+        if (
+            _controller.IsHealing
+            && body.IsOnFloor()
+            && Mathf.Abs(body.Velocity.X) < 5.0f
+            && !_controller.IsCrouching
+        )
+            return "heal";
+
         if (_controller.IsCrouching)
             return Mathf.Abs(body.Velocity.X) > 5.0f ? "crouch_walk" : "crouch";
 

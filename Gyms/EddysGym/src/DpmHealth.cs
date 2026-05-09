@@ -32,6 +32,7 @@ public partial class DpmHealth : Node2D
     private float _healthPercent;
 
     public bool IsDead => _lives <= 0;
+    public bool IsFullHealth => _lives >= MaxLives && _healthPercent >= MaxHealthPercent;
 
     public void SetDead(bool value)
     {
@@ -108,5 +109,18 @@ public partial class DpmHealth : Node2D
             _healthBar.MaxValue = MaxHealthPercent;
             _healthBar.Value = _healthPercent;
         }
+    }
+
+    public void Heal(float amount)
+    {
+        if (IsDead || amount <= 0)
+            return;
+
+        _healthPercent += amount;
+
+        if (_healthPercent > MaxHealthPercent)
+            _healthPercent = MaxHealthPercent;
+
+        UpdateBar();
     }
 }

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3vfx7gpw2tlm"]
 
 [ext_resource type="Texture2D" uid="uid://d1gmanq57k3rw" path="res://Assets/Fountain/fountain.png" id="1_11ouh"]
+[ext_resource type="Script" uid="uid://d36rju14nh058" path="res://Gyms/EddysGym/src/Fountain.cs" id="1_of50r"]
 [ext_resource type="Texture2D" uid="uid://uwv3hmswh7y4" path="res://Assets/Fountain/heart.png" id="2_cian3"]
 
 [sub_resource type="Curve" id="Curve_cian3"]
@@ -11,7 +12,12 @@ point_count = 6
 offsets = PackedFloat32Array(0, 0, 1)
 colors = PackedColorArray(0.6431373, 0, 0, 1, 0.706046, 0.11387687, 0.5731746, 1, 1, 0.12156863, 1, 1)
 
-[node name="Fountain" type="Node2D" unique_id=1292127794]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_heal"]
+size = Vector2(150, 120)
+
+[node name="Fountain" type="Node2D" unique_id=1292127794 node_paths=PackedStringArray("_healArea")]
+script = ExtResource("1_of50r")
+_healArea = NodePath("HealArea")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2128973775]
 texture = ExtResource("1_11ouh")
@@ -40,3 +46,8 @@ scale_curve_x = null
 scale_curve_y = null
 color = Color(1, 0.23529412, 0.2784314, 1)
 color_initial_ramp = SubResource("Gradient_of50r")
+
+[node name="HealArea" type="Area2D" parent="." unique_id=1938843970]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealArea" unique_id=1283518734]
+shape = SubResource("RectangleShape2D_heal")
