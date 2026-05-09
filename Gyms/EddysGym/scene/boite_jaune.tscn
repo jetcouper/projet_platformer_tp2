@@ -9,7 +9,7 @@ bounce = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(60, 40)
 
-[node name="BoiteJaune" type="StaticBody2D" unique_id=2044295932]
+[node name="BoiteJaune" type="AnimatableBody2D" unique_id=965957733]
 physics_material_override = SubResource("PhysicsMaterial_cd4oe")
 script = ExtResource("1_g26fv")
 

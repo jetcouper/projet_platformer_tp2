@@ -20,11 +20,13 @@
 [ext_resource type="Script" uid="uid://cnpfya41g2r1e" path="res://Gyms/EddysGym/src/MedLadder.cs" id="18_4lyip"]
 [ext_resource type="PackedScene" uid="uid://ci1iyhhqseijm" path="res://Gyms/PaulGym/scenes/Void.tscn" id="20_tasok"]
 [ext_resource type="PackedScene" uid="uid://dsmck4tamocsh" path="res://Gyms/PaulGym/scenes/Levier.tscn" id="21_kp2ii"]
+[ext_resource type="PackedScene" uid="uid://bo7cwxo3debfh" path="res://Gyms/PaulGym/scenes/SlidingHorizontalDoor.tscn" id="22_54773"]
 [ext_resource type="PackedScene" uid="uid://cyx52wgl40nde" path="res://Gyms/EddysGym/scene/hud.tscn" id="22_e3y4w"]
 [ext_resource type="PackedScene" uid="uid://c3vfx7gpw2tlm" path="res://Gyms/EddysGym/scene/fountain.tscn" id="23_vph5a"]
 [ext_resource type="PackedScene" uid="uid://cd7d8sy3otj1x" path="res://Gyms/EddysGym/scene/brazier.tscn" id="24_4ohaf"]
 [ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://Gyms/EddysGym/scene/character.tscn" id="25_srq36"]
 [ext_resource type="PackedScene" uid="uid://ciiktp2vh87p2" path="res://Gyms/PaulGym/scenes/SlidingVerticalDoor.tscn" id="25_xt3qg"]
+[ext_resource type="PackedScene" uid="uid://b1nmkx4f0k88m" path="res://Gyms/EddysGym/scene/boite_jaune.tscn" id="27_8s5yo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_ko3hr")
@@ -355,6 +357,7 @@ texture = ExtResource("9_ptqvy")
 sources/0 = SubResource("TileSetAtlasSource_2uobi")
 
 [node name="Niveau1" type="Node2D" unique_id=1948467130]
+metadata/_edit_horizontal_guides_ = [2170.0]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=820423914]
 offset_left = 1.0
@@ -1035,12 +1038,25 @@ player = NodePath("../Character")
 
 [node name="Levier" parent="." unique_id=1212460187 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("21_kp2ii")]
 position = Vector2(486, 2297)
-Ingredients = [NodePath("../Door")]
+Ingredients = [NodePath("../Door"), NodePath("../Trapdoor"), NodePath("../Door2")]
+player = NodePath("../Character")
+
+[node name="Levier2" parent="." unique_id=1737147552 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("21_kp2ii")]
+position = Vector2(688, 2094)
+Ingredients = [NodePath("../Trapdoor"), NodePath("../Door2")]
 player = NodePath("../Character")
 
 [node name="Door" parent="." unique_id=2061855038 instance=ExtResource("25_xt3qg")]
 position = Vector2(609, 2280)
+scale = Vector2(0.8, 1)
 duration = 2.0
+
+[node name="Door2" parent="." unique_id=1023361391 instance=ExtResource("25_xt3qg")]
+position = Vector2(659, 2281)
+State = false
+
+[node name="Trapdoor" parent="." unique_id=2139550912 instance=ExtResource("22_54773")]
+position = Vector2(410, 2179)
 
 [node name="Hud" parent="." unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("22_e3y4w")]
 position = Vector2(268, 220)
@@ -1057,3 +1073,7 @@ position = Vector2(813, 1742)
 
 [node name="Character" parent="." unique_id=804579613 instance=ExtResource("25_srq36")]
 position = Vector2(596, 1817)
+
+[node name="BoiteJaune" parent="." unique_id=2044295932 instance=ExtResource("27_8s5yo")]
+position = Vector2(1281, 1949)
+IsActive = false

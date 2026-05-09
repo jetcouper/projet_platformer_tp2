@@ -9,7 +9,6 @@ public partial class Levier : Node2D
 	[Export]
 	CharacterBody2D player;
 
-	[Export]
 	public bool State = false;
 	AnimatedSprite2D sprite;
 
@@ -38,6 +37,7 @@ public partial class Levier : Node2D
 			
 			foreach (var ing in Ingredients)
 			{
+
 				ing.ChangeState();
 			}
 		}

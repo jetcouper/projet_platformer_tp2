@@ -1,12 +1,12 @@
 using System;
 using Godot;
 
-public partial class SlidingVerticalDoor : Ingredient
+public partial class SlidingHorizontalDoor : Ingredient
 {
 	[Export]
 	double duration = 3.0;
 	[Export]
-	bool GoesUp = true;
+	bool GoesLeft = true;
 
 	Sprite2D Sprite;
 	Vector2 OriginalPos;
@@ -31,7 +31,7 @@ public partial class SlidingVerticalDoor : Ingredient
 	}
 	public void ChangeAnimation()
 	{
-		Vector2 height = new Vector2(0,(Sprite.GetRect().Size * this.Scale).Y);
+		Vector2 width = new Vector2((Sprite.GetRect().Size * this.Scale).X,0);
 		if (tween != null)
         	tween.Kill(); 
 		tween = CreateTween();
@@ -42,10 +42,10 @@ public partial class SlidingVerticalDoor : Ingredient
 		else
 		{
 			
-			if (GoesUp)
-   				tween.TweenProperty(this, "position", OriginalPos - height , duration);
+			if (GoesLeft)
+   				tween.TweenProperty(this, "position", OriginalPos - width , duration);
 			else
-				tween.TweenProperty(this, "position", OriginalPos + height , duration);
+				tween.TweenProperty(this, "position", OriginalPos + width , duration);
 		}
 		
 		
