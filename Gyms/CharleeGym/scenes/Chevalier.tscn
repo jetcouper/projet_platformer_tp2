@@ -139,6 +139,7 @@ radius = 11.5
 scale = Vector2(2, 2)
 script = ExtResource("1_n4e64")
 MaxWait = 10.0
+MinWait = 1.0
 Timer = NodePath("Timer")
 Shield = NodePath("Shield")
 Sprite = NodePath("AnimatedSprite2D")
@@ -163,7 +164,6 @@ shape = SubResource("CapsuleShape2D_s7y4q")
 
 [node name="Timer" type="Timer" parent="." unique_id=1331771035]
 
-[node name="Shield" parent="." unique_id=1943420650 node_paths=PackedStringArray("AnimatedSprite") instance=ExtResource("5_v1cvb")]
-AnimatedSprite = NodePath("../AnimatedSprite2D")
+[node name="Shield" parent="." unique_id=1943420650 instance=ExtResource("5_v1cvb")]
 
 [connection signal="body_entered" from="Area2D" to="." method="Take_Damage"]

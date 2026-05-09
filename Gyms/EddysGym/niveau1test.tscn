@@ -1036,8 +1036,9 @@ position = Vector2(90, 2253)
 scale = Vector2(1.5200014, 1.7200003)
 player = NodePath("../Character")
 
-[node name="Levier" parent="." unique_id=1212460187 node_paths=PackedStringArray("player") instance=ExtResource("22_trelr")]
+[node name="Levier" parent="." unique_id=1212460187 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("22_trelr")]
 position = Vector2(486, 2297)
+Ingredients = []
 player = NodePath("../Character")
 
 [node name="Hud" parent="." unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("23_wru85")]

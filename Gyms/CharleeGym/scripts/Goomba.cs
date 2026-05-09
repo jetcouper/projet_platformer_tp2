@@ -20,8 +20,6 @@ public partial class Goomba : Enemy
 
 	private int _Direction_Faced = 1;
 
-	public override void _Ready() { }
-
 	public override void _PhysicsProcess(double delta)
 	{
 		WalkTowardsPlayer.Walk_Towards_Player(Character, Sprite, Speed);

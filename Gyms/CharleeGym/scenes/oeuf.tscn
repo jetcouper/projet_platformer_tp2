@@ -1,55 +1,39 @@
 [gd_scene format=3 uid="uid://b7s1sk23u5eqp"]
 
-[ext_resource type="Texture2D" uid="uid://diw0uo6xnnj3a" path="res://Assets/Enemies/pig/03-Pig/Idle (34x28).png" id="1_pwioj"]
+[ext_resource type="Texture2D" uid="uid://bvvo7evmstl5v" path="res://Assets/Enemies/Mushroom/Mushroom_1/Mushroom_1.png" id="1_pwioj"]
+[ext_resource type="Script" uid="uid://bjirlpn87yee0" path="res://Gyms/CharleeGym/scripts/Oeuf.cs" id="1_tj655"]
 [ext_resource type="PackedScene" uid="uid://cmwvrkbxt3odq" path="res://Gyms/CharleeGym/scenes/shield.tscn" id="2_tj655"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj655"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(0, 0, 24, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_serg1"]
 atlas = ExtResource("1_pwioj")
-region = Rect2(0, 0, 34, 28)
+region = Rect2(24, 0, 24, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcyf6"]
 atlas = ExtResource("1_pwioj")
-region = Rect2(34, 0, 34, 28)
+region = Rect2(48, 0, 24, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7320r"]
 atlas = ExtResource("1_pwioj")
-region = Rect2(68, 0, 34, 28)
+region = Rect2(72, 0, 24, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0i40c"]
 atlas = ExtResource("1_pwioj")
-region = Rect2(102, 0, 34, 28)
+region = Rect2(96, 0, 24, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k4gk3"]
 atlas = ExtResource("1_pwioj")
-region = Rect2(136, 0, 34, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tb7ud"]
-atlas = ExtResource("1_pwioj")
-region = Rect2(170, 0, 34, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qc4d4"]
-atlas = ExtResource("1_pwioj")
-region = Rect2(204, 0, 34, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rjsl4"]
-atlas = ExtResource("1_pwioj")
-region = Rect2(238, 0, 34, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e3yx3"]
-atlas = ExtResource("1_pwioj")
-region = Rect2(272, 0, 34, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v3ked"]
-atlas = ExtResource("1_pwioj")
-region = Rect2(306, 0, 34, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h2k0p"]
-atlas = ExtResource("1_pwioj")
-region = Rect2(340, 0, 34, 28)
+region = Rect2(120, 0, 24, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3calb"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj655")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_serg1")
 }, {
@@ -64,24 +48,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k4gk3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tb7ud")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qc4d4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rjsl4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e3yx3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v3ked")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h2k0p")
 }],
 "loop": true,
 "name": &"inactive",
@@ -97,22 +63,21 @@ radius = 11.0
 
 [node name="Oeuf" type="CharacterBody2D" unique_id=370138255]
 scale = Vector2(2, 2)
+script = ExtResource("1_tj655")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=171932478]
 sprite_frames = SubResource("SpriteFrames_3calb")
 animation = &"inactive"
-frame_progress = 0.5799511
-
-[node name="Shield" parent="." unique_id=1943420650 node_paths=PackedStringArray("AnimatedSprite") instance=ExtResource("2_tj655")]
-position = Vector2(2, 1.5)
-AnimatedSprite = NodePath("../AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1262313623]
-position = Vector2(3, 4.5)
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_pwioj")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=316913310]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=115670923]
-position = Vector2(3, 4.5)
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_tj655")
+
+[node name="Shield" parent="." unique_id=1943420650 instance=ExtResource("2_tj655")]
+position = Vector2(-1, -1)

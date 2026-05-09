@@ -5,7 +5,7 @@ uniform float death_strength = 0.0;
 
 void fragment()
 {
-    vec4 tex = texture(TEXTURE, UV);
+    vec4 tex = COLOR;
 
     vec4 red = vec4(1.0, 0.0, 0.0, tex.a);
     vec4 black = vec4(0.0, 0.0, 0.0, tex.a);
