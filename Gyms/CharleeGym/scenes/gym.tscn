@@ -56,7 +56,7 @@ shape = SubResource("WorldBoundaryShape2D_4xu8j")
 position = Vector2(403, 1)
 collision_mask = 1
 
-[node name="Chevalier" parent="." unique_id=981682141 node_paths=PackedStringArray("Character") instance=ExtResource("2_3yh6g")]
-MinWait = 1.0
+[node name="CharacterBody2D" parent="." unique_id=981682141 node_paths=PackedStringArray("Character") instance=ExtResource("2_3yh6g")]
+position = Vector2(-75, 17)
 Character = NodePath("../Character")
 ProjectileScene = ExtResource("3_vjd2e")

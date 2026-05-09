@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cmwvrkbxt3odq"]
+
+[ext_resource type="Script" uid="uid://4kg1fb4hcnna" path="res://Gyms/CharleeGym/scripts/Helpers/Shield.cs" id="1_28kyd"]
+[ext_resource type="Texture2D" uid="uid://bmfof55c1akdg" path="res://Assets/Enemies/Shield.png" id="2_3c4gf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rspf8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v1cvb"]
+radius = 17.0
+
+[node name="Shield" type="StaticBody2D" unique_id=1943420650 node_paths=PackedStringArray("Collision", "ShieldSprite")]
+physics_material_override = SubResource("PhysicsMaterial_rspf8")
+script = ExtResource("1_28kyd")
+Collision = NodePath("CollisionShape2D")
+ShieldSprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1656382703]
+position = Vector2(1, 3)
+shape = SubResource("CircleShape2D_v1cvb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1209779019]
+modulate = Color(0.98365575, 0.49655378, 0.49595624, 0.24313726)
+position = Vector2(0.99999976, 3.0000002)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("2_3c4gf")

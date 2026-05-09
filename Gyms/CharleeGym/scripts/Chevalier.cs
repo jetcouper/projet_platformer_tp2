@@ -18,10 +18,7 @@ public partial class Chevalier : Enemy
 	public CharacterBody2D Character;
 
 	[Export]
-	public Sprite2D Shield;
-
-	[Export]
-	public DpmReflectiveSurface Shield_Body;
+	public Shield Shield;
 
 	[Export]
 	public PackedScene ProjectileScene;
@@ -32,10 +29,10 @@ public partial class Chevalier : Enemy
 
 	public override void _Ready()
 	{
-		if (Shield_Body != null)
+		if (Shield != null)
 		{
-			AddCollisionExceptionWith(Shield_Body);
-			Shield_Body.AddCollisionExceptionWith(this);
+			AddCollisionExceptionWith(Shield);
+			Shield.AddCollisionExceptionWith(this);
 		}
 
 		Timer.Timeout += Attack;
@@ -67,9 +64,8 @@ public partial class Chevalier : Enemy
 
 	public void RestartTimer()
 	{
-		Shield.Visible = true;
-		Shield_Body.SetActive(true);
-		Sprite.Play("inactive");
+		Shield.SetActive(true);
+		Sprite.Play("idle");
 		RandomNextShot();
 		Timer.WaitTime = NextShot;
 		Timer.Start();
@@ -77,10 +73,9 @@ public partial class Chevalier : Enemy
 
 	public async void Attack()
 	{
-		Shield.Visible = false;
-		Shield_Body.SetActive(false);
+		Shield.SetActive(false);
 
-		Sprite.Play("active");
+		Sprite.Play("attack");
 
 		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
 

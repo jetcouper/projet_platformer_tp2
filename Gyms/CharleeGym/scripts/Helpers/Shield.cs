@@ -1,15 +1,15 @@
 using Godot;
 
-public partial class DpmReflectiveSurface : StaticBody2D, IReflectiveSurface
+public partial class Shield : StaticBody2D, IReflectiveSurface
 {
 	[Export]
 	public bool IsActive { get; private set; } = true;
 
 	[Export]
-	private AnimatedSprite2D _sprite;
+	private CollisionShape2D Collision;
 
 	[Export]
-	private CollisionShape2D _collision;
+	public Sprite2D ShieldSprite;
 
 	public override void _Ready()
 	{
@@ -19,21 +19,20 @@ public partial class DpmReflectiveSurface : StaticBody2D, IReflectiveSurface
 	public void Toggle()
 	{
 		IsActive = !IsActive;
+		ShieldSprite.Visible = !ShieldSprite.Visible;
 		ApplyState();
 	}
 
 	public void SetActive(bool active)
 	{
 		IsActive = active;
+		ShieldSprite.Visible = active;
 		ApplyState();
 	}
 
 	private void ApplyState()
 	{
 		// Désactivée : la balle passe à travers
-		_collision?.SetDeferred(CollisionShape2D.PropertyName.Disabled, !IsActive);
-
-		// Animation actif inactif
-		_sprite?.Play(IsActive ? "active" : "inactive");
+		Collision?.SetDeferred(CollisionShape2D.PropertyName.Disabled, !IsActive);
 	}
 }
