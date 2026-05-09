@@ -57,7 +57,6 @@ position = Vector2(403, 1)
 collision_mask = 1
 
 [node name="Chevalier" parent="." unique_id=981682141 node_paths=PackedStringArray("Character") instance=ExtResource("2_3yh6g")]
+MinWait = 1.0
 Character = NodePath("../Character")
-
-[node name="Projectile" parent="." unique_id=1627085932 instance=ExtResource("3_vjd2e")]
-position = Vector2(-67, 8)
+ProjectileScene = ExtResource("3_vjd2e")

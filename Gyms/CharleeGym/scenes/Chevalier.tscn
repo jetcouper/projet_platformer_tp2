@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dnm33u6n3w6ol" path="res://Gyms/CharleeGym/scripts/Chevalier.cs" id="1_n4e64"]
 [ext_resource type="Texture2D" uid="uid://b11pxkryj8imh" path="res://Assets/Characters/02-King Pig/Attack (38x28).png" id="2_gmv06"]
-[ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="2_rspf8"]
 [ext_resource type="Shader" uid="uid://blgw1vc4cga8u" path="res://Gyms/CharleeGym/scripts/Helpers/EnemyDamageShader.gdshader" id="2_v1cvb"]
 [ext_resource type="Texture2D" uid="uid://ldbyorv3eb8c" path="res://Assets/Characters/02-King Pig/Idle (38x28).png" id="3_v1cvb"]
 [ext_resource type="Script" uid="uid://bcqkfpsresxbs" path="res://Gyms/EddysGym/src/DpmReflectiveSurface.cs" id="5_v1cvb"]
+[ext_resource type="Texture2D" uid="uid://bmfof55c1akdg" path="res://Assets/Enemies/Shield.png" id="6_rspf8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rspf8"]
 shader = ExtResource("2_v1cvb")
@@ -138,14 +138,16 @@ radius = 11.5
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rspf8"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_v1cvb"]
+radius = 17.0
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=981682141 node_paths=PackedStringArray("Timer", "Shield", "Shield_Body", "Sprite")]
 scale = Vector2(2, 2)
 script = ExtResource("1_n4e64")
 MaxWait = 10.0
 Timer = NodePath("Timer")
-Shield = NodePath("RigidBody2D/Sprite2D")
-Shield_Body = NodePath("RigidBody2D")
-ProjectileScene = ExtResource("2_rspf8")
+Shield = NodePath("Shield/Sprite2D")
+Shield_Body = NodePath("Shield")
 Sprite = NodePath("AnimatedSprite2D")
 Vies = 5
 
@@ -168,15 +170,20 @@ shape = SubResource("CapsuleShape2D_s7y4q")
 
 [node name="Timer" type="Timer" parent="." unique_id=1331771035]
 
-[node name="RigidBody2D" type="StaticBody2D" parent="." unique_id=2111241491 node_paths=PackedStringArray("_sprite", "_collision")]
+[node name="Shield" type="StaticBody2D" parent="." unique_id=2111241491 node_paths=PackedStringArray("_sprite", "_collision")]
 physics_material_override = SubResource("PhysicsMaterial_rspf8")
 script = ExtResource("5_v1cvb")
 _sprite = NodePath("../AnimatedSprite2D")
-_collision = NodePath("")
+_collision = NodePath("CollisionShape2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=528239719]
-modulate = Color(0.8862745, 0.52156866, 0.78431374, 0.24313726)
-position = Vector2(1.5, 4.5)
-scale = Vector2(0.5, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield" unique_id=1792794934]
+position = Vector2(1, 3)
+shape = SubResource("CircleShape2D_v1cvb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Shield" unique_id=528239719]
+modulate = Color(0.98365575, 0.49655378, 0.49595624, 0.24313726)
+position = Vector2(0.99999976, 3.0000002)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("6_rspf8")
 
 [connection signal="body_entered" from="Area2D" to="." method="Take_Damage"]
