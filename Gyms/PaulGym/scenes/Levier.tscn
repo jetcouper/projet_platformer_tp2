@@ -44,6 +44,7 @@ size = Vector2(166, 138)
 
 [node name="Levier" type="Area2D" unique_id=1212460187]
 script = ExtResource("1_67cx5")
+TargetPaths = Array[NodePath]([NodePath("")])
 
 [node name="LeverSprite" type="AnimatedSprite2D" parent="." unique_id=902522410]
 scale = Vector2(3, 3)

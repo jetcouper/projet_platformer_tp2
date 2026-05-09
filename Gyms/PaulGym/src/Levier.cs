@@ -5,6 +5,8 @@ using System.Diagnostics;
 public partial class Levier : Node2D
 {
 	[Export]
+	public Godot.Collections.Array<Ingredient> Ingredients { get; set; }
+	[Export]
 	CharacterBody2D player;
 
 	[Export]
@@ -34,10 +36,10 @@ public partial class Levier : Node2D
 			
 			State = !State;
 			
-			//CanBeActivated = false
-			//for i in connectedobjects 
-			//async await return 
-			//CanBeActivated = true
+			foreach (var ing in Ingredients)
+			{
+				ing.ChangeState();
+			}
 		}
 	}
 	public void _on_body_entered(Node2D areaContact)
