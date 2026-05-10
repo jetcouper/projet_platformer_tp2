@@ -3,163 +3,172 @@ using Utils;
 
 public partial class DpmCharacterController : Node2D
 {
-	[ExportGroup("Reference")]
-	[Export]
-	private CharacterBody2D _body;
+    [ExportGroup("Reference")]
+    [Export]
+    private CharacterBody2D _body;
 
-	[Export]
-	private CollisionShape2D _standingHitbox;
+    [Export]
+    private CollisionShape2D _standingHitbox;
 
-	[Export]
-	private CollisionShape2D _crouchingHitbox;
+    [Export]
+    private CollisionShape2D _crouchingHitbox;
 
-	[Export]
-	public DpmHealth Health;
+    [Export]
+    public DpmHealth Health;
 
-	[Export]
-	public DpmExperience Experience;
+    [Export]
+    public DpmExperience Experience;
 
-	[ExportGroup("Movement")]
-	[Export]
-	public float MoveSpeed = 400.0f;
+    [ExportGroup("Movement")]
+    [Export]
+    public float MoveSpeed = 400.0f;
 
-	[Export]
-	public float MoveAcceleration = 4000.0f;
+    [Export]
+    public float MoveAcceleration = 4000.0f;
 
-	[ExportGroup("Jump")]
-	[Export]
-	public float JumpInitialVelocity = -200.0f;
+    [ExportGroup("Jump")]
+    [Export]
+    public float JumpInitialVelocity = -200.0f;
 
-	[Export]
-	public float JumpMaxVelocity = -600.0f;
+    [Export]
+    public float JumpMaxVelocity = -600.0f;
 
-	[Export]
-	public float JumpSustainForce = -20.0f;
+    [Export]
+    public float JumpSustainForce = -20.0f;
 
-	[Export]
-	public float JumpSustainMaxTime = 0.50f;
+    [Export]
+    public float JumpSustainMaxTime = 0.50f;
 
-	[Export]
-	public float CoyoteDuration = 0.15f;
+    [Export]
+    public float CoyoteDuration = 0.15f;
 
-	[Export]
-	public float CoyoteJumpBoost = 1.0f;
+    [Export]
+    public float CoyoteJumpBoost = 1.0f;
 
-	[ExportGroup("Dash")]
-	[Export]
-	public float DashSpeed = 900.0f;
+    [ExportGroup("Dash")]
+    [Export]
+    public float DashSpeed = 900.0f;
 
-	[Export]
-	public float DashDuration = 0.50f;
+    [Export]
+    public float DashDuration = 0.50f;
 
-	[Export]
-	public float DashCooldown = 0.35f;
+    [Export]
+    public float DashCooldown = 0.35f;
 
-	[ExportGroup("Climb")]
-	[Export]
-	public float ClimbSpeed = 250.0f;
+    [ExportGroup("Climb")]
+    [Export]
+    public float ClimbSpeed = 250.0f;
 
-	[ExportGroup("Shoot")]
-	[Export]
-	public float ShootDuration = 0.6f;
+    [ExportGroup("Shoot")]
+    [Export]
+    public float ShootDuration = 0.6f;
 
-	[ExportGroup("Physics")]
-	[Export]
-	public float FallSpeedCap = 1000.0f;
+    [ExportGroup("Physics")]
+    [Export]
+    public float FallSpeedCap = 1000.0f;
 
-	// Etats expose
-	public float MoveAxis { get; private set; }
-	public float VerticalAxis { get; private set; }
-	public float FacingDir { get; private set; } = 1.0f;
-	public bool IsCrouching { get; private set; }
-	public bool IsDashing => _dashing;
-	public bool IsShooting => _shooting;
-	public bool IsOnLadder => _onLadder;
-	public bool IsDead { get; private set; }
-	public bool IsHealing { get; set; }
-	public CharacterBody2D Body => _body;
+    [ExportGroup("Hit")]
+    [Export]
+    public float HitDuration = 0.75f;
 
-	// Etats interne
-	private bool _jumpJustPressed;
-	private bool _jumpHeld;
-	private bool _dashJustPressed;
-	private bool _crouchHeld;
+    // Etats expose
+    public float MoveAxis { get; private set; }
+    public float VerticalAxis { get; private set; }
+    public float FacingDir { get; private set; } = 1.0f;
+    public bool IsCrouching { get; private set; }
+    public bool IsDashing => _dashing;
+    public bool IsShooting => _shooting;
+    public bool IsOnLadder => _onLadder;
+    public bool IsDead { get; private set; }
+    public bool IsHealing { get; set; }
 
-	private float _coyoteTimeLeft;
-	private float _jumpHoldTime;
-	private bool _jumpOngoing;
+    public bool IsHit { get; private set; }
+    private float _hitTimeLeft;
 
-	private bool _dashing;
-	private float _dashTimeLeft;
-	private float _dashCooldownLeft;
-	private float _dashDir = 1.0f;
-	private bool _airDashUsed;
+    public CharacterBody2D Body => _body;
 
-	private bool _inLadderZone;
-	private bool _onLadder;
-	private Area2D _currentLadder;
+    // Etats interne
+    private bool _jumpJustPressed;
+    private bool _jumpHeld;
+    private bool _dashJustPressed;
+    private bool _crouchHeld;
 
-	private bool _shootJustPressed;
-	private bool _shooting;
-	private float _shootTimeLeft;
+    private float _coyoteTimeLeft;
+    private float _jumpHoldTime;
+    private bool _jumpOngoing;
 
-	private float _gravityForce;
+    private bool _dashing;
+    private float _dashTimeLeft;
+    private float _dashCooldownLeft;
+    private float _dashDir = 1.0f;
+    private bool _airDashUsed;
 
-	public override void _Ready()
-	{
-		_body.EnsureValid();
-		_standingHitbox.EnsureValid();
-		_crouchingHitbox.EnsureValid();
+    private bool _inLadderZone;
+    private bool _onLadder;
+    private Area2D _currentLadder;
 
-		EnsureInputActions();
-		_gravityForce = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
-	}
+    private bool _shootJustPressed;
+    private bool _shooting;
+    private float _shootTimeLeft;
 
-	public override void _PhysicsProcess(double delta)
-	{
-		if (!_body.IsValid())
-			return;
+    private float _gravityForce;
 
-		float fDelta = (float)delta;
-		if (Health != null)
-			IsDead = Health.IsDead;
+    public override void _Ready()
+    {
+        _body.EnsureValid();
+        _standingHitbox.EnsureValid();
+        _crouchingHitbox.EnsureValid();
 
-		if (IsDead)
-		{
-			Vector2 v = _body.Velocity;
-			v.X = Mathf.MoveToward(v.X, 0.0f, MoveAcceleration * fDelta);
-			v.Y = Mathf.Min(v.Y + _gravityForce * fDelta, FallSpeedCap);
-			_body.Velocity = v;
-			_body.MoveAndSlide();
-			return;
-		}
+        EnsureInputActions();
+        _gravityForce = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
+    }
 
-		ReadInputs();
+    public override void _PhysicsProcess(double delta)
+    {
+        if (!_body.IsValid())
+            return;
 
-		UpdateCrouch();
-		UpdateCoyote(fDelta);
-		UpdateLadder();
-		UpdateDash(fDelta);
-		UpdateShoot(fDelta);
+        float fDelta = (float)delta;
+        if (Health != null)
+            IsDead = Health.IsDead;
 
-		_body.Velocity = ComputeVelocity(fDelta);
-		_body.MoveAndSlide();
+        if (IsDead)
+        {
+            Vector2 v = _body.Velocity;
+            v.X = Mathf.MoveToward(v.X, 0.0f, MoveAcceleration * fDelta);
+            v.Y = Mathf.Min(v.Y + _gravityForce * fDelta, FallSpeedCap);
+            _body.Velocity = v;
+            _body.MoveAndSlide();
+            return;
+        }
 
-		UpdateFacing();
-	}
+        ReadInputs();
 
-	private void UpdateCrouch()
-	{
-		if (!_standingHitbox.IsValid() || !_crouchingHitbox.IsValid())
-			return;
-		// Le joueur s'accroupit s'il touche le sol et maintient la touche
-		if (_crouchHeld && _body.IsOnFloor() && !IsCrouching && !_onLadder)
-		{
-			IsCrouching = true;
-			_standingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
-			_crouchingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
-		}
-		// Le joueur se lève s'il lâche la touche ou s'il n'est plus au sol
+        UpdateCrouch();
+        UpdateCoyote(fDelta);
+        UpdateLadder();
+        UpdateDash(fDelta);
+        UpdateShoot(fDelta);
+
+        _body.Velocity = ComputeVelocity(fDelta);
+        _body.MoveAndSlide();
+
+        UpdateHit(fDelta);
+        UpdateFacing();
+    }
+
+    private void UpdateCrouch()
+    {
+        if (!_standingHitbox.IsValid() || !_crouchingHitbox.IsValid())
+            return;
+        // Le joueur s'accroupit s'il touche le sol et maintient la touche
+        if (_crouchHeld && _body.IsOnFloor() && !IsCrouching && !_onLadder)
+        {
+            IsCrouching = true;
+            _standingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+            _crouchingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
+        }
+        // Le joueur se lève s'il lâche la touche ou s'il n'est plus au sol
         else if ((!_crouchHeld || !_body.IsOnFloor()) && IsCrouching)
         {
             IsCrouching = false;
@@ -389,5 +398,21 @@ public partial class DpmCharacterController : Node2D
 
         if (Mathf.Abs(MoveAxis) > 0.1f)
             FacingDir = MoveAxis > 0.0f ? 1.0f : -1.0f;
+    }
+
+    private void UpdateHit(float delta)
+    {
+        if (_hitTimeLeft > 0.0f)
+        {
+            _hitTimeLeft -= delta;
+            if (_hitTimeLeft <= 0.0f)
+                IsHit = false;
+        }
+    }
+
+    public void TriggerHit()
+    {
+        IsHit = true;
+        _hitTimeLeft = HitDuration;
     }
 }

@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bj67r62a3chuq" path="res://Assets/Characters/player/slide/sprite sheets/slide_char.png" id="8_q2x0q"]
 [ext_resource type="Texture2D" uid="uid://rbaatbaxwe0m" path="res://Assets/Characters/player/healing/sprite sheets/healing_merged.png" id="8_rd6h3"]
 [ext_resource type="Script" uid="uid://b7rhbyv1vrdam" path="res://Gyms/EddysGym/src/DpmHealth.cs" id="10_3qvrq"]
+[ext_resource type="Texture2D" uid="uid://cllvmu006ddyo" path="res://Assets/Characters/player/hit/normal_hit.png" id="10_rk642"]
 [ext_resource type="Script" uid="uid://mpouixj6ga6q" path="res://Gyms/EddysGym/src/DpmCharacterAnimator.cs" id="13_6r40n"]
 [ext_resource type="Script" uid="uid://t1myclkkheqe" path="res://Gyms/EddysGym/src/DpmExperience.cs" id="16_bjevp"]
 
@@ -465,6 +466,34 @@ region = Rect2(64, 160, 64, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xixdb"]
 atlas = ExtResource("3_tnj3t")
 region = Rect2(128, 160, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85v8b"]
+atlas = ExtResource("10_rk642")
+region = Rect2(0, 0, 70, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr4j5"]
+atlas = ExtResource("10_rk642")
+region = Rect2(70, 0, 70, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n2er"]
+atlas = ExtResource("10_rk642")
+region = Rect2(140, 0, 70, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_saqwk"]
+atlas = ExtResource("10_rk642")
+region = Rect2(0, 120, 70, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jntck"]
+atlas = ExtResource("10_rk642")
+region = Rect2(70, 120, 70, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq6ah"]
+atlas = ExtResource("10_rk642")
+region = Rect2(0, 300, 70, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54l1o"]
+atlas = ExtResource("10_rk642")
+region = Rect2(70, 300, 70, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mc802"]
 atlas = ExtResource("7_vckfi")
@@ -1028,6 +1057,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_85v8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr4j5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n2er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_saqwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jntck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq6ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq6ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54l1o")
+}],
+"loop": false,
+"name": &"normal_hit",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mc802")
 }, {
 "duration": 1.0,
@@ -1130,7 +1188,8 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdf5r"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rk642"]
+height = 25.908222
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vckfi"]
 radius = 19.21
@@ -1154,23 +1213,31 @@ collision_mask = 9
 auto_translate_mode = 1
 position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_xc4g8")
-animation = &"heal"
+animation = &"normal_hit"
+frame = 6
+frame_progress = 1.0
 
 [node name="Collisions" type="Area2D" parent="." unique_id=727593718]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions" unique_id=259062818]
-shape = SubResource("RectangleShape2D_vdf5r")
+visible = false
+scale = Vector2(2.2030437, -2.5698888)
+shape = SubResource("CapsuleShape2D_rk642")
 
 [node name="StandingCollision" type="CollisionShape2D" parent="." unique_id=2049849905]
+visible = false
 light_mask = 2
 position = Vector2(-8, -4)
 shape = SubResource("CapsuleShape2D_vckfi")
 
 [node name="CrouchingCollision" type="CollisionShape2D" parent="." unique_id=982420263]
+visible = false
 position = Vector2(-7, 1)
 shape = SubResource("CapsuleShape2D_pjt0s")
 
 [node name="DpmCharacterController" type="Node2D" parent="." unique_id=581987753 node_paths=PackedStringArray("_body", "_standingHitbox", "_crouchingHitbox", "Health", "Experience")]
+visible = false
 script = ExtResource("1_glpr6")
 _body = NodePath("..")
 _standingHitbox = NodePath("../StandingCollision")
@@ -1185,17 +1252,20 @@ DashSpeed = 600.0
 DashDuration = 0.25
 
 [node name="DpmCharacterAnimator" type="Node2D" parent="." unique_id=1766069725 node_paths=PackedStringArray("_controller", "_sprite")]
+visible = false
 script = ExtResource("13_6r40n")
 _controller = NodePath("../DpmCharacterController")
 _sprite = NodePath("../AnimatedSprite2D")
 
 [node name="DcmBulletSpawner" type="Node2D" parent="." unique_id=1948672311 node_paths=PackedStringArray("Player", "Sprite")]
+visible = false
 script = ExtResource("1_spawner")
 WeaponScene = ExtResource("1_projscene")
 Player = NodePath("..")
 Sprite = NodePath("../AnimatedSprite2D")
 
 [node name="DpmHealth" type="Node2D" parent="." unique_id=421729039 node_paths=PackedStringArray("_body", "_sprite", "_healthBar", "_invincibilityTimer")]
+visible = false
 script = ExtResource("10_3qvrq")
 _body = NodePath("..")
 _sprite = NodePath("../AnimatedSprite2D")
@@ -1216,10 +1286,12 @@ metadata/_edit_use_anchors_ = true
 [node name="Timer" type="Timer" parent="DpmHealth" unique_id=970470046]
 
 [node name="DpmExperience" type="Node2D" parent="." unique_id=89598934]
+visible = false
 position = Vector2(-2, -3)
 script = ExtResource("16_bjevp")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=442458063]
+visible = false
 scale = Vector2(1.284437, 1.60103)
 zoom = Vector2(2, 2)
 process_callback = 0
