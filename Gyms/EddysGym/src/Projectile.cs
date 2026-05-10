@@ -81,9 +81,10 @@ public partial class Projectile : RigidBody2D
     private void OnBodyEntered(Node body)
     {
         // Surface réflective : ricoche, ne détruit pas la balle
-        if (body is DpmReflectiveSurface surf)
+        if (body is DpmReflectiveSurface  || body is DpmReflectiveBox  )
         {
-            if (!surf.IsActive)
+            Ingredient ing = (Ingredient)body;
+            if (!ing.State)
                 return;
 
             _hasBounced = true;

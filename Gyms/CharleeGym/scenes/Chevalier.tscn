@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="2_rspf8"]
 [ext_resource type="Shader" uid="uid://blgw1vc4cga8u" path="res://Gyms/CharleeGym/scripts/Helpers/EnemyDamageShader.gdshader" id="2_v1cvb"]
 [ext_resource type="Texture2D" uid="uid://ldbyorv3eb8c" path="res://Assets/Characters/02-King Pig/Idle (38x28).png" id="3_v1cvb"]
-[ext_resource type="Script" uid="uid://bcqkfpsresxbs" path="res://Gyms/EddysGym/src/DpmReflectiveSurface.cs" id="5_v1cvb"]
+[ext_resource type="Script" uid="uid://bcqkfpsresxbs" path="res://Gyms/EddysGym/src/DpmReflectiveBox.cs" id="5_v1cvb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rspf8"]
 shader = ExtResource("2_v1cvb")

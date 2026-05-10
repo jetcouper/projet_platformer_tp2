@@ -1,9 +1,7 @@
 using Godot;
 
-public partial class DpmReflectiveSurface : StaticBody2D
+public partial class DpmReflectiveBox : Ingredient
 {
-    [Export]
-    public bool IsActive = true;
 
     [Export]
     private AnimatedSprite2D _sprite;
@@ -16,24 +14,25 @@ public partial class DpmReflectiveSurface : StaticBody2D
         ApplyState();
     }
 
-    public void Toggle()
+    public override void ChangeState()
     {
-        IsActive = !IsActive;
+        base.ChangeState();
+        
         ApplyState();
     }
 
-    public void SetActive(bool active)
+    public void SetActive(bool NewState)
     {
-        IsActive = active;
+        State = NewState;
         ApplyState();
     }
 
     private void ApplyState()
     {
         // Désactivée : la balle passe à travers
-        _collision?.SetDeferred(CollisionShape2D.PropertyName.Disabled, !IsActive);
+        _collision?.SetDeferred(CollisionShape2D.PropertyName.Disabled, !State);
 
         // Animation actif inactif
-        _sprite?.Play(IsActive ? "active" : "inactive");
+        _sprite?.Play(State ? "active" : "inactive");
     }
 }
