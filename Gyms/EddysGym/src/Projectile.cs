@@ -80,6 +80,15 @@ public partial class Projectile : RigidBody2D
 
     private void OnBodyEntered(Node body)
     {
+        if (body is Shield shield)
+        {
+            if (!shield.IsActive)
+                return;
+
+            _hasBounced = true;
+            return;
+        }
+
         // Surface réflective : ricoche, ne détruit pas la balle
         if (body is DpmReflectiveSurface  || body is DpmReflectiveBox  )
         {

@@ -3,16 +3,16 @@ using Godot;
 public partial class DpmReflectiveBox : Ingredient
 {
 
-    [Export]
-    private AnimatedSprite2D _sprite;
+	[Export]
+	private AnimatedSprite2D _sprite;
 
-    [Export]
-    private CollisionShape2D _collision;
+	[Export]
+	private CollisionShape2D _collision;
 
-    public override void _Ready()
-    {
-        ApplyState();
-    }
+	public override void _Ready()
+	{
+		ApplyState();
+	}
 
     public override void ChangeState()
     {

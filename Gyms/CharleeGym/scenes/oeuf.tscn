@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://b7s1sk23u5eqp"]
+
+[ext_resource type="Texture2D" uid="uid://bvvo7evmstl5v" path="res://Assets/Enemies/Mushroom/Mushroom_1/Mushroom_1.png" id="1_pwioj"]
+[ext_resource type="Script" uid="uid://bjirlpn87yee0" path="res://Gyms/CharleeGym/scripts/Oeuf.cs" id="1_tj655"]
+[ext_resource type="PackedScene" uid="uid://cmwvrkbxt3odq" path="res://Gyms/CharleeGym/scenes/shield.tscn" id="2_tj655"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj655"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(0, 0, 24, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_serg1"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(24, 0, 24, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcyf6"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(48, 0, 24, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7320r"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(72, 0, 24, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i40c"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(96, 0, 24, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4gk3"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(120, 0, 24, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3calb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj655")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_serg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcyf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7320r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i40c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4gk3")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pwioj"]
+radius = 10.5
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tj655"]
+radius = 11.0
+
+[node name="Oeuf" type="CharacterBody2D" unique_id=370138255]
+scale = Vector2(2, 2)
+script = ExtResource("1_tj655")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=171932478]
+sprite_frames = SubResource("SpriteFrames_3calb")
+animation = &"inactive"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1262313623]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_pwioj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=316913310]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=115670923]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_tj655")
+
+[node name="Shield" parent="." unique_id=1943420650 instance=ExtResource("2_tj655")]
+position = Vector2(-1, -1)

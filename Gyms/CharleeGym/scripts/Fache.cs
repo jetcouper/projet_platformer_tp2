@@ -1,24 +1,26 @@
 using System;
-using System.Diagnostics;
 using Godot;
 
-public partial class Chevalier : Enemy
+public partial class Fache : Enemy
 {
-	[ExportGroup("Attack")]
 	[Export]
-	public float MaxWait;
+	public float JumpChance = 0.05f;
 
 	[Export]
-	public float MinWait;
+	public float JumpVelocity = -150.0f;
+
+	[ExportGroup("Attack")]
+	[Export]
+	public float MaxWait = 10.0f;
+
+	[Export]
+	public float MinWait = 1.0f;
 
 	[Export]
 	public Timer Timer;
 
 	[Export]
 	public CharacterBody2D Character;
-
-	[Export]
-	public Shield Shield;
 
 	[Export]
 	public PackedScene ProjectileScene;
@@ -29,30 +31,29 @@ public partial class Chevalier : Enemy
 
 	public override void _Ready()
 	{
-		if (Shield != null)
-		{
-			AddCollisionExceptionWith(Shield);
-			Shield.AddCollisionExceptionWith(this);
-		}
-
-		Timer.Timeout += Attack;
+		Timer.Timeout += DecideNextAction;
 		RestartTimer();
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		float _DirectionX = Mathf.Sign(Character.GlobalPosition.X - GlobalPosition.X);
-		int _Direction_Temp = _DirectionX < 0 ? 1 : -1;
-		if (_Direction_Temp != _Direction_Faced)
+		float directionX = Mathf.Sign(Character.GlobalPosition.X - GlobalPosition.X);
+		int dir = directionX < 0 ? 1 : -1;
+
+		if (dir != _Direction_Faced)
 		{
-			Sprite.FlipH = _Direction_Temp < 0;
-			_Direction_Faced = _Direction_Temp;
+			Sprite.FlipH = dir < 0;
+			_Direction_Faced = dir;
 		}
 
-		Velocity = new Vector2(0, Velocity.Y + _Gravity_Force);
+		Vector2 velocity = Velocity;
+
+		// gravity
+		velocity.Y += _Gravity_Force * (float)delta;
+
+		Velocity = velocity;
 
 		MoveAndSlide();
-		GlobalPosition = GlobalPosition.Round();
 	}
 
 	public void RandomNextShot()
@@ -64,17 +65,26 @@ public partial class Chevalier : Enemy
 
 	public void RestartTimer()
 	{
-		Shield.SetActive(true);
 		Sprite.Play("idle");
 		RandomNextShot();
+
 		Timer.WaitTime = NextShot;
 		Timer.Start();
 	}
 
+	public void DecideNextAction()
+	{
+		if (GD.Randf() < JumpChance)
+		{
+			Jump();
+			return;
+		}
+
+		Attack();
+	}
+
 	public async void Attack()
 	{
-		Shield.SetActive(false);
-
 		Sprite.Play("attack");
 
 		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
@@ -93,5 +103,16 @@ public partial class Chevalier : Enemy
 		projectile.Launcher = this;
 		projectile.GlobalPosition = GlobalPosition + new Vector2(-_Direction_Faced * 20, -10);
 		projectile.LinearVelocity = new Vector2(-_Direction_Faced * 200, -300);
+	}
+
+	public async void Jump()
+	{
+		Velocity = new Vector2(Velocity.X, JumpVelocity);
+
+		Sprite.Play("jump");
+
+		await ToSignal(Sprite, AnimatedSprite2D.SignalName.AnimationFinished);
+
+		RestartTimer();
 	}
 }
