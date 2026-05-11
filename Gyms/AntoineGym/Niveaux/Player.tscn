@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://desx7jf67b05l" path="res://Assets/Characters/player/walk/walk.png" id="3_vphdq"]
 [ext_resource type="Texture2D" uid="uid://1yyqa8rg4axk" path="res://Assets/Characters/player/jump/jump.png" id="4_cu6yv"]
 [ext_resource type="Texture2D" uid="uid://bdmid6i6eypk3" path="res://Assets/Characters/player/arial-dash/aerial dash.png" id="5_16gw2"]
-[ext_resource type="Texture2D" uid="uid://bb4odsr7a87g5" path="res://Assets/Characters/player/shoot/1x_atk_char.png" id="7_812lp"]
+[ext_resource type="Texture2D" uid="uid://dkfahhx8to5ge" path="res://Assets/Characters/player/shoot/1x atk_char.png" id="7_812lp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjt0s"]
 radius = 30.0
@@ -260,6 +260,58 @@ region = Rect2(320, 0, 160, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5nvvg"]
 atlas = ExtResource("7_812lp")
 region = Rect2(480, 0, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf0ko"]
+atlas = ExtResource("7_812lp")
+region = Rect2(0, 64, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0mjy"]
+atlas = ExtResource("7_812lp")
+region = Rect2(160, 64, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4ma0"]
+atlas = ExtResource("7_812lp")
+region = Rect2(320, 64, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40jd4"]
+atlas = ExtResource("7_812lp")
+region = Rect2(480, 64, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ntrq"]
+atlas = ExtResource("7_812lp")
+region = Rect2(0, 128, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii6ky"]
+atlas = ExtResource("7_812lp")
+region = Rect2(160, 128, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yjbo"]
+atlas = ExtResource("7_812lp")
+region = Rect2(320, 128, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io3wy"]
+atlas = ExtResource("7_812lp")
+region = Rect2(480, 128, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jde1d"]
+atlas = ExtResource("7_812lp")
+region = Rect2(0, 192, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54gio"]
+atlas = ExtResource("7_812lp")
+region = Rect2(160, 192, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00wnw"]
+atlas = ExtResource("7_812lp")
+region = Rect2(320, 192, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leg01"]
+atlas = ExtResource("7_812lp")
+region = Rect2(480, 192, 160, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rakbp"]
+atlas = ExtResource("7_812lp")
+region = Rect2(0, 256, 160, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4sypd"]
 atlas = ExtResource("3_vphdq")
@@ -617,6 +669,45 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5nvvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nf0ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0mjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4ma0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40jd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ntrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii6ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yjbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io3wy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jde1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54gio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00wnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_leg01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rakbp")
 }],
 "loop": false,
 "name": &"shoot",
@@ -713,7 +804,8 @@ shape = SubResource("CapsuleShape2D_pjt0s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1817020933]
 sprite_frames = SubResource("SpriteFrames_xc4g8")
-animation = &"shoot"
+animation = &"climb"
+frame_progress = 0.6865245
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=189446247]
 scale = Vector2(1.284437, 1.60103)
