@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bgrdlll8mdurv" path="res://Assets/Terrain/GrassLand_Tree.png" id="16_f0er4"]
 [ext_resource type="PackedScene" uid="uid://djx83jhit1b2b" path="res://Gyms/EddysGym/scene/ladder.tscn" id="17_oyg1a"]
 [ext_resource type="Script" uid="uid://cnpfya41g2r1e" path="res://Gyms/EddysGym/src/MedLadder.cs" id="18_4lyip"]
-[ext_resource type="PackedScene" uid="uid://ci1iyhhqseijm" path="res://Gyms/PaulGym/scenes/Void.tscn" id="20_tasok"]
+[ext_resource type="PackedScene" uid="uid://ci1iyhhqseijm" path="res://Gyms/PaulGym/scenes/void.tscn" id="20_tasok"]
 [ext_resource type="PackedScene" uid="uid://dsmck4tamocsh" path="res://Gyms/PaulGym/scenes/Levier.tscn" id="21_kp2ii"]
 [ext_resource type="PackedScene" uid="uid://bo7cwxo3debfh" path="res://Gyms/PaulGym/scenes/SlidingHorizontalDoor.tscn" id="22_54773"]
 [ext_resource type="PackedScene" uid="uid://cyx52wgl40nde" path="res://Gyms/EddysGym/scene/hud.tscn" id="22_e3y4w"]
@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://b1nmkx4f0k88m" path="res://Gyms/EddysGym/scene/boite_jaune.tscn" id="27_8s5yo"]
 [ext_resource type="PackedScene" uid="uid://bt88obrp4ygev" path="res://Gyms/PaulGym/scenes/ReflectiveSurface.tscn" id="28_oogww"]
 [ext_resource type="PackedScene" uid="uid://dkhwmamsed73n" path="res://Gyms/CharleeGym/scenes/Chevalier.tscn" id="29_htgq4"]
+[ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="30_fboaj"]
+[ext_resource type="PackedScene" uid="uid://3bfrvchrw4ii" path="res://Gyms/PaulGym/scenes/Destructible.tscn" id="30_pk7sh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_ko3hr")
@@ -1031,7 +1033,7 @@ Ladders = []
 position = Vector2(324, 2223)
 script = ExtResource("18_4lyip")
 Player = NodePath("../Character")
-Ladders = [NodePath("../Avant/Ladder")]
+Ladders = []
 
 [node name="Void" parent="." unique_id=164950147 node_paths=PackedStringArray("player") instance=ExtResource("20_tasok")]
 position = Vector2(90, 2253)
@@ -1040,12 +1042,12 @@ player = NodePath("../Character")
 
 [node name="Levier" parent="." unique_id=1212460187 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("21_kp2ii")]
 position = Vector2(486, 2297)
-Ingredients = [NodePath("../Door"), NodePath("../Trapdoor"), NodePath("../Door2")]
+Ingredients = [NodePath("../Door"), NodePath("../Trapdoor"), NodePath("../ReflectiveSurface")]
 player = NodePath("../Character")
 
 [node name="Levier2" parent="." unique_id=1737147552 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("21_kp2ii")]
 position = Vector2(688, 2094)
-Ingredients = [NodePath("../Trapdoor"), NodePath("../Door2"), NodePath("../BoiteJaune"), NodePath("../ReflectiveSurface")]
+Ingredients = [NodePath("../Door"), NodePath("../Door2"), NodePath("../ReflectiveSurface")]
 player = NodePath("../Character")
 
 [node name="Door" parent="." unique_id=2061855038 instance=ExtResource("25_xt3qg")]
@@ -1086,3 +1088,13 @@ position = Vector2(1193, 1919)
 [node name="CharacterBody2D" parent="." unique_id=981682141 node_paths=PackedStringArray("Character") instance=ExtResource("29_htgq4")]
 position = Vector2(1127, 1942)
 Character = NodePath("../Character")
+ProjectileScene = ExtResource("30_fboaj")
+
+[node name="Destructible" parent="." unique_id=2112057650 instance=ExtResource("30_pk7sh")]
+position = Vector2(684, 1837)
+
+[node name="Destructible2" parent="." unique_id=1982036280 instance=ExtResource("30_pk7sh")]
+position = Vector2(605, 1692)
+
+[node name="Destructible3" parent="." unique_id=167490462 instance=ExtResource("30_pk7sh")]
+position = Vector2(685, 1814)
