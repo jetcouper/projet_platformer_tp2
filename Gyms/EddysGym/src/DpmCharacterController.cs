@@ -71,6 +71,10 @@ public partial class DpmCharacterController : Node2D
     [Export]
     public float HitDuration = 0.75f;
 
+    [ExportGroup("FootStep")]
+    [Export]
+    public PackedScene FootStepScene { get; set; }
+
     // Etats expose
     public float MoveAxis { get; private set; }
     public float VerticalAxis { get; private set; }
@@ -113,6 +117,10 @@ public partial class DpmCharacterController : Node2D
 
     private float _gravityForce;
 
+    private float _footStepTimer = 0f;
+    private const float FootStepInterval = 0.25f;
+    private Vector2 _footStepOffset = new(20f, 25f);
+
     public override void _Ready()
     {
         _body.EnsureValid();
@@ -151,6 +159,7 @@ public partial class DpmCharacterController : Node2D
         UpdateShoot(fDelta);
 
         _body.Velocity = ComputeVelocity(fDelta);
+        HandleFootSteps((float)delta);
         _body.MoveAndSlide();
 
         UpdateHit(fDelta);
@@ -414,5 +423,33 @@ public partial class DpmCharacterController : Node2D
     {
         IsHit = true;
         _hitTimeLeft = HitDuration;
+    }
+
+    private void HandleFootSteps(float delta)
+    {
+        // Seulement si au sol et en mouvement horizontal
+        if (!_body.IsOnFloor())
+            return;
+        if (Mathf.Abs(_body.Velocity.X) < 10f)
+            return;
+
+        _footStepTimer -= delta;
+        if (_footStepTimer > 0f)
+            return;
+
+        _footStepTimer = FootStepInterval;
+        SpawnFootStep();
+    }
+
+    private void SpawnFootStep()
+    {
+        if (FootStepScene == null)
+            return;
+
+        var footStep = FootStepScene.Instantiate<FootStep>();
+        Vector2 spawnPos = _body.GlobalPosition + _footStepOffset;
+        _body.GetParent().AddChild(footStep);
+        footStep.GlobalPosition = spawnPos;
+        footStep.Emitting = true;
     }
 }
