@@ -42,6 +42,7 @@ gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_proj")
+Speed = 500.0
 Lifetime = 2.0
 MaxDistance = 900.0
 ScreenNotifier = NodePath("VisibleOnScreenNotifier2D")

@@ -1,27 +1,27 @@
-[gd_scene format=4 uid="uid://cn54yw0orfkvy"]
+[gd_scene format=4 uid="uid://cmjhyaju71rns"]
 
-[ext_resource type="Texture2D" uid="uid://d2tg3pdddmgsu" path="res://Assets/GrassLand/Background/GrassLand_Background_3.png" id="1_acehy"]
-[ext_resource type="Script" uid="uid://c6n630jsdpd61" path="res://Library/DCM/DcmWindSystem.cs" id="1_mqn2c"]
-[ext_resource type="Texture2D" uid="uid://dvilcpi6ns4ex" path="res://Assets/Background/GrassLand_Cloud_1.png" id="2_7iq8t"]
-[ext_resource type="Texture2D" uid="uid://ds30rf63ou6le" path="res://Assets/Terrain/GrassLand_Bush.png" id="2_37tun"]
-[ext_resource type="PackedScene" uid="uid://nicvssn3u1wn" path="res://Gyms/AntoineGym/Niveaux/bloc_plateforme.tscn" id="2_nbi3u"]
-[ext_resource type="Texture2D" uid="uid://kok8251qdfv3" path="res://Assets/GrassLand/Background/GrassLand_Background_2.png" id="2_pw0ik"]
-[ext_resource type="Texture2D" uid="uid://bgrdlll8mdurv" path="res://Assets/Terrain/GrassLand_Tree.png" id="3_215a4"]
-[ext_resource type="PackedScene" uid="uid://limq1x72anra" path="res://Gyms/AntoineGym/Niveaux/bloc_plateforme2.tscn" id="3_gkvbq"]
-[ext_resource type="Texture2D" uid="uid://dsgm4sfi8131o" path="res://Assets/GrassLand/Background/GrassLand_Background_4.png" id="3_mfn6e"]
-[ext_resource type="Script" uid="uid://dyee1ivauqq5f" path="res://Library/Utils/Oscillation.cs" id="3_nbi3u"]
-[ext_resource type="Texture2D" uid="uid://gmf3u42fdybh" path="res://Assets/Background/GrassLand_Cloud_2.png" id="4_gkvbq"]
-[ext_resource type="Texture2D" uid="uid://j3i3lonanw7o" path="res://Assets/Terrain/Grassland_Terrain_Tileset.png" id="7_acehy"]
-[ext_resource type="PackedScene" uid="uid://sy6k0m30cmjs" path="res://Gyms/AntoineGym/Niveaux/porteFinNiveau.tscn" id="7_mfn6e"]
-[ext_resource type="Texture2D" uid="uid://ullc186am0yu" path="res://Assets/Terrain/Animated/GrassLand_WaterSurfaceAnim.png" id="12_l1h2m"]
-[ext_resource type="Texture2D" uid="uid://bnod5wllmnio0" path="res://Assets/Terrain/Animated/GrassLand_WaterBubbles.png" id="12_m0t3x"]
-[ext_resource type="Texture2D" uid="uid://fkqbpdsq07e8" path="res://Assets/Terrain/Animated/GrassLand_Butterfly.png" id="13_2uobi"]
-[ext_resource type="PackedScene" uid="uid://cbn1p8tll3blc" path="res://Gyms/AntoineGym/Niveaux/character.tscn" id="17_nhdfd"]
-[ext_resource type="Texture2D" uid="uid://chq4r7cty0260" path="res://Assets/Bird_v002_blue_and_yellow_small.png" id="18_xwg87"]
-[ext_resource type="Script" uid="uid://ykxk3cealx6m" path="res://Library/Utils/OscillationOiseau.cs" id="19_nhdfd"]
+[ext_resource type="Script" uid="uid://c6n630jsdpd61" path="res://Library/DCM/DcmWindSystem.cs" id="1_nhu6g"]
+[ext_resource type="Texture2D" uid="uid://dvilcpi6ns4ex" path="res://Assets/Background/GrassLand_Cloud_1.png" id="2_gb4dk"]
+[ext_resource type="Script" uid="uid://dyee1ivauqq5f" path="res://Library/Utils/Oscillation.cs" id="3_707j5"]
+[ext_resource type="Texture2D" uid="uid://gmf3u42fdybh" path="res://Assets/Background/GrassLand_Cloud_2.png" id="4_p6y62"]
+[ext_resource type="Texture2D" uid="uid://kok8251qdfv3" path="res://Assets/GrassLand/Background/GrassLand_Background_2.png" id="5_1erdm"]
+[ext_resource type="Texture2D" uid="uid://d2tg3pdddmgsu" path="res://Assets/GrassLand/Background/GrassLand_Background_3.png" id="6_lyl70"]
+[ext_resource type="Texture2D" uid="uid://dsgm4sfi8131o" path="res://Assets/GrassLand/Background/GrassLand_Background_4.png" id="7_almqq"]
+[ext_resource type="Texture2D" uid="uid://j3i3lonanw7o" path="res://Assets/Terrain/Grassland_Terrain_Tileset.png" id="8_1ph5m"]
+[ext_resource type="Texture2D" uid="uid://fkqbpdsq07e8" path="res://Assets/Terrain/Animated/GrassLand_Butterfly.png" id="9_r4h2j"]
+[ext_resource type="Texture2D" uid="uid://ullc186am0yu" path="res://Assets/Terrain/Animated/GrassLand_WaterSurfaceAnim.png" id="10_dkksn"]
+[ext_resource type="PackedScene" uid="uid://nicvssn3u1wn" path="res://Gyms/AntoineGym/Niveaux/bloc_plateforme.tscn" id="11_bjn8d"]
+[ext_resource type="PackedScene" uid="uid://limq1x72anra" path="res://Gyms/AntoineGym/Niveaux/bloc_plateforme2.tscn" id="12_s41l5"]
+[ext_resource type="Texture2D" uid="uid://bnod5wllmnio0" path="res://Assets/Terrain/Animated/GrassLand_WaterBubbles.png" id="13_o08t6"]
+[ext_resource type="PackedScene" uid="uid://sy6k0m30cmjs" path="res://Gyms/AntoineGym/Niveaux/porteFinNiveau.tscn" id="14_8bf6c"]
+[ext_resource type="Texture2D" uid="uid://ds30rf63ou6le" path="res://Assets/Terrain/GrassLand_Bush.png" id="15_nv16v"]
+[ext_resource type="Texture2D" uid="uid://bgrdlll8mdurv" path="res://Assets/Terrain/GrassLand_Tree.png" id="16_bm152"]
+[ext_resource type="PackedScene" uid="uid://cbn1p8tll3blc" path="res://Gyms/AntoineGym/Niveaux/character.tscn" id="17_nhu6g"]
+[ext_resource type="Texture2D" uid="uid://chq4r7cty0260" path="res://Assets/Bird_v002_blue_and_yellow_small.png" id="18_ekj7s"]
+[ext_resource type="Script" uid="uid://ykxk3cealx6m" path="res://Library/Utils/OscillationOiseau.cs" id="19_0q12l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
-texture = ExtResource("7_acehy")
+texture = ExtResource("8_1ph5m")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -105,7 +105,7 @@ texture = ExtResource("7_acehy")
 9:7/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m0t3x"]
-texture = ExtResource("13_2uobi")
+texture = ExtResource("9_r4h2j")
 0:0/animation_columns = 4
 0:0/animation_frame_0/duration = 0.2
 0:0/animation_frame_1/duration = 0.2
@@ -118,7 +118,7 @@ sources/0 = SubResource("TileSetAtlasSource_mfn6e")
 sources/1 = SubResource("TileSetAtlasSource_m0t3x")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_37tun"]
-texture = ExtResource("7_acehy")
+texture = ExtResource("8_1ph5m")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
@@ -283,7 +283,7 @@ texture = ExtResource("7_acehy")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hf5l1"]
-texture = ExtResource("12_l1h2m")
+texture = ExtResource("10_dkksn")
 0:0/animation_columns = 10
 0:0/animation_frame_0/duration = 0.2
 0:0/animation_frame_1/duration = 0.2
@@ -298,11 +298,11 @@ texture = ExtResource("12_l1h2m")
 0:0/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gkvbq"]
-scenes/1/scene = ExtResource("2_nbi3u")
-scenes/2/scene = ExtResource("3_gkvbq")
+scenes/1/scene = ExtResource("11_bjn8d")
+scenes/2/scene = ExtResource("12_s41l5")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cj1vp"]
-texture = ExtResource("12_m0t3x")
+texture = ExtResource("13_o08t6")
 0:0/animation_columns = 5
 0:0/animation_frame_0/duration = 0.1
 0:0/animation_frame_1/duration = 0.1
@@ -312,7 +312,7 @@ texture = ExtResource("12_m0t3x")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oh0ro"]
-texture = ExtResource("13_2uobi")
+texture = ExtResource("9_r4h2j")
 0:0/animation_columns = 4
 0:0/animation_frame_0/duration = 0.5
 0:0/animation_frame_1/duration = 0.5
@@ -321,7 +321,7 @@ texture = ExtResource("13_2uobi")
 0:0/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mfn6e"]
-scenes/1/scene = ExtResource("7_mfn6e")
+scenes/1/scene = ExtResource("14_8bf6c")
 
 [sub_resource type="TileSet" id="TileSet_215a4"]
 physics_layer_0/collision_layer = 1
@@ -333,35 +333,35 @@ sources/3 = SubResource("TileSetAtlasSource_cj1vp")
 sources/4 = SubResource("TileSetAtlasSource_oh0ro")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhdfd"]
-atlas = ExtResource("18_xwg87")
+atlas = ExtResource("18_ekj7s")
 region = Rect2(0, 147, 32, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jsiuy"]
-atlas = ExtResource("18_xwg87")
+atlas = ExtResource("18_ekj7s")
 region = Rect2(32, 147, 32, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oha3a"]
-atlas = ExtResource("18_xwg87")
+atlas = ExtResource("18_ekj7s")
 region = Rect2(64, 147, 32, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rpvq"]
-atlas = ExtResource("18_xwg87")
+atlas = ExtResource("18_ekj7s")
 region = Rect2(96, 147, 32, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ji2s"]
-atlas = ExtResource("18_xwg87")
+atlas = ExtResource("18_ekj7s")
 region = Rect2(0, 147, 32, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a6db6"]
-atlas = ExtResource("18_xwg87")
+atlas = ExtResource("18_ekj7s")
 region = Rect2(32, 147, 32, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oatcf"]
-atlas = ExtResource("18_xwg87")
+atlas = ExtResource("18_ekj7s")
 region = Rect2(64, 147, 32, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vrdk5"]
-atlas = ExtResource("18_xwg87")
+atlas = ExtResource("18_ekj7s")
 region = Rect2(96, 147, 32, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2qk4x"]
@@ -406,7 +406,7 @@ animations = [{
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7iq8t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2uobi"]
-texture = ExtResource("13_2uobi")
+texture = ExtResource("9_r4h2j")
 0:0/animation_columns = 4
 0:0/animation_frame_0/duration = 0.2
 0:0/animation_frame_1/duration = 0.2
@@ -425,110 +425,110 @@ offset_bottom = 2500.0
 color = Color(0.16078432, 0.6784314, 1, 1)
 
 [node name="DCM_WindSystem" type="Node2D" parent="." unique_id=713434064]
-script = ExtResource("1_mqn2c")
+script = ExtResource("1_nhu6g")
 
 [node name="Nuage" type="Sprite2D" parent="DCM_WindSystem" unique_id=1515654110 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(684.25287, 1442.6265)
 scale = Vector2(5.873889, 5.873889)
-texture = ExtResource("2_7iq8t")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("2_gb4dk")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="Nuage2" type="Sprite2D" parent="DCM_WindSystem" unique_id=285997570 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(2203.253, 1266.6265)
 scale = Vector2(5.873889, 5.873889)
-texture = ExtResource("2_7iq8t")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("2_gb4dk")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="Nuage3" type="Sprite2D" parent="DCM_WindSystem" unique_id=462643483 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(2937.253, 1564.6265)
 scale = Vector2(5.873889, 5.873889)
-texture = ExtResource("2_7iq8t")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("2_gb4dk")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="Nuage4" type="Sprite2D" parent="DCM_WindSystem" unique_id=717331003 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(1597.2529, 999.62646)
 scale = Vector2(5.873889, 5.873889)
-texture = ExtResource("2_7iq8t")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("2_gb4dk")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="Nuage5" type="Sprite2D" parent="DCM_WindSystem" unique_id=983847163 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(2200.253, 1797.6265)
 scale = Vector2(5.873889, 5.873889)
-texture = ExtResource("2_7iq8t")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("2_gb4dk")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="Nuage6" type="Sprite2D" parent="DCM_WindSystem" unique_id=157630702 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(3894.253, 1184.6265)
 scale = Vector2(5.873889, 5.873889)
-texture = ExtResource("2_7iq8t")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("2_gb4dk")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="Nuage7" type="Sprite2D" parent="DCM_WindSystem" unique_id=462035238 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(4263.253, 1750.6265)
 scale = Vector2(5.873889, 5.873889)
-texture = ExtResource("2_7iq8t")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("2_gb4dk")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="Nuage8" type="Sprite2D" parent="DCM_WindSystem" unique_id=1986163053 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(636.253, 925.62646)
 scale = Vector2(7.0391555, 7.0391555)
-texture = ExtResource("4_gkvbq")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("4_p6y62")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="Nuage9" type="Sprite2D" parent="DCM_WindSystem" unique_id=1454062085 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(3391.253, 738.62646)
 scale = Vector2(7.0391555, 7.0391555)
-texture = ExtResource("4_gkvbq")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("4_p6y62")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="Nuage10" type="Sprite2D" parent="DCM_WindSystem" unique_id=1277187204 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(3027.253, 1269.6265)
 scale = Vector2(7.0391555, 7.0391555)
-texture = ExtResource("4_gkvbq")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("4_p6y62")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="Nuage11" type="Sprite2D" parent="DCM_WindSystem" unique_id=384506872 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(1536.2529, 1491.6265)
 scale = Vector2(7.0391555, 7.0391555)
-texture = ExtResource("4_gkvbq")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("4_p6y62")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="Nuage12" type="Sprite2D" parent="DCM_WindSystem" unique_id=1593125914 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(4427.253, 945.62646)
 scale = Vector2(7.0391555, 7.0391555)
-texture = ExtResource("4_gkvbq")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("4_p6y62")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="Nuage13" type="Sprite2D" parent="DCM_WindSystem" unique_id=1509621426 node_paths=PackedStringArray("node")]
 modulate = Color(1, 1, 1, 0.5803922)
 position = Vector2(3618.253, 1825.6265)
 scale = Vector2(7.0391555, 7.0391555)
-texture = ExtResource("4_gkvbq")
-script = ExtResource("3_nbi3u")
+texture = ExtResource("4_p6y62")
+script = ExtResource("3_707j5")
 node = NodePath(".")
 
 [node name="MontagneClair" type="Parallax2D" parent="." unique_id=238469026]
@@ -539,7 +539,7 @@ repeat_times = 10
 [node name="Sprite" type="Sprite2D" parent="MontagneClair" unique_id=1808495698]
 texture_repeat = 2
 position = Vector2(500, 2112)
-texture = ExtResource("2_pw0ik")
+texture = ExtResource("5_1erdm")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 480, 208)
@@ -552,7 +552,7 @@ repeat_times = 10
 [node name="Sprite" type="Sprite2D" parent="MontagneFonce" unique_id=1873939]
 texture_repeat = 2
 position = Vector2(500, 2112)
-texture = ExtResource("1_acehy")
+texture = ExtResource("6_lyl70")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 352, 208)
@@ -565,13 +565,12 @@ repeat_times = 10
 [node name="Sprite" type="Sprite2D" parent="MontagneRoche" unique_id=460821415]
 texture_repeat = 2
 position = Vector2(500, 2112)
-texture = ExtResource("3_mfn6e")
+texture = ExtResource("7_almqq")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 384, 208)
 
 [node name="ArrierePlan" type="TileMapLayer" parent="." unique_id=347125199]
-visible = false
 tile_map_data = PackedByteArray("AAC1AJAAAAAKAAIAAAC0AJAAAAAJAAIAAACzAI8AAAAKAAMAAACzAJAAAAAIAAYAAACzAI4AAAAKAAMAAACzAI0AAAAKAAMAAACzAIwAAAAKAAMAAACzAIsAAAAKAAMAAACzAIoAAAAKAAMAAACzAIkAAAAKAAIAAACyAIkAAAAJAAIAAACxAIkAAAAIAAYAAACxAIgAAAAKAAMAAACxAIcAAAAKAAMAAACxAIYAAAAKAAMAAACxAIUAAAAKAAMAAACxAIQAAAAKAAMAAACxAIMAAAAKAAMAAACxAIIAAAAKAAMAAACxAIEAAAAKAAMAAACpAIUAAAAJAAMAAACtAIcAAAAJAAMAAACuAIQAAAAJAAMAAACvAIcAAAAJAAMAAAChAJAAAAAIAAIAAACiAJAAAAAJAAIAAACjAJAAAAAJAAYAAACjAI8AAAAIAAMAAACjAI4AAAAIAAMAAACkAJAAAAABAAEAAAClAJAAAAABAAEAAACmAJAAAAABAAEAAACnAJAAAAABAAEAAACoAJAAAAABAAEAAACpAJAAAAABAAEAAACqAJAAAAABAAEAAACrAJAAAAABAAEAAACsAJAAAAABAAEAAACtAJAAAAABAAEAAACuAJAAAAABAAEAAACvAJAAAAABAAEAAACwAJAAAAABAAEAAACxAJAAAAABAAEAAACyAJAAAAABAAEAAACnAIEAAAAJAAYAAACmAIEAAAAJAAIAAAClAIEAAAAIAAIAAAClAIIAAAAIAAMAAAClAIMAAAAIAAMAAAClAIQAAAAIAAMAAAClAIUAAAAIAAMAAAClAIYAAAAIAAMAAACmAIcAAAAJAAUAAAClAIcAAAAIAAQAAACnAIgAAAAJAAQAAACmAIgAAAAIAAQAAACoAIgAAAAJAAUAAACoAIkAAAAIAAMAAACoAIoAAAAIAAMAAACoAIsAAAAIAAMAAACoAIwAAAAIAAMAAACkAI0AAAAJAAIAAAClAI0AAAAJAAIAAACmAI0AAAAJAAIAAACnAI0AAAAJAAIAAACoAI0AAAAJAAYAAACjAI0AAAAIAAIAAACoAIEAAAABAAEAAACpAIEAAAABAAEAAACqAIEAAAABAAEAAACrAIEAAAABAAEAAACsAIEAAAABAAEAAACtAIEAAAABAAEAAACuAIEAAAABAAEAAACvAIEAAAABAAEAAACwAIEAAAABAAEAAACqAIMAAAABAAEAAACqAIIAAAABAAEAAACpAIIAAAABAAEAAACoAIIAAAABAAEAAACnAIIAAAABAAEAAACmAIIAAAABAAEAAACmAIMAAAABAAEAAACmAIQAAAABAAEAAACmAIUAAAABAAEAAACmAIYAAAABAAEAAACnAIYAAAABAAEAAACnAIUAAAABAAEAAACnAIQAAAABAAEAAACnAIMAAAABAAEAAACoAIMAAAABAAEAAACoAIQAAAABAAEAAACoAIUAAAABAAEAAACoAIYAAAABAAEAAACoAIcAAAABAAEAAACnAIcAAAABAAEAAACpAIcAAAABAAEAAACpAIYAAAABAAEAAACqAIYAAAABAAEAAACqAIUAAAABAAEAAACqAIQAAAABAAEAAACpAIQAAAABAAEAAACpAIMAAAABAAEAAACrAIQAAAAIAAcAAACrAIMAAAABAAEAAACrAIIAAAABAAEAAACsAIIAAAABAAEAAACsAIMAAAABAAEAAACsAIQAAAABAAEAAACtAIQAAAABAAEAAACtAIMAAAABAAEAAACtAIIAAAABAAEAAACuAIIAAAABAAEAAACuAIMAAAABAAEAAACvAIMAAAABAAEAAACvAIIAAAABAAEAAACwAIIAAAABAAEAAACwAIMAAAABAAEAAACwAIQAAAABAAEAAACvAIQAAAABAAEAAACvAIUAAAABAAEAAACuAIUAAAABAAEAAACtAIUAAAABAAEAAACtAIYAAAABAAEAAACsAIYAAAABAAEAAACrAIYAAAABAAEAAACrAIUAAAABAAEAAACrAIcAAAABAAEAAACqAIcAAAABAAEAAACqAIgAAAABAAEAAACpAIgAAAABAAEAAACpAIkAAAABAAEAAACqAIkAAAABAAEAAACqAIoAAAABAAEAAACqAIsAAAABAAEAAACpAIsAAAABAAEAAACpAIwAAAABAAEAAACpAI0AAAABAAEAAACpAI4AAAABAAEAAACoAI4AAAABAAEAAACnAI4AAAABAAEAAACmAI4AAAABAAEAAAClAI4AAAABAAEAAACkAI4AAAABAAEAAACkAI8AAAABAAEAAAClAI8AAAAIAAcAAACmAI8AAAABAAEAAACnAI8AAAABAAEAAACoAI8AAAABAAEAAACpAI8AAAABAAEAAACqAI8AAAABAAEAAACqAI4AAAABAAEAAACqAI0AAAAIAAcAAACqAIwAAAABAAEAAACrAIwAAAABAAEAAACrAIsAAAABAAEAAACrAIoAAAABAAEAAACrAIkAAAABAAEAAACrAIgAAAABAAEAAACsAIgAAAABAAEAAACsAIcAAAABAAEAAACsAIkAAAABAAEAAACsAIoAAAABAAEAAACsAIsAAAABAAEAAACsAIwAAAABAAEAAACsAI0AAAABAAEAAACrAI0AAAABAAEAAACrAI4AAAABAAEAAACrAI8AAAABAAEAAACsAI8AAAABAAEAAACsAI4AAAABAAEAAACtAI4AAAABAAEAAACtAI0AAAABAAEAAACtAIwAAAABAAEAAACtAIsAAAABAAEAAACtAIoAAAABAAEAAACtAIkAAAABAAEAAACtAIgAAAABAAEAAACuAIgAAAABAAEAAACuAIcAAAABAAEAAACuAIYAAAABAAEAAACvAIYAAAABAAEAAACwAIYAAAABAAEAAACwAIUAAAABAAEAAACwAIcAAAABAAEAAACwAIgAAAABAAEAAACvAIgAAAABAAEAAACvAIkAAAABAAEAAACuAIkAAAABAAEAAACuAIoAAAABAAEAAACuAIsAAAABAAEAAACuAIwAAAABAAEAAACuAI0AAAABAAEAAACuAI4AAAABAAEAAACuAI8AAAABAAEAAACtAI8AAAAJAAMAAACvAI8AAAABAAEAAACvAI4AAAABAAEAAACvAI0AAAABAAEAAACvAIwAAAABAAEAAACvAIsAAAABAAEAAACvAIoAAAABAAEAAACwAIoAAAABAAEAAACwAIkAAAABAAEAAACwAIsAAAABAAEAAACwAIwAAAABAAEAAACwAI0AAAABAAEAAACwAI4AAAAIAAcAAACwAI8AAAABAAEAAACxAI8AAAABAAEAAACxAI4AAAABAAEAAACxAI0AAAABAAEAAACxAIwAAAABAAEAAACxAIsAAAABAAEAAACxAIoAAAABAAEAAACyAIoAAAABAAEAAACyAIsAAAABAAEAAACyAIwAAAABAAEAAACyAI0AAAABAAEAAACyAI4AAAABAAEAAACyAI8AAAABAAEAAACsAIUAAAAIAAcAAACpAIoAAAAJAAMAAAA=")
 tile_set = SubResource("TileSet_l1h2m")
 
@@ -589,7 +588,7 @@ offset_top = 2225.0
 offset_right = 2255.0
 offset_bottom = 2433.0
 scale = Vector2(0.45370054, 0.45370054)
-texture = ExtResource("2_37tun")
+texture = ExtResource("15_nv16v")
 
 [node name="TextureRect14" type="TextureRect" parent="Avant/DecoAvant" unique_id=566330409]
 offset_left = 2512.0
@@ -597,10 +596,9 @@ offset_top = 2103.0
 offset_right = 2752.0
 offset_bottom = 2311.0
 scale = Vector2(0.758276, 1.0423611)
-texture = ExtResource("3_215a4")
+texture = ExtResource("16_bm152")
 
-[node name="Character" parent="." unique_id=804579613 instance=ExtResource("17_nhdfd")]
-position = Vector2(147, 2225)
+[node name="Character" parent="." unique_id=804579613 instance=ExtResource("17_nhu6g")]
 
 [node name="MontagneRocheAvant" type="Parallax2D" parent="." unique_id=549560578]
 scroll_scale = Vector2(1.2, 0.95)
@@ -611,13 +609,13 @@ repeat_times = 10
 texture_repeat = 2
 position = Vector2(500, 2112)
 scale = Vector2(2, 2)
-texture = ExtResource("3_mfn6e")
+texture = ExtResource("7_almqq")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 384, 208)
 
 [node name="DCM_BirdSystem" type="Node2D" parent="." unique_id=1302654658]
-script = ExtResource("1_mqn2c")
+script = ExtResource("1_nhu6g")
 
 [node name="Oiseau" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=1381921875]
 position = Vector2(1799, 1566)
@@ -625,7 +623,7 @@ sprite_frames = SubResource("SpriteFrames_2qk4x")
 animation = &"moveLeft"
 
 [node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau" unique_id=1661644565 node_paths=PackedStringArray("node")]
-script = ExtResource("19_nhdfd")
+script = ExtResource("19_0q12l")
 node = NodePath("..")
 
 [node name="Oiseau2" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=669561140]
@@ -634,7 +632,7 @@ sprite_frames = SubResource("SpriteFrames_2qk4x")
 animation = &"moveLeft"
 
 [node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau2" unique_id=1115495224 node_paths=PackedStringArray("node")]
-script = ExtResource("19_nhdfd")
+script = ExtResource("19_0q12l")
 node = NodePath("..")
 
 [node name="Oiseau3" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=435329019]
@@ -643,7 +641,7 @@ sprite_frames = SubResource("SpriteFrames_2qk4x")
 animation = &"moveLeft"
 
 [node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau3" unique_id=20578357 node_paths=PackedStringArray("node")]
-script = ExtResource("19_nhdfd")
+script = ExtResource("19_0q12l")
 node = NodePath("..")
 
 [node name="Oiseau4" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=2131158766]
@@ -652,7 +650,7 @@ sprite_frames = SubResource("SpriteFrames_2qk4x")
 animation = &"moveLeft"
 
 [node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau4" unique_id=1889033739 node_paths=PackedStringArray("node")]
-script = ExtResource("19_nhdfd")
+script = ExtResource("19_0q12l")
 node = NodePath("..")
 
 [node name="Oiseau5" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=1587009880]
@@ -661,7 +659,7 @@ sprite_frames = SubResource("SpriteFrames_2qk4x")
 animation = &"moveLeft"
 
 [node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau5" unique_id=415912539 node_paths=PackedStringArray("node")]
-script = ExtResource("19_nhdfd")
+script = ExtResource("19_0q12l")
 node = NodePath("..")
 
 [node name="Oiseau6" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=533608645]
@@ -670,7 +668,7 @@ sprite_frames = SubResource("SpriteFrames_2qk4x")
 animation = &"moveLeft"
 
 [node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau6" unique_id=1810259693 node_paths=PackedStringArray("node")]
-script = ExtResource("19_nhdfd")
+script = ExtResource("19_0q12l")
 node = NodePath("..")
 
 [node name="Oiseau7" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=1176405539]
@@ -679,7 +677,7 @@ sprite_frames = SubResource("SpriteFrames_2qk4x")
 animation = &"moveLeft"
 
 [node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau7" unique_id=927953234 node_paths=PackedStringArray("node")]
-script = ExtResource("19_nhdfd")
+script = ExtResource("19_0q12l")
 node = NodePath("..")
 
 [node name="Oiseau8" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=798249447]
@@ -688,7 +686,7 @@ sprite_frames = SubResource("SpriteFrames_2qk4x")
 animation = &"moveLeft"
 
 [node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau8" unique_id=288382544 node_paths=PackedStringArray("node")]
-script = ExtResource("19_nhdfd")
+script = ExtResource("19_0q12l")
 node = NodePath("..")
 
 [node name="Oiseau9" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=967639586]
@@ -697,7 +695,7 @@ sprite_frames = SubResource("SpriteFrames_2qk4x")
 animation = &"moveLeft"
 
 [node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau9" unique_id=391230126 node_paths=PackedStringArray("node")]
-script = ExtResource("19_nhdfd")
+script = ExtResource("19_0q12l")
 node = NodePath("..")
 
 [node name="Oiseau10" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=464394968]
@@ -706,7 +704,7 @@ sprite_frames = SubResource("SpriteFrames_2qk4x")
 animation = &"moveLeft"
 
 [node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau10" unique_id=429194903 node_paths=PackedStringArray("node")]
-script = ExtResource("19_nhdfd")
+script = ExtResource("19_0q12l")
 node = NodePath("..")
 
 [node name="Oiseau11" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=653405297]
@@ -715,7 +713,7 @@ sprite_frames = SubResource("SpriteFrames_2qk4x")
 animation = &"moveLeft"
 
 [node name="OscillationOiseau" type="Node2D" parent="DCM_BirdSystem/Oiseau11" unique_id=1917137565 node_paths=PackedStringArray("node")]
-script = ExtResource("19_nhdfd")
+script = ExtResource("19_0q12l")
 node = NodePath("..")
 
 [node name="Bordure1" type="StaticBody2D" parent="." unique_id=1185280014]
@@ -735,5 +733,5 @@ physics_material_override = SubResource("PhysicsMaterial_mqn2c")
 shape = SubResource("WorldBoundaryShape2D_7iq8t")
 
 [node name="Papillons" type="TileMapLayer" parent="." unique_id=1811027575]
-tile_map_data = PackedByteArray("AACmAI4AAAAAAAAAAACjAI4AAAAAAAAAAACkAIsAAAAAAAAAAAChAIkAAAAAAAAAAACgAIsAAAAAAAAAAACmAIsAAAAAAAAAAACyAI8AAAAAAAAAAACCAI0AAAAAAAAAAACAAI0AAAAAAAAAAAB/AI4AAAAAAAAAAACBAI8AAAAAAAAAAACHAIIAAAAAAAAAAACSAIIAAAAAAAAAAABpAIQAAAAAAAAAAABeAIQAAAAAAAAAAABaAIQAAAAAAAAAAABXAH4AAAAAAAAAAABUAHsAAAAAAAAAAABGAHsAAAAAAAAAAABBAHsAAAAAAAAAAAA8AIQAAAAAAAAAAAAuAIQAAAAAAAAAAAA0AIQAAAAAAAAAAAAlAIYAAAAAAAAAAAAyAIsAAAAAAAAAAAAWAI0AAAAAAAAAAAAQAI0AAAAAAAAAAAANAI0AAAAAAAAAAAAeAJEAAAAAAAAAAAAmAIoAAAAAAAAAAAAeAHQAAAAAAAAAAAAoAHMAAAAAAAAAAAAyAHMAAAAAAAAAAAA+AGgAAAAAAAAAAABFAGgAAAAAAAAAAABWAGoAAAAAAAAAAAA7AGsAAAAAAAAAAAAqAF8AAAAAAAAAAAAkAF8AAAAAAAAAAAAYAF8AAAAAAAAAAAASAF8AAAAAAAAAAACiAHsAAAAAAAAAAACqAHgAAAAAAAAAAACuAHUAAAAAAAAAAACyAHUAAAAAAAAAAACyAIkAAAAAAAAAAACrAIMAAAAAAAAAAADIAJAAAAAAAAAAAADYAJEAAAAAAAAAAADxAIYAAAAAAAAAAAD1AIMAAAAAAAAAAAACAYMAAAAAAAAAAAARAX8AAAAAAAAAAAANAYYAAAAAAAAAAAAaAX8AAAAAAAAAAAAjAX8AAAAAAAAAAAAQAYQAAAAAAAAAAAAvAX0AAAAAAAAAAAA2AXwAAAAAAAAAAAAzAXcAAAAAAAAAAAAuAZAAAAAAAAAAAAAuAIsAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AACmAI4AAAAAAAAAAACjAI4AAAAAAAAAAACkAIsAAAAAAAAAAAChAIkAAAAAAAAAAACgAIsAAAAAAAAAAACmAIsAAAAAAAAAAACyAI8AAAAAAAAAAACCAI0AAAAAAAAAAACAAI0AAAAAAAAAAAB/AI4AAAAAAAAAAACBAI8AAAAAAAAAAACHAIIAAAAAAAAAAACSAIIAAAAAAAAAAABpAIQAAAAAAAAAAABeAIQAAAAAAAAAAABaAIQAAAAAAAAAAABXAH4AAAAAAAAAAABUAHsAAAAAAAAAAABGAHsAAAAAAAAAAABBAHsAAAAAAAAAAAA8AIQAAAAAAAAAAAAuAIQAAAAAAAAAAAA0AIQAAAAAAAAAAAAlAIYAAAAAAAAAAAAuAIsAAAAAAAAAAAAyAIsAAAAAAAAAAAAWAI0AAAAAAAAAAAAQAI0AAAAAAAAAAAANAI0AAAAAAAAAAAAeAJEAAAAAAAAAAAAmAIoAAAAAAAAAAAAeAHQAAAAAAAAAAAAoAHMAAAAAAAAAAAAyAHMAAAAAAAAAAAA+AGgAAAAAAAAAAABFAGgAAAAAAAAAAABWAGoAAAAAAAAAAAA7AGsAAAAAAAAAAAAqAF8AAAAAAAAAAAAkAF8AAAAAAAAAAAAYAF8AAAAAAAAAAAASAF8AAAAAAAAAAACiAHsAAAAAAAAAAACqAHgAAAAAAAAAAACuAHUAAAAAAAAAAACyAHUAAAAAAAAAAACyAIkAAAAAAAAAAACrAIMAAAAAAAAAAADIAJAAAAAAAAAAAADYAJEAAAAAAAAAAADxAIYAAAAAAAAAAAD1AIMAAAAAAAAAAAACAYMAAAAAAAAAAAARAX8AAAAAAAAAAAANAYYAAAAAAAAAAAAaAX8AAAAAAAAAAAAjAX8AAAAAAAAAAAAQAYQAAAAAAAAAAAAvAX0AAAAAAAAAAAA2AXwAAAAAAAAAAAAzAXcAAAAAAAAAAAAuAZAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hf5l1")
