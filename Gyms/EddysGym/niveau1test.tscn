@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cyx52wgl40nde" path="res://Gyms/EddysGym/scene/hud.tscn" id="23_wru85"]
 [ext_resource type="PackedScene" uid="uid://c3vfx7gpw2tlm" path="res://Gyms/EddysGym/scene/fountain.tscn" id="24_bhcew"]
 [ext_resource type="PackedScene" uid="uid://cd7d8sy3otj1x" path="res://Gyms/EddysGym/scene/brazier.tscn" id="25_6t7uu"]
+[ext_resource type="PackedScene" uid="uid://dc1sv78l8q0j7" path="res://Gyms/EddysGym/scene/mushroom.tscn" id="25_ev82w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_bhcew")
@@ -357,10 +358,10 @@ sources/0 = SubResource("TileSetAtlasSource_2uobi")
 [node name="Niveau1" type="Node2D" unique_id=1948467130]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=820423914]
-offset_left = 1.0
-offset_top = 9.0
-offset_right = 5001.0
-offset_bottom = 2509.0
+offset_left = 15.0
+offset_top = -16.0
+offset_right = 5015.0
+offset_bottom = 2484.0
 color = Color(0.16078432, 0.6784314, 1, 1)
 
 [node name="DCM_WindSystem" type="Node2D" parent="." unique_id=713434064]
@@ -1053,6 +1054,9 @@ position = Vector2(1507, 2015)
 
 [node name="Brazier2" parent="." unique_id=1794660711 instance=ExtResource("25_6t7uu")]
 position = Vector2(813, 1742)
+
+[node name="Mushroom2" parent="." unique_id=2057288609 instance=ExtResource("25_ev82w")]
+position = Vector2(-1651, 32)
 
 [node name="Character" parent="." unique_id=804579613 instance=ExtResource("18_cyv1h")]
 position = Vector2(596, 1817)

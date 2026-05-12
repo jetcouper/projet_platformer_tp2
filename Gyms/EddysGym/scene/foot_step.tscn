@@ -7,8 +7,6 @@
 _data = [Vector2(0.015037596, 0.88221085), 0.0, 0.0, 0, 0, Vector2(0.9874686, 0.14013892), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ecl7w"]
-
 [node name="FootStep" type="CPUParticles2D" unique_id=832110794]
 emitting = false
 amount = 30
@@ -28,7 +26,3 @@ angular_velocity_min = -80.0
 angular_velocity_max = 80.0
 scale_amount_curve = SubResource("Curve_nhdfd")
 script = ExtResource("1_ecl7w")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009307931]
-scale = Vector2(2.1666665, 10.8571415)
-shape = SubResource("CircleShape2D_ecl7w")

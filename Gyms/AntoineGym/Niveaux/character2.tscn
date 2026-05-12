@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cu7apmg845ikc"]
+[gd_scene format=3 uid="uid://c5xd525bghlv4"]
 
 [ext_resource type="Texture2D" uid="uid://7hldpkvvicu7" path="res://Assets/Characters/player/climb/climb.png" id="1_4osno"]
 [ext_resource type="Texture2D" uid="uid://dgc3ifrifb8b6" path="res://Assets/Characters/player/jump/roll landing.png" id="2_q7ocd"]
