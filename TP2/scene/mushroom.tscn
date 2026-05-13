@@ -16,9 +16,11 @@ point_count = 6
 [node name="Mushroom" type="Node2D" unique_id=635398002]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1449983122]
+texture_filter = 2
 position = Vector2(11.9375, -16.65625)
 scale = Vector2(0.19149211, 0.19579087)
 texture = ExtResource("1_5gr8i")
+flip_h = true
 
 [node name="Spore" type="CPUParticles2D" parent="." unique_id=1873930740]
 position = Vector2(14, -40)

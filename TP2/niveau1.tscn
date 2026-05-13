@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dyee1ivauqq5f" path="res://Library/Utils/Oscillation.cs" id="3_707j5"]
 [ext_resource type="Texture2D" uid="uid://gmf3u42fdybh" path="res://Assets/Background/GrassLand_Cloud_2.png" id="4_p6y62"]
 [ext_resource type="Texture2D" uid="uid://kok8251qdfv3" path="res://Assets/GrassLand/Background/GrassLand_Background_2.png" id="5_1erdm"]
+[ext_resource type="PackedScene" uid="uid://inqnajy3l3o5" path="res://TP2/scene/nuage_pluie.tscn" id="5_n53ro"]
 [ext_resource type="Texture2D" uid="uid://d2tg3pdddmgsu" path="res://Assets/GrassLand/Background/GrassLand_Background_3.png" id="6_lyl70"]
 [ext_resource type="Texture2D" uid="uid://dsgm4sfi8131o" path="res://Assets/GrassLand/Background/GrassLand_Background_4.png" id="7_almqq"]
 [ext_resource type="Texture2D" uid="uid://j3i3lonanw7o" path="res://Assets/Terrain/Grassland_Terrain_Tileset.png" id="8_1ph5m"]
@@ -584,6 +585,14 @@ tile_set = SubResource("TileSet_215a4")
 
 [node name="Avant" type="Node2D" parent="." unique_id=397371594]
 
+[node name="NuagePluie" parent="Avant" unique_id=1411170591 instance=ExtResource("5_n53ro")]
+position = Vector2(997, 1809)
+scale = Vector2(1.095, 1)
+
+[node name="NuagePluie2" parent="Avant" unique_id=656791820 instance=ExtResource("5_n53ro")]
+position = Vector2(4045, 1950)
+scale = Vector2(1.095, 1)
+
 [node name="DecoAvant" type="Node2D" parent="Avant" unique_id=1734032242]
 
 [node name="TextureRect13" type="TextureRect" parent="Avant/DecoAvant" unique_id=1259496071]
@@ -741,12 +750,22 @@ tile_set = SubResource("TileSet_hf5l1")
 [node name="Brazier" parent="." unique_id=2007872452 instance=ExtResource("20_lr0os")]
 position = Vector2(117, 2150)
 
+[node name="Brazier2" parent="." unique_id=1703538033 instance=ExtResource("20_lr0os")]
+position = Vector2(269, 2150)
+
+[node name="Brazier3" parent="." unique_id=1061829086 instance=ExtResource("20_lr0os")]
+position = Vector2(1288, 1570)
+
 [node name="Fountain" parent="." unique_id=1292127794 instance=ExtResource("20_g11rw")]
 position = Vector2(3257.9998, 2261)
 scale = Vector2(0.9262656, 0.9583939)
 
 [node name="Mushroom" parent="." unique_id=635398002 instance=ExtResource("21_26k8w")]
-position = Vector2(1606, 2083)
+position = Vector2(1705, 2085)
+
+[node name="Mushroom2" parent="." unique_id=1986401509 instance=ExtResource("21_26k8w")]
+position = Vector2(4605, 2295)
+scale = Vector2(0.854243, 0.788909)
 
 [node name="Character" parent="." unique_id=804579613 instance=ExtResource("19_8cu07")]
 position = Vector2(195, 2225)

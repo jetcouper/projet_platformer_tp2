@@ -45,6 +45,7 @@ script = ExtResource("1_3qy2h")
 ScreenNotifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=263463859]
+texture_filter = 2
 scale = Vector2(149.4745, 70.067)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=194350725]

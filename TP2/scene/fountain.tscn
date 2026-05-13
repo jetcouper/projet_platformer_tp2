@@ -20,6 +20,7 @@ script = ExtResource("1_ojdf5")
 _healArea = NodePath("HealArea")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2128973775]
+texture_filter = 2
 texture = ExtResource("2_4o8mr")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=522568005]

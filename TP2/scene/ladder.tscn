@@ -6,6 +6,7 @@
 size = Vector2(9.844313, 47.852173)
 
 [node name="Ladder" type="Area2D" unique_id=1774158747]
+texture_filter = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=589228416]
 position = Vector2(2.000001, -45.76335)
