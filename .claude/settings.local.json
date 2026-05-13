@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(Get-ChildItem -Recurse \"c:\\\\travail\\\\projet_platformer_tp2\\\\Assets\\\\Cave\\\\\" | Select-Object FullName, Extension | Format-Table -AutoSize)"
-    ]
-  }
-}
