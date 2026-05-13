@@ -2,7 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://bvvo7evmstl5v" path="res://Assets/Enemies/Mushroom/Mushroom_1/Mushroom_1.png" id="1_pwioj"]
 [ext_resource type="Script" uid="uid://bjirlpn87yee0" path="res://Gyms/CharleeGym/scripts/Oeuf.cs" id="1_tj655"]
+[ext_resource type="Shader" uid="uid://blgw1vc4cga8u" path="res://Gyms/CharleeGym/scripts/Helpers/EnemyDamageShader.gdshader" id="2_qcyf6"]
 [ext_resource type="PackedScene" uid="uid://cmwvrkbxt3odq" path="res://Gyms/CharleeGym/scenes/shield.tscn" id="2_tj655"]
+[ext_resource type="Script" uid="uid://bb7cokgeuqidc" path="res://Gyms/CharleeGym/scripts/OeufIngredient.cs" id="4_ingredient"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7320r"]
+shader = ExtResource("2_qcyf6")
+shader_parameter/flash_strength = 0.0
+shader_parameter/death_strength = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tj655"]
 atlas = ExtResource("1_pwioj")
@@ -51,7 +58,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"inactive",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pwioj"]
@@ -61,11 +68,15 @@ height = 24.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tj655"]
 radius = 11.0
 
-[node name="Oeuf" type="CharacterBody2D" unique_id=370138255]
+[node name="Oeuf" type="CharacterBody2D" unique_id=370138255 node_paths=PackedStringArray("Shield", "Sprite")]
 scale = Vector2(2, 2)
 script = ExtResource("1_tj655")
+Shield = NodePath("Shield")
+Sprite = NodePath("AnimatedSprite2D")
+Vies = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=171932478]
+material = SubResource("ShaderMaterial_7320r")
 sprite_frames = SubResource("SpriteFrames_3calb")
 animation = &"inactive"
 
@@ -74,6 +85,8 @@ position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_pwioj")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=316913310]
+collision_layer = 16
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=115670923]
 position = Vector2(0, 2)
@@ -81,3 +94,10 @@ shape = SubResource("CapsuleShape2D_tj655")
 
 [node name="Shield" parent="." unique_id=1943420650 instance=ExtResource("2_tj655")]
 position = Vector2(-1, -1)
+scale = Vector2(0.8189686, 1.1462759)
+
+[node name="Ingredient" type="AnimatableBody2D" parent="." unique_id=1560275313 node_paths=PackedStringArray("Oeuf")]
+script = ExtResource("4_ingredient")
+Oeuf = NodePath("..")
+
+[connection signal="body_entered" from="Area2D" to="." method="Take_Damage"]

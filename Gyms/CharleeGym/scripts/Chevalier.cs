@@ -71,6 +71,16 @@ public partial class Chevalier : Enemy
 		Timer.Start();
 	}
 
+	public new void Take_Damage(Node2D body)
+	{
+		if (Shield?.IsActive == true)
+		{
+			return;
+		}
+
+		base.Take_Damage(body);
+	}
+
 	public async void Attack()
 	{
 		Shield.SetActive(false);

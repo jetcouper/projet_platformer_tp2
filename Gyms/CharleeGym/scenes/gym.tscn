@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://c4ekpeesvy0b6"]
 
-[ext_resource type="PackedScene" uid="uid://cf2su4q4jdb8y" path="res://Gyms/CharleeGym/scenes/Fache.tscn" id="2_3yh6g"]
 [ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://Gyms/EddysGym/scene/character.tscn" id="2_vjd2e"]
-[ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="3_vjd2e"]
-[ext_resource type="PackedScene" uid="uid://0agvrdgbh0rg" path="res://Gyms/CharleeGym/scenes/sans_cervelle.tscn" id="4_km7a5"]
+[ext_resource type="PackedScene" uid="uid://dsmck4tamocsh" path="res://Gyms/PaulGym/scenes/Levier.tscn" id="3_levier"]
+[ext_resource type="PackedScene" uid="uid://dkhwmamsed73n" path="res://Gyms/CharleeGym/scenes/Chevalier.tscn" id="4_1ynr4"]
+[ext_resource type="PackedScene" uid="uid://b7s1sk23u5eqp" path="res://Gyms/CharleeGym/scenes/oeuf.tscn" id="4_km7a5"]
+[ext_resource type="PackedScene" uid="uid://0agvrdgbh0rg" path="res://Gyms/CharleeGym/scenes/sans_cervelle.tscn" id="4_mi61x"]
+[ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="5_y47dj"]
+[ext_resource type="PackedScene" uid="uid://cf2su4q4jdb8y" path="res://Gyms/CharleeGym/scenes/Fache.tscn" id="6_v0xrj"]
+[ext_resource type="PackedScene" uid="uid://pg5lk2xqe5sl" path="res://Gyms/CharleeGym/scenes/goomba_2.tscn" id="7_ptq1r"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h8q46"]
 
@@ -57,10 +61,28 @@ shape = SubResource("WorldBoundaryShape2D_4xu8j")
 position = Vector2(403, 1)
 collision_mask = 1
 
-[node name="Fache" parent="." unique_id=64174467 node_paths=PackedStringArray("Character") instance=ExtResource("2_3yh6g")]
-Character = NodePath("../Character")
-ProjectileScene = ExtResource("3_vjd2e")
+[node name="Levier" parent="." unique_id=1212460187 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("3_levier")]
+position = Vector2(268, 1)
+Ingredients = [NodePath("../Oeuf/Ingredient")]
+player = NodePath("../Character")
 
-[node name="CharacterBody2D" parent="." unique_id=271642449 node_paths=PackedStringArray("Character") instance=ExtResource("4_km7a5")]
-position = Vector2(-50, -2)
+[node name="Oeuf" parent="." unique_id=370138255 node_paths=PackedStringArray("Character") instance=ExtResource("4_km7a5")]
+Character = NodePath("../Character")
+
+[node name="CharacterBody2D" parent="." unique_id=981682141 node_paths=PackedStringArray("Character") instance=ExtResource("4_1ynr4")]
+position = Vector2(-83, -4)
+Character = NodePath("../Character")
+ProjectileScene = ExtResource("5_y47dj")
+
+[node name="CharacterBody2D2" parent="." unique_id=64174467 node_paths=PackedStringArray("Character") instance=ExtResource("6_v0xrj")]
+position = Vector2(98, 72)
+Character = NodePath("../Character")
+ProjectileScene = ExtResource("5_y47dj")
+
+[node name="CharacterBody2D3" parent="." unique_id=1227190931 node_paths=PackedStringArray("Character") instance=ExtResource("7_ptq1r")]
+position = Vector2(-187, 107)
+Character = NodePath("../Character")
+
+[node name="CharacterBody2D4" parent="." unique_id=271642449 node_paths=PackedStringArray("Character") instance=ExtResource("4_mi61x")]
+position = Vector2(-29, 107)
 Character = NodePath("../Character")

@@ -55,7 +55,6 @@ radius = 7.0
 height = 23.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1227190931 node_paths=PackedStringArray("WalkTowardsPlayer", "Sprite")]
-scale = Vector2(2, 2)
 script = ExtResource("1_b8miq")
 Speed = 50.0
 Scale_Anim = 1.0
