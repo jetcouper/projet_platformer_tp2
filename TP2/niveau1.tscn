@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cmjhyaju71rns"]
+[gd_scene format=4 uid="uid://dwchfhbwgq0in"]
 
 [ext_resource type="Script" uid="uid://c6n630jsdpd61" path="res://Library/DCM/DcmWindSystem.cs" id="1_nhu6g"]
 [ext_resource type="Texture2D" uid="uid://dvilcpi6ns4ex" path="res://Assets/Background/GrassLand_Cloud_1.png" id="2_gb4dk"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cshekx70tbchi" path="res://TP2/scene/brazier.tscn" id="20_lr0os"]
 [ext_resource type="PackedScene" uid="uid://cggppvvf8s0g8" path="res://TP2/scene/mushroom.tscn" id="21_26k8w"]
 [ext_resource type="PackedScene" uid="uid://ceg52350muhuk" path="res://TP2/scene/hud.tscn" id="21_bgafa"]
+[ext_resource type="PackedScene" uid="uid://binkb1bxlvi4x" path="res://TP2/scene/med_ladder.tscn" id="23_3345j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_1ph5m")
@@ -767,8 +768,12 @@ position = Vector2(1705, 2085)
 position = Vector2(4605, 2295)
 scale = Vector2(0.854243, 0.788909)
 
+[node name="MedLadder" parent="." unique_id=22173457 instance=ExtResource("23_3345j")]
+
+[node name="MedLadder" parent="MedLadder" unique_id=1131583166 instance=ExtResource("23_3345j")]
+
 [node name="Character" parent="." unique_id=804579613 instance=ExtResource("19_8cu07")]
-position = Vector2(195, 2225)
+position = Vector2(209, 2226)
 
 [node name="Hud" parent="Character" unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("21_bgafa")]
 position = Vector2(-195, -2225)
