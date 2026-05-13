@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c5v8aebupri8m"]
+
+[ext_resource type="Texture2D" uid="uid://b76om2f5nga2j" path="res://Assets/Characters/player/foot_step/foot_step.png" id="1_b2uaa"]
+[ext_resource type="Script" uid="uid://bt0bw3pvm4e5j" path="res://TP2/src/FootStep.cs" id="2_opxoe"]
+
+[sub_resource type="Curve" id="Curve_nhdfd"]
+_data = [Vector2(0.015037596, 0.88221085), 0.0, 0.0, 0, 0, Vector2(0.9874686, 0.14013892), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="FootStep" type="CPUParticles2D" unique_id=832110794]
+modulate = Color(0.084173165, 0.36357692, 0.44132018, 1)
+emitting = false
+amount = 30
+texture = ExtResource("1_b2uaa")
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(0, -1)
+spread = 38.89
+gravity = Vector2(0, 0)
+initial_velocity_min = 0.77
+initial_velocity_max = 11.0
+angular_velocity_min = -80.0
+angular_velocity_max = 80.0
+scale_amount_curve = SubResource("Curve_nhdfd")
+hue_variation_max = 0.17
+script = ExtResource("2_opxoe")

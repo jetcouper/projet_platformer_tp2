@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dc1sv78l8q0j7"]
+
+[ext_resource type="Texture2D" uid="uid://ygq5rbwk5a6x" path="res://Assets/Objects/mushroom.png" id="1_mushroom"]
+[ext_resource type="Texture2D" uid="uid://vvkoa0yxj1rk" path="res://Assets/Mushroom/spore.png" id="2_spore"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_spore"]
+emission_shape = 1
+emission_sphere_radius = 28.0
+direction = Vector3(0, -1, 0)
+spread = 70.0
+initial_velocity_min = 5.0
+initial_velocity_max = 52.0
+gravity = Vector3(0, -2, 0)
+scale_min = 0.1
+scale_max = 0.2
+
+[node name="Mushroom" type="Node2D" unique_id=635398002]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1449983122]
+position = Vector2(2380, 2033)
+scale = Vector2(0.19149211, 0.19579087)
+texture = ExtResource("1_mushroom")
+
+[node name="Spore" type="GPUParticles2D" parent="." unique_id=599267671]
+position = Vector2(2380, 2015)
+amount = 60
+texture = ExtResource("2_spore")
+lifetime = 4.0
+preprocess = 4.0
+randomness = 0.5
+visibility_rect = Rect2(-200, -200, 400, 400)
+process_material = SubResource("ParticleProcessMaterial_spore")

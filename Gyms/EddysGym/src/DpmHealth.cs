@@ -30,6 +30,7 @@ public partial class DpmHealth : Node2D
 
     private int _lives;
     private float _healthPercent;
+    private DpmCharacterController _controller;
 
     public bool IsDead => _lives <= 0;
     public bool IsFullHealth => _lives >= MaxLives && _healthPercent >= MaxHealthPercent;
@@ -41,6 +42,7 @@ public partial class DpmHealth : Node2D
 
     public override void _Ready()
     {
+        _controller = GetParent().GetNode<DpmCharacterController>("DpmCharacterController");
         _lives = MaxLives;
         _healthPercent = MaxHealthPercent;
         if (_invincibilityTimer != null)
@@ -73,13 +75,15 @@ public partial class DpmHealth : Node2D
 
         UpdateBar();
 
+        if (!IsDead)
+        {
+            _controller?.TriggerHit();
+            StartInvincibility();
+        }
+
         if (IsDead)
         {
             GD.Print("Mort!");
-        }
-        else
-        {
-            StartInvincibility();
         }
     }
 
@@ -87,7 +91,6 @@ public partial class DpmHealth : Node2D
     {
         _isInvincible = true;
 
-        // Animation de clignotement avec un Tween
         Tween tween = CreateTween();
         tween.SetLoops((int)(InvincibilityDuration / 0.2f));
         tween.TweenProperty(_sprite, "modulate:a", 0.3f, 0.1f);

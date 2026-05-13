@@ -27,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://Gyms/EddysGym/scene/character.tscn" id="25_srq36"]
 [ext_resource type="PackedScene" uid="uid://ciiktp2vh87p2" path="res://Gyms/PaulGym/scenes/SlidingVerticalDoor.tscn" id="25_xt3qg"]
 [ext_resource type="PackedScene" uid="uid://b1nmkx4f0k88m" path="res://Gyms/EddysGym/scene/boite_jaune.tscn" id="27_8s5yo"]
+[ext_resource type="PackedScene" uid="uid://bt88obrp4ygev" path="res://Gyms/PaulGym/scenes/ReflectiveSurface.tscn" id="28_oogww"]
+[ext_resource type="PackedScene" uid="uid://dkhwmamsed73n" path="res://Gyms/CharleeGym/scenes/Chevalier.tscn" id="29_htgq4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_ko3hr")
@@ -1043,7 +1045,7 @@ player = NodePath("../Character")
 
 [node name="Levier2" parent="." unique_id=1737147552 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("21_kp2ii")]
 position = Vector2(688, 2094)
-Ingredients = [NodePath("../Trapdoor"), NodePath("../Door2")]
+Ingredients = [NodePath("../Trapdoor"), NodePath("../Door2"), NodePath("../BoiteJaune"), NodePath("../ReflectiveSurface")]
 player = NodePath("../Character")
 
 [node name="Door" parent="." unique_id=2061855038 instance=ExtResource("25_xt3qg")]
@@ -1075,5 +1077,12 @@ position = Vector2(813, 1742)
 position = Vector2(596, 1817)
 
 [node name="BoiteJaune" parent="." unique_id=2044295932 instance=ExtResource("27_8s5yo")]
-position = Vector2(1281, 1949)
-IsActive = false
+position = Vector2(1457, 1725)
+State = false
+
+[node name="ReflectiveSurface" parent="." unique_id=242882444 instance=ExtResource("28_oogww")]
+position = Vector2(1193, 1919)
+
+[node name="CharacterBody2D" parent="." unique_id=981682141 node_paths=PackedStringArray("Character") instance=ExtResource("29_htgq4")]
+position = Vector2(1127, 1942)
+Character = NodePath("../Character")

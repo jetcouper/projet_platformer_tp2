@@ -87,6 +87,8 @@ public partial class DpmCharacterAnimator : Node2D
     {
         if (_controller.IsDead)
             return "die";
+        if (_controller.IsHit)
+            return "normal_hit";
         if (_controller.IsShooting)
             return "shoot";
         if (_controller.IsDashing)

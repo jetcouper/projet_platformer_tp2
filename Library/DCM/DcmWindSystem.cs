@@ -40,9 +40,13 @@ public partial class DcmWindSystem : Node2D
             {
                 osc.SetSpeedMove(InSpeedMove);
             }
-            else if (child is Oscillation osc2)
+            else if (child is OscillationOiseau osc2)
             {
                 osc2.SetSpeedMove(InSpeedMove);
+            }
+            else if (child is OscillationBat osc3)
+            {
+                osc3.SetSpeedMove(InSpeedMove);
             }
         }
     }

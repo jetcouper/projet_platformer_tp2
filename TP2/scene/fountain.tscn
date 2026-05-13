@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cfkl8qj7m4ob3"]
+
+[ext_resource type="Script" uid="uid://c880oq7shlkou" path="res://TP2/src/Fountain.cs" id="1_ojdf5"]
+[ext_resource type="Texture2D" uid="uid://d1gmanq57k3rw" path="res://Assets/Fountain/fountain.png" id="2_4o8mr"]
+[ext_resource type="Texture2D" uid="uid://uwv3hmswh7y4" path="res://Assets/Fountain/heart.png" id="3_h4oxo"]
+
+[sub_resource type="Curve" id="Curve_cian3"]
+_data = [Vector2(0.013853904, 0.0476259), 0.0, 0.0, 0, 0, Vector2(0.16876574, 0.5891348), 0.0, 0.0, 0, 0, Vector2(0.5289672, 0.7387125), 0.0, 0.0, 0, 0, Vector2(0.7166246, 0.409263), 0.0, 0.0, 0, 0, Vector2(0.8828715, 0.3676085), 0.0, 0.0, 0, 0, Vector2(0.9974811, 0.01922512), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Gradient" id="Gradient_of50r"]
+offsets = PackedFloat32Array(0, 0, 1)
+colors = PackedColorArray(0.6431373, 0, 0, 1, 0.706046, 0.11387687, 0.5731746, 1, 1, 0.12156863, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_heal"]
+size = Vector2(150, 120)
+
+[node name="Fountain" type="Node2D" unique_id=1292127794 node_paths=PackedStringArray("_healArea")]
+script = ExtResource("1_ojdf5")
+_healArea = NodePath("HealArea")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2128973775]
+texture_filter = 2
+texture = ExtResource("2_4o8mr")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=522568005]
+position = Vector2(1, -63)
+amount = 7
+texture = ExtResource("3_h4oxo")
+lifetime = 0.8
+fract_delta = false
+emission_shape = 6
+emission_ring_inner_radius = 0.7
+emission_ring_radius = 1.0
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 250)
+initial_velocity_min = 200.0
+initial_velocity_max = 350.0
+damping_min = 1.716
+damping_max = 6.863
+scale_amount_min = 0.3
+scale_amount_max = 1.2
+scale_amount_curve = SubResource("Curve_cian3")
+split_scale = true
+scale_curve_x = null
+scale_curve_y = null
+color = Color(1, 0.23529412, 0.2784314, 1)
+color_initial_ramp = SubResource("Gradient_of50r")
+
+[node name="HealArea" type="Area2D" parent="." unique_id=1938843970]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealArea" unique_id=1283518734]
+shape = SubResource("RectangleShape2D_heal")
