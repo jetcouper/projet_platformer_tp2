@@ -18,4 +18,27 @@ public partial class OeufIngredient : Ingredient
         base.ChangeState();
         Oeuf?.SetIngredientState(State);
     }
+
+    public override void _ExitTree()
+    {
+        RemoveFromLevers(GetTree()?.CurrentScene);
+    }
+
+    private void RemoveFromLevers(Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        if (node is Levier levier && levier.Ingredients != null)
+        {
+            levier.Ingredients.Remove(this);
+        }
+
+        foreach (Node child in node.GetChildren())
+        {
+            RemoveFromLevers(child);
+        }
+    }
 }
