@@ -1,6 +1,7 @@
 namespace TP2.Src;
 
 using Godot;
+using Utils;
 
 public partial class DcmBulletSpawnr : Node2D
 {
@@ -43,6 +44,9 @@ public partial class DcmBulletSpawnr : Node2D
 
     public override void _Process(double delta)
     {
+        if (!Player.IsValid() || !Sprite.IsValid())
+            return;
+
         cooldown = Mathf.Max(cooldown - (float)delta, 0.0f);
 
         if (Input.IsActionPressed(FireAction) && cooldown <= 0.0f)
@@ -51,7 +55,7 @@ public partial class DcmBulletSpawnr : Node2D
 
     private void SpawnBullet()
     {
-        if (WeaponScene == null || Player == null)
+        if (!WeaponScene.IsValid() || !Player.IsValid())
             return;
 
         float dir = GetFacingDirection();
@@ -72,5 +76,10 @@ public partial class DcmBulletSpawnr : Node2D
     private float GetFacingDirection()
     {
         return Sprite.Scale.X < 0.0f ? 1.0f : -1.0f;
+    }
+
+    public void UpgradeFireRate()
+    {
+        FireRate = Mathf.Max(FireRate * 0.5f, 0.1f);
     }
 }

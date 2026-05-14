@@ -1,6 +1,7 @@
 namespace TP2.Src;
 
 using Godot;
+using Utils;
 
 public partial class DpmReflectiveBox : Ingredient
 {
@@ -18,7 +19,6 @@ public partial class DpmReflectiveBox : Ingredient
     public override void ChangeState()
     {
         base.ChangeState();
-
         ApplyState();
     }
 
@@ -29,11 +29,12 @@ public partial class DpmReflectiveBox : Ingredient
     }
 
     private void ApplyState()
-    {
-        // Désactivée : la balle passe à travers
-        _collision?.SetDeferred(CollisionShape2D.PropertyName.Disabled, !State);
+    { // Désactivée : la balle passe à travers
+        if (_collision.IsValid())
+            _collision.SetDeferred(CollisionShape2D.PropertyName.Disabled, !State);
 
         // Animation actif inactif
-        _sprite?.Play(State ? "active" : "inactive");
+        if (_sprite.IsValid())
+            _sprite.Play(State ? "active" : "inactive");
     }
 }

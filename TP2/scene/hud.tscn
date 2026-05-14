@@ -22,11 +22,20 @@ XpBar = NodePath("CanvasLayer/ProgressBar")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=988593720]
 
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1108120662]
+offset_left = 21.0
+offset_top = 66.0
+offset_right = 61.0
+offset_bottom = 115.0
+scale = Vector2(1.617512, 1.3897449)
+text = "XP
+"
+
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1243074712]
-offset_left = 61.0
-offset_top = 69.0
-offset_right = 236.0
-offset_bottom = 96.0
+offset_left = 77.0
+offset_top = 71.0
+offset_right = 252.0
+offset_bottom = 98.0
 theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_s6iev")

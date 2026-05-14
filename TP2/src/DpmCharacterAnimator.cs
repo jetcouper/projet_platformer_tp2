@@ -39,6 +39,34 @@ public partial class DpmCharacterAnimator : Node2D
 
         UpdateFacing();
         UpdateAnimation();
+        if (_controller.DashJustBecameAvailable)
+            PlayDashReadyFlash();
+    }
+
+    private void PlayDashReadyFlash()
+    {
+        Tween tween = CreateTween();
+        // 1er pulse
+        tween
+            .TweenProperty(_sprite, "modulate", new Color(0.3f, 0.7f, 1.0f, 1.0f), 0.15f)
+            .SetTrans(Tween.TransitionType.Cubic)
+            .SetEase(Tween.EaseType.Out);
+        tween.TweenProperty(_sprite, "modulate", new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.15f);
+        // 2eme pulse
+        tween
+            .TweenProperty(_sprite, "modulate", new Color(0.3f, 0.7f, 1.0f, 1.0f), 0.15f)
+            .SetTrans(Tween.TransitionType.Cubic)
+            .SetEase(Tween.EaseType.Out);
+        tween.TweenProperty(_sprite, "modulate", new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.15f);
+        // 3eme pulse
+        tween
+            .TweenProperty(_sprite, "modulate", new Color(0.3f, 0.7f, 1.0f, 1.0f), 0.15f)
+            .SetTrans(Tween.TransitionType.Cubic)
+            .SetEase(Tween.EaseType.Out);
+        tween
+            .TweenProperty(_sprite, "modulate", new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.4f)
+            .SetTrans(Tween.TransitionType.Elastic)
+            .SetEase(Tween.EaseType.Out);
     }
 
     private void PlaySpawnTween()

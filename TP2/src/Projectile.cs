@@ -1,6 +1,7 @@
 namespace TP2.Src;
 
 using Godot;
+using Utils;
 
 public partial class Projectile : RigidBody2D
 {
@@ -49,12 +50,10 @@ public partial class Projectile : RigidBody2D
         ContactMonitor = true;
         MaxContactsReported = 4;
         BodyEntered += OnBodyEntered;
-
         // Destruction à la sortie d'écran
-        if (ScreenNotifier != null)
-        {
+
+        if (ScreenNotifier.IsValid())
             ScreenNotifier.ScreenExited += QueueFree;
-        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -98,15 +97,16 @@ public partial class Projectile : RigidBody2D
             if (!ing.State)
                 return;
 
-            _hasBounced = true;
-            return; // Rebondit
+            _hasBounced = true; // Rebondit
+            return;
         }
 
         if (body == _player && !_hasBounced)
             return;
 
         DpmHealth health = body.GetNodeOrNull<DpmHealth>("DpmHealth");
-        health?.TakeDamage((int)Damage);
+        if (health.IsValid())
+            health.TakeDamage((int)Damage);
 
         QueueFree();
     }

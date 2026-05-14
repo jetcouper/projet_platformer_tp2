@@ -1190,7 +1190,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rk642"]
-height = 25.908222
+height = 61.74007
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vckfi"]
 radius = 19.21
@@ -1221,7 +1221,7 @@ frame_progress = 0.20918483
 [node name="Collisions" type="Area2D" parent="." unique_id=727593718]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions" unique_id=259062818]
-scale = Vector2(2.2030437, -2.5698888)
+scale = Vector2(2.039268, 0.9070285)
 shape = SubResource("CapsuleShape2D_rk642")
 
 [node name="StandingCollision" type="CollisionShape2D" parent="." unique_id=2049849905]
@@ -1264,6 +1264,7 @@ script = ExtResource("16_vn7qc")
 _body = NodePath("..")
 _sprite = NodePath("../AnimatedSprite2D")
 _healthBar = NodePath("HealthBar")
+InvincibilityDuration = 3.0
 _invincibilityTimer = NodePath("Timer")
 
 [node name="HealthBar" type="ProgressBar" parent="DpmHealth" unique_id=2129573936]

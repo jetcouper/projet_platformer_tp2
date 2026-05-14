@@ -1,6 +1,7 @@
 namespace TP2.Src;
 
 using Godot;
+using Utils;
 
 public partial class Fountain : Node2D
 {
@@ -15,7 +16,7 @@ public partial class Fountain : Node2D
 
     public override void _Ready()
     {
-        if (_healArea == null)
+        if (!_healArea.IsValid())
             return;
 
         _healArea.BodyEntered += OnBodyEntered;
@@ -24,10 +25,8 @@ public partial class Fountain : Node2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (_playerHealth != null && IsInstanceValid(_playerHealth))
-        {
+        if (_playerHealth.IsValid())
             _playerHealth.Heal(HealPerSecond * (float)delta);
-        }
     }
 
     private void OnBodyEntered(Node2D body)
@@ -35,13 +34,13 @@ public partial class Fountain : Node2D
         _playerHealth = body.GetNodeOrNull<DpmHealth>("DpmHealth");
         _playerController = body.GetNodeOrNull<DpmCharacterController>("DpmCharacterController");
 
-        if (_playerController != null)
+        if (_playerController.IsValid())
             _playerController.IsHealing = true;
     }
 
     private void OnBodyExited(Node2D body)
     {
-        if (_playerController != null && IsInstanceValid(_playerController))
+        if (_playerController.IsValid())
             _playerController.IsHealing = false;
 
         _playerHealth = null;

@@ -39,7 +39,7 @@ public partial class DpmCharacterController : Node2D
     public float JumpSustainForce = -20.0f;
 
     [Export]
-    public float JumpSustainMaxTime = 0.50f;
+    public float JumpSustainMaxTime = 0.52f;
 
     [Export]
     public float CoyoteDuration = 0.15f;
@@ -76,6 +76,8 @@ public partial class DpmCharacterController : Node2D
     [ExportGroup("FootStep")]
     [Export]
     public PackedScene FootStepScene { get; set; }
+
+    public bool DashJustBecameAvailable { get; private set; }
 
     // Etats expose
     public float MoveAxis { get; private set; }
@@ -316,7 +318,9 @@ public partial class DpmCharacterController : Node2D
 
     private void UpdateDash(float delta)
     {
+        bool wasOnCooldown = _dashCooldownLeft > 0.0f;
         _dashCooldownLeft = Mathf.Max(_dashCooldownLeft - delta, 0.0f);
+        DashJustBecameAvailable = wasOnCooldown && _dashCooldownLeft <= 0.0f;
 
         if (_dashing)
         {
@@ -325,6 +329,15 @@ public partial class DpmCharacterController : Node2D
             {
                 _dashing = false;
                 _dashCooldownLeft = DashCooldown;
+            }
+            // Attaque les ennemis pendant le dash
+            foreach (Node node in _body.GetTree().CurrentScene.GetChildren())
+            {
+                if (node is Enemy enemy)
+                {
+                    if (_body.GlobalPosition.DistanceTo(enemy.GlobalPosition) < 60.0f)
+                        enemy.Take_Damage(_body);
+                }
             }
             return;
         }

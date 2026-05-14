@@ -1,6 +1,7 @@
 namespace TP2.Src;
 
 using Godot;
+using Utils;
 
 public partial class DpmExperience : Node2D
 {
@@ -8,6 +9,9 @@ public partial class DpmExperience : Node2D
 
     [Export]
     public float MaxXp = 100.0f;
+
+    [Export]
+    public DcmBulletSpawnr BulletSpawnr;
 
     private float _currentXp = 0.0f;
 
@@ -34,9 +38,12 @@ public partial class DpmExperience : Node2D
         if (amount <= 0 || IsFull)
             return;
         Xp += amount;
-
         if (IsFull)
+        {
             GD.Print("XP maximum!");
+            if (BulletSpawnr.IsValid())
+                BulletSpawnr.UpgradeFireRate();
+        }
     }
 
     public void ResetXp()
