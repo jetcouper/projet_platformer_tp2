@@ -65,11 +65,12 @@ public partial class DpmHealth : Node2D
             return;
 
         _healthPercent -= DamagePercent * amount;
+        _healthObserver?.OnDamageTaken();
 
         if (_healthPercent <= 0.0f)
         {
             _lives--;
-            GD.Print($"Une vie perdue! Vies restantes: {_lives}");
+            _healthObserver?.OnLivesChanged(_lives);
 
             if (_lives > 0)
                 _healthPercent = MaxHealthPercent;
@@ -95,16 +96,17 @@ public partial class DpmHealth : Node2D
 
         Tween tween = CreateTween();
         tween.SetLoops((int)(InvincibilityDuration / 0.2f));
-        tween.TweenProperty(_sprite, "modulate:a", 0.3f, 0.1f);
-        tween.TweenProperty(_sprite, "modulate:a", 1.0f, 0.1f);
+        tween.TweenProperty(_sprite.EnsureValid(), "modulate:a", 0.3f, 0.1f);
+        tween.TweenProperty(_sprite.EnsureValid(), "modulate:a", 1.0f, 0.1f);
 
-        _invincibilityTimer.Start();
+        _invincibilityTimer.EnsureValid().Start();
     }
 
     private void OnInvincibilityTimeout()
     {
         _isInvincible = false;
-        _sprite.Modulate = new Color(1, 1, 1, 1);
+        if (_sprite.IsValid())
+            _sprite.Modulate = new Color(1, 1, 1, 1);
     }
 
     private void UpdateBar()
@@ -137,5 +139,13 @@ public partial class DpmHealth : Node2D
                 return;
             TakeDamage(1);
         }
+    }
+
+    private IHealthObserver _healthObserver;
+
+    public void SetHealthObserver(IHealthObserver observer)
+    {
+        _healthObserver = observer;
+        _healthObserver?.OnLivesChanged(_lives);
     }
 }

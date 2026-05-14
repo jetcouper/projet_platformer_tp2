@@ -3,7 +3,7 @@ namespace TP2.Src;
 using Godot;
 using Utils;
 
-public partial class DpmHud : Node, IXpObserver
+public partial class DpmHud : Node, IXpObserver, IHealthObserver
 {
     [Export]
     public Node2D Player;
@@ -11,14 +11,14 @@ public partial class DpmHud : Node, IXpObserver
     [Export]
     private ProgressBar XpBar;
 
+    private Godot.Collections.Array<AnimatedSprite2D> _hearts = [];
     private DpmCharacterController _controller;
     private DpmExperience _experience;
 
-    // Touche Tab : cheat fait augmenter l'experience
     public override void _Process(double delta)
     {
-        if (Input.IsActionJustPressed("ui_text_indent")) // Tab
-            _experience?.AddXp(10);
+        if (Input.IsActionJustPressed("ui_text_indent"))
+            _experience?.AddXp(10); // Touche cheat xp: Tab
     }
 
     public override void _Ready()
@@ -26,16 +26,30 @@ public partial class DpmHud : Node, IXpObserver
         if (!Player.IsValid() || !XpBar.IsValid())
             return;
 
+        var canvas = GetNodeOrNull<CanvasLayer>("CanvasLayer");
+        if (canvas.IsValid())
+        {
+            foreach (var name in new[] { "heart1", "heart2", "heart3" })
+            {
+                var heart = canvas.GetNodeOrNull<AnimatedSprite2D>(name);
+                if (heart.IsValid())
+                    _hearts.Add(heart);
+            }
+        }
+
         _controller = Player.GetNodeOrNull<DpmCharacterController>("DpmCharacterController");
         _experience = _controller?.Experience;
 
-        if (_experience == null)
-            return;
+        DpmHealth health = Player.GetNodeOrNull<DpmHealth>("DpmHealth");
+        if (health.IsValid())
+            health.SetHealthObserver(this);
 
-        _experience.SetObserver(this);
-
-        XpBar.Value = _experience.Xp;
-        XpBar.MaxValue = _experience.MaxXp;
+        if (_experience != null)
+        {
+            _experience.SetObserver(this);
+            XpBar.EnsureValid().Value = _experience.Xp;
+            XpBar.EnsureValid().MaxValue = _experience.MaxXp;
+        }
     }
 
     public void OnXpChanged(float currentXp, float maxXp)
@@ -65,6 +79,49 @@ public partial class DpmHud : Node, IXpObserver
             ShowMaxLabel();
     }
 
+    public void OnDamageTaken()
+    {
+        for (int i = _hearts.Count - 1; i >= 0; i--)
+        {
+            if (_hearts[i].IsValid() && _hearts[i].Visible)
+            {
+                _hearts[i].Play("hit");
+                int capturedI = i;
+                GetTree().CreateTimer(0.4f).Timeout += () =>
+                {
+                    if (_hearts[capturedI].IsValid() && _hearts[capturedI].Visible)
+                        _hearts[capturedI].Play("idle");
+                };
+                break;
+            }
+        }
+    }
+
+    public void OnLivesChanged(int currentLives)
+    {
+        for (int i = 0; i < _hearts.Count; i++)
+        {
+            if (_hearts[i].IsValid())
+            {
+                bool shouldBeVisible = i < currentLives;
+                if (!shouldBeVisible && _hearts[i].Visible)
+                {
+                    int capturedI = i;
+                    GetTree().CreateTimer(0.4f).Timeout += () =>
+                    {
+                        if (_hearts[capturedI].IsValid())
+                            _hearts[capturedI].Visible = false;
+                    };
+                }
+                else if (shouldBeVisible)
+                {
+                    _hearts[i].Visible = true;
+                    _hearts[i].Play("idle");
+                }
+            }
+        }
+    }
+
     private void ShowMaxLabel()
     {
         CanvasLayer canvas = new();
@@ -83,5 +140,11 @@ public partial class DpmHud : Node, IXpObserver
         tween.TweenProperty(label, "modulate:a", 0.0f, 0.5f);
         tween.TweenCallback(Callable.From(canvas.QueueFree));
         tween.TweenCallback(Callable.From(() => _experience?.ResetXp()));
+    }
+
+    public void SetHealthObserver(DpmHealth health)
+    {
+        if (health.IsValid())
+            health.SetHealthObserver(this);
     }
 }

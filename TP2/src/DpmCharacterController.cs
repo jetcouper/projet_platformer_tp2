@@ -420,7 +420,9 @@ public partial class DpmCharacterController : Node2D
         if (_dashing)
             return;
 
-        if (Mathf.Abs(MoveAxis) > 0.1f)
+        if (Mathf.Abs(_body.Velocity.X) > 5.0f)
+            FacingDir = _body.Velocity.X > 0.0f ? 1.0f : -1.0f;
+        else if (Mathf.Abs(MoveAxis) > 0.1f)
             FacingDir = MoveAxis > 0.0f ? 1.0f : -1.0f;
     }
 

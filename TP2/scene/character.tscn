@@ -1247,12 +1247,11 @@ DashDuration = 0.25
 DashCooldown = 2.0
 FootStepScene = ExtResource("14_ajvbq")
 
-[node name="DpmCharacterAnimator" type="Node2D" parent="." unique_id=1766069725 node_paths=PackedStringArray("_controller", "_sprite", "_camera")]
+[node name="DpmCharacterAnimator" type="Node2D" parent="." unique_id=1766069725 node_paths=PackedStringArray("_controller", "_sprite")]
 position = Vector2(0, -1)
 script = ExtResource("14_vn7qc")
 _controller = NodePath("../DpmCharacterController")
 _sprite = NodePath("../AnimatedSprite2D")
-_camera = NodePath("../Camera2D")
 
 [node name="DcmBulletSpawner" type="Node2D" parent="." unique_id=1948672311 node_paths=PackedStringArray("Player", "Sprite")]
 script = ExtResource("15_c26tv")

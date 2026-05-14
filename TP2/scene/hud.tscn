@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ceg52350muhuk"]
 
 [ext_resource type="Script" uid="uid://cm1y6fmvyay6g" path="res://TP2/src/DpmHud.cs" id="1_hjbkt"]
+[ext_resource type="Texture2D" uid="uid://cm564n22hj8fk" path="res://Assets/UI/Live and Coins/Big Heart Hit (18x14).png" id="2_5gx6j"]
+[ext_resource type="Texture2D" uid="uid://d4hys5lljsojb" path="res://Assets/UI/Live and Coins/Big Heart Idle (18x14).png" id="2_byjbw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6iev"]
 bg_color = Color(1, 1, 1, 1)
@@ -16,6 +18,89 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkc6c"]
+atlas = ExtResource("2_5gx6j")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77fsi"]
+atlas = ExtResource("2_5gx6j")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byjbw"]
+atlas = ExtResource("2_byjbw")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gx6j"]
+atlas = ExtResource("2_byjbw")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_meqk1"]
+atlas = ExtResource("2_byjbw")
+region = Rect2(36, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdey6"]
+atlas = ExtResource("2_byjbw")
+region = Rect2(54, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy2fu"]
+atlas = ExtResource("2_byjbw")
+region = Rect2(72, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21nfm"]
+atlas = ExtResource("2_byjbw")
+region = Rect2(90, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt1nv"]
+atlas = ExtResource("2_byjbw")
+region = Rect2(108, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s73sp"]
+atlas = ExtResource("2_byjbw")
+region = Rect2(126, 0, 18, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pkc6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkc6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77fsi")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byjbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gx6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_meqk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdey6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy2fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21nfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt1nv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s73sp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 20.0
+}]
+
 [node name="Hud" type="Node2D" unique_id=573723219 node_paths=PackedStringArray("XpBar")]
 script = ExtResource("1_hjbkt")
 XpBar = NodePath("CanvasLayer/ProgressBar")
@@ -23,21 +108,41 @@ XpBar = NodePath("CanvasLayer/ProgressBar")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=988593720]
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1108120662]
-offset_left = 21.0
-offset_top = 66.0
-offset_right = 61.0
-offset_bottom = 115.0
+offset_left = 22.0
+offset_top = 73.0
+offset_right = 62.0
+offset_bottom = 122.0
 scale = Vector2(1.617512, 1.3897449)
 text = "XP
 "
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1243074712]
-offset_left = 77.0
-offset_top = 71.0
-offset_right = 252.0
-offset_bottom = 98.0
+offset_left = 75.0
+offset_top = 76.0
+offset_right = 250.0
+offset_bottom = 103.0
 theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_s6iev")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ntngr")
 show_percentage = false
+
+[node name="heart1" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1607956807]
+position = Vector2(96, 44)
+scale = Vector2(3.5879097, 3.5494828)
+sprite_frames = SubResource("SpriteFrames_pkc6c")
+animation = &"idle"
+frame_progress = 0.7238356
+
+[node name="heart2" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1723120342]
+position = Vector2(157.00002, 45)
+scale = Vector2(3.5879097, 3.5494828)
+sprite_frames = SubResource("SpriteFrames_pkc6c")
+animation = &"hit"
+frame_progress = 0.44297996
+
+[node name="heart3" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=581954933]
+position = Vector2(214.00002, 45)
+scale = Vector2(3.5879097, 3.5494828)
+sprite_frames = SubResource("SpriteFrames_pkc6c")
+animation = &"idle"

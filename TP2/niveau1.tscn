@@ -776,5 +776,5 @@ scale = Vector2(0.854243, 0.788909)
 position = Vector2(209, 2226)
 
 [node name="Hud" parent="Character" unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("21_bgafa")]
-position = Vector2(-195, -2225)
+position = Vector2(-192, -2225)
 Player = NodePath("..")

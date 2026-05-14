@@ -161,7 +161,7 @@ public partial class DpmCharacterAnimator : Node2D
             return Mathf.Abs(body.Velocity.X) > 5.0f ? "crouch_walk" : "crouch";
 
         if (body.IsOnFloor())
-            return Mathf.Abs(body.Velocity.X) > 5.0f ? "walk" : "idle";
+            return Mathf.Abs(_controller.MoveAxis) > 0.1f ? "walk" : "idle";
 
         return body.Velocity.Y < 0.0f ? "jump" : "fall";
     }
