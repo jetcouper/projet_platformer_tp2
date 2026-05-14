@@ -20,6 +20,8 @@ public partial class DpmCharacterAnimator : Node2D
     [Export]
     public float ShootOffsetX = -58.0f;
 
+    private bool _wasOnFloor = true;
+
     public override void _Ready()
     {
         _controller.EnsureValid();
@@ -39,8 +41,24 @@ public partial class DpmCharacterAnimator : Node2D
 
         UpdateFacing();
         UpdateAnimation();
+
         if (_controller.DashJustBecameAvailable)
             PlayDashReadyFlash();
+
+        bool isOnFloor = _controller.Body.IsOnFloor();
+        if (isOnFloor && !_wasOnFloor)
+            PlayLandingEffect();
+        _wasOnFloor = isOnFloor;
+    }
+
+    private void PlayLandingEffect()
+    {
+        Tween tween = CreateTween();
+        tween.TweenProperty(_sprite, "modulate", new Color(2.0f, 1.0f, 1.0f, 1.0f), 0.04f);
+        tween
+            .TweenProperty(_sprite, "modulate", new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.3f)
+            .SetTrans(Tween.TransitionType.Cubic)
+            .SetEase(Tween.EaseType.Out);
     }
 
     private void PlayDashReadyFlash()
