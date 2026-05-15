@@ -9,6 +9,8 @@ public partial class Enemy : CharacterBody2D
     [Export]
     private int Vies;
 
+    private int _Direction_Faced;
+
     public void Take_Damage(Node2D body)
     {
         if (body is Projectile)
