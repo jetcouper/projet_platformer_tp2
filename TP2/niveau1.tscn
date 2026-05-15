@@ -25,7 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://cggppvvf8s0g8" path="res://TP2/scene/mushroom.tscn" id="21_26k8w"]
 [ext_resource type="PackedScene" uid="uid://ceg52350muhuk" path="res://TP2/scene/hud.tscn" id="21_bgafa"]
 [ext_resource type="PackedScene" uid="uid://b36cfsr13yut3" path="res://Gyms/AntoineGym/Niveaux/Portail.tscn" id="24_3345j"]
-[ext_resource type="PackedScene" path="res://TP2/scene/plateform.tscn" id="26_3345j"]
+[ext_resource type="PackedScene" uid="uid://2khocf7u28f6" path="res://TP2/scene/plateform.tscn" id="26_3345j"]
+[ext_resource type="PackedScene" uid="uid://ragu8kg4e4fq" path="res://TP2/scene/ghost_plateform.tscn" id="27_ny7es"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_1ph5m")
@@ -774,6 +775,7 @@ scale = Vector2(0.854243, 0.788909)
 [node name="Plateform" parent="." unique_id=1711305892 instance=ExtResource("26_3345j")]
 position = Vector2(1932, 2069)
 physics_material_override = SubResource("PhysicsMaterial_nak0m")
+duree = 2.0
 
 [node name="Portail" parent="." unique_id=1220590042 instance=ExtResource("24_3345j")]
 position = Vector2(4915, 1961)
@@ -785,3 +787,14 @@ position = Vector2(209, 2226)
 [node name="Hud" parent="Character" unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("21_bgafa")]
 position = Vector2(-192, -2225)
 Player = NodePath("..")
+
+[node name="GhostPlateform" parent="." unique_id=90819364 instance=ExtResource("27_ny7es")]
+position = Vector2(3003, 1844)
+
+[node name="GhostPlateform2" parent="." unique_id=932280952 instance=ExtResource("27_ny7es")]
+position = Vector2(3260, 1945)
+startDelay = 1.0
+
+[node name="GhostPlateform3" parent="." unique_id=159512660 instance=ExtResource("27_ny7es")]
+position = Vector2(3479, 2075)
+startDelay = 2.0
