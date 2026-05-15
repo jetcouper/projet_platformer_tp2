@@ -781,20 +781,21 @@ duree = 2.0
 position = Vector2(4915, 1961)
 NextScene = "res://Gyms/AntoineGym/Niveaux/niveau2.tscn"
 
-[node name="Character" parent="." unique_id=804579613 instance=ExtResource("19_8cu07")]
+[node name="GhostPlateform" parent="." unique_id=90819364 instance=ExtResource("27_ny7es")]
+position = Vector2(3014, 1867)
+
+[node name="GhostPlateform2" parent="." unique_id=932280952 instance=ExtResource("27_ny7es")]
+position = Vector2(3196, 1989)
+startDelay = 1.0
+
+[node name="GhostPlateform3" parent="." unique_id=159512660 instance=ExtResource("27_ny7es")]
+position = Vector2(3456, 2142)
+startDelay = 2.0
+
+[node name="Character" parent="." unique_id=804579613 node_paths=PackedStringArray("Hud") instance=ExtResource("19_8cu07")]
 position = Vector2(209, 2226)
+Hud = NodePath("Hud")
 
 [node name="Hud" parent="Character" unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("21_bgafa")]
 position = Vector2(-192, -2225)
 Player = NodePath("..")
-
-[node name="GhostPlateform" parent="." unique_id=90819364 instance=ExtResource("27_ny7es")]
-position = Vector2(3003, 1844)
-
-[node name="GhostPlateform2" parent="." unique_id=932280952 instance=ExtResource("27_ny7es")]
-position = Vector2(3260, 1945)
-startDelay = 1.0
-
-[node name="GhostPlateform3" parent="." unique_id=159512660 instance=ExtResource("27_ny7es")]
-position = Vector2(3479, 2075)
-startDelay = 2.0

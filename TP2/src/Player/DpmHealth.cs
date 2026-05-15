@@ -42,12 +42,16 @@ public partial class DpmHealth : Node2D
         _lives = value ? 0 : 1;
     }
 
+    public void SetController(DpmCharacterController controller)
+    {
+        _controller = controller;
+    }
+
     public override void _Ready()
     {
         if (!_body.IsValid() || !_sprite.IsValid() || !_invincibilityTimer.IsValid())
             return;
 
-        _controller = GetParent().GetNode<DpmCharacterController>("DpmCharacterController");
         _lives = MaxLives;
         _healthPercent = MaxHealthPercent;
 

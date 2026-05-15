@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bvcukn85rs32o"]
 
 [ext_resource type="Texture2D" uid="uid://7hldpkvvicu7" path="res://Assets/Characters/player/climb/climb.png" id="1_goqyt"]
+[ext_resource type="Script" uid="uid://cvnwljfw24b08" path="res://TP2/src/Player/Character.cs" id="1_lrl22"]
 [ext_resource type="Texture2D" uid="uid://dgc3ifrifb8b6" path="res://Assets/Characters/player/jump/roll landing.png" id="2_8trsi"]
 [ext_resource type="Texture2D" uid="uid://1yyqa8rg4axk" path="res://Assets/Characters/player/jump/jump.png" id="3_ioysa"]
 [ext_resource type="Texture2D" uid="uid://bgeu5i603jioi" path="res://Assets/Characters/player/crouching/crouching.png" id="4_sl52i"]
@@ -12,12 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://cllvmu006ddyo" path="res://Assets/Characters/player/hit/normal_hit.png" id="10_jar03"]
 [ext_resource type="Texture2D" uid="uid://dkfahhx8to5ge" path="res://Assets/Characters/player/shoot/1x atk_char.png" id="11_mhxw5"]
 [ext_resource type="Texture2D" uid="uid://desx7jf67b05l" path="res://Assets/Characters/player/walk/walk.png" id="12_i0yac"]
-[ext_resource type="Script" uid="uid://geuioj6ip3oo" path="res://TP2/src/DpmCharacterController.cs" id="13_vn7qc"]
+[ext_resource type="Script" uid="uid://geuioj6ip3oo" path="res://TP2/src/Player/DpmCharacterController.cs" id="13_vn7qc"]
 [ext_resource type="PackedScene" uid="uid://c5v8aebupri8m" path="res://TP2/scene/foot_step.tscn" id="14_ajvbq"]
-[ext_resource type="Script" uid="uid://b8sv0q57bs72v" path="res://TP2/src/DpmCharacterAnimator.cs" id="14_vn7qc"]
-[ext_resource type="Script" uid="uid://nlktuj8cgkfi" path="res://TP2/src/DcmBulletSpawnr.cs" id="15_c26tv"]
-[ext_resource type="Script" uid="uid://qjammh0hjn46" path="res://TP2/src/DpmHealth.cs" id="16_vn7qc"]
-[ext_resource type="Script" uid="uid://crnv1oas7q6gp" path="res://TP2/src/DpmExperience.cs" id="17_c26tv"]
+[ext_resource type="Script" uid="uid://b8sv0q57bs72v" path="res://TP2/src/Player/DpmCharacterAnimator.cs" id="14_vn7qc"]
+[ext_resource type="Script" uid="uid://nlktuj8cgkfi" path="res://TP2/src/Player/DcmBulletSpawnr.cs" id="15_c26tv"]
+[ext_resource type="Script" uid="uid://qjammh0hjn46" path="res://TP2/src/Player/DpmHealth.cs" id="16_vn7qc"]
+[ext_resource type="Script" uid="uid://crnv1oas7q6gp" path="res://TP2/src/Player/DpmExperience.cs" id="17_c26tv"]
 [ext_resource type="PackedScene" uid="uid://cbhpt2k6f7eeh" path="res://TP2/scene/projectile.tscn" id="17_pvjwm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cr4s"]
@@ -1207,8 +1208,13 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="Character" type="CharacterBody2D" unique_id=804579613]
+[node name="Character" type="CharacterBody2D" unique_id=804579613 node_paths=PackedStringArray("Controller", "Health", "Experience", "Animator")]
 collision_mask = 9
+script = ExtResource("1_lrl22")
+Controller = NodePath("DpmCharacterController")
+Health = NodePath("DpmHealth")
+Experience = NodePath("DpmExperience")
+Animator = NodePath("DpmCharacterAnimator")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1144174108]
 auto_translate_mode = 1
