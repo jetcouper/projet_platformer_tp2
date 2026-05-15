@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cshekx70tbchi" path="res://TP2/scene/brazier.tscn" id="20_lr0os"]
 [ext_resource type="PackedScene" uid="uid://cggppvvf8s0g8" path="res://TP2/scene/mushroom.tscn" id="21_26k8w"]
 [ext_resource type="PackedScene" uid="uid://ceg52350muhuk" path="res://TP2/scene/hud.tscn" id="21_bgafa"]
-[ext_resource type="PackedScene" uid="uid://binkb1bxlvi4x" path="res://TP2/scene/med_ladder.tscn" id="23_3345j"]
+[ext_resource type="PackedScene" uid="uid://2khocf7u28f6" path="res://TP2/scene/plateform.tscn" id="26_3345j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_1ph5m")
@@ -423,6 +423,8 @@ texture = ExtResource("9_r4h2j")
 [sub_resource type="TileSet" id="TileSet_hf5l1"]
 sources/0 = SubResource("TileSetAtlasSource_2uobi")
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nak0m"]
+
 [node name="Niveau1" type="Node2D" unique_id=1948467130]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=820423914]
@@ -768,9 +770,9 @@ position = Vector2(1705, 2085)
 position = Vector2(4605, 2295)
 scale = Vector2(0.854243, 0.788909)
 
-[node name="MedLadder" parent="." unique_id=22173457 instance=ExtResource("23_3345j")]
-
-[node name="MedLadder" parent="MedLadder" unique_id=1131583166 instance=ExtResource("23_3345j")]
+[node name="Plateform" parent="." unique_id=1711305892 instance=ExtResource("26_3345j")]
+position = Vector2(1932, 2069)
+physics_material_override = SubResource("PhysicsMaterial_nak0m")
 
 [node name="Character" parent="." unique_id=804579613 instance=ExtResource("19_8cu07")]
 position = Vector2(209, 2226)
