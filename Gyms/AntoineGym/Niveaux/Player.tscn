@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c3wvjfa3fryyl"]
 
-[ext_resource type="Script" uid="uid://du5r4xe8lsphe" path="res://Gyms/AntoineGym/Niveaux/DpmCharacterControllerAntoine.cs" id="1_4sypd"]
+[ext_resource type="Script" uid="uid://du5r4xe8lsphe" path="res://Gyms/AntoineGym/Scripts/DpmCharacterControllerAntoine.cs" id="1_4sypd"]
 [ext_resource type="Texture2D" uid="uid://dnyc7ongeik3p" path="res://Assets/Characters/player/idle/idle.png" id="2_d24rg"]
 [ext_resource type="Texture2D" uid="uid://7hldpkvvicu7" path="res://Assets/Characters/player/climb/climb.png" id="2_gvcll"]
 [ext_resource type="Texture2D" uid="uid://dgc3ifrifb8b6" path="res://Assets/Characters/player/jump/roll landing.png" id="3_0ylew"]
