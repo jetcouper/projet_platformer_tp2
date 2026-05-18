@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://dkhwmamsed73n" path="res://Gyms/CharleeGym/scenes/Chevalier.tscn" id="28_sajg3"]
 [ext_resource type="PackedScene" uid="uid://cf2su4q4jdb8y" path="res://Gyms/CharleeGym/scenes/Fache.tscn" id="29_ckoa0"]
 [ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="29_h7j2b"]
+[ext_resource type="PackedScene" uid="uid://bpm4nwjanuypm" path="res://Gyms/CharleeGym/scenes/enemy_damage_particule.tscn" id="30_e4qhx"]
 [ext_resource type="PackedScene" uid="uid://pg5lk2xqe5sl" path="res://Gyms/CharleeGym/scenes/goomba_2.tscn" id="31_h7j2b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
@@ -809,27 +810,33 @@ Player = NodePath("..")
 [node name="Chevalier1" parent="Enemies" unique_id=981682141 node_paths=PackedStringArray("Character") instance=ExtResource("28_sajg3")]
 position = Vector2(1029, 1629)
 ProjectileScene = ExtResource("29_h7j2b")
+EnemyDamageParticleScene = ExtResource("30_e4qhx")
 Character = NodePath("../../Character")
 
 [node name="Chevalier2" parent="Enemies" unique_id=802602924 node_paths=PackedStringArray("Character") instance=ExtResource("28_sajg3")]
 position = Vector2(3224, 1925)
 ProjectileScene = ExtResource("29_h7j2b")
+EnemyDamageParticleScene = ExtResource("30_e4qhx")
 Character = NodePath("../../Character")
 
 [node name="Fache1" parent="Enemies" unique_id=64174467 node_paths=PackedStringArray("Character") instance=ExtResource("29_ckoa0")]
 position = Vector2(1500, 2073)
 ProjectileScene = ExtResource("29_h7j2b")
+EnemyDamageParticleScene = ExtResource("30_e4qhx")
 Character = NodePath("../../Character")
 
 [node name="Fache2" parent="Enemies" unique_id=1407664119 node_paths=PackedStringArray("Character") instance=ExtResource("29_ckoa0")]
 position = Vector2(2157, 2058)
 ProjectileScene = ExtResource("29_h7j2b")
+EnemyDamageParticleScene = ExtResource("30_e4qhx")
 Character = NodePath("../../Character")
 
 [node name="Goomba1" parent="Enemies" unique_id=1227190931 node_paths=PackedStringArray("Character") instance=ExtResource("31_h7j2b")]
 position = Vector2(779, 2024)
+EnemyDamageParticleScene = ExtResource("30_e4qhx")
 Character = NodePath("../../Character")
 
 [node name="Goomba2" parent="Enemies" unique_id=529433782 node_paths=PackedStringArray("Character") instance=ExtResource("31_h7j2b")]
 position = Vector2(1128, 2185)
+EnemyDamageParticleScene = ExtResource("30_e4qhx")
 Character = NodePath("../../Character")
