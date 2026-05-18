@@ -45,6 +45,7 @@ public partial class DpmHealth : Node2D
         _controller = GetParent().GetNode<DpmCharacterController>("DpmCharacterController");
         _lives = MaxLives;
         _healthPercent = MaxHealthPercent;
+
         if (_invincibilityTimer != null)
         {
             _invincibilityTimer.WaitTime = InvincibilityDuration;
@@ -125,5 +126,16 @@ public partial class DpmHealth : Node2D
             _healthPercent = MaxHealthPercent;
 
         UpdateBar();
+    }
+
+    private void OnEnemyContact(Node2D body)
+    {
+        if (body == _body || body is not CharacterBody2D)
+            return;
+
+        if (_controller?.IsDashing == true)
+            return;
+
+        TakeDamage(1);
     }
 }

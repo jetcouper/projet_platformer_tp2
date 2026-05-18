@@ -131,6 +131,14 @@ public partial class DpmCharacterController : Node2D
         _standingHitbox.EnsureValid();
         _crouchingHitbox.EnsureValid();
 
+        if (_standingHitbox.IsValid())
+            _standingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
+
+        if (_crouchingHitbox.IsValid())
+            _crouchingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+
+        IsCrouching = false;
+
         EnsureInputActions();
         _gravityForce = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
     }

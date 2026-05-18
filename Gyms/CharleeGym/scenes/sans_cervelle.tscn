@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bfdx1e7g0j46x" path="res://Gyms/CharleeGym/scripts/Goomba.cs" id="1_l0lpc"]
 [ext_resource type="Texture2D" uid="uid://cywup7ut1wg3x" path="res://Assets/Enemies/Opossum/spritesheet.png" id="1_p6whb"]
 [ext_resource type="Shader" uid="uid://blgw1vc4cga8u" path="res://Gyms/CharleeGym/scripts/Helpers/EnemyDamageShader.gdshader" id="2_ervlq"]
-[ext_resource type="Script" uid="uid://dwes68dnbdax7" path="res://Gyms/CharleeGym/scripts/Helpers/WalkTowardsPlayer.cs" id="4_ervlq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ervlq"]
 shader = ExtResource("2_ervlq")
@@ -68,11 +67,10 @@ height = 36.0
 radius = 14.0
 height = 42.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=271642449 node_paths=PackedStringArray("WalkTowardsPlayer", "Sprite")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=271642449 node_paths=PackedStringArray("Sprite")]
 script = ExtResource("1_l0lpc")
 Speed = 50.0
 Scale_Anim = 2.0
-WalkTowardsPlayer = NodePath("WalkTowardsPlayer")
 Sprite = NodePath("AnimatedSprite2D")
 Vies = 5
 
@@ -91,16 +89,12 @@ rect = Rect2(-17, -13, 27, 26)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1142916480]
 collision_layer = 16
-collision_mask = 8
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=721828841]
 position = Vector2(0, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_l0lpc")
 
-[node name="WalkTowardsPlayer" type="Node2D" parent="." unique_id=1029839634 node_paths=PackedStringArray("OwnerNode")]
-script = ExtResource("4_ervlq")
-OwnerNode = NodePath("..")
-
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_Begin_walk"]
-[connection signal="body_entered" from="Area2D" to="." method="Take_Damage"]
+[connection signal="body_entered" from="Area2D" to="." method="OnAreaBodyEntered"]

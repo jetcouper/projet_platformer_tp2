@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using Godot;
 
-public partial class Chevalier : Enemy
+public partial class Chevalier : RangedEnemy
 {
 	[ExportGroup("Attack")]
 	[Export]
@@ -15,15 +15,8 @@ public partial class Chevalier : Enemy
 	public Timer Timer;
 
 	[Export]
-	public CharacterBody2D Character;
-
-	[Export]
 	public Shield Shield;
-
-	[Export]
-	public PackedScene ProjectileScene;
 	private float NextShot;
-	private int _Direction_Faced;
 
 	private float _Gravity_Force = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 
@@ -37,22 +30,6 @@ public partial class Chevalier : Enemy
 
 		Timer.Timeout += Attack;
 		RestartTimer();
-	}
-
-	public override void _PhysicsProcess(double delta)
-	{
-		float _DirectionX = Mathf.Sign(Character.GlobalPosition.X - GlobalPosition.X);
-		int _Direction_Temp = _DirectionX < 0 ? 1 : -1;
-		if (_Direction_Temp != _Direction_Faced)
-		{
-			Sprite.FlipH = _Direction_Temp < 0;
-			_Direction_Faced = _Direction_Temp;
-		}
-
-		Velocity = new Vector2(0, Velocity.Y + _Gravity_Force);
-
-		MoveAndSlide();
-		GlobalPosition = GlobalPosition.Round();
 	}
 
 	public void RandomNextShot()
@@ -71,7 +48,7 @@ public partial class Chevalier : Enemy
 		Timer.Start();
 	}
 
-	public new void Take_Damage(Node2D body)
+	public override void Take_Damage(Node2D body)
 	{
 		if (Shield?.IsActive == true)
 		{
@@ -94,14 +71,5 @@ public partial class Chevalier : Enemy
 		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
 
 		RestartTimer();
-	}
-
-	public void Shoot()
-	{
-		ProjectileArc projectile = ProjectileScene.Instantiate<ProjectileArc>();
-		GetParent().AddChild(projectile);
-		projectile.Launcher = this;
-		projectile.GlobalPosition = GlobalPosition + new Vector2(-_Direction_Faced * 20, -10);
-		projectile.LinearVelocity = new Vector2(-_Direction_Faced * 200, -300);
 	}
 }

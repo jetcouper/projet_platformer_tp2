@@ -1195,11 +1195,11 @@ height = 61.74007
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vckfi"]
 radius = 19.21
-height = 62.2
+height = 56.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjt0s"]
-radius = 24.5
-height = 52.25
+radius = 19.0
+height = 42.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3qvrq"]
 bg_color = Color(0.1254902, 0.69411767, 0.13333334, 1)
@@ -1227,17 +1227,18 @@ frame_progress = 0.20918483
 [node name="Collisions" type="Area2D" parent="." unique_id=727593718]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions" unique_id=259062818]
+position = Vector2(0, -2.861023e-06)
 scale = Vector2(2.039268, 0.9070285)
 shape = SubResource("CapsuleShape2D_rk642")
 
 [node name="StandingCollision" type="CollisionShape2D" parent="." unique_id=2049849905]
 light_mask = 2
-position = Vector2(-8, -4)
 shape = SubResource("CapsuleShape2D_vckfi")
 
 [node name="CrouchingCollision" type="CollisionShape2D" parent="." unique_id=982420263]
-position = Vector2(-7, 1)
+position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_pjt0s")
+disabled = true
 
 [node name="DpmCharacterController" type="Node2D" parent="." unique_id=581987753 node_paths=PackedStringArray("_body", "_standingHitbox", "_crouchingHitbox", "Health", "Experience")]
 script = ExtResource("13_vn7qc")

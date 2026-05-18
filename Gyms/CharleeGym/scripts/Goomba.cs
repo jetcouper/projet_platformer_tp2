@@ -4,10 +4,6 @@ using Godot;
 
 public partial class Goomba : Enemy
 {
-	[ExportGroup("External")]
-	[Export]
-	public CharacterBody2D Character;
-
 	[ExportGroup("Internal")]
 	[Export]
 	private float Speed;
@@ -15,19 +11,29 @@ public partial class Goomba : Enemy
 	[Export]
 	private float Scale_Anim;
 
-	[Export]
-	private WalkTowardsPlayer WalkTowardsPlayer;
-
 	private int _Direction_Faced = 1;
+
+	private bool Is_Active = false;
 
 	public override void _PhysicsProcess(double delta)
 	{
-		WalkTowardsPlayer.Walk_Towards_Player(Character, Sprite, Speed);
+		if (!Is_Active)
+			return;
+
+		UpdateFacing();
+		ApplyGravity(delta);
+
+		float directionX = Mathf.Sign(Character.GlobalPosition.X - GlobalPosition.X);
+		Vector2 velocity = Velocity;
+		velocity.X = directionX * Speed;
+		Velocity = velocity;
+
+		MoveAndSlide();
 	}
 
 	public void _Begin_walk()
 	{
-		WalkTowardsPlayer.Is_Active = true;
+		Is_Active = true;
 		Sprite.Play("inactive");
 	}
 }

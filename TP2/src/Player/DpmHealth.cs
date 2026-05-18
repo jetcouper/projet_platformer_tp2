@@ -57,9 +57,6 @@ public partial class DpmHealth : Node2D
 
         _invincibilityTimer.WaitTime = InvincibilityDuration;
         _invincibilityTimer.Timeout += OnInvincibilityTimeout;
-
-        var area = GetParent().GetNode<Area2D>("Collisions");
-        area.BodyEntered += OnEnemyContact;
         UpdateBar();
     }
 

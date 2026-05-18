@@ -11,39 +11,33 @@ shader = ExtResource("2_qcyf6")
 shader_parameter/flash_strength = 0.0
 shader_parameter/death_strength = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tj655"]
-atlas = ExtResource("1_pwioj")
-region = Rect2(0, 0, 24, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_serg1"]
-atlas = ExtResource("1_pwioj")
-region = Rect2(24, 0, 24, 30)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcyf6"]
 atlas = ExtResource("1_pwioj")
-region = Rect2(48, 0, 24, 30)
+region = Rect2(144, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7320r"]
 atlas = ExtResource("1_pwioj")
-region = Rect2(72, 0, 24, 30)
+region = Rect2(168, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0i40c"]
 atlas = ExtResource("1_pwioj")
-region = Rect2(96, 0, 24, 30)
+region = Rect2(192, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k4gk3"]
 atlas = ExtResource("1_pwioj")
-region = Rect2(120, 0, 24, 30)
+region = Rect2(216, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tb7ud"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(240, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qc4d4"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(264, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3calb"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tj655")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_serg1")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qcyf6")
 }, {
@@ -55,15 +49,20 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k4gk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tb7ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qc4d4")
 }],
 "loop": true,
 "name": &"inactive",
-"speed": 4.0
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pwioj"]
-radius = 10.5
-height = 24.0
+height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tj655"]
 radius = 11.0
@@ -77,27 +76,27 @@ Vies = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=171932478]
 material = SubResource("ShaderMaterial_7320r")
+position = Vector2(0, -1.5)
 sprite_frames = SubResource("SpriteFrames_3calb")
 animation = &"inactive"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1262313623]
-position = Vector2(0, 2)
+position = Vector2(0, 0.5)
 shape = SubResource("CapsuleShape2D_pwioj")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=316913310]
 collision_layer = 16
-collision_mask = 8
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=115670923]
-position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_tj655")
 
 [node name="Shield" parent="." unique_id=1943420650 instance=ExtResource("2_tj655")]
-position = Vector2(-1, -1)
+position = Vector2(-0.50000006, -2.5)
 scale = Vector2(0.8189686, 1.1462759)
 
 [node name="Ingredient" type="AnimatableBody2D" parent="." unique_id=1560275313 node_paths=PackedStringArray("Oeuf")]
 script = ExtResource("4_ingredient")
 Oeuf = NodePath("..")
 
-[connection signal="body_entered" from="Area2D" to="." method="Take_Damage"]
+[connection signal="body_entered" from="Area2D" to="." method="OnAreaBodyEntered"]

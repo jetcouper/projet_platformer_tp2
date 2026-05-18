@@ -157,7 +157,7 @@ shape = SubResource("CapsuleShape2D_ilh6y")
 [node name="Area2D" type="Area2D" parent="." unique_id=1810314149]
 position = Vector2(1, 4)
 collision_layer = 16
-collision_mask = 8
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=408934086]
 shape = SubResource("CapsuleShape2D_s7y4q")
@@ -166,4 +166,4 @@ shape = SubResource("CapsuleShape2D_s7y4q")
 
 [node name="Shield" parent="." unique_id=1943420650 instance=ExtResource("5_v1cvb")]
 
-[connection signal="body_entered" from="Area2D" to="." method="Take_Damage"]
+[connection signal="body_entered" from="Area2D" to="." method="OnAreaBodyEntered"]
