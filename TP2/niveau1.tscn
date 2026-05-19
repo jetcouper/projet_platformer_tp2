@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="29_h7j2b"]
 [ext_resource type="PackedScene" uid="uid://bpm4nwjanuypm" path="res://Gyms/CharleeGym/scenes/enemy_damage_particule.tscn" id="30_e4qhx"]
 [ext_resource type="PackedScene" uid="uid://pg5lk2xqe5sl" path="res://Gyms/CharleeGym/scenes/goomba_2.tscn" id="31_h7j2b"]
+[ext_resource type="PackedScene" uid="uid://cy18ys2tduvyy" path="res://TP2/scene/panel.tscn" id="33_5nqte"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_1ph5m")
@@ -435,8 +436,10 @@ sources/0 = SubResource("TileSetAtlasSource_2uobi")
 [node name="Niveau1" type="Node2D" unique_id=1948467130]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=820423914]
-offset_right = 5000.0
-offset_bottom = 2500.0
+offset_left = -9.0
+offset_top = -8.0
+offset_right = 4991.0
+offset_bottom = 2492.0
 color = Color(0.16078432, 0.6784314, 1, 1)
 
 [node name="DCM_WindSystem" type="Node2D" parent="." unique_id=713434064]
@@ -778,8 +781,9 @@ position = Vector2(4605, 2295)
 scale = Vector2(0.854243, 0.788909)
 
 [node name="Plateform" parent="." unique_id=1711305892 instance=ExtResource("26_3345j")]
-position = Vector2(1932, 2069)
+position = Vector2(1936, 2026)
 physics_material_override = SubResource("PhysicsMaterial_nak0m")
+distance = 180.0
 duree = 2.0
 
 [node name="Portail" parent="." unique_id=1220590042 instance=ExtResource("24_3345j")]
@@ -797,8 +801,20 @@ startDelay = 1.0
 position = Vector2(3456, 2142)
 startDelay = 2.0
 
+[node name="Panel" parent="." unique_id=1775237698 instance=ExtResource("33_5nqte")]
+position = Vector2(654, 2082.0002)
+scale = Vector2(0.76499957, 0.74999994)
+
+[node name="Panel2" parent="." unique_id=1773533678 instance=ExtResource("33_5nqte")]
+position = Vector2(2417, 2051.0002)
+scale = Vector2(0.76499957, 0.74999994)
+
+[node name="Panel3" parent="." unique_id=1086715474 instance=ExtResource("33_5nqte")]
+position = Vector2(3999.9998, 2066.0002)
+scale = Vector2(0.76499957, 0.74999994)
+
 [node name="Character" parent="." unique_id=804579613 node_paths=PackedStringArray("Hud") instance=ExtResource("19_8cu07")]
-position = Vector2(209, 2226)
+position = Vector2(210, 2203)
 Hud = NodePath("Hud")
 
 [node name="Hud" parent="Character" unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("21_bgafa")]
