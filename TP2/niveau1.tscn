@@ -800,7 +800,7 @@ position = Vector2(3456, 2142)
 startDelay = 2.0
 
 [node name="Character" parent="." unique_id=804579613 node_paths=PackedStringArray("Hud") instance=ExtResource("19_8cu07")]
-position = Vector2(209, 2226)
+position = Vector2(234, 2234)
 Hud = NodePath("Hud")
 
 [node name="Hud" parent="Character" unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("21_bgafa")]
@@ -815,7 +815,7 @@ ProjectileScene = ExtResource("29_h7j2b")
 Character = NodePath("../../Character")
 
 [node name="Chevalier2" parent="Enemies" unique_id=802602924 node_paths=PackedStringArray("Character") instance=ExtResource("28_sajg3")]
-position = Vector2(3236, 1944)
+position = Vector2(2893, 2293)
 ProjectileScene = ExtResource("29_h7j2b")
 Character = NodePath("../../Character")
 
@@ -824,7 +824,7 @@ position = Vector2(1501, 2093)
 Character = NodePath("../../Character")
 
 [node name="Fache2" parent="Enemies" unique_id=1407664119 node_paths=PackedStringArray("Character") instance=ExtResource("29_ckoa0")]
-position = Vector2(2157, 2061)
+position = Vector2(2157, 2062)
 Character = NodePath("../../Character")
 
 [node name="Goomba1" parent="Enemies" unique_id=1227190931 node_paths=PackedStringArray("Character") instance=ExtResource("31_h7j2b")]
@@ -860,7 +860,7 @@ position = Vector2(3639, 2307)
 Character = NodePath("../../Character")
 
 [node name="SansCervelle2" parent="Enemies" unique_id=963473738 node_paths=PackedStringArray("Character") instance=ExtResource("34_yn4qh")]
-position = Vector2(3186, 1958)
+position = Vector2(2606, 1975)
 Character = NodePath("../../Character")
 
 [node name="SansCervelle3" parent="Enemies" unique_id=1251026772 node_paths=PackedStringArray("Character") instance=ExtResource("34_yn4qh")]
