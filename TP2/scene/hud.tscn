@@ -136,10 +136,10 @@ frame_progress = 0.7238356
 
 [node name="heart2" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1723120342]
 position = Vector2(157.00002, 45)
+rotation = -0.00024108388
 scale = Vector2(3.5879097, 3.5494828)
 sprite_frames = SubResource("SpriteFrames_pkc6c")
-animation = &"hit"
-frame_progress = 0.44297996
+animation = &"idle"
 
 [node name="heart3" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=581954933]
 position = Vector2(214.00002, 45)

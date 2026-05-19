@@ -15,6 +15,9 @@ public partial class DpmHealth : Node2D
     private ProgressBar _healthBar;
 
     [Export]
+    private PackedScene _explosionParticlesScene;
+
+    [Export]
     public int MaxLives = 3;
 
     [Export]
@@ -57,6 +60,7 @@ public partial class DpmHealth : Node2D
 
         _invincibilityTimer.WaitTime = InvincibilityDuration;
         _invincibilityTimer.Timeout += OnInvincibilityTimeout;
+
         UpdateBar();
     }
 
@@ -71,6 +75,9 @@ public partial class DpmHealth : Node2D
         if (_healthPercent <= 0.0f)
         {
             _lives--;
+
+            CreateExplosion(_body.GlobalPosition);
+
             _healthObserver?.OnLivesChanged(_lives);
 
             if (_lives > 0)
@@ -130,6 +137,25 @@ public partial class DpmHealth : Node2D
             _healthPercent = MaxHealthPercent;
 
         UpdateBar();
+    }
+
+    private void CreateExplosion(Vector2 position)
+    {
+        if (!_explosionParticlesScene.IsValid())
+            return;
+
+        CpuParticles2D particles = _explosionParticlesScene.Instantiate<CpuParticles2D>();
+
+        GetParent()?.AddChild(particles);
+
+        particles.GlobalPosition = position;
+
+        particles.Restart();
+        particles.Emitting = true;
+
+        double duration = particles.Lifetime / Mathf.Max(particles.SpeedScale, 0.001f) + 0.1f;
+
+        GetTree().CreateTimer(duration).Timeout += particles.QueueFree;
     }
 
     private void OnEnemyContact(Node2D body)

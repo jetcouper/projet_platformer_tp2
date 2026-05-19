@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://qjammh0hjn46" path="res://TP2/src/Player/DpmHealth.cs" id="16_vn7qc"]
 [ext_resource type="Script" uid="uid://crnv1oas7q6gp" path="res://TP2/src/Player/DpmExperience.cs" id="17_c26tv"]
 [ext_resource type="PackedScene" uid="uid://cbhpt2k6f7eeh" path="res://TP2/scene/projectile.tscn" id="17_pvjwm"]
+[ext_resource type="PackedScene" uid="uid://b0ti01tvwe1ao" path="res://TP2/scene/player_damage_particule.tscn" id="20_h3sl8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cr4s"]
 atlas = ExtResource("1_goqyt")
@@ -1267,10 +1268,13 @@ Player = NodePath("..")
 Sprite = NodePath("../AnimatedSprite2D")
 
 [node name="DpmHealth" type="Node2D" parent="." unique_id=421729039 node_paths=PackedStringArray("_body", "_sprite", "_healthBar", "_invincibilityTimer")]
+rotation = -0.002540737
 script = ExtResource("16_vn7qc")
 _body = NodePath("..")
 _sprite = NodePath("../AnimatedSprite2D")
 _healthBar = NodePath("HealthBar")
+_explosionParticlesScene = ExtResource("20_h3sl8")
+DamagePercent = 50.0
 InvincibilityDuration = 3.0
 _invincibilityTimer = NodePath("Timer")
 
