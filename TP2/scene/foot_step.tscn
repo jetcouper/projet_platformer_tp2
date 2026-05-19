@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c5v8aebupri8m"]
 
 [ext_resource type="Texture2D" uid="uid://b76om2f5nga2j" path="res://Assets/Characters/player/foot_step/foot_step.png" id="1_b2uaa"]
-[ext_resource type="Script" uid="uid://bt0bw3pvm4e5j" path="res://TP2/src/FootStep.cs" id="2_opxoe"]
+[ext_resource type="Script" uid="uid://bt0bw3pvm4e5j" path="res://TP2/src/Player/FootStep.cs" id="2_opxoe"]
 
 [sub_resource type="Curve" id="Curve_nhdfd"]
 _data = [Vector2(0.015037596, 0.88221085), 0.0, 0.0, 0, 0, Vector2(0.9874686, 0.14013892), 0.0, 0.0, 0, 0]

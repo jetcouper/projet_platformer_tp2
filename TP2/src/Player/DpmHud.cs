@@ -52,6 +52,18 @@ public partial class DpmHud : Node, IXpObserver, IHealthObserver
         }
     }
 
+    public void Init(DpmExperience experience)
+    {
+        _experience = experience;
+
+        if (_experience != null)
+        {
+            _experience.SetObserver(this);
+            XpBar.EnsureValid().Value = _experience.Xp;
+            XpBar.EnsureValid().MaxValue = _experience.MaxXp;
+        }
+    }
+
     public void OnXpChanged(float currentXp, float maxXp)
     {
         if (!XpBar.IsValid())

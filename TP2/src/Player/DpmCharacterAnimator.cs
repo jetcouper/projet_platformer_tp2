@@ -51,6 +51,11 @@ public partial class DpmCharacterAnimator : Node2D
         _wasOnFloor = isOnFloor;
     }
 
+    public void SetController(DpmCharacterController controller)
+    {
+        _controller = controller;
+    }
+
     private void PlayLandingEffect()
     {
         Tween tween = CreateTween();

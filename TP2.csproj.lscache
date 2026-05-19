@@ -55,9 +55,10 @@ TemporaryDependencyNodeTargetIdentifier=net8.0
 .godot/mono/temp/obj/Debug/
  .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
  TP2.AssemblyInfo.cs
-Gyms/AntoineGym/
- Niveaux/DpmCharacterControllerAntoine.cs
- Scripts/DPM_controlleur_personnage.cs
+Gyms/AntoineGym/Scripts/
+ DpmCharacterControllerAntoine.cs
+ DPM_controlleur_personnage.cs
+ Portail.cs
 Gyms/CharleeGym/scripts/
  Chevalier.cs
  Enemy.cs

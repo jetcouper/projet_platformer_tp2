@@ -192,11 +192,11 @@ shape = SubResource("CapsuleShape2D_yh4mo")
 [node name="Area2D" type="Area2D" parent="." unique_id=623282917]
 position = Vector2(3, 4)
 collision_layer = 16
-collision_mask = 8
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1966163831]
 shape = SubResource("CapsuleShape2D_cnjnx")
 
 [node name="Timer" type="Timer" parent="." unique_id=416165500]
 
-[connection signal="body_entered" from="Area2D" to="." method="Take_Damage"]
+[connection signal="body_entered" from="Area2D" to="." method="OnAreaBodyEntered"]
