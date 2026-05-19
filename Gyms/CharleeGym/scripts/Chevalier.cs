@@ -4,72 +4,70 @@ using Godot;
 
 public partial class Chevalier : RangedEnemy
 {
-	[ExportGroup("Attack")]
-	[Export]
-	public float MaxWait;
+    [ExportGroup("Attack")]
+    [Export]
+    public float MaxWait;
 
-	[Export]
-	public float MinWait;
+    [Export]
+    public float MinWait;
 
-	[Export]
-	public Timer Timer;
+    [Export]
+    public Timer Timer;
 
-	[Export]
-	public Shield Shield;
-	private float NextShot;
+    [Export]
+    public Shield Shield;
+    private float NextShot;
 
-	private float _Gravity_Force = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
+    private float _Gravity_Force = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 
-	public override void _Ready()
-	{
-		if (Shield != null)
-		{
-			AddCollisionExceptionWith(Shield);
-			Shield.AddCollisionExceptionWith(this);
-		}
+    public override void _Ready()
+    {
+        base._Ready();
+        if (Shield != null)
+            Shield.AddShieldCollisionException(this);
 
-		Timer.Timeout += Attack;
-		RestartTimer();
-	}
+        Timer.Timeout += Attack;
+        RestartTimer();
+    }
 
-	public void RandomNextShot()
-	{
-		Random rand = new Random();
+    public void RandomNextShot()
+    {
+        Random rand = new Random();
 
-		NextShot = (float)(MinWait + rand.NextDouble() * (MaxWait - MinWait));
-	}
+        NextShot = (float)(MinWait + rand.NextDouble() * (MaxWait - MinWait));
+    }
 
-	public void RestartTimer()
-	{
-		Shield.SetActive(true);
-		Sprite.Play("idle");
-		RandomNextShot();
-		Timer.WaitTime = NextShot;
-		Timer.Start();
-	}
+    public void RestartTimer()
+    {
+        Shield.SetActive(true);
+        Sprite.Play("idle");
+        RandomNextShot();
+        Timer.WaitTime = NextShot;
+        Timer.Start();
+    }
 
-	public override void Take_Damage(Node2D body)
-	{
-		if (Shield?.IsActive == true)
-		{
-			return;
-		}
+    public override void Take_Damage(Node2D body)
+    {
+        if (Shield?.IsActive == true)
+        {
+            return;
+        }
 
-		base.Take_Damage(body);
-	}
+        base.Take_Damage(body);
+    }
 
-	public async void Attack()
-	{
-		Shield.SetActive(false);
+    public async void Attack()
+    {
+        Shield.SetActive(false);
 
-		Sprite.Play("attack");
+        Sprite.Play("attack");
 
-		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+        await ToSignal(GetTree().CreateTimer(0.5), "timeout");
 
-		Shoot();
+        Shoot();
 
-		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+        await ToSignal(GetTree().CreateTimer(0.5), "timeout");
 
-		RestartTimer();
-	}
+        RestartTimer();
+    }
 }

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dak53yigpknl0"]
+
+[ext_resource type="Texture2D" uid="uid://dagckd5i6m8tg" path="res://Assets/Particule/brackeys_vfx_bundle/particles/alpha/spotlight_08_a.png" id="1_kjm2n"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b0032"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(50, 10, 1)
+emission_shape = 2
+emission_sphere_radius = 1.0
+spread = 180.0
+initial_velocity_min = 33.149998
+initial_velocity_max = 135.3
+gravity = Vector3(0, 5, 0)
+scale_min = 0.02
+scale_max = 0.1
+
+[node name="GPUParticles2D2" type="GPUParticles2D" unique_id=359845743]
+modulate = Color(1, 0.5294118, 1, 0.3529412)
+position = Vector2(0, -13)
+amount = 10
+texture = ExtResource("1_kjm2n")
+lifetime = 0.5
+explosiveness = 0.5
+randomness = 0.5
+collision_base_size = 0.5
+process_material = SubResource("ParticleProcessMaterial_b0032")
