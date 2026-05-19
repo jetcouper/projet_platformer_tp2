@@ -3,44 +3,42 @@ using Godot;
 
 public partial class Oeuf : Enemy
 {
-	[Export]
-	public Shield Shield;
+    [Export]
+    public Shield Shield;
 
-	[Export]
-	public bool IngredientState = true;
+    [Export]
+    public bool IngredientState = true;
 
-	private int _Direction_Faced;
+    private int _Direction_Faced;
 
-	public override void _Ready()
-	{
-		if (Shield != null)
-		{
-			AddCollisionExceptionWith(Shield);
-			Shield.AddCollisionExceptionWith(this);
-		}
+    public override void _Ready()
+    {
+        base._Ready();
+        if (Shield != null)
+            Shield.AddShieldCollisionException(this);
 
-		Sprite.Play("inactive");
-		ApplyIngredientState();
-	}
+        Sprite.Play("inactive");
+        ApplyIngredientState();
+    }
 
-	public void SetIngredientState(bool state)
-	{
-		IngredientState = state;
-		ApplyIngredientState();
-	}
+    public void SetIngredientState(bool state)
+    {
+        IngredientState = state;
+        ApplyIngredientState();
+    }
 
-	public override void Take_Damage(Node2D body)
-	{
-		if (Shield?.IsActive == true)
-		{
-			return;
-		}
+    public override void Take_Damage(Node2D body)
+    {
+        if (Shield?.IsActive == true)
+        {
+            return;
+        }
 
-		base.Take_Damage(body);
-	}
+        base.Take_Damage(body);
+    }
 
-	private void ApplyIngredientState()
-	{
-		Shield?.SetActive(IngredientState);
-	}
+    private void ApplyIngredientState()
+    {
+        Shield?.SetActive(IngredientState);
+    }
 }

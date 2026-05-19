@@ -3,88 +3,89 @@ using Godot;
 
 public partial class Fache : RangedEnemy
 {
-	[Export]
-	public float JumpChance = 0.3f;
+    [Export]
+    public float JumpChance = 0.3f;
 
-	[Export]
-	public float JumpVelocity = -250.0f;
+    [Export]
+    public float JumpVelocity = -250.0f;
 
-	[ExportGroup("Attack")]
-	[Export]
-	public float MaxWait = 10.0f;
+    [ExportGroup("Attack")]
+    [Export]
+    public float MaxWait = 10.0f;
 
-	[Export]
-	public float MinWait = 1.0f;
+    [Export]
+    public float MinWait = 1.0f;
 
-	[Export]
-	public Timer Timer;
+    [Export]
+    public Timer Timer;
 
-	private float NextShot;
+    private float NextShot;
 
-	private float _Gravity_Force = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
+    private float _Gravity_Force = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 
-	public override void _Ready()
-	{
-		Timer.Timeout += DecideNextAction;
-		RestartTimer();
-	}
+    public override void _Ready()
+    {
+        base._Ready();
+        Timer.Timeout += DecideNextAction;
+        RestartTimer();
+    }
 
-	public void RandomNextShot()
-	{
-		Random rand = new Random();
+    public void RandomNextShot()
+    {
+        Random rand = new Random();
 
-		NextShot = (float)(MinWait + rand.NextDouble() * (MaxWait - MinWait));
-	}
+        NextShot = (float)(MinWait + rand.NextDouble() * (MaxWait - MinWait));
+    }
 
-	public void RestartTimer()
-	{
-		Sprite.Play("idle");
-		RandomNextShot();
+    public void RestartTimer()
+    {
+        Sprite.Play("idle");
+        RandomNextShot();
 
-		Timer.WaitTime = NextShot;
-		Timer.Start();
-	}
+        Timer.WaitTime = NextShot;
+        Timer.Start();
+    }
 
-	public void DecideNextAction()
-	{
-		if (GD.Randf() < JumpChance)
-		{
-			Jump();
-			return;
-		}
+    public void DecideNextAction()
+    {
+        if (GD.Randf() < JumpChance)
+        {
+            Jump();
+            return;
+        }
 
-		Attack();
-	}
+        Attack();
+    }
 
-	public async void Attack()
-	{
-		Sprite.Play("attack");
+    public async void Attack()
+    {
+        Sprite.Play("attack");
 
-		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+        await ToSignal(GetTree().CreateTimer(0.5), "timeout");
 
-		Shoot();
+        Shoot();
 
-		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+        await ToSignal(GetTree().CreateTimer(0.5), "timeout");
 
-		RestartTimer();
-	}
+        RestartTimer();
+    }
 
-	public async void Jump()
-	{
-		if (!IsOnFloor())
-			return;
+    public async void Jump()
+    {
+        if (!IsOnFloor())
+            return;
 
-		Vector2 velocity = Velocity;
-		velocity.Y = JumpVelocity;
-		Velocity = velocity;
+        Vector2 velocity = Velocity;
+        velocity.Y = JumpVelocity;
+        Velocity = velocity;
 
-		Sprite.Play("jump");
+        Sprite.Play("jump");
 
-		while (!IsOnFloor() || Velocity.Y < 0)
-		{
-			await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
-		}
+        while (!IsOnFloor() || Velocity.Y < 0)
+        {
+            await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
+        }
 
-		RestartTimer();
-	}
+        RestartTimer();
+    }
 }

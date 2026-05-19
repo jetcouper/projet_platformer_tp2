@@ -13,11 +13,22 @@ public partial class Enemy : CharacterBody2D
     private PackedScene EnemyDamageParticleScene;
 
     [Export]
+    private PackedScene EnemyDeathParticleScene;
+
+    [Export]
     public CharacterBody2D Character;
 
     public int Direction_Faced;
 
     public float Gravity_Force = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
+
+    public override void _Ready()
+    {
+        if (Sprite.Material is ShaderMaterial shaderMat)
+        {
+            Sprite.Material = (Material)shaderMat.Duplicate();
+        }
+    }
 
     protected void UpdateFacing()
     {
@@ -53,12 +64,17 @@ public partial class Enemy : CharacterBody2D
     public virtual void Take_Damage(Node2D body)
     {
         Vies -= 1;
-        SpawnDamageParticles(body.GlobalPosition);
         Flash_Red();
+        Vector2 particlePosition = GetParticleSpawnPosition();
 
         if (Vies <= 0)
         {
             Be_Destroyed();
+            SpawnParticles(particlePosition, EnemyDeathParticleScene);
+        }
+        else
+        {
+            SpawnParticles(particlePosition, EnemyDamageParticleScene);
         }
     }
 
@@ -148,5 +164,34 @@ public partial class Enemy : CharacterBody2D
         tween.TweenInterval(0.3f);
 
         tween.Finished += QueueFree;
+    }
+
+    private Vector2 GetParticleSpawnPosition()
+    {
+        if (Sprite != null)
+            return Sprite.GlobalPosition;
+
+        return GlobalPosition;
+    }
+
+    private void SpawnParticles(Vector2 position, PackedScene particleScene)
+    {
+        if (particleScene == null)
+            return;
+
+        GD.Print("Spawning particles at " + position);
+
+        GpuParticles2D particles = particleScene.Instantiate<GpuParticles2D>();
+
+        GetParent()?.AddChild(particles);
+
+        particles.GlobalPosition = position;
+
+        particles.Restart();
+        particles.Emitting = true;
+
+        double duration = particles.Lifetime / Mathf.Max(particles.SpeedScale, 0.001f) + 0.1f;
+
+        GetTree().CreateTimer(duration).Timeout += particles.QueueFree;
     }
 }

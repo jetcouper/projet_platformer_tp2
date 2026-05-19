@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://0sen58c5o3tg" path="res://Gyms/CharleeGym/scripts/Fache.cs" id="1_4s2y7"]
 [ext_resource type="Shader" uid="uid://blgw1vc4cga8u" path="res://Gyms/CharleeGym/scripts/Helpers/EnemyDamageShader.gdshader" id="1_cnjnx"]
 [ext_resource type="Texture2D" uid="uid://xlw4adth84jp" path="res://Assets/Enemies/pig/03-Pig/Attack (34x28).png" id="2_cnjnx"]
+[ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="2_nx5yp"]
 [ext_resource type="Texture2D" uid="uid://diw0uo6xnnj3a" path="res://Assets/Enemies/pig/03-Pig/Idle (34x28).png" id="2_yh4mo"]
 [ext_resource type="Texture2D" uid="uid://cuhh7ufkh4e1q" path="res://Assets/Enemies/pig/03-Pig/Fall (34x28).png" id="3_cnjnx"]
+[ext_resource type="PackedScene" uid="uid://bpm4nwjanuypm" path="res://Gyms/CharleeGym/scenes/enemy_damage_particule.tscn" id="3_ng1kx"]
+[ext_resource type="PackedScene" uid="uid://ibbfp2rvne1v" path="res://Gyms/CharleeGym/scenes/enemy_death_particule.tscn" id="4_fcnr3"]
 [ext_resource type="Texture2D" uid="uid://djxida05vlsld" path="res://Assets/Enemies/pig/03-Pig/Ground (34x28).png" id="4_kt7m2"]
 [ext_resource type="Texture2D" uid="uid://d17qtbv783i4x" path="res://Assets/Enemies/pig/03-Pig/Jump (34x28).png" id="5_1d16s"]
 
@@ -175,8 +178,11 @@ height = 28.0
 scale = Vector2(2, 2)
 script = ExtResource("1_4s2y7")
 Timer = NodePath("Timer")
+ProjectileScene = ExtResource("2_nx5yp")
 Sprite = NodePath("AnimatedSprite2D")
 Vies = 5
+EnemyDamageParticleScene = ExtResource("3_ng1kx")
+EnemyDeathParticleScene = ExtResource("4_fcnr3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2146696974]
 material = SubResource("ShaderMaterial_cnjnx")

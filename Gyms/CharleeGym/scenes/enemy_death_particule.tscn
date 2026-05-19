@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ibbfp2rvne1v"]
+
+[ext_resource type="Texture2D" uid="uid://be5kihnbpidsn" path="res://Assets/Particule/brackeys_vfx_bundle/particles/alpha/dirt_02_a.png" id="1_gftcy"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f4bp4"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 1.0
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 45, 0)
+scale_min = 0.05
+scale_max = 0.125
+
+[node name="GPUParticles2D" type="GPUParticles2D" unique_id=1940634374]
+modulate = Color(0, 0, 0, 0.5411765)
+emitting = false
+amount = 25
+texture = ExtResource("1_gftcy")
+lifetime = 0.6
+one_shot = true
+randomness = 0.33
+visibility_rect = Rect2(-50, -50, 100, 100)
+process_material = SubResource("ParticleProcessMaterial_f4bp4")

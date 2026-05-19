@@ -4,36 +4,41 @@ using Godot;
 
 public partial class Goomba : Enemy
 {
-	[ExportGroup("Internal")]
-	[Export]
-	private float Speed;
+    [ExportGroup("Internal")]
+    [Export]
+    private float Speed;
 
-	[Export]
-	private float Scale_Anim;
+    [Export]
+    private float Scale_Anim;
 
-	private int _Direction_Faced = 1;
+    private int _Direction_Faced = 1;
 
-	private bool Is_Active = false;
+    private bool Is_Active = false;
 
-	public override void _PhysicsProcess(double delta)
-	{
-		if (!Is_Active)
-			return;
+    public override void _Ready()
+    {
+        base._Ready();
+    }
 
-		UpdateFacing();
-		ApplyGravity(delta);
+    public override void _PhysicsProcess(double delta)
+    {
+        if (!Is_Active)
+            return;
 
-		float directionX = Mathf.Sign(Character.GlobalPosition.X - GlobalPosition.X);
-		Vector2 velocity = Velocity;
-		velocity.X = directionX * Speed;
-		Velocity = velocity;
+        UpdateFacing();
+        ApplyGravity(delta);
 
-		MoveAndSlide();
-	}
+        float directionX = Mathf.Sign(Character.GlobalPosition.X - GlobalPosition.X);
+        Vector2 velocity = Velocity;
+        velocity.X = directionX * Speed;
+        Velocity = velocity;
 
-	public void _Begin_walk()
-	{
-		Is_Active = true;
-		Sprite.Play("inactive");
-	}
+        MoveAndSlide();
+    }
+
+    public void _Begin_walk()
+    {
+        Is_Active = true;
+        Sprite.Play("inactive");
+    }
 }
