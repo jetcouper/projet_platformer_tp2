@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://2aai6l2ri8x2"]
+
+[ext_resource type="Texture2D" uid="uid://imh83ltqdbui" path="res://Assets/Particule/brackeys_vfx_bundle/particles/alpha/effect_03_a.png" id="1_p8gs1"]
+
+[sub_resource type="Curve" id="Curve_171xu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0.069351315), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="DashParticles" type="CPUParticles2D" unique_id=431794970]
+scale = Vector2(2, 2)
+emitting = false
+amount = 10
+texture = ExtResource("1_p8gs1")
+lifetime = 0.4
+one_shot = true
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+scale_amount_curve = SubResource("Curve_171xu")

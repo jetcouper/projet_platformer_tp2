@@ -146,3 +146,11 @@ position = Vector2(214.00002, 45)
 scale = Vector2(3.5879097, 3.5494828)
 sprite_frames = SubResource("SpriteFrames_pkc6c")
 animation = &"idle"
+
+[node name="DashLabel" type="Label" parent="CanvasLayer" unique_id=2002457407]
+offset_left = 11.0
+offset_top = 26.999998
+offset_right = 62.0
+offset_bottom = 56.0
+scale = Vector2(1.1121159, 1.4623883)
+text = "DASH"

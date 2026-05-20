@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://7hldpkvvicu7" path="res://Assets/Characters/player/climb/climb.png" id="1_goqyt"]
 [ext_resource type="Script" uid="uid://cvnwljfw24b08" path="res://TP2/src/Player/Character.cs" id="1_lrl22"]
 [ext_resource type="Texture2D" uid="uid://dgc3ifrifb8b6" path="res://Assets/Characters/player/jump/roll landing.png" id="2_8trsi"]
+[ext_resource type="PackedScene" uid="uid://2aai6l2ri8x2" path="res://TP2/scene/dash_particles.tscn" id="2_kofrv"]
 [ext_resource type="Texture2D" uid="uid://1yyqa8rg4axk" path="res://Assets/Characters/player/jump/jump.png" id="3_ioysa"]
 [ext_resource type="Texture2D" uid="uid://bgeu5i603jioi" path="res://Assets/Characters/player/crouching/crouching.png" id="4_sl52i"]
 [ext_resource type="Texture2D" uid="uid://bj67r62a3chuq" path="res://Assets/Characters/player/slide/sprite sheets/slide_char.png" id="5_joas3"]
@@ -1254,12 +1255,15 @@ DashSpeed = 600.0
 DashDuration = 0.25
 DashCooldown = 2.0
 FootStepScene = ExtResource("14_ajvbq")
+_dashParticlesScene = ExtResource("2_kofrv")
 
-[node name="DpmCharacterAnimator" type="Node2D" parent="." unique_id=1766069725 node_paths=PackedStringArray("_controller", "_sprite")]
+[node name="DpmCharacterAnimator" type="Node2D" parent="." unique_id=1766069725 node_paths=PackedStringArray("_controller", "_sprite", "_dashLabel")]
 position = Vector2(0, -1)
+scale = Vector2(0.82046306, 0.83909607)
 script = ExtResource("14_vn7qc")
 _controller = NodePath("../DpmCharacterController")
 _sprite = NodePath("../AnimatedSprite2D")
+_dashLabel = NodePath("../DashLabel")
 
 [node name="DcmBulletSpawner" type="Node2D" parent="." unique_id=1948672311 node_paths=PackedStringArray("Player", "Sprite")]
 script = ExtResource("15_c26tv")
@@ -1279,10 +1283,10 @@ InvincibilityDuration = 3.0
 _invincibilityTimer = NodePath("Timer")
 
 [node name="HealthBar" type="ProgressBar" parent="DpmHealth" unique_id=2129573936]
-offset_left = -23.0
-offset_top = -52.0
-offset_right = 37.0
-offset_bottom = -42.0
+offset_left = -23.023209
+offset_top = -45.000023
+offset_right = 36.97679
+offset_bottom = -35.000023
 rotation = 0.00025324523
 scale = Vector2(0.7663565, 1)
 theme_override_styles/fill = SubResource("StyleBoxFlat_3qvrq")
@@ -1305,3 +1309,14 @@ drag_top_margin = 0.25
 drag_right_margin = 0.25
 drag_bottom_margin = 0.25
 editor_draw_drag_margin = true
+
+[node name="DashLabel" type="Label" parent="." unique_id=841686561]
+offset_left = -22.0
+offset_top = -75.0
+offset_right = 34.0
+offset_bottom = -26.0
+scale = Vector2(0.81909955, 0.6897634)
+theme_override_colors/font_color = Color(1, 0.3372549, 0.7921569, 1)
+text = " Dash 
+Ready!"
+uppercase = true

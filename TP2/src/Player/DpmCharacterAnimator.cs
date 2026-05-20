@@ -5,7 +5,7 @@ using Utils;
 
 public partial class DpmCharacterAnimator : Node2D
 {
-    [ExportGroup("Reference")]
+    [ExportGroup("Internal")]
     [Export]
     private DpmCharacterController _controller;
 
@@ -20,6 +20,10 @@ public partial class DpmCharacterAnimator : Node2D
     [Export]
     public float ShootOffsetX = -58.0f;
 
+    [ExportGroup("Label Dash")]
+    [Export]
+    private Label _dashLabel;
+
     private bool _wasOnFloor = true;
 
     public override void _Ready()
@@ -32,6 +36,7 @@ public partial class DpmCharacterAnimator : Node2D
 
         PlaySpawnTween();
         _sprite.Play("idle");
+        PlayDashReadyFlash();
     }
 
     public override void _Process(double delta)
@@ -69,19 +74,16 @@ public partial class DpmCharacterAnimator : Node2D
     private void PlayDashReadyFlash()
     {
         Tween tween = CreateTween();
-        // 1er pulse
         tween
             .TweenProperty(_sprite, "modulate", new Color(0.3f, 0.7f, 1.0f, 1.0f), 0.15f)
             .SetTrans(Tween.TransitionType.Cubic)
             .SetEase(Tween.EaseType.Out);
         tween.TweenProperty(_sprite, "modulate", new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.15f);
-        // 2eme pulse
         tween
             .TweenProperty(_sprite, "modulate", new Color(0.3f, 0.7f, 1.0f, 1.0f), 0.15f)
             .SetTrans(Tween.TransitionType.Cubic)
             .SetEase(Tween.EaseType.Out);
         tween.TweenProperty(_sprite, "modulate", new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.15f);
-        // 3eme pulse
         tween
             .TweenProperty(_sprite, "modulate", new Color(0.3f, 0.7f, 1.0f, 1.0f), 0.15f)
             .SetTrans(Tween.TransitionType.Cubic)
@@ -90,6 +92,22 @@ public partial class DpmCharacterAnimator : Node2D
             .TweenProperty(_sprite, "modulate", new Color(1.0f, 1.0f, 1.0f, 1.0f), 0.4f)
             .SetTrans(Tween.TransitionType.Elastic)
             .SetEase(Tween.EaseType.Out);
+
+        if (_dashLabel.IsValid())
+        {
+            Vector2 startPos = _dashLabel.Position;
+            Tween labelTween = CreateTween();
+            labelTween.Parallel().TweenProperty(_dashLabel, "modulate:a", 1.0f, 0.2f);
+            labelTween
+                .Parallel()
+                .TweenProperty(_dashLabel, "position:y", startPos.Y - 20f, 0.3f)
+                .SetTrans(Tween.TransitionType.Cubic)
+                .SetEase(Tween.EaseType.Out);
+            labelTween.TweenInterval(1.0f);
+
+            labelTween.TweenProperty(_dashLabel, "modulate:a", 0.0f, 0.3f);
+            labelTween.TweenProperty(_dashLabel, "position:y", startPos.Y, 0.0f);
+        }
     }
 
     private void PlaySpawnTween()

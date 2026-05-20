@@ -5,7 +5,7 @@ using Utils;
 
 public partial class DpmCharacterController : Node2D
 {
-    [ExportGroup("Reference")]
+    [ExportGroup("Internal")]
     [Export]
     private CharacterBody2D _body;
 
@@ -73,9 +73,12 @@ public partial class DpmCharacterController : Node2D
     [Export]
     public float HitDuration = 0.75f;
 
-    [ExportGroup("FootStep")]
+    [ExportGroup("Scenes")]
     [Export]
     public PackedScene FootStepScene { get; set; }
+
+    [Export]
+    public PackedScene _dashParticlesScene;
 
     public bool DashJustBecameAvailable { get; private set; }
 
@@ -371,6 +374,8 @@ public partial class DpmCharacterController : Node2D
         _dashTimeLeft = DashDuration;
         _dashDir = FacingDir;
         _jumpOngoing = false;
+
+        SpawnDashParticles();
         if (!_body.IsOnFloor())
             _airDashUsed = true;
     }
@@ -476,5 +481,24 @@ public partial class DpmCharacterController : Node2D
         _body.GetParent().AddChild(footStep);
         footStep.GlobalPosition = spawnPos;
         footStep.Emitting = true;
+    }
+
+    private void SpawnDashParticles()
+    {
+        if (!_dashParticlesScene.IsValid())
+            return;
+
+        var particles = _dashParticlesScene.Instantiate<CpuParticles2D>();
+
+        _body.GetParent().AddChild(particles);
+        particles.GlobalPosition = _body.GlobalPosition;
+
+        if (FacingDir < 0)
+            particles.Scale = new Vector2(-1, 1);
+
+        particles.Emitting = true;
+
+        var timer = GetTree().CreateTimer(particles.Lifetime);
+        timer.Timeout += particles.QueueFree;
     }
 }
