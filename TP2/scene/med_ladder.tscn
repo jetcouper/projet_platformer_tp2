@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://binkb1bxlvi4x"]
 
-[ext_resource type="Script" uid="uid://cnpfya41g2r1e" path="res://Gyms/EddysGym/src/GymMedLadder.cs" id="1_kt3i5"]
+[ext_resource type="Script" uid="uid://dnngw65pbiyp6" path="res://TP2/src/MedLadder.cs" id="1_61b4j"]
 
-[node name="MedLadder" type="Node2D" unique_id=22173457 node_paths=PackedStringArray("Player", "Ladders")]
-script = ExtResource("1_kt3i5")
-Player = NodePath("")
-Ladders = [NodePath("")]
+[node name="MedLadder" type="Node2D" unique_id=22173457 node_paths=PackedStringArray("Ladders")]
+script = ExtResource("1_61b4j")
+Ladders = [null, null]

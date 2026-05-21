@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://cypc47barci0j"]
 
-[ext_resource type="Texture2D" uid="uid://0luxwdn0qmbd" path="res://Assets/Objects/ladder.png" id="1_aloa4"]
+[ext_resource type="Texture2D" uid="uid://0luxwdn0qmbd" path="res://Assets/Ladder/ladder.png" id="1_aloa4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_apjnm"]
-size = Vector2(9.844313, 47.852173)
+size = Vector2(9.585251, 23.295376)
 
 [node name="Ladder" type="Area2D" unique_id=1774158747]
 texture_filter = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=589228416]
-position = Vector2(2.000001, -45.76335)
+position = Vector2(1, 0.99999994)
 scale = Vector2(1.9300483, 5.9668493)
 shape = SubResource("RectangleShape2D_apjnm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1308860201]
-position = Vector2(0.9999995, -47)
-scale = Vector2(0.21896186, 0.75083447)
+position = Vector2(0, 1.0000005)
+scale = Vector2(0.22128218, 0.28541723)
 texture = ExtResource("1_aloa4")

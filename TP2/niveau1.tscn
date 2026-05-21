@@ -26,15 +26,17 @@
 [ext_resource type="PackedScene" uid="uid://ceg52350muhuk" path="res://TP2/scene/hud.tscn" id="21_bgafa"]
 [ext_resource type="PackedScene" uid="uid://b36cfsr13yut3" path="res://Gyms/AntoineGym/Niveaux/Portail.tscn" id="24_3345j"]
 [ext_resource type="PackedScene" uid="uid://2khocf7u28f6" path="res://TP2/scene/plateform.tscn" id="26_3345j"]
+[ext_resource type="PackedScene" uid="uid://binkb1bxlvi4x" path="res://TP2/scene/med_ladder.tscn" id="27_kg3t4"]
 [ext_resource type="PackedScene" uid="uid://ragu8kg4e4fq" path="res://TP2/scene/ghost_plateform.tscn" id="27_ny7es"]
 [ext_resource type="PackedScene" uid="uid://dkhwmamsed73n" path="res://Gyms/CharleeGym/scenes/Chevalier.tscn" id="28_sajg3"]
 [ext_resource type="PackedScene" uid="uid://cf2su4q4jdb8y" path="res://Gyms/CharleeGym/scenes/Fache.tscn" id="29_ckoa0"]
 [ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="29_h7j2b"]
 [ext_resource type="PackedScene" uid="uid://pg5lk2xqe5sl" path="res://Gyms/CharleeGym/scenes/goomba_2.tscn" id="31_h7j2b"]
 [ext_resource type="PackedScene" uid="uid://b7s1sk23u5eqp" path="res://Gyms/CharleeGym/scenes/oeuf.tscn" id="32_5nqte"]
-[ext_resource type="PackedScene" path="res://TP2/scene/panel.tscn" id="33_5nqte"]
+[ext_resource type="PackedScene" uid="uid://cy18ys2tduvyy" path="res://TP2/scene/panel.tscn" id="33_5nqte"]
 [ext_resource type="PackedScene" uid="uid://dsmck4tamocsh" path="res://Gyms/PaulGym/scenes/Levier.tscn" id="33_yn4qh"]
 [ext_resource type="PackedScene" uid="uid://0agvrdgbh0rg" path="res://Gyms/CharleeGym/scenes/sans_cervelle.tscn" id="34_yn4qh"]
+[ext_resource type="PackedScene" uid="uid://cypc47barci0j" path="res://TP2/scene/ladder.tscn" id="36_5bkdy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_1ph5m")
@@ -438,10 +440,10 @@ sources/0 = SubResource("TileSetAtlasSource_2uobi")
 [node name="Niveau1" type="Node2D" unique_id=1948467130]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=820423914]
-offset_left = -9.0
-offset_top = -8.0
-offset_right = 4991.0
-offset_bottom = 2492.0
+offset_left = 57.0
+offset_top = 23.0
+offset_right = 5057.0
+offset_bottom = 2523.0
 color = Color(0.16078432, 0.6784314, 1, 1)
 
 [node name="DCM_WindSystem" type="Node2D" parent="." unique_id=713434064]
@@ -803,6 +805,31 @@ startDelay = 1.0
 position = Vector2(3456, 2142)
 startDelay = 2.0
 
+[node name="GhostPlateform4" parent="." unique_id=1849068758 instance=ExtResource("27_ny7es")]
+position = Vector2(839, 1359)
+distance = 300.0
+visibleDuration = 5.0
+invisibleDuration = 1.0
+ghostDelay = 0.5
+
+[node name="GhostPlateform5" parent="." unique_id=1183845368 instance=ExtResource("27_ny7es")]
+position = Vector2(1094, 1272)
+visibleDuration = 5.0
+invisibleDuration = 1.0
+ghostDelay = 0.5
+
+[node name="GhostPlateform6" parent="." unique_id=1929067706 instance=ExtResource("27_ny7es")]
+position = Vector2(1431, 1316)
+visibleDuration = 5.0
+invisibleDuration = 1.0
+ghostDelay = 0.5
+
+[node name="GhostPlateform7" parent="." unique_id=198595538 instance=ExtResource("27_ny7es")]
+position = Vector2(1754, 1409)
+visibleDuration = 8.0
+invisibleDuration = 1.0
+ghostDelay = 0.25
+
 [node name="Panel" parent="." unique_id=1775237698 instance=ExtResource("33_5nqte")]
 position = Vector2(654, 2082.0002)
 scale = Vector2(0.76499957, 0.74999994)
@@ -814,6 +841,21 @@ scale = Vector2(0.76499957, 0.74999994)
 [node name="Panel3" parent="." unique_id=1086715474 instance=ExtResource("33_5nqte")]
 position = Vector2(3999.9998, 2066.0002)
 scale = Vector2(0.76499957, 0.74999994)
+
+[node name="MedLadder" parent="." unique_id=22173457 node_paths=PackedStringArray("Player", "Ladders") instance=ExtResource("27_kg3t4")]
+position = Vector2(35, 44)
+Player = NodePath("../Character")
+Ladders = [NodePath("../Ladder"), NodePath("../Ladder2")]
+
+[node name="Ladder" parent="." unique_id=1774158747 instance=ExtResource("36_5bkdy")]
+position = Vector2(664, 1457)
+
+[node name="Ladder2" parent="." unique_id=1263938365 instance=ExtResource("36_5bkdy")]
+position = Vector2(664, 1315)
+
+[node name="Mushroom3" parent="." unique_id=846189544 instance=ExtResource("21_26k8w")]
+position = Vector2(348, 1504)
+scale = Vector2(0.92961276, 0.63578707)
 
 [node name="Character" parent="." unique_id=804579613 node_paths=PackedStringArray("Hud") instance=ExtResource("19_8cu07")]
 position = Vector2(209, 2226)
@@ -893,3 +935,8 @@ Character = NodePath("../../Character")
 position = Vector2(4208, 2091)
 EnemyDeathParticleScene = null
 Character = NodePath("../../Character")
+
+[node name="CharacterBody2D" parent="." unique_id=453874367 node_paths=PackedStringArray("Character") instance=ExtResource("28_sajg3")]
+position = Vector2(4564, 2012)
+ProjectileScene = ExtResource("29_h7j2b")
+Character = NodePath("../Character")
