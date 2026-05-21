@@ -95,6 +95,7 @@ public partial class DpmCharacterController : Node2D
 
     public bool IsHit { get; private set; }
     private float _hitTimeLeft;
+    public bool IsSpawning { get; set; }
 
     public CharacterBody2D Body => _body;
 
@@ -155,13 +156,9 @@ public partial class DpmCharacterController : Node2D
         if (Health != null)
             IsDead = Health.IsDead;
 
-        if (IsDead)
+        if (IsDead || IsSpawning)
         {
-            Vector2 v = _body.Velocity;
-            v.X = Mathf.MoveToward(v.X, 0.0f, MoveAcceleration * fDelta);
-            v.Y = Mathf.Min(v.Y + _gravityForce * fDelta, FallSpeedCap);
-            _body.Velocity = v;
-            _body.MoveAndSlide();
+            ApplyPassivePhysics(fDelta, dampenX: IsDead);
             return;
         }
 
@@ -174,11 +171,21 @@ public partial class DpmCharacterController : Node2D
         UpdateShoot(fDelta);
 
         _body.Velocity = ComputeVelocity(fDelta);
-        HandleFootSteps((float)delta);
+        HandleFootSteps(fDelta);
         _body.MoveAndSlide();
 
         UpdateHit(fDelta);
         UpdateFacing();
+    }
+
+    private void ApplyPassivePhysics(float delta, bool dampenX)
+    {
+        Vector2 v = _body.Velocity;
+        if (dampenX)
+            v.X = Mathf.MoveToward(v.X, 0.0f, MoveAcceleration * delta);
+        v.Y = Mathf.Min(v.Y + _gravityForce * delta, FallSpeedCap);
+        _body.Velocity = v;
+        _body.MoveAndSlide();
     }
 
     private void UpdateCrouch()

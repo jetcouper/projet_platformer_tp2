@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using TP2.Src;
 
 public partial class Void : Area2D
 {

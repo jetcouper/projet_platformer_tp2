@@ -16,17 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://sy6k0m30cmjs" path="res://Gyms/AntoineGym/Niveaux/porteFinNiveau.tscn" id="14_rr66s"]
 [ext_resource type="Texture2D" uid="uid://ds30rf63ou6le" path="res://Assets/Terrain/GrassLand_Bush.png" id="15_5c50s"]
 [ext_resource type="Texture2D" uid="uid://bgrdlll8mdurv" path="res://Assets/Terrain/GrassLand_Tree.png" id="16_f0er4"]
-[ext_resource type="PackedScene" uid="uid://djx83jhit1b2b" path="res://Gyms/EddysGym/scene/ladder.tscn" id="17_oyg1a"]
-[ext_resource type="Script" uid="uid://cnpfya41g2r1e" path="res://Gyms/EddysGym/src/MedLadder.cs" id="18_4lyip"]
+[ext_resource type="PackedScene" uid="uid://bvcukn85rs32o" path="res://TP2/scene/character.tscn" id="17_3yw4t"]
 [ext_resource type="PackedScene" uid="uid://ci1iyhhqseijm" path="res://Gyms/PaulGym/scenes/void.tscn" id="20_tasok"]
 [ext_resource type="PackedScene" uid="uid://dsmck4tamocsh" path="res://Gyms/PaulGym/scenes/Levier.tscn" id="21_kp2ii"]
 [ext_resource type="PackedScene" uid="uid://bo7cwxo3debfh" path="res://Gyms/PaulGym/scenes/SlidingHorizontalDoor.tscn" id="22_54773"]
-[ext_resource type="PackedScene" uid="uid://cyx52wgl40nde" path="res://Gyms/EddysGym/scene/hud.tscn" id="22_e3y4w"]
-[ext_resource type="PackedScene" uid="uid://c3vfx7gpw2tlm" path="res://Gyms/EddysGym/scene/fountain.tscn" id="23_vph5a"]
-[ext_resource type="PackedScene" uid="uid://cd7d8sy3otj1x" path="res://Gyms/EddysGym/scene/brazier.tscn" id="24_4ohaf"]
-[ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://Gyms/EddysGym/scene/character.tscn" id="25_srq36"]
 [ext_resource type="PackedScene" uid="uid://ciiktp2vh87p2" path="res://Gyms/PaulGym/scenes/SlidingVerticalDoor.tscn" id="25_xt3qg"]
-[ext_resource type="PackedScene" uid="uid://b1nmkx4f0k88m" path="res://Gyms/EddysGym/scene/boite_jaune.tscn" id="27_8s5yo"]
 [ext_resource type="PackedScene" uid="uid://bt88obrp4ygev" path="res://Gyms/PaulGym/scenes/ReflectiveSurface.tscn" id="28_oogww"]
 [ext_resource type="PackedScene" uid="uid://dkhwmamsed73n" path="res://Gyms/CharleeGym/scenes/Chevalier.tscn" id="29_htgq4"]
 
@@ -1002,9 +996,6 @@ offset_bottom = 2311.0
 scale = Vector2(0.758276, 1.0423611)
 texture = ExtResource("16_f0er4")
 
-[node name="Ladder" parent="Avant" unique_id=1774158747 instance=ExtResource("17_oyg1a")]
-position = Vector2(219, 2160)
-
 [node name="Bordure1" type="StaticBody2D" parent="." unique_id=1185280014]
 position = Vector2(0, 1702)
 rotation = 1.5707964
@@ -1021,17 +1012,12 @@ physics_material_override = SubResource("PhysicsMaterial_mqn2c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bordure2" unique_id=268655103]
 shape = SubResource("WorldBoundaryShape2D_7iq8t")
 
-[node name="Papillons" type="TileMapLayer" parent="." unique_id=1811027575 node_paths=PackedStringArray("Ladders")]
+[node name="Papillons" type="TileMapLayer" parent="." unique_id=1811027575]
 tile_map_data = PackedByteArray("AACmAI4AAAAAAAAAAACjAI4AAAAAAAAAAACkAIsAAAAAAAAAAAChAIkAAAAAAAAAAACgAIsAAAAAAAAAAACmAIsAAAAAAAAAAACyAI8AAAAAAAAAAACCAI0AAAAAAAAAAACAAI0AAAAAAAAAAAB/AI4AAAAAAAAAAACBAI8AAAAAAAAAAACHAIIAAAAAAAAAAACSAIIAAAAAAAAAAABpAIQAAAAAAAAAAABeAIQAAAAAAAAAAABaAIQAAAAAAAAAAABXAH4AAAAAAAAAAABUAHsAAAAAAAAAAABGAHsAAAAAAAAAAABBAHsAAAAAAAAAAAA8AIQAAAAAAAAAAAAuAIQAAAAAAAAAAAA0AIQAAAAAAAAAAAAlAIYAAAAAAAAAAAAuAIsAAAAAAAAAAAAyAIsAAAAAAAAAAAAWAI0AAAAAAAAAAAAQAI0AAAAAAAAAAAANAI0AAAAAAAAAAAAeAJEAAAAAAAAAAAAmAIoAAAAAAAAAAAAeAHQAAAAAAAAAAAAoAHMAAAAAAAAAAAAyAHMAAAAAAAAAAAA+AGgAAAAAAAAAAABFAGgAAAAAAAAAAABWAGoAAAAAAAAAAAA7AGsAAAAAAAAAAAAqAF8AAAAAAAAAAAAkAF8AAAAAAAAAAAAYAF8AAAAAAAAAAAASAF8AAAAAAAAAAACiAHsAAAAAAAAAAACqAHgAAAAAAAAAAACuAHUAAAAAAAAAAACyAHUAAAAAAAAAAACyAIkAAAAAAAAAAACrAIMAAAAAAAAAAADIAJAAAAAAAAAAAADYAJEAAAAAAAAAAADxAIYAAAAAAAAAAAD1AIMAAAAAAAAAAAACAYMAAAAAAAAAAAARAX8AAAAAAAAAAAANAYYAAAAAAAAAAAAaAX8AAAAAAAAAAAAjAX8AAAAAAAAAAAAQAYQAAAAAAAAAAAAvAX0AAAAAAAAAAAA2AXwAAAAAAAAAAAAzAXcAAAAAAAAAAAAuAZAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hf5l1")
-script = ExtResource("18_4lyip")
-Ladders = []
 
-[node name="MedLadder" type="Node2D" parent="." unique_id=856709438 node_paths=PackedStringArray("Player", "Ladders")]
-position = Vector2(324, 2223)
-script = ExtResource("18_4lyip")
-Player = NodePath("../Character")
-Ladders = [NodePath("../Avant/Ladder")]
+[node name="Character" parent="." unique_id=804579613 instance=ExtResource("17_3yw4t")]
+position = Vector2(41, 2293)
 
 [node name="Void" parent="." unique_id=164950147 node_paths=PackedStringArray("player") instance=ExtResource("20_tasok")]
 position = Vector2(90, 2253)
@@ -1045,7 +1031,7 @@ player = NodePath("../Character")
 
 [node name="Levier2" parent="." unique_id=1737147552 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("21_kp2ii")]
 position = Vector2(688, 2094)
-Ingredients = [NodePath("../Trapdoor"), NodePath("../Door2"), NodePath("../BoiteJaune"), NodePath("../ReflectiveSurface")]
+Ingredients = [NodePath("../Trapdoor"), NodePath("../Door2"), NodePath(""), NodePath("../ReflectiveSurface")]
 player = NodePath("../Character")
 
 [node name="Door" parent="." unique_id=2061855038 instance=ExtResource("25_xt3qg")]
@@ -1059,26 +1045,6 @@ State = false
 
 [node name="Trapdoor" parent="." unique_id=2139550912 instance=ExtResource("22_54773")]
 position = Vector2(410, 2179)
-
-[node name="Hud" parent="." unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("22_e3y4w")]
-position = Vector2(268, 220)
-Player = NodePath("../Character")
-
-[node name="Fountain" parent="." unique_id=1292127794 instance=ExtResource("23_vph5a")]
-position = Vector2(1063, 1609)
-
-[node name="Brazier" parent="." unique_id=2007872452 instance=ExtResource("24_4ohaf")]
-position = Vector2(1507, 2015)
-
-[node name="Brazier2" parent="." unique_id=1794660711 instance=ExtResource("24_4ohaf")]
-position = Vector2(813, 1742)
-
-[node name="Character" parent="." unique_id=804579613 instance=ExtResource("25_srq36")]
-position = Vector2(596, 1817)
-
-[node name="BoiteJaune" parent="." unique_id=2044295932 instance=ExtResource("27_8s5yo")]
-position = Vector2(1457, 1725)
-State = false
 
 [node name="ReflectiveSurface" parent="." unique_id=242882444 instance=ExtResource("28_oogww")]
 position = Vector2(1193, 1919)

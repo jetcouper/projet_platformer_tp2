@@ -112,6 +112,8 @@ public partial class DpmCharacterAnimator : Node2D
 
     private void PlaySpawnTween()
     {
+        _controller.IsSpawning = true;
+
         Vector2 currentScale = _sprite.Scale;
         Vector2 finalScale = new(-Mathf.Abs(currentScale.X), currentScale.Y);
         _sprite.Scale = finalScale * 0.5f;
@@ -121,6 +123,8 @@ public partial class DpmCharacterAnimator : Node2D
         tween.SetParallel(true);
         tween.TweenProperty(_sprite, "modulate:a", 1.0f, SpawnTweenDuration);
         tween.TweenProperty(_sprite, "scale", finalScale, SpawnTweenDuration);
+
+        tween.Finished += () => _controller.IsSpawning = false;
     }
 
     private void UpdateFacing()

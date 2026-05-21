@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://clrt0bpn8e76c" path="res://Assets/Cave/Tiles.png" id="13_h1nvb"]
 [ext_resource type="PackedScene" uid="uid://sy6k0m30cmjs" path="res://Gyms/AntoineGym/Niveaux/porteFinNiveau.tscn" id="14_c0kxh"]
 [ext_resource type="PackedScene" uid="uid://cti2rtcqg075a" path="res://Gyms/AntoineGym/Niveaux/bloc_platform_n2-2.tscn" id="14_jm78y"]
-[ext_resource type="PackedScene" uid="uid://cbn1p8tll3blc" path="res://Gyms/AntoineGym/Niveaux/character.tscn" id="17_bf158"]
 [ext_resource type="Texture2D" uid="uid://bycl6h3cdvntj" path="res://Assets/Cave/Spikes.png" id="17_u855g"]
+[ext_resource type="PackedScene" uid="uid://bvcukn85rs32o" path="res://TP2/scene/character.tscn" id="18_u855g"]
 [ext_resource type="Texture2D" uid="uid://by0doyk4315pw" path="res://Assets/Cave/Bat.png" id="19_jm78y"]
 [ext_resource type="Script" uid="uid://uj4v17h8tvjo" path="res://Library/Utils/OscillationBat.cs" id="20_jm78y"]
 [ext_resource type="PackedScene" uid="uid://b36cfsr13yut3" path="res://Gyms/AntoineGym/Niveaux/Portail.tscn" id="21_u855g"]
@@ -704,8 +704,8 @@ tile_set = SubResource("TileSet_fsgux")
 
 [node name="DecoAvant" type="Node2D" parent="Avant" unique_id=1734032242]
 
-[node name="Character" parent="." unique_id=804579613 instance=ExtResource("17_bf158")]
-position = Vector2(39, 2273)
+[node name="Character" parent="Avant" unique_id=804579613 instance=ExtResource("18_u855g")]
+position = Vector2(120, 2061)
 
 [node name="MontagneRocheAvant" type="Parallax2D" parent="." unique_id=549560578]
 visible = false
