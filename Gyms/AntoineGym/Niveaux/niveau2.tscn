@@ -21,6 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://by0doyk4315pw" path="res://Assets/Cave/Bat.png" id="19_jm78y"]
 [ext_resource type="Script" uid="uid://uj4v17h8tvjo" path="res://Library/Utils/OscillationBat.cs" id="20_jm78y"]
 [ext_resource type="PackedScene" uid="uid://b36cfsr13yut3" path="res://Gyms/AntoineGym/Niveaux/Portail.tscn" id="21_u855g"]
+[ext_resource type="PackedScene" uid="uid://cek1s47hobadr" path="res://TP2/scene/cavern_brazier.tscn" id="22_13cyb"]
+[ext_resource type="PackedScene" uid="uid://inqnajy3l3o5" path="res://TP2/scene/nuage_pluie.tscn" id="23_fsgux"]
+[ext_resource type="PackedScene" uid="uid://dpi6k20kvt8nl" path="res://TP2/scene/cavern_mushroom.tscn" id="26_dli7e"]
+[ext_resource type="PackedScene" uid="uid://c60ysn748kyav" path="res://TP2/scene/cavern_fountain.tscn" id="26_rac3r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_rac3r")
@@ -699,6 +703,91 @@ tile_set = SubResource("TileSet_215a4")
 [node name="Spikes" type="TileMapLayer" parent="." unique_id=584281518]
 tile_map_data = PackedByteArray("AADyAJAAAAAAAAAAAADzAJAAAAAAAAAAAAD0AJAAAAAAAAAAAAD1AJAAAAAAAAAAAAD2AJAAAAAAAAAAAAD3AJAAAAAAAAAAAAD4AJAAAAAAAAAAAAD5AJAAAAAAAAAAAAD6AJAAAAAAAAAAAAD7AJAAAAAAAAAAAAD8AJAAAAAAAAAAAAD9AJAAAAAAAAAAAAD+AJAAAAAAAAAAAAD/AJAAAAAAAAAAAAAAAZAAAAAAAAAAAAABAZAAAAAAAAAAAAACAZAAAAAAAAAAAAADAZAAAAAAAAAAAAAEAZAAAAAAAAAAAAAFAZAAAAAAAAAAAAAGAZAAAAAAAAAAAAAHAZAAAAAAAAAAAAAIAZAAAAAAAAAAAADoAJAAAAAAAAAAAADnAJAAAAAAAAAAAADmAJAAAAAAAAAAAADlAJAAAAAAAAAAAADkAJAAAAAAAAAAAADjAJAAAAAAAAAAAACEAJAAAAAAAAAAAACFAJAAAAAAAAAAAACGAJAAAAAAAAAAAABvAJAAAAAAAAAAAABwAJAAAAAAAAAAAABxAJAAAAAAAAAAAABlAJAAAAAAAAAAAABkAJAAAAAAAAAAAABjAJAAAAAAAAAAAABiAJAAAAAAAAAAAABhAJAAAAAAAAAAAABgAJAAAAAAAAAAAABfAJAAAAAAAAAAAABeAJAAAAAAAAAAAABdAJAAAAAAAAAAAABcAJAAAAAAAAAAAABbAJAAAAAAAAAAAABaAJAAAAAAAAAAAABZAJAAAAAAAAAAAABDAJAAAAAAAAAAAABCAJAAAAAAAAAAAABBAJAAAAAAAAAAAABAAJAAAAAAAAAAAAA/AJAAAAAAAAAAAAA+AJAAAAAAAAAAAAAxAJAAAAAAAAAAAAAyAJAAAAAAAAAAAAAzAJAAAAAAAAAAAAA0AJAAAAAAAAAAAAAgAIoAAAAAAAAAAAAhAIoAAAAAAAAAAABoAGwAAAAAAAAAAABpAGwAAAAAAAAAAABqAGwAAAAAAAAAAAAYAZAAAAAAAAAAAAAZAZAAAAAAAAAAAAAaAZAAAAAAAAAAAAAbAZAAAAAAAAAAAAAcAZAAAAAAAAAAAAAmAXYAAAAAAAAAAAAnAXYAAAAAAAAAAAAoAXYAAAAAAAAAAAAdAXYAAAAAAAAAAAAeAXYAAAAAAAAAAAAgAWgAAAAAAAAAAAAhAWgAAAAAAAAAAAAiAWgAAAAAAAAAAACzAJAAAAAAAAAAAAC0AJAAAAAAAAAAAAC1AJAAAAAAAAAAAAC2AJAAAAAAAAAAAADRAJAAAAAAAAAAAADSAJAAAAAAAAAAAADTAJAAAAAAAAAAAADUAJAAAAAAAAAAAAAHAXEAAAAAAAAAAAAIAXEAAAAAAAAAAAALAWwAAAAAAAAAAAAMAWwAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_fsgux")
+
+[node name="CavernBrazier" parent="." unique_id=478060829 instance=ExtResource("22_13cyb")]
+position = Vector2(211, 1591)
+
+[node name="CavernBrazier2" parent="." unique_id=829381609 instance=ExtResource("22_13cyb")]
+position = Vector2(1412, 1479)
+
+[node name="CavernBrazier3" parent="." unique_id=934851976 instance=ExtResource("22_13cyb")]
+position = Vector2(3064, 1510)
+
+[node name="CavernBrazier4" parent="." unique_id=2056115634 instance=ExtResource("22_13cyb")]
+position = Vector2(2416, 1433)
+
+[node name="CavernFountain" parent="." unique_id=144201951 instance=ExtResource("26_rac3r")]
+position = Vector2(2408, 1771)
+
+[node name="NuagePluie" parent="." unique_id=656791820 instance=ExtResource("23_fsgux")]
+position = Vector2(1611, 1143)
+
+[node name="NuagePluie2" parent="." unique_id=836557350 instance=ExtResource("23_fsgux")]
+position = Vector2(2750, 967)
+
+[node name="NuagePluie3" parent="." unique_id=1223752022 instance=ExtResource("23_fsgux")]
+position = Vector2(3795, 1320)
+scale = Vector2(2.25, 2.25)
+
+[node name="CavernMushroom" parent="." unique_id=953444531 instance=ExtResource("26_dli7e")]
+position = Vector2(2162, 1658)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom2" parent="." unique_id=1337588901 instance=ExtResource("26_dli7e")]
+position = Vector2(2162, 1658)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom3" parent="." unique_id=173717151 instance=ExtResource("26_dli7e")]
+position = Vector2(2162, 1658)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom4" parent="." unique_id=1713201106 instance=ExtResource("26_dli7e")]
+position = Vector2(2133, 1657)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom5" parent="." unique_id=232868705 instance=ExtResource("26_dli7e")]
+position = Vector2(2101, 1656)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom6" parent="." unique_id=1046872633 instance=ExtResource("26_dli7e")]
+position = Vector2(2101, 1656)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom7" parent="." unique_id=1968088324 instance=ExtResource("26_dli7e")]
+position = Vector2(2188, 1656)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom8" parent="." unique_id=1767416156 instance=ExtResource("26_dli7e")]
+position = Vector2(909.00006, 1656)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom9" parent="." unique_id=632865722 instance=ExtResource("26_dli7e")]
+position = Vector2(909.00006, 1656)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom10" parent="." unique_id=402723153 instance=ExtResource("26_dli7e")]
+position = Vector2(958, 1655)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom11" parent="." unique_id=900604371 instance=ExtResource("26_dli7e")]
+position = Vector2(1018, 1653)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom12" parent="." unique_id=1662950269 instance=ExtResource("26_dli7e")]
+position = Vector2(1020, 1654)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom13" parent="." unique_id=524060317 instance=ExtResource("26_dli7e")]
+position = Vector2(616, 1743)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom14" parent="." unique_id=1567798967 instance=ExtResource("26_dli7e")]
+position = Vector2(616, 1743)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom15" parent="." unique_id=1532631593 instance=ExtResource("26_dli7e")]
+position = Vector2(3546.0002, 1762)
+scale = Vector2(0.1, 0.1)
 
 [node name="Avant" type="Node2D" parent="." unique_id=397371594]
 

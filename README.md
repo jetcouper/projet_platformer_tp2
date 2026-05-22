@@ -3,7 +3,7 @@ TP2 en Jeux vidéo, création d'un platformer sur Godot.
 
 | Git               |Nom       |Prenom         |Nbre soumissions Git|
 |-------------------|----------|---------------|--------------------|
-|WhatyouEgg17       |Dupras    |Charlotte      |                  |
-|Paul-EdouardFort   |Fortin    |Paul-Édouard   |                  |
-|EddyHUART          |Huart     |Eddy           |                  |
-|jetcouper          |Dextraze  |Antoine        |                  |
+|WhatyouEgg17       |Dupras    |Charlotte      |                    |
+|Paul-EdouardFort   |Fortin    |Paul-Édouard   |                    |
+|EddyHUART          |Huart     |Eddy           |      50            |
+|jetcouper          |Dextraze  |Antoine        |                    |
