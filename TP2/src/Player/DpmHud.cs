@@ -132,6 +132,45 @@ public partial class DpmHud : Node, IXpObserver, IHealthObserver
                 }
             }
         }
+
+        if (currentLives <= 0)
+            GetTree().CreateTimer(0.8f).Timeout += ShowGameOver;
+    }
+
+    private void ShowGameOver()
+    {
+        GetTree().Paused = true;
+
+        CanvasLayer canvas = new() { ProcessMode = ProcessModeEnum.Always };
+
+        ColorRect bg = new();
+        bg.Color = new Color(0, 0, 0, 0.7f);
+        bg.SetAnchorsPreset(Control.LayoutPreset.FullRect);
+        canvas.AddChild(bg);
+
+        VBoxContainer vbox = new();
+        vbox.SetAnchorsPreset(Control.LayoutPreset.Center);
+        vbox.GrowHorizontal = Control.GrowDirection.Both;
+        vbox.GrowVertical = Control.GrowDirection.Both;
+        vbox.AddThemeConstantOverride("separation", 20);
+        canvas.AddChild(vbox);
+
+        Label label = new() { Text = "GAME OVER" };
+        label.AddThemeColorOverride("font_color", new Color(1, 0.2f, 0.2f));
+        label.AddThemeFontSizeOverride("font_size", 72);
+        label.HorizontalAlignment = HorizontalAlignment.Center;
+        vbox.AddChild(label);
+
+        Button button = new() { Text = "Recommencer" };
+        button.AddThemeFontSizeOverride("font_size", 28);
+        button.Pressed += () =>
+        {
+            GetTree().Paused = false;
+            GetTree().ReloadCurrentScene();
+        };
+        vbox.AddChild(button);
+
+        GetTree().CurrentScene.AddChild(canvas);
     }
 
     private void ShowMaxLabel()

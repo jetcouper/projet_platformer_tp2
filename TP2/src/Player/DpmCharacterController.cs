@@ -73,6 +73,8 @@ public partial class DpmCharacterController : Node2D
     [Export]
     public float HitDuration = 0.75f;
 
+    private TileMapLayer _spikesLayer;
+
     [ExportGroup("Scenes")]
     [Export]
     public PackedScene FootStepScene { get; set; }
@@ -145,6 +147,7 @@ public partial class DpmCharacterController : Node2D
 
         EnsureInputActions();
         _gravityForce = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
+        _spikesLayer = GetTree().CurrentScene.FindChild("Spikes") as TileMapLayer;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -173,6 +176,7 @@ public partial class DpmCharacterController : Node2D
         _body.Velocity = ComputeVelocity(fDelta);
         HandleFootSteps(fDelta);
         _body.MoveAndSlide();
+        CheckSpikeCollision();
 
         UpdateHit(fDelta);
         UpdateFacing();
@@ -182,8 +186,12 @@ public partial class DpmCharacterController : Node2D
     {
         Vector2 v = _body.Velocity;
         if (dampenX)
+        {
             v.X = Mathf.MoveToward(v.X, 0.0f, MoveAcceleration * delta);
-        v.Y = Mathf.Min(v.Y + _gravityForce * delta, FallSpeedCap);
+            v.Y = 0.0f;
+        }
+        else
+            v.Y = Mathf.Min(v.Y + _gravityForce * delta, FallSpeedCap);
         _body.Velocity = v;
         _body.MoveAndSlide();
     }
@@ -444,6 +452,31 @@ public partial class DpmCharacterController : Node2D
             FacingDir = _body.Velocity.X > 0.0f ? 1.0f : -1.0f;
         else if (Mathf.Abs(MoveAxis) > 0.1f)
             FacingDir = MoveAxis > 0.0f ? 1.0f : -1.0f;
+    }
+
+    private void CheckSpikeCollision()
+    {
+        if (!_spikesLayer.IsValid() || !Health.IsValid() || Health.IsDead)
+            return;
+
+        Vector2[] checkPoints =
+        [
+            _body.GlobalPosition + new Vector2(0, 28),
+            _body.GlobalPosition + new Vector2(-10, 28),
+            _body.GlobalPosition + new Vector2(10, 28),
+            _body.GlobalPosition + new Vector2(-10, 0),
+            _body.GlobalPosition + new Vector2(10, 0),
+        ];
+
+        foreach (Vector2 point in checkPoints)
+        {
+            Vector2I tilePos = _spikesLayer.LocalToMap(_spikesLayer.ToLocal(point));
+            if (_spikesLayer.GetCellSourceId(tilePos) != -1)
+            {
+                Health.TakeDamage(1);
+                return;
+            }
+        }
     }
 
     private void UpdateHit(float delta)

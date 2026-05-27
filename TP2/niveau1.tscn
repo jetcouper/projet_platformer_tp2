@@ -440,10 +440,8 @@ sources/0 = SubResource("TileSetAtlasSource_2uobi")
 [node name="Niveau1" type="Node2D" unique_id=1948467130]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=820423914]
-offset_left = 57.0
-offset_top = 23.0
-offset_right = 5057.0
-offset_bottom = 2523.0
+offset_right = 5000.0
+offset_bottom = 2500.0
 color = Color(0.16078432, 0.6784314, 1, 1)
 
 [node name="DCM_WindSystem" type="Node2D" parent="." unique_id=713434064]
@@ -845,7 +843,7 @@ scale = Vector2(0.76499957, 0.74999994)
 [node name="MedLadder" parent="." unique_id=22173457 node_paths=PackedStringArray("Player", "Ladders") instance=ExtResource("27_kg3t4")]
 position = Vector2(35, 44)
 Player = NodePath("../Character")
-Ladders = [NodePath("../Ladder"), NodePath("../Ladder2")]
+Ladders = []
 
 [node name="Ladder" parent="." unique_id=1774158747 instance=ExtResource("36_5bkdy")]
 position = Vector2(664, 1457)
@@ -907,13 +905,13 @@ Character = NodePath("../../Character")
 [node name="Levier" parent="Enemies" unique_id=1212460187 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("33_yn4qh")]
 position = Vector2(2831, 1882)
 scale = Vector2(0.25, 0.25)
-Ingredients = [NodePath("../Oeuf/Ingredient")]
+Ingredients = []
 player = NodePath("../../Character")
 
 [node name="Levier2" parent="Enemies" unique_id=877423322 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("33_yn4qh")]
 position = Vector2(2485, 2082)
 scale = Vector2(0.25, 0.25)
-Ingredients = [NodePath("../Oeuf2/Ingredient")]
+Ingredients = []
 player = NodePath("../../Character")
 
 [node name="Oeuf2" parent="Enemies" unique_id=1005177665 node_paths=PackedStringArray("Character") instance=ExtResource("32_5nqte")]

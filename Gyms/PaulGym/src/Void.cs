@@ -18,7 +18,7 @@ public partial class Void : Area2D
         if (areaContact == player)
         {
             DpmHealth health = areaContact.GetNodeOrNull<DpmHealth>("DpmHealth");
-            health?.TakeDamage((int)99999999);
+            health?.KillInstantly();
         }
     }
 }

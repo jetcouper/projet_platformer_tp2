@@ -64,6 +64,22 @@ public partial class DpmHealth : Node2D
         UpdateBar();
     }
 
+    public void KillInstantly()
+    {
+        if (IsDead)
+            return;
+
+        _isInvincible = false;
+        _lives = 0;
+        _healthPercent = 0.0f;
+
+        CreateExplosion(_body.GlobalPosition);
+        _healthObserver?.OnLivesChanged(_lives);
+
+        UpdateBar();
+        GD.Print("Mort!");
+    }
+
     public void TakeDamage(int amount)
     {
         if (IsDead || amount <= 0 || _isInvincible)
