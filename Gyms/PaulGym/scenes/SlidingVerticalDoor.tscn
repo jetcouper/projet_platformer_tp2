@@ -1,17 +1,10 @@
 [gd_scene format=3 uid="uid://ciiktp2vh87p2"]
 
 [ext_resource type="Script" uid="uid://bmj2kduabltck" path="res://Gyms/PaulGym/src/SlidingVerticalDoor.cs" id="1_2at4u"]
+[ext_resource type="Texture2D" uid="uid://brejcmuphaapx" path="res://Assets/Plateform/plateform.png" id="2_8o1vv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8o1vv"]
 size = Vector2(20, 87)
-
-[sub_resource type="Gradient" id="Gradient_2at4u"]
-colors = PackedColorArray(0, 0.7058824, 0, 1, 0, 0.7058824, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8o1vv"]
-gradient = SubResource("Gradient_2at4u")
-width = 20
-height = 87
 
 [node name="Door" type="AnimatableBody2D" unique_id=2061855038]
 sync_to_physics = false
@@ -21,4 +14,7 @@ script = ExtResource("1_2at4u")
 shape = SubResource("RectangleShape2D_8o1vv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1308753911]
-texture = SubResource("GradientTexture2D_8o1vv")
+position = Vector2(-1.3424376e-08, 0.30711392)
+rotation = 1.5707964
+scale = Vector2(0.29346794, 0.27898052)
+texture = ExtResource("2_8o1vv")
