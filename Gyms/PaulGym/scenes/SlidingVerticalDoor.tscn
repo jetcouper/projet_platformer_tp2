@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brejcmuphaapx" path="res://Assets/Plateform/plateform.png" id="2_8o1vv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8o1vv"]
-size = Vector2(20, 87)
+size = Vector2(74, 296.25)
 
 [node name="Door" type="AnimatableBody2D" unique_id=2061855038]
 sync_to_physics = false
@@ -14,7 +14,5 @@ script = ExtResource("1_2at4u")
 shape = SubResource("RectangleShape2D_8o1vv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1308753911]
-position = Vector2(-1.3424376e-08, 0.30711392)
 rotation = 1.5707964
-scale = Vector2(0.29346794, 0.27898052)
 texture = ExtResource("2_8o1vv")

@@ -31,7 +31,7 @@ public partial class SlidingVerticalDoor : Ingredient
 	}
 	public void ChangeAnimation()
 	{
-		Vector2 height = new Vector2(0,(Sprite.GetRect().Size * this.Scale).Y);
+		Vector2 height = new Vector2(0,(Sprite.GetRect().Size * this.Scale).X);
 		if (tween != null)
         	tween.Kill(); 
 		tween = CreateTween();

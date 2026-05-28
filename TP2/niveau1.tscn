@@ -944,13 +944,13 @@ Ingredients = [NodePath("../VerticalDoor")]
 player = NodePath("../../Character")
 
 [node name="VerticalDoor" parent="ingredients" unique_id=2061855038 instance=ExtResource("38_x860l")]
-position = Vector2(2548, 2044)
-scale = Vector2(1.5, 1.5)
+position = Vector2(2548, 2019)
+scale = Vector2(0.4, 0.5)
 duration = 1.0
 
 [node name="HorizontalLeverPlatform" parent="ingredients" unique_id=1531398790 instance=ExtResource("39_8qwkd")]
 position = Vector2(3195, 1897)
-scale = Vector2(2, 2)
+scale = Vector2(0.5, 0.5)
 
 [node name="destructibles" type="Node2D" parent="ingredients" unique_id=850161141]
 
