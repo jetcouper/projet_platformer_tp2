@@ -16,13 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://sy6k0m30cmjs" path="res://Gyms/AntoineGym/Niveaux/porteFinNiveau.tscn" id="14_rr66s"]
 [ext_resource type="Texture2D" uid="uid://ds30rf63ou6le" path="res://Assets/Terrain/GrassLand_Bush.png" id="15_5c50s"]
 [ext_resource type="Texture2D" uid="uid://bgrdlll8mdurv" path="res://Assets/Terrain/GrassLand_Tree.png" id="16_f0er4"]
-[ext_resource type="PackedScene" uid="uid://bvcukn85rs32o" path="res://TP2/scene/character.tscn" id="17_3yw4t"]
+[ext_resource type="PackedScene" uid="uid://djx83jhit1b2b" path="res://Gyms/EddysGym/scene/ladder.tscn" id="17_oyg1a"]
+[ext_resource type="Script" uid="uid://cnpfya41g2r1e" path="res://Gyms/EddysGym/src/MedLadder.cs" id="18_4lyip"]
 [ext_resource type="PackedScene" uid="uid://ci1iyhhqseijm" path="res://Gyms/PaulGym/scenes/void.tscn" id="20_tasok"]
 [ext_resource type="PackedScene" uid="uid://dsmck4tamocsh" path="res://Gyms/PaulGym/scenes/Levier.tscn" id="21_kp2ii"]
 [ext_resource type="PackedScene" uid="uid://bo7cwxo3debfh" path="res://Gyms/PaulGym/scenes/SlidingHorizontalDoor.tscn" id="22_54773"]
 [ext_resource type="PackedScene" uid="uid://ciiktp2vh87p2" path="res://Gyms/PaulGym/scenes/SlidingVerticalDoor.tscn" id="25_xt3qg"]
 [ext_resource type="PackedScene" uid="uid://bt88obrp4ygev" path="res://Gyms/PaulGym/scenes/ReflectiveSurface.tscn" id="28_oogww"]
 [ext_resource type="PackedScene" uid="uid://dkhwmamsed73n" path="res://Gyms/CharleeGym/scenes/Chevalier.tscn" id="29_htgq4"]
+[ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="30_fboaj"]
+[ext_resource type="PackedScene" uid="uid://3bfrvchrw4ii" path="res://Gyms/PaulGym/scenes/Destructible.tscn" id="30_pk7sh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_ko3hr")
@@ -1016,8 +1019,11 @@ shape = SubResource("WorldBoundaryShape2D_7iq8t")
 tile_map_data = PackedByteArray("AACmAI4AAAAAAAAAAACjAI4AAAAAAAAAAACkAIsAAAAAAAAAAAChAIkAAAAAAAAAAACgAIsAAAAAAAAAAACmAIsAAAAAAAAAAACyAI8AAAAAAAAAAACCAI0AAAAAAAAAAACAAI0AAAAAAAAAAAB/AI4AAAAAAAAAAACBAI8AAAAAAAAAAACHAIIAAAAAAAAAAACSAIIAAAAAAAAAAABpAIQAAAAAAAAAAABeAIQAAAAAAAAAAABaAIQAAAAAAAAAAABXAH4AAAAAAAAAAABUAHsAAAAAAAAAAABGAHsAAAAAAAAAAABBAHsAAAAAAAAAAAA8AIQAAAAAAAAAAAAuAIQAAAAAAAAAAAA0AIQAAAAAAAAAAAAlAIYAAAAAAAAAAAAuAIsAAAAAAAAAAAAyAIsAAAAAAAAAAAAWAI0AAAAAAAAAAAAQAI0AAAAAAAAAAAANAI0AAAAAAAAAAAAeAJEAAAAAAAAAAAAmAIoAAAAAAAAAAAAeAHQAAAAAAAAAAAAoAHMAAAAAAAAAAAAyAHMAAAAAAAAAAAA+AGgAAAAAAAAAAABFAGgAAAAAAAAAAABWAGoAAAAAAAAAAAA7AGsAAAAAAAAAAAAqAF8AAAAAAAAAAAAkAF8AAAAAAAAAAAAYAF8AAAAAAAAAAAASAF8AAAAAAAAAAACiAHsAAAAAAAAAAACqAHgAAAAAAAAAAACuAHUAAAAAAAAAAACyAHUAAAAAAAAAAACyAIkAAAAAAAAAAACrAIMAAAAAAAAAAADIAJAAAAAAAAAAAADYAJEAAAAAAAAAAADxAIYAAAAAAAAAAAD1AIMAAAAAAAAAAAACAYMAAAAAAAAAAAARAX8AAAAAAAAAAAANAYYAAAAAAAAAAAAaAX8AAAAAAAAAAAAjAX8AAAAAAAAAAAAQAYQAAAAAAAAAAAAvAX0AAAAAAAAAAAA2AXwAAAAAAAAAAAAzAXcAAAAAAAAAAAAuAZAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hf5l1")
 
-[node name="Character" parent="." unique_id=804579613 instance=ExtResource("17_3yw4t")]
-position = Vector2(41, 2293)
+[node name="MedLadder" type="Node2D" parent="." unique_id=856709438 node_paths=PackedStringArray("Player", "Ladders")]
+position = Vector2(324, 2223)
+script = ExtResource("18_4lyip")
+Player = NodePath("../Character")
+Ladders = []
 
 [node name="Void" parent="." unique_id=164950147 node_paths=PackedStringArray("player") instance=ExtResource("20_tasok")]
 position = Vector2(90, 2253)
@@ -1026,12 +1032,12 @@ player = NodePath("../Character")
 
 [node name="Levier" parent="." unique_id=1212460187 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("21_kp2ii")]
 position = Vector2(486, 2297)
-Ingredients = [NodePath("../Door"), NodePath("../Trapdoor"), NodePath("../Door2")]
+Ingredients = [NodePath("../Door"), NodePath("../Trapdoor"), NodePath("../ReflectiveSurface")]
 player = NodePath("../Character")
 
 [node name="Levier2" parent="." unique_id=1737147552 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("21_kp2ii")]
 position = Vector2(688, 2094)
-Ingredients = [NodePath("../Trapdoor"), NodePath("../Door2"), NodePath(""), NodePath("../ReflectiveSurface")]
+Ingredients = [NodePath("../Door"), NodePath("../Door2"), NodePath("../ReflectiveSurface")]
 player = NodePath("../Character")
 
 [node name="Door" parent="." unique_id=2061855038 instance=ExtResource("25_xt3qg")]
@@ -1052,3 +1058,13 @@ position = Vector2(1193, 1919)
 [node name="CharacterBody2D" parent="." unique_id=981682141 node_paths=PackedStringArray("Character") instance=ExtResource("29_htgq4")]
 position = Vector2(1127, 1942)
 Character = NodePath("../Character")
+ProjectileScene = ExtResource("30_fboaj")
+
+[node name="Destructible" parent="." unique_id=2112057650 instance=ExtResource("30_pk7sh")]
+position = Vector2(684, 1837)
+
+[node name="Destructible2" parent="." unique_id=1982036280 instance=ExtResource("30_pk7sh")]
+position = Vector2(605, 1692)
+
+[node name="Destructible3" parent="." unique_id=167490462 instance=ExtResource("30_pk7sh")]
+position = Vector2(685, 1814)
