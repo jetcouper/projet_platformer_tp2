@@ -9,18 +9,114 @@ public partial class Enemy : CharacterBody2D
     [Export]
     private int Vies;
 
-    public void Take_Damage(Node2D body)
-    {
-        if (body is Projectile)
-        {
-            Vies -= 1;
-            Flash_Red();
+    [Export]
+    private PackedScene EnemyDamageParticleScene;
 
-            if (Vies <= 0)
-            {
-                Be_Destroyed();
-            }
+    [Export]
+    private PackedScene EnemyDeathParticleScene;
+
+    [Export]
+    public CharacterBody2D Character;
+
+    public int Direction_Faced;
+
+    public float Gravity_Force = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
+
+    public override void _Ready()
+    {
+        if (Sprite.Material is ShaderMaterial shaderMat)
+        {
+            Sprite.Material = (Material)shaderMat.Duplicate();
         }
+    }
+
+    protected void UpdateFacing()
+    {
+        float directionX = Mathf.Sign(Character.GlobalPosition.X - GlobalPosition.X);
+        int directionTemp = directionX < 0 ? 1 : -1;
+
+        if (directionTemp != Direction_Faced)
+        {
+            Sprite.FlipH = directionTemp < 0;
+            Direction_Faced = directionTemp;
+        }
+    }
+
+    protected void ApplyGravity(double delta)
+    {
+        Vector2 velocity = Velocity;
+        velocity.Y += Gravity_Force * (float)delta;
+        Velocity = velocity;
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        UpdateFacing();
+        ApplyGravity(delta);
+
+        Vector2 velocity = Velocity;
+        velocity.X = 0;
+        Velocity = velocity;
+
+        MoveAndSlide();
+    }
+
+    public virtual void Take_Damage(Node2D body)
+    {
+        Vies -= 1;
+        Flash_Red();
+        Vector2 particlePosition = GetParticleSpawnPosition();
+
+        if (Vies <= 0)
+        {
+            Be_Destroyed();
+            SpawnParticles(particlePosition, EnemyDeathParticleScene);
+        }
+        else
+        {
+            SpawnParticles(particlePosition, EnemyDamageParticleScene);
+        }
+    }
+
+    public void OnAreaBodyEntered(Node2D body)
+    {
+        if (body == this)
+            return;
+
+        if (body is TP2.Src.Projectile)
+        {
+            Take_Damage(body);
+            return;
+        }
+
+        Node health = body.GetNodeOrNull("DpmHealth");
+        if (health == null)
+            return;
+
+        Node controller = body.GetNodeOrNull("DpmCharacterController");
+        if (controller != null && controller.Get("IsDashing").AsBool())
+            return;
+
+        health.Call("TakeDamage", 1);
+    }
+
+    private void SpawnDamageParticles(Vector2 position)
+    {
+        if (EnemyDamageParticleScene == null)
+            return;
+
+        GpuParticles2D particles = EnemyDamageParticleScene.Instantiate<GpuParticles2D>();
+
+        GetParent()?.AddChild(particles);
+
+        particles.GlobalPosition = position;
+
+        particles.Restart();
+        particles.Emitting = true;
+
+        double duration = particles.Lifetime / Mathf.Max(particles.SpeedScale, 0.001f) + 0.1f;
+
+        GetTree().CreateTimer(duration).Timeout += particles.QueueFree;
     }
 
     public void Flash_Red()
@@ -68,5 +164,34 @@ public partial class Enemy : CharacterBody2D
         tween.TweenInterval(0.3f);
 
         tween.Finished += QueueFree;
+    }
+
+    private Vector2 GetParticleSpawnPosition()
+    {
+        if (Sprite != null)
+            return Sprite.GlobalPosition;
+
+        return GlobalPosition;
+    }
+
+    private void SpawnParticles(Vector2 position, PackedScene particleScene)
+    {
+        if (particleScene == null)
+            return;
+
+        GD.Print("Spawning particles at " + position);
+
+        GpuParticles2D particles = particleScene.Instantiate<GpuParticles2D>();
+
+        GetParent()?.AddChild(particles);
+
+        particles.GlobalPosition = position;
+
+        particles.Restart();
+        particles.Emitting = true;
+
+        double duration = particles.Lifetime / Mathf.Max(particles.SpeedScale, 0.001f) + 0.1f;
+
+        GetTree().CreateTimer(duration).Timeout += particles.QueueFree;
     }
 }

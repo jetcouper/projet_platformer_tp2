@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://b0ti01tvwe1ao"]
+
+[ext_resource type="Texture2D" uid="uid://cyccq2misgppq" path="res://Assets/Particule/brackeys_vfx_bundle/particles/alpha/muzzle_05_a.png" id="1_4wawh"]
+
+[sub_resource type="Curve" id="Curve_4wawh"]
+_data = [Vector2(0.045563556, 0.33371723), 0.0, 0.0, 0, 0, Vector2(0.33812952, 0.6181975), 0.0, 0.0, 0, 0, Vector2(0.66906476, 0.3561762), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_4wawh"]
+offsets = PackedFloat32Array(0, 0, 0, 1)
+colors = PackedColorArray(0.34416667, 0.35, 0, 1, 0.41626763, 0.25352275, 0.17774743, 1, 0.79, 0.1711667, 0, 1, 0.92, 0.92, 0.92, 1)
+
+[node name="player_damage_particule" type="CPUParticles2D" unique_id=2078852906]
+position = Vector2(-2, -50)
+emitting = false
+amount = 10
+texture = ExtResource("1_4wawh")
+lifetime = 1.91
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.03
+emission_shape = 2
+emission_sphere_radius = 10.0
+particle_flag_align_y = true
+direction = Vector2(1, -1)
+spread = 180.0
+gravity = Vector2(0, 300)
+initial_velocity_min = 83.47
+initial_velocity_max = 281.56
+scale_amount_min = 0.05
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_4wawh")
+color = Color(0.7277564, 0.18196625, 1.4439225e-06, 1)
+color_ramp = SubResource("Gradient_4wawh")

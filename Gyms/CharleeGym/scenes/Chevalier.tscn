@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dnm33u6n3w6ol" path="res://Gyms/CharleeGym/scripts/Chevalier.cs" id="1_n4e64"]
 [ext_resource type="Texture2D" uid="uid://b11pxkryj8imh" path="res://Assets/Characters/02-King Pig/Attack (38x28).png" id="2_gmv06"]
+[ext_resource type="PackedScene" uid="uid://bpm4nwjanuypm" path="res://Gyms/CharleeGym/scenes/enemy_damage_particule.tscn" id="2_rqkb1"]
 [ext_resource type="Shader" uid="uid://blgw1vc4cga8u" path="res://Gyms/CharleeGym/scripts/Helpers/EnemyDamageShader.gdshader" id="2_v1cvb"]
+[ext_resource type="PackedScene" uid="uid://ibbfp2rvne1v" path="res://Gyms/CharleeGym/scenes/enemy_death_particule.tscn" id="3_nuwtf"]
 [ext_resource type="Texture2D" uid="uid://ldbyorv3eb8c" path="res://Assets/Characters/02-King Pig/Idle (38x28).png" id="3_v1cvb"]
 [ext_resource type="PackedScene" uid="uid://cmwvrkbxt3odq" path="res://Gyms/CharleeGym/scenes/shield.tscn" id="5_v1cvb"]
 
@@ -144,6 +146,8 @@ Timer = NodePath("Timer")
 Shield = NodePath("Shield")
 Sprite = NodePath("AnimatedSprite2D")
 Vies = 5
+EnemyDamageParticleScene = ExtResource("2_rqkb1")
+EnemyDeathParticleScene = ExtResource("3_nuwtf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1765085715]
 material = SubResource("ShaderMaterial_rspf8")
@@ -157,7 +161,7 @@ shape = SubResource("CapsuleShape2D_ilh6y")
 [node name="Area2D" type="Area2D" parent="." unique_id=1810314149]
 position = Vector2(1, 4)
 collision_layer = 16
-collision_mask = 8
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=408934086]
 shape = SubResource("CapsuleShape2D_s7y4q")
@@ -166,4 +170,4 @@ shape = SubResource("CapsuleShape2D_s7y4q")
 
 [node name="Shield" parent="." unique_id=1943420650 instance=ExtResource("5_v1cvb")]
 
-[connection signal="body_entered" from="Area2D" to="." method="Take_Damage"]
+[connection signal="body_entered" from="Area2D" to="." method="OnAreaBodyEntered"]

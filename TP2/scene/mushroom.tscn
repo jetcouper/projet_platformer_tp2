@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cggppvvf8s0g8"]
+
+[ext_resource type="Texture2D" uid="uid://ygq5rbwk5a6x" path="res://Assets/Objects/mushroom.png" id="1_5gr8i"]
+[ext_resource type="Texture2D" uid="uid://vvkoa0yxj1rk" path="res://Assets/Mushroom/spore.png" id="2_gi54m"]
+
+[sub_resource type="Curve" id="Curve_vif8q"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.013850417, -0.85004425), 0.0, 0.0, 0, 0, Vector2(0.32271472, 0.53111833), 0.0, 0.0, 0, 0, Vector2(0.6094183, -0.4779967), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_snw7l"]
+_data = [Vector2(0.022160668, 0.48270118), 0.0, 0.0, 0, 0, Vector2(0.3296399, 0.80123496), 0.0, 0.0, 0, 0, Vector2(0.45429367, 0.8751348), 0.0, 0.0, 0, 0, Vector2(0.5872576, 0.6967559), 0.0, 0.0, 0, 0, Vector2(0.8144044, 0.6942076), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[node name="Mushroom" type="Node2D" unique_id=635398002]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1449983122]
+texture_filter = 2
+position = Vector2(11.9375, -16.65625)
+scale = Vector2(0.19149211, 0.19579087)
+texture = ExtResource("1_5gr8i")
+flip_h = true
+
+[node name="Spore" type="CPUParticles2D" parent="." unique_id=1873930740]
+position = Vector2(14, -40)
+amount = 15
+texture = ExtResource("2_gi54m")
+lifetime = 4.0
+preprocess = 4.0
+randomness = 0.5
+emission_shape = 2
+emission_sphere_radius = 74.77
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, -20)
+initial_velocity_max = 8.22
+angular_velocity_min = -40.0
+angular_velocity_max = 40.0
+angular_velocity_curve = SubResource("Curve_vif8q")
+scale_amount_min = 0.1
+scale_amount_max = 0.26
+scale_amount_curve = SubResource("Curve_snw7l")

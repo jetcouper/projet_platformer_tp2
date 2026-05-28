@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://crvool6mtvk0o"]
+
+[ext_resource type="Texture2D" uid="uid://dpv6o22r7n2ym" path="res://Assets/Particule/brackeys_vfx_bundle/particles/alpha/fire_01_a.png" id="1_6p5e1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_simple"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_simple"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_simple"]
+offsets = PackedFloat32Array(0, 0.136646, 0.819876, 0.900621, 1)
+colors = PackedColorArray(1, 0.854902, 0, 0, 1, 0.691406, 0, 1, 1, 0.246094, 0, 1, 1, 0.207843, 0, 0.203922, 1, 0.152941, 0, 0)
+
+[node name="Fire" type="CPUParticles2D" unique_id=596702865]
+texture_filter = 2
+material = SubResource("CanvasItemMaterial_simple")
+amount = 16
+texture = ExtResource("1_6p5e1")
+speed_scale = 1.05
+explosiveness = 0.1
+lifetime_randomness = 0.3
+direction = Vector2(0, -1)
+spread = 25.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 250.0
+angular_velocity_min = -100.0
+angular_velocity_max = 111.43
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_simple")
+color_ramp = SubResource("Gradient_simple")

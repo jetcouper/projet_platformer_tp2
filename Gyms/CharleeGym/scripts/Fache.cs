@@ -1,118 +1,91 @@
 using System;
 using Godot;
 
-public partial class Fache : Enemy
+public partial class Fache : RangedEnemy
 {
-	[Export]
-	public float JumpChance = 0.05f;
+    [Export]
+    public float JumpChance = 0.3f;
 
-	[Export]
-	public float JumpVelocity = -150.0f;
+    [Export]
+    public float JumpVelocity = -250.0f;
 
-	[ExportGroup("Attack")]
-	[Export]
-	public float MaxWait = 10.0f;
+    [ExportGroup("Attack")]
+    [Export]
+    public float MaxWait = 10.0f;
 
-	[Export]
-	public float MinWait = 1.0f;
+    [Export]
+    public float MinWait = 1.0f;
 
-	[Export]
-	public Timer Timer;
+    [Export]
+    public Timer Timer;
 
-	[Export]
-	public CharacterBody2D Character;
+    private float NextShot;
 
-	[Export]
-	public PackedScene ProjectileScene;
-	private float NextShot;
-	private int _Direction_Faced;
+    private float _Gravity_Force = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 
-	private float _Gravity_Force = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
+    public override void _Ready()
+    {
+        base._Ready();
+        Timer.Timeout += DecideNextAction;
+        RestartTimer();
+    }
 
-	public override void _Ready()
-	{
-		Timer.Timeout += DecideNextAction;
-		RestartTimer();
-	}
+    public void RandomNextShot()
+    {
+        Random rand = new Random();
 
-	public override void _PhysicsProcess(double delta)
-	{
-		float directionX = Mathf.Sign(Character.GlobalPosition.X - GlobalPosition.X);
-		int dir = directionX < 0 ? 1 : -1;
+        NextShot = (float)(MinWait + rand.NextDouble() * (MaxWait - MinWait));
+    }
 
-		if (dir != _Direction_Faced)
-		{
-			Sprite.FlipH = dir < 0;
-			_Direction_Faced = dir;
-		}
+    public void RestartTimer()
+    {
+        Sprite.Play("idle");
+        RandomNextShot();
 
-		Vector2 velocity = Velocity;
+        Timer.WaitTime = NextShot;
+        Timer.Start();
+    }
 
-		// gravity
-		velocity.Y += _Gravity_Force * (float)delta;
+    public void DecideNextAction()
+    {
+        if (GD.Randf() < JumpChance)
+        {
+            Jump();
+            return;
+        }
 
-		Velocity = velocity;
+        Attack();
+    }
 
-		MoveAndSlide();
-	}
+    public async void Attack()
+    {
+        Sprite.Play("attack");
 
-	public void RandomNextShot()
-	{
-		Random rand = new Random();
+        await ToSignal(GetTree().CreateTimer(0.5), "timeout");
 
-		NextShot = (float)(MinWait + rand.NextDouble() * (MaxWait - MinWait));
-	}
+        Shoot();
 
-	public void RestartTimer()
-	{
-		Sprite.Play("idle");
-		RandomNextShot();
+        await ToSignal(GetTree().CreateTimer(0.5), "timeout");
 
-		Timer.WaitTime = NextShot;
-		Timer.Start();
-	}
+        RestartTimer();
+    }
 
-	public void DecideNextAction()
-	{
-		if (GD.Randf() < JumpChance)
-		{
-			Jump();
-			return;
-		}
+    public async void Jump()
+    {
+        if (!IsOnFloor())
+            return;
 
-		Attack();
-	}
+        Vector2 velocity = Velocity;
+        velocity.Y = JumpVelocity;
+        Velocity = velocity;
 
-	public async void Attack()
-	{
-		Sprite.Play("attack");
+        Sprite.Play("jump");
 
-		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+        while (!IsOnFloor() || Velocity.Y < 0)
+        {
+            await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
+        }
 
-		Shoot();
-
-		await ToSignal(GetTree().CreateTimer(0.5), "timeout");
-
-		RestartTimer();
-	}
-
-	public void Shoot()
-	{
-		ProjectileArc projectile = ProjectileScene.Instantiate<ProjectileArc>();
-		GetParent().AddChild(projectile);
-		projectile.Launcher = this;
-		projectile.GlobalPosition = GlobalPosition + new Vector2(-_Direction_Faced * 20, -10);
-		projectile.LinearVelocity = new Vector2(-_Direction_Faced * 200, -300);
-	}
-
-	public async void Jump()
-	{
-		Velocity = new Vector2(Velocity.X, JumpVelocity);
-
-		Sprite.Play("jump");
-
-		await ToSignal(Sprite, AnimatedSprite2D.SignalName.AnimationFinished);
-
-		RestartTimer();
-	}
+        RestartTimer();
+    }
 }

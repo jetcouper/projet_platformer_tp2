@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c4ekpeesvy0b6"]
 
-[ext_resource type="PackedScene" uid="uid://cf2su4q4jdb8y" path="res://Gyms/CharleeGym/scenes/Fache.tscn" id="2_3yh6g"]
 [ext_resource type="PackedScene" uid="uid://gi67ru7ekbrf" path="res://Gyms/EddysGym/scene/character.tscn" id="2_vjd2e"]
-[ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="3_vjd2e"]
-[ext_resource type="PackedScene" uid="uid://0agvrdgbh0rg" path="res://Gyms/CharleeGym/scenes/sans_cervelle.tscn" id="4_km7a5"]
+[ext_resource type="PackedScene" uid="uid://ibbfp2rvne1v" path="res://Gyms/CharleeGym/scenes/enemy_death_particule.tscn" id="4_km7a5"]
+[ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://Gyms/CharleeGym/scenes/projectile_arc.tscn" id="5_y47dj"]
+[ext_resource type="PackedScene" uid="uid://cf2su4q4jdb8y" path="res://Gyms/CharleeGym/scenes/Fache.tscn" id="6_v0xrj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h8q46"]
 
@@ -57,10 +57,9 @@ shape = SubResource("WorldBoundaryShape2D_4xu8j")
 position = Vector2(403, 1)
 collision_mask = 1
 
-[node name="Fache" parent="." unique_id=64174467 node_paths=PackedStringArray("Character") instance=ExtResource("2_3yh6g")]
+[node name="CharacterBody2D2" parent="." unique_id=64174467 node_paths=PackedStringArray("Character") instance=ExtResource("6_v0xrj")]
+position = Vector2(128, 41)
+ProjectileScene = ExtResource("5_y47dj")
 Character = NodePath("../Character")
-ProjectileScene = ExtResource("3_vjd2e")
 
-[node name="CharacterBody2D" parent="." unique_id=271642449 node_paths=PackedStringArray("Character") instance=ExtResource("4_km7a5")]
-position = Vector2(-50, -2)
-Character = NodePath("../Character")
+[node name="GPUParticles2D" parent="." unique_id=1940634374 instance=ExtResource("4_km7a5")]

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://inqnajy3l3o5"]
+
+[ext_resource type="Texture2D" uid="uid://cxx1esdlon8q" path="res://Assets/GrassLand_Cloud_dark.png" id="1_ynxyb"]
+[ext_resource type="Script" uid="uid://dyee1ivauqq5f" path="res://Library/Utils/Oscillation.cs" id="2_ynxyb"]
+[ext_resource type="Texture2D" uid="uid://wqhb4uaojfk3" path="res://Assets/rain-drop.png" id="3_ynxyb"]
+
+[sub_resource type="Curve" id="Curve_nhgsd"]
+_data = [Vector2(0, 0.80209327), 0.0, 0.0, 0, 0, Vector2(0.8008475, 0.5876943), 0.0, 0.0, 0, 0, Vector2(1, 0.5626502), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="NuagePluie" type="Sprite2D" unique_id=656791820 node_paths=PackedStringArray("node")]
+modulate = Color(1, 1, 1, 0.5803922)
+texture_filter = 2
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_ynxyb")
+script = ExtResource("2_ynxyb")
+node = NodePath(".")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=823487658]
+position = Vector2(5, 22)
+amount = 50
+texture = ExtResource("3_ynxyb")
+emission_shape = 3
+emission_rect_extents = Vector2(50, 0.5)
+direction = Vector2(1, 10)
+gravity = Vector2(200, 980)
+scale_amount_min = 0.5
+scale_amount_max = 1.8
+scale_amount_curve = SubResource("Curve_nhgsd")

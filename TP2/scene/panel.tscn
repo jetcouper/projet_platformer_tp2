@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cy18ys2tduvyy"]
+
+[ext_resource type="Texture2D" uid="uid://bkwfvuei2swpm" path="res://Assets/r-panel.png" id="1_xtoyb"]
+[ext_resource type="Script" uid="uid://hjdaf4o2mm87" path="res://TP2/src/Player/Panel.cs" id="2_xtoyb"]
+
+[node name="Panel" type="Sprite2D" unique_id=1775237698]
+texture = ExtResource("1_xtoyb")
+script = ExtResource("2_xtoyb")
