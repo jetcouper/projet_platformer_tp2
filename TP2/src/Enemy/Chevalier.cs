@@ -1,6 +1,6 @@
 using System;
-using System.Diagnostics;
 using Godot;
+using Utils;
 
 public partial class Chevalier : RangedEnemy
 {
@@ -22,6 +22,8 @@ public partial class Chevalier : RangedEnemy
 
     public override void _Ready()
     {
+        Timer.EnsureValid();
+        Shield.EnsureValid();
         base._Ready();
         if (Shield != null)
             Shield.AddShieldCollisionException(this);
@@ -39,6 +41,8 @@ public partial class Chevalier : RangedEnemy
 
     public void RestartTimer()
     {
+        Shield.EnsureValid();
+        Sprite.EnsureValid();
         Shield.SetActive(true);
         Sprite.Play("idle");
         RandomNextShot();
@@ -58,8 +62,12 @@ public partial class Chevalier : RangedEnemy
 
     public async void Attack()
     {
+        if (!this.IsValid())
+            return;
+        Shield.EnsureValid();
         Shield.SetActive(false);
 
+        Sprite.EnsureValid();
         Sprite.Play("attack");
 
         await ToSignal(GetTree().CreateTimer(0.5), "timeout");

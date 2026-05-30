@@ -30,6 +30,9 @@ public partial class DcmBulletSpawnr : Node2D
 
     public override void _Ready()
     {
+        WeaponScene.EnsureValid();
+        Sprite.EnsureValid();
+
         if (!InputMap.HasAction(FireAction))
         {
             InputMap.AddAction(FireAction);
@@ -40,10 +43,13 @@ public partial class DcmBulletSpawnr : Node2D
         }
 
         Player ??= GetParent<Node2D>();
+        Player.EnsureValid();
     }
 
     public override void _Process(double delta)
     {
+        if (!this.IsValid())
+            return;
         if (!Player.IsValid() || !Sprite.IsValid())
             return;
 
@@ -55,6 +61,8 @@ public partial class DcmBulletSpawnr : Node2D
 
     private void SpawnBullet()
     {
+        if (!this.IsValid())
+            return;
         if (!WeaponScene.IsValid() || !Player.IsValid())
             return;
 

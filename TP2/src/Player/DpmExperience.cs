@@ -30,14 +30,19 @@ public partial class DpmExperience : Node2D
 
     public override void _Ready()
     {
+        BulletSpawnr.EnsureValid();
         NotifyObserver();
     }
 
     public void AddXp(float amount)
     {
+        if (!this.IsValid())
+            return;
         if (amount <= 0 || IsFull)
             return;
+
         Xp += amount;
+
         if (IsFull)
         {
             GD.Print("XP maximum!");
@@ -48,6 +53,8 @@ public partial class DpmExperience : Node2D
 
     public void ResetXp()
     {
+        if (!this.IsValid())
+            return;
         Xp = 0.0f;
     }
 

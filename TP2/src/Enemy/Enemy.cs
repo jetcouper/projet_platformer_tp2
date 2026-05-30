@@ -1,4 +1,5 @@
 using Godot;
+using Utils;
 
 public partial class Enemy : CharacterBody2D
 {
@@ -24,6 +25,8 @@ public partial class Enemy : CharacterBody2D
 
     public override void _Ready()
     {
+        Sprite.EnsureValid();
+        Character.EnsureValid();
         if (Sprite.Material is ShaderMaterial shaderMat)
         {
             Sprite.Material = (Material)shaderMat.Duplicate();
@@ -116,7 +119,11 @@ public partial class Enemy : CharacterBody2D
 
         double duration = particles.Lifetime / Mathf.Max(particles.SpeedScale, 0.001f) + 0.1f;
 
-        GetTree().CreateTimer(duration).Timeout += particles.QueueFree;
+        GetTree().CreateTimer(duration).Timeout += () =>
+        {
+            if (particles.IsValid())
+                particles.QueueFree();
+        };
     }
 
     public void Flash_Red()
@@ -192,6 +199,10 @@ public partial class Enemy : CharacterBody2D
 
         double duration = particles.Lifetime / Mathf.Max(particles.SpeedScale, 0.001f) + 0.1f;
 
-        GetTree().CreateTimer(duration).Timeout += particles.QueueFree;
+        GetTree().CreateTimer(duration).Timeout += () =>
+        {
+            if (particles.IsValid())
+                particles.QueueFree();
+        };
     }
 }

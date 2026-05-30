@@ -1,4 +1,5 @@
 using Godot;
+using Utils;
 
 public partial class RangedEnemy : Enemy
 {
@@ -14,8 +15,16 @@ public partial class RangedEnemy : Enemy
     [Export]
     protected Vector2 ProjectileOffset = new(20, -10);
 
+    public override void _Ready()
+    {
+        ProjectileScene.EnsureValid();
+        base._Ready();
+    }
+
     protected void Shoot()
     {
+        if (!this.IsValid())
+            return;
         if (ProjectileScene == null)
             return;
 

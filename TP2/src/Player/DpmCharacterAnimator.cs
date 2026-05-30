@@ -30,9 +30,7 @@ public partial class DpmCharacterAnimator : Node2D
     {
         _controller.EnsureValid();
         _sprite.EnsureValid();
-
-        if (!_controller.IsValid() || !_sprite.IsValid())
-            return;
+        _dashLabel.EnsureValid();
 
         PlaySpawnTween();
         _sprite.Play("idle");
@@ -41,6 +39,8 @@ public partial class DpmCharacterAnimator : Node2D
 
     public override void _Process(double delta)
     {
+        if (!this.IsValid())
+            return;
         if (!_controller.IsValid() || !_sprite.IsValid())
             return;
 
@@ -93,21 +93,17 @@ public partial class DpmCharacterAnimator : Node2D
             .SetTrans(Tween.TransitionType.Elastic)
             .SetEase(Tween.EaseType.Out);
 
-        if (_dashLabel.IsValid())
-        {
-            Vector2 startPos = _dashLabel.Position;
-            Tween labelTween = CreateTween();
-            labelTween.Parallel().TweenProperty(_dashLabel, "modulate:a", 1.0f, 0.2f);
-            labelTween
-                .Parallel()
-                .TweenProperty(_dashLabel, "position:y", startPos.Y - 20f, 0.3f)
-                .SetTrans(Tween.TransitionType.Cubic)
-                .SetEase(Tween.EaseType.Out);
-            labelTween.TweenInterval(1.0f);
-
-            labelTween.TweenProperty(_dashLabel, "modulate:a", 0.0f, 0.3f);
-            labelTween.TweenProperty(_dashLabel, "position:y", startPos.Y, 0.0f);
-        }
+        Vector2 startPos = _dashLabel.Position;
+        Tween labelTween = CreateTween();
+        labelTween.Parallel().TweenProperty(_dashLabel, "modulate:a", 1.0f, 0.2f);
+        labelTween
+            .Parallel()
+            .TweenProperty(_dashLabel, "position:y", startPos.Y - 20f, 0.3f)
+            .SetTrans(Tween.TransitionType.Cubic)
+            .SetEase(Tween.EaseType.Out);
+        labelTween.TweenInterval(1.0f);
+        labelTween.TweenProperty(_dashLabel, "modulate:a", 0.0f, 0.3f);
+        labelTween.TweenProperty(_dashLabel, "position:y", startPos.Y, 0.0f);
     }
 
     private void PlaySpawnTween()
@@ -123,8 +119,12 @@ public partial class DpmCharacterAnimator : Node2D
         tween.SetParallel(true);
         tween.TweenProperty(_sprite, "modulate:a", 1.0f, SpawnTweenDuration);
         tween.TweenProperty(_sprite, "scale", finalScale, SpawnTweenDuration);
-
-        tween.Finished += () => _controller.IsSpawning = false;
+        tween.Finished += () =>
+        {
+            if (!this.IsValid())
+                return;
+            _controller.IsSpawning = false;
+        };
     }
 
     private void UpdateFacing()

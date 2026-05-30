@@ -36,6 +36,7 @@ public partial class DpmHealth : Node2D
     private int _lives;
     private float _healthPercent;
     private DpmCharacterController _controller;
+    private IHealthObserver _healthObserver;
 
     public bool IsDead => _lives <= 0;
     public bool IsFullHealth => _lives >= MaxLives && _healthPercent >= MaxHealthPercent;
@@ -52,8 +53,11 @@ public partial class DpmHealth : Node2D
 
     public override void _Ready()
     {
-        if (!_body.IsValid() || !_sprite.IsValid() || !_invincibilityTimer.IsValid())
-            return;
+        _body.EnsureValid();
+        _sprite.EnsureValid();
+        _healthBar.EnsureValid();
+        _invincibilityTimer.EnsureValid();
+        _explosionParticlesScene.EnsureValid();
 
         _lives = MaxLives;
         _healthPercent = MaxHealthPercent;
@@ -66,6 +70,8 @@ public partial class DpmHealth : Node2D
 
     public void KillInstantly()
     {
+        if (!this.IsValid())
+            return;
         if (IsDead)
             return;
 
@@ -82,6 +88,8 @@ public partial class DpmHealth : Node2D
 
     public void TakeDamage(int amount)
     {
+        if (!this.IsValid())
+            return;
         if (IsDead || amount <= 0 || _isInvincible)
             return;
 
@@ -93,13 +101,9 @@ public partial class DpmHealth : Node2D
             _lives--;
 
             CreateExplosion(_body.GlobalPosition);
-
             _healthObserver?.OnLivesChanged(_lives);
 
-            if (_lives > 0)
-                _healthPercent = MaxHealthPercent;
-            else
-                _healthPercent = 0.0f;
+            _healthPercent = _lives > 0 ? MaxHealthPercent : 0.0f;
         }
 
         UpdateBar();
@@ -120,38 +124,38 @@ public partial class DpmHealth : Node2D
 
         Tween tween = CreateTween();
         tween.SetLoops((int)(InvincibilityDuration / 0.2f));
-        tween.TweenProperty(_sprite.EnsureValid(), "modulate:a", 0.3f, 0.1f);
-        tween.TweenProperty(_sprite.EnsureValid(), "modulate:a", 1.0f, 0.1f);
+        tween.TweenProperty(_sprite, "modulate:a", 0.3f, 0.1f);
+        tween.TweenProperty(_sprite, "modulate:a", 1.0f, 0.1f);
 
-        _invincibilityTimer.EnsureValid().Start();
+        _invincibilityTimer.Start();
     }
 
     private void OnInvincibilityTimeout()
     {
+        if (!this.IsValid())
+            return;
+
         _isInvincible = false;
-        if (_sprite.IsValid())
-            _sprite.Modulate = new Color(1, 1, 1, 1);
+        _sprite.Modulate = new Color(1, 1, 1, 1);
     }
 
     private void UpdateBar()
     {
-        if (_healthBar.IsValid())
-        {
-            _healthBar.MaxValue = MaxHealthPercent;
-            _healthBar.Value = _healthPercent;
-        }
+        if (!this.IsValid())
+            return;
+
+        _healthBar.MaxValue = MaxHealthPercent;
+        _healthBar.Value = _healthPercent;
     }
 
     public void Heal(float amount)
     {
+        if (!this.IsValid())
+            return;
         if (IsDead || amount <= 0)
             return;
 
-        _healthPercent += amount;
-
-        if (_healthPercent > MaxHealthPercent)
-            _healthPercent = MaxHealthPercent;
-
+        _healthPercent = Mathf.Min(_healthPercent + amount, MaxHealthPercent);
         UpdateBar();
     }
 
@@ -161,21 +165,23 @@ public partial class DpmHealth : Node2D
             return;
 
         CpuParticles2D particles = _explosionParticlesScene.Instantiate<CpuParticles2D>();
-
         GetParent()?.AddChild(particles);
-
         particles.GlobalPosition = position;
-
         particles.Restart();
         particles.Emitting = true;
 
         double duration = particles.Lifetime / Mathf.Max(particles.SpeedScale, 0.001f) + 0.1f;
-
-        GetTree().CreateTimer(duration).Timeout += particles.QueueFree;
+        GetTree().CreateTimer(duration).Timeout += () =>
+        {
+            if (particles.IsValid())
+                particles.QueueFree();
+        };
     }
 
     private void OnEnemyContact(Node2D body)
     {
+        if (!this.IsValid())
+            return;
         if (body != _body && body is CharacterBody2D)
         {
             if (_controller?.IsDashing == true)
@@ -183,8 +189,6 @@ public partial class DpmHealth : Node2D
             TakeDamage(1);
         }
     }
-
-    private IHealthObserver _healthObserver;
 
     public void SetHealthObserver(IHealthObserver observer)
     {

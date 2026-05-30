@@ -1,6 +1,5 @@
-using System;
-using System.Threading.Tasks.Dataflow;
 using Godot;
+using Utils;
 
 public partial class Goomba : Enemy
 {
@@ -24,6 +23,8 @@ public partial class Goomba : Enemy
     {
         if (!Is_Active)
             return;
+        if (!this.IsValid())
+            return;
 
         UpdateFacing();
         ApplyGravity(delta);
@@ -38,6 +39,10 @@ public partial class Goomba : Enemy
 
     public void _Begin_walk()
     {
+        if (!this.IsValid())
+            return;
+
+        Sprite.EnsureValid();
         Is_Active = true;
         Sprite.Play("inactive");
     }

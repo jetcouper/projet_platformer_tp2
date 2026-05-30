@@ -84,7 +84,6 @@ public partial class DpmCharacterController : Node2D
 
     public bool DashJustBecameAvailable { get; private set; }
 
-    // Etats expose
     public float MoveAxis { get; private set; }
     public float VerticalAxis { get; private set; }
     public float FacingDir { get; private set; } = 1.0f;
@@ -94,14 +93,11 @@ public partial class DpmCharacterController : Node2D
     public bool IsOnLadder => _onLadder;
     public bool IsDead { get; private set; }
     public bool IsHealing { get; set; }
-
     public bool IsHit { get; private set; }
     private float _hitTimeLeft;
     public bool IsSpawning { get; set; }
-
     public CharacterBody2D Body => _body;
 
-    // Etats interne
     private bool _jumpJustPressed;
     private bool _jumpHeld;
     private bool _dashJustPressed;
@@ -136,13 +132,11 @@ public partial class DpmCharacterController : Node2D
         _body.EnsureValid();
         _standingHitbox.EnsureValid();
         _crouchingHitbox.EnsureValid();
+        FootStepScene.EnsureValid();
+        _dashParticlesScene.EnsureValid();
 
-        if (_standingHitbox.IsValid())
-            _standingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
-
-        if (_crouchingHitbox.IsValid())
-            _crouchingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
-
+        _standingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
+        _crouchingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
         IsCrouching = false;
 
         EnsureInputActions();
@@ -152,6 +146,8 @@ public partial class DpmCharacterController : Node2D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (!this.IsValid())
+            return;
         if (!_body.IsValid())
             return;
 
@@ -166,7 +162,6 @@ public partial class DpmCharacterController : Node2D
         }
 
         ReadInputs();
-
         UpdateCrouch();
         UpdateCoyote(fDelta);
         UpdateLadder();
@@ -198,16 +193,12 @@ public partial class DpmCharacterController : Node2D
 
     private void UpdateCrouch()
     {
-        if (!_standingHitbox.IsValid() || !_crouchingHitbox.IsValid())
-            return;
-        // Le joueur s'accroupit s'il touche le sol et maintient la touche
         if (_crouchHeld && _body.IsOnFloor() && !IsCrouching && !_onLadder)
         {
             IsCrouching = true;
             _standingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
             _crouchingHitbox.SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
         }
-        // Le joueur se lève s'il lâche la touche ou s'il n'est plus au sol
         else if ((!_crouchHeld || !_body.IsOnFloor()) && IsCrouching)
         {
             IsCrouching = false;
@@ -356,10 +347,10 @@ public partial class DpmCharacterController : Node2D
                 _dashing = false;
                 _dashCooldownLeft = DashCooldown;
             }
-            // Attaque les ennemis pendant le dash
+
             foreach (Node node in _body.GetTree().CurrentScene.GetChildren())
             {
-                if (node is Enemy enemy)
+                if (node is Enemy enemy && enemy.IsValid())
                 {
                     if (_body.GlobalPosition.DistanceTo(enemy.GlobalPosition) < 60.0f)
                         enemy.Take_Damage(_body);
@@ -404,7 +395,6 @@ public partial class DpmCharacterController : Node2D
             return new Vector2(0.0f, VerticalAxis * ClimbSpeed);
 
         float currentMoveSpeed = IsCrouching ? MoveSpeed * 0.5f : MoveSpeed;
-
         float velX = Mathf.MoveToward(
             _body.Velocity.X,
             MoveAxis * currentMoveSpeed,
@@ -497,7 +487,6 @@ public partial class DpmCharacterController : Node2D
 
     private void HandleFootSteps(float delta)
     {
-        // Seulement si au sol et en mouvement horizontal
         if (!_body.IsOnFloor())
             return;
         if (Mathf.Abs(_body.Velocity.X) < 10f)
@@ -513,7 +502,7 @@ public partial class DpmCharacterController : Node2D
 
     private void SpawnFootStep()
     {
-        if (FootStepScene == null)
+        if (!FootStepScene.IsValid())
             return;
 
         var footStep = FootStepScene.Instantiate<FootStep>();
@@ -529,7 +518,6 @@ public partial class DpmCharacterController : Node2D
             return;
 
         var particles = _dashParticlesScene.Instantiate<CpuParticles2D>();
-
         _body.GetParent().AddChild(particles);
         particles.GlobalPosition = _body.GlobalPosition;
 
@@ -539,6 +527,10 @@ public partial class DpmCharacterController : Node2D
         particles.Emitting = true;
 
         var timer = GetTree().CreateTimer(particles.Lifetime);
-        timer.Timeout += particles.QueueFree;
+        timer.Timeout += () =>
+        {
+            if (particles.IsValid())
+                particles.QueueFree();
+        };
     }
 }

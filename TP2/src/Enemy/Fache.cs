@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Utils;
 
 public partial class Fache : RangedEnemy
 {
@@ -25,6 +26,7 @@ public partial class Fache : RangedEnemy
 
     public override void _Ready()
     {
+        Timer.EnsureValid();
         base._Ready();
         Timer.Timeout += DecideNextAction;
         RestartTimer();
@@ -39,6 +41,10 @@ public partial class Fache : RangedEnemy
 
     public void RestartTimer()
     {
+        if (!this.IsValid())
+            return;
+
+        Sprite.EnsureValid();
         Sprite.Play("idle");
         RandomNextShot();
 
@@ -48,6 +54,8 @@ public partial class Fache : RangedEnemy
 
     public void DecideNextAction()
     {
+        if (!this.IsValid())
+            return;
         if (GD.Randf() < JumpChance)
         {
             Jump();
@@ -59,6 +67,7 @@ public partial class Fache : RangedEnemy
 
     public async void Attack()
     {
+        Sprite.EnsureValid();
         Sprite.Play("attack");
 
         await ToSignal(GetTree().CreateTimer(0.5), "timeout");
@@ -79,6 +88,7 @@ public partial class Fache : RangedEnemy
         velocity.Y = JumpVelocity;
         Velocity = velocity;
 
+        Sprite.EnsureValid();
         Sprite.Play("jump");
 
         while (!IsOnFloor() || Velocity.Y < 0)

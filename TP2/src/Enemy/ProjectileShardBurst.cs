@@ -1,4 +1,5 @@
 using Godot;
+using Utils;
 
 public partial class ProjectileShardBurst : GpuParticles2D
 {
@@ -8,6 +9,10 @@ public partial class ProjectileShardBurst : GpuParticles2D
         Emitting = true;
 
         double duration = Lifetime / Mathf.Max(SpeedScale, 0.001f) + 0.1f;
-        GetTree().CreateTimer(duration).Timeout += QueueFree;
+        GetTree().CreateTimer(duration).Timeout += () =>
+        {
+            if (this.IsValid())
+                QueueFree();
+        };
     }
 }

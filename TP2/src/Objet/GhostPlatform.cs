@@ -1,4 +1,5 @@
 using Godot;
+using Utils;
 
 public partial class GhostPlatform : AnimatableBody2D
 {
@@ -46,6 +47,8 @@ public partial class GhostPlatform : AnimatableBody2D
         fadeTween.TweenCallback(
             Callable.From(() =>
             {
+                if (!this.IsValid())
+                    return;
                 CollisionLayer = 0;
                 CollisionMask = 0;
             })
@@ -54,6 +57,8 @@ public partial class GhostPlatform : AnimatableBody2D
         fadeTween.TweenCallback(
             Callable.From(() =>
             {
+                if (!this.IsValid())
+                    return;
                 CollisionLayer = 1;
                 CollisionMask = 1;
             })

@@ -13,28 +13,33 @@ public partial class DpmReflectiveBox : Ingredient
 
     public override void _Ready()
     {
+        _sprite.EnsureValid();
+        _collision.EnsureValid();
+
         ApplyState();
     }
 
     public override void ChangeState()
     {
+        if (!this.IsValid())
+            return;
+
         base.ChangeState();
         ApplyState();
     }
 
     public void SetActive(bool NewState)
     {
+        if (!this.IsValid())
+            return;
+
         State = NewState;
         ApplyState();
     }
 
     private void ApplyState()
-    { // Désactivée : la balle passe à travers
-        if (_collision.IsValid())
-            _collision.SetDeferred(CollisionShape2D.PropertyName.Disabled, !State);
-
-        // Animation actif inactif
-        if (_sprite.IsValid())
-            _sprite.Play(State ? "active" : "inactive");
+    {
+        _collision.SetDeferred(CollisionShape2D.PropertyName.Disabled, !State);
+        _sprite.Play(State ? "active" : "inactive");
     }
 }

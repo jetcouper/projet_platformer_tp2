@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://ceg52350muhuk" path="res://TP2/scene/Player/hud.tscn" id="30_bla3m"]
 [ext_resource type="PackedScene" uid="uid://dkhwmamsed73n" path="res://TP2/scene/Enemy/Chevalier.tscn" id="31_8mxj6"]
 [ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://TP2/scene/Enemy/projectile_arc.tscn" id="32_x6jim"]
+[ext_resource type="PackedScene" uid="uid://ibbfp2rvne1v" path="res://TP2/scene/Enemy/enemy_death_particule.tscn" id="33_6wvg0"]
 [ext_resource type="PackedScene" uid="uid://cf2su4q4jdb8y" path="res://TP2/scene/Enemy/Fache.tscn" id="33_8hrho"]
 [ext_resource type="PackedScene" uid="uid://pg5lk2xqe5sl" path="res://TP2/scene/Enemy/goomba_2.tscn" id="34_5oimx"]
 [ext_resource type="PackedScene" uid="uid://b7s1sk23u5eqp" path="res://TP2/scene/Enemy/oeuf.tscn" id="35_qqcv7"]
@@ -768,95 +769,97 @@ shape = SubResource("WorldBoundaryShape2D_7iq8t")
 tile_map_data = PackedByteArray("AACmAI4AAAAAAAAAAACjAI4AAAAAAAAAAACkAIsAAAAAAAAAAAChAIkAAAAAAAAAAACgAIsAAAAAAAAAAACmAIsAAAAAAAAAAACyAI8AAAAAAAAAAACCAI0AAAAAAAAAAACAAI0AAAAAAAAAAAB/AI4AAAAAAAAAAACBAI8AAAAAAAAAAACHAIIAAAAAAAAAAACSAIIAAAAAAAAAAABpAIQAAAAAAAAAAABeAIQAAAAAAAAAAABaAIQAAAAAAAAAAABXAH4AAAAAAAAAAABUAHsAAAAAAAAAAABGAHsAAAAAAAAAAABBAHsAAAAAAAAAAAA8AIQAAAAAAAAAAAAuAIQAAAAAAAAAAAA0AIQAAAAAAAAAAAAlAIYAAAAAAAAAAAAuAIsAAAAAAAAAAAAyAIsAAAAAAAAAAAAWAI0AAAAAAAAAAAAQAI0AAAAAAAAAAAANAI0AAAAAAAAAAAAeAJEAAAAAAAAAAAAmAIoAAAAAAAAAAAAeAHQAAAAAAAAAAAAoAHMAAAAAAAAAAAAyAHMAAAAAAAAAAAA+AGgAAAAAAAAAAABFAGgAAAAAAAAAAABWAGoAAAAAAAAAAAA7AGsAAAAAAAAAAAAqAF8AAAAAAAAAAAAkAF8AAAAAAAAAAAAYAF8AAAAAAAAAAAASAF8AAAAAAAAAAACiAHsAAAAAAAAAAACqAHgAAAAAAAAAAACuAHUAAAAAAAAAAACyAHUAAAAAAAAAAACyAIkAAAAAAAAAAACrAIMAAAAAAAAAAADIAJAAAAAAAAAAAADYAJEAAAAAAAAAAADxAIYAAAAAAAAAAAD1AIMAAAAAAAAAAAACAYMAAAAAAAAAAAARAX8AAAAAAAAAAAANAYYAAAAAAAAAAAAaAX8AAAAAAAAAAAAjAX8AAAAAAAAAAAAQAYQAAAAAAAAAAAAvAX0AAAAAAAAAAAA2AXwAAAAAAAAAAAAzAXcAAAAAAAAAAAAuAZAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hf5l1")
 
-[node name="Brazier" parent="." unique_id=2007872452 instance=ExtResource("20_yb0ls")]
-position = Vector2(117, 2150)
+[node name="Objets" type="Node2D" parent="." unique_id=538726377]
+position = Vector2(3196, 1989)
 
-[node name="Brazier2" parent="." unique_id=1703538033 instance=ExtResource("20_yb0ls")]
-position = Vector2(269, 2150)
+[node name="Brazier" parent="Objets" unique_id=2007872452 instance=ExtResource("20_yb0ls")]
+position = Vector2(-3079, 161)
 
-[node name="Brazier3" parent="." unique_id=1061829086 instance=ExtResource("20_yb0ls")]
-position = Vector2(1288, 1570)
+[node name="Brazier2" parent="Objets" unique_id=1703538033 instance=ExtResource("20_yb0ls")]
+position = Vector2(-2927, 161)
 
-[node name="Fountain" parent="." unique_id=1292127794 instance=ExtResource("21_xy3nx")]
-position = Vector2(3257.9998, 2261)
+[node name="Brazier3" parent="Objets" unique_id=1061829086 instance=ExtResource("20_yb0ls")]
+position = Vector2(-1908, -419)
+
+[node name="Fountain" parent="Objets" unique_id=1292127794 instance=ExtResource("21_xy3nx")]
+position = Vector2(61.999756, 272)
 scale = Vector2(0.9262656, 0.9583939)
 
-[node name="Mushroom" parent="." unique_id=635398002 instance=ExtResource("22_1sfrv")]
-position = Vector2(1705, 2085)
+[node name="Mushroom" parent="Objets" unique_id=635398002 instance=ExtResource("22_1sfrv")]
+position = Vector2(-1491, 96)
 
-[node name="Mushroom2" parent="." unique_id=1986401509 instance=ExtResource("22_1sfrv")]
-position = Vector2(4605, 2295)
+[node name="Mushroom2" parent="Objets" unique_id=1986401509 instance=ExtResource("22_1sfrv")]
+position = Vector2(1409, 306)
 scale = Vector2(0.854243, 0.788909)
 
-[node name="Plateform" parent="." unique_id=1711305892 instance=ExtResource("23_vhtuw")]
-position = Vector2(1936, 2026)
+[node name="Plateform" parent="Objets" unique_id=1711305892 instance=ExtResource("23_vhtuw")]
+position = Vector2(-1260, 37)
 physics_material_override = SubResource("PhysicsMaterial_nak0m")
 distance = 180.0
 duree = 2.0
 
-[node name="Portail" parent="." unique_id=1220590042 instance=ExtResource("24_mocit")]
-position = Vector2(4915, 1961)
-NextScene = "res://TP2/scene/Niveau/niveau2.tscn"
-
-[node name="GhostPlateform2" parent="." unique_id=932280952 instance=ExtResource("25_7sx8y")]
-position = Vector2(3196, 1989)
+[node name="GhostPlateform2" parent="Objets" unique_id=932280952 instance=ExtResource("25_7sx8y")]
 startDelay = 1.0
 
-[node name="GhostPlateform3" parent="." unique_id=159512660 instance=ExtResource("25_7sx8y")]
-position = Vector2(3456, 2142)
+[node name="GhostPlateform3" parent="Objets" unique_id=159512660 instance=ExtResource("25_7sx8y")]
+position = Vector2(260, 153)
 startDelay = 2.0
 
-[node name="GhostPlateform4" parent="." unique_id=1849068758 instance=ExtResource("25_7sx8y")]
-position = Vector2(839, 1359)
+[node name="GhostPlateform4" parent="Objets" unique_id=1849068758 instance=ExtResource("25_7sx8y")]
+position = Vector2(-2357, -630)
 distance = 300.0
 visibleDuration = 5.0
 invisibleDuration = 1.0
 ghostDelay = 0.5
 
-[node name="GhostPlateform5" parent="." unique_id=1183845368 instance=ExtResource("25_7sx8y")]
-position = Vector2(1094, 1272)
+[node name="GhostPlateform5" parent="Objets" unique_id=1183845368 instance=ExtResource("25_7sx8y")]
+position = Vector2(-2102, -717)
 visibleDuration = 5.0
 invisibleDuration = 1.0
 ghostDelay = 0.5
 
-[node name="GhostPlateform6" parent="." unique_id=1929067706 instance=ExtResource("25_7sx8y")]
-position = Vector2(1431, 1316)
+[node name="GhostPlateform6" parent="Objets" unique_id=1929067706 instance=ExtResource("25_7sx8y")]
+position = Vector2(-1765, -673)
 visibleDuration = 5.0
 invisibleDuration = 1.0
 ghostDelay = 0.5
 
-[node name="GhostPlateform7" parent="." unique_id=198595538 instance=ExtResource("25_7sx8y")]
-position = Vector2(1754, 1409)
+[node name="GhostPlateform7" parent="Objets" unique_id=198595538 instance=ExtResource("25_7sx8y")]
+position = Vector2(-1442, -580)
 visibleDuration = 8.0
 invisibleDuration = 1.0
 ghostDelay = 0.25
 
-[node name="Panel" parent="." unique_id=1775237698 instance=ExtResource("26_pw7iy")]
-position = Vector2(654, 2082.0002)
+[node name="Panel" parent="Objets" unique_id=1775237698 instance=ExtResource("26_pw7iy")]
+position = Vector2(-2542, 93.000244)
 scale = Vector2(0.76499957, 0.74999994)
 
-[node name="Panel2" parent="." unique_id=1773533678 instance=ExtResource("26_pw7iy")]
-position = Vector2(2417, 2051.0002)
+[node name="Panel2" parent="Objets" unique_id=1773533678 instance=ExtResource("26_pw7iy")]
+position = Vector2(-779, 62.000244)
 scale = Vector2(0.76499957, 0.74999994)
 
-[node name="Panel3" parent="." unique_id=1086715474 instance=ExtResource("26_pw7iy")]
-position = Vector2(3999.9998, 2066.0002)
+[node name="Panel3" parent="Objets" unique_id=1086715474 instance=ExtResource("26_pw7iy")]
+position = Vector2(803.99976, 77.000244)
 scale = Vector2(0.76499957, 0.74999994)
 
-[node name="MedLadder" parent="." unique_id=22173457 node_paths=PackedStringArray("Player", "Ladders") instance=ExtResource("27_8yojs")]
-position = Vector2(35, 44)
-Player = NodePath("../Character")
+[node name="MedLadder" parent="Objets" unique_id=22173457 node_paths=PackedStringArray("Player", "Ladders") instance=ExtResource("27_8yojs")]
+position = Vector2(-3161, -1945)
+Player = NodePath("../../Character")
 Ladders = [NodePath("../Ladder"), NodePath("../Ladder2")]
 
-[node name="Ladder" parent="." unique_id=1774158747 instance=ExtResource("28_j7mu3")]
-position = Vector2(664, 1457)
+[node name="Ladder" parent="Objets" unique_id=1774158747 instance=ExtResource("28_j7mu3")]
+position = Vector2(-2532, -532)
 
-[node name="Ladder2" parent="." unique_id=1263938365 instance=ExtResource("28_j7mu3")]
-position = Vector2(664, 1315)
+[node name="Ladder2" parent="Objets" unique_id=1263938365 instance=ExtResource("28_j7mu3")]
+position = Vector2(-2532, -674)
 
-[node name="Mushroom3" parent="." unique_id=846189544 instance=ExtResource("22_1sfrv")]
-position = Vector2(348, 1504)
+[node name="Mushroom3" parent="Objets" unique_id=846189544 instance=ExtResource("22_1sfrv")]
+position = Vector2(-2848, -485)
 scale = Vector2(0.92961276, 0.63578707)
+
+[node name="Portail" parent="." unique_id=1220590042 instance=ExtResource("24_mocit")]
+position = Vector2(4915, 1961)
+NextScene = "res://TP2/scene/Niveau/niveau2.tscn"
 
 [node name="Character" parent="." unique_id=804579613 node_paths=PackedStringArray("Hud") instance=ExtResource("29_bvt2o")]
 position = Vector2(209, 2226)
@@ -871,73 +874,58 @@ Player = NodePath("..")
 [node name="Chevalier1" parent="Enemies" unique_id=981682141 node_paths=PackedStringArray("Character") instance=ExtResource("31_8mxj6")]
 position = Vector2(1029, 1644)
 ProjectileScene = ExtResource("32_x6jim")
-EnemyDeathParticleScene = null
+EnemyDamageParticleScene = ExtResource("33_6wvg0")
 Character = NodePath("../../Character")
 
 [node name="Chevalier2" parent="Enemies" unique_id=802602924 node_paths=PackedStringArray("Character") instance=ExtResource("31_8mxj6")]
 position = Vector2(2893, 2293)
 ProjectileScene = ExtResource("32_x6jim")
-EnemyDeathParticleScene = null
 Character = NodePath("../../Character")
 
-[node name="Chevalier3" parent="Enemies" unique_id=453874367 node_paths=PackedStringArray("Character") instance=ExtResource("31_8mxj6")]
-position = Vector2(4564, 2012)
+[node name="Chevalier3" parent="Enemies" unique_id=467893368 node_paths=PackedStringArray("Character") instance=ExtResource("31_8mxj6")]
+position = Vector2(4022, 2293)
 ProjectileScene = ExtResource("32_x6jim")
 Character = NodePath("../../Character")
 
-[node name="Chevalier4" parent="Enemies" unique_id=1450453171 node_paths=PackedStringArray("Character") instance=ExtResource("31_8mxj6")]
-position = Vector2(4411, 2292)
-ProjectileScene = ExtResource("32_x6jim")
-Character = NodePath("../../Character")
-
-[node name="Chevalier5" parent="Enemies" unique_id=1740636427 node_paths=PackedStringArray("Character") instance=ExtResource("31_8mxj6")]
-position = Vector2(3921, 2291)
+[node name="Chevalier4" parent="Enemies" unique_id=1577455146 node_paths=PackedStringArray("Character") instance=ExtResource("31_8mxj6")]
+position = Vector2(4476, 2292)
 ProjectileScene = ExtResource("32_x6jim")
 Character = NodePath("../../Character")
 
 [node name="Fache1" parent="Enemies" unique_id=64174467 node_paths=PackedStringArray("Character") instance=ExtResource("33_8hrho")]
 position = Vector2(1501, 2093)
-EnemyDeathParticleScene = null
 Character = NodePath("../../Character")
 
 [node name="Fache2" parent="Enemies" unique_id=1407664119 node_paths=PackedStringArray("Character") instance=ExtResource("33_8hrho")]
 position = Vector2(2157, 2062)
-EnemyDeathParticleScene = null
 Character = NodePath("../../Character")
 
 [node name="Goomba1" parent="Enemies" unique_id=1227190931 node_paths=PackedStringArray("Character") instance=ExtResource("34_5oimx")]
 position = Vector2(784, 2116)
-EnemyDeathParticleScene = null
 Character = NodePath("../../Character")
 
 [node name="Goomba2" parent="Enemies" unique_id=529433782 node_paths=PackedStringArray("Character") instance=ExtResource("34_5oimx")]
 position = Vector2(1127, 2315)
-EnemyDeathParticleScene = null
 Character = NodePath("../../Character")
 
 [node name="Oeuf" parent="Enemies" unique_id=370138255 node_paths=PackedStringArray("Character") instance=ExtResource("35_qqcv7")]
 position = Vector2(2644, 1931)
-EnemyDeathParticleScene = null
 Character = NodePath("../../Character")
 
 [node name="Oeuf2" parent="Enemies" unique_id=1005177665 node_paths=PackedStringArray("Character") instance=ExtResource("35_qqcv7")]
 position = Vector2(2411, 2299)
-EnemyDeathParticleScene = null
 Character = NodePath("../../Character")
 
 [node name="SansCervelle1" parent="Enemies" unique_id=271642449 node_paths=PackedStringArray("Character") instance=ExtResource("36_mjxwx")]
 position = Vector2(3639, 2307)
-EnemyDeathParticleScene = null
 Character = NodePath("../../Character")
 
 [node name="SansCervelle2" parent="Enemies" unique_id=963473738 node_paths=PackedStringArray("Character") instance=ExtResource("36_mjxwx")]
 position = Vector2(2606, 1975)
-EnemyDeathParticleScene = null
 Character = NodePath("../../Character")
 
 [node name="SansCervelle3" parent="Enemies" unique_id=1251026772 node_paths=PackedStringArray("Character") instance=ExtResource("36_mjxwx")]
 position = Vector2(4208, 2091)
-EnemyDeathParticleScene = null
 Character = NodePath("../../Character")
 
 [node name="ingredients" type="Node2D" parent="." unique_id=387967034]
@@ -1060,3 +1048,6 @@ position = Vector2(4062, 2088)
 
 [node name="Barrel13" parent="ingredients/destructibles" unique_id=1060306397 instance=ExtResource("41_gjlxb")]
 position = Vector2(4090, 2026)
+
+[node name="Barrel14" parent="ingredients/destructibles" unique_id=1446415472 instance=ExtResource("41_gjlxb")]
+position = Vector2(4289, 2305)

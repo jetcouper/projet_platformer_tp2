@@ -1,4 +1,5 @@
 using Godot;
+using Utils;
 
 public partial class ProjectileArc : RigidBody2D
 {
@@ -11,6 +12,8 @@ public partial class ProjectileArc : RigidBody2D
 
     public override void _Ready()
     {
+        ShardBurstScene.EnsureValid();
+
         ContactMonitor = true;
         MaxContactsReported = 4;
         BodyEntered += OnBodyEntered;
@@ -24,6 +27,8 @@ public partial class ProjectileArc : RigidBody2D
 
     private void OnBodyEntered(Node body)
     {
+        if (!this.IsValid())
+            return;
         if (body == Launcher)
             return;
 

@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://u2w6v2oaob8" path="res://TP2/scene/ElementNiveau/Portail.tscn" id="21_u855g"]
 [ext_resource type="PackedScene" uid="uid://cek1s47hobadr" path="res://TP2/scene/Objet/cavern_brazier.tscn" id="22_13cyb"]
 [ext_resource type="PackedScene" uid="uid://inqnajy3l3o5" path="res://TP2/scene/Objet/nuage_pluie.tscn" id="23_fsgux"]
+[ext_resource type="PackedScene" uid="uid://ragu8kg4e4fq" path="res://TP2/scene/Objet/ghost_plateform.tscn" id="24_rkapm"]
 [ext_resource type="PackedScene" uid="uid://dpi6k20kvt8nl" path="res://TP2/scene/Objet/cavern_mushroom.tscn" id="26_dli7e"]
 [ext_resource type="PackedScene" uid="uid://dsmck4tamocsh" path="res://TP2/scene/Ingredient/Levier.tscn" id="26_n3r30"]
 [ext_resource type="PackedScene" uid="uid://c60ysn748kyav" path="res://TP2/scene/Objet/cavern_fountain.tscn" id="26_rac3r"]
@@ -31,6 +32,12 @@
 [ext_resource type="PackedScene" uid="uid://3bfrvchrw4ii" path="res://TP2/scene/Ingredient/Destructible.tscn" id="29_c0kxh"]
 [ext_resource type="PackedScene" uid="uid://d1e2s5e1qvguh" path="res://TP2/scene/Ingredient/barrel.tscn" id="30_aoxhq"]
 [ext_resource type="Texture2D" uid="uid://0dd243nd3b7o" path="res://Assets/Objects/Skull Effect/02.png" id="30_yjvq8"]
+[ext_resource type="PackedScene" uid="uid://dkhwmamsed73n" path="res://TP2/scene/Enemy/Chevalier.tscn" id="32_gdwch"]
+[ext_resource type="PackedScene" uid="uid://c2ryn4rd4ju44" path="res://TP2/scene/Enemy/projectile_arc.tscn" id="33_4engc"]
+[ext_resource type="PackedScene" uid="uid://cf2su4q4jdb8y" path="res://TP2/scene/Enemy/Fache.tscn" id="34_yf7lw"]
+[ext_resource type="PackedScene" uid="uid://0agvrdgbh0rg" path="res://TP2/scene/Enemy/sans_cervelle.tscn" id="35_puajh"]
+[ext_resource type="PackedScene" uid="uid://b7s1sk23u5eqp" path="res://TP2/scene/Enemy/oeuf.tscn" id="36_i73tn"]
+[ext_resource type="PackedScene" uid="uid://pg5lk2xqe5sl" path="res://TP2/scene/Enemy/goomba_2.tscn" id="37_n645i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_rac3r")
@@ -693,103 +700,6 @@ position = Vector2(0, 1.6431441)
 scale = Vector2(0.31370044, 0.25940713)
 texture = SubResource("GradientTexture2D_0imgm")
 
-[node name="CavernBrazier" parent="." unique_id=478060829 instance=ExtResource("22_13cyb")]
-position = Vector2(211, 1591)
-
-[node name="CavernBrazier2" parent="." unique_id=829381609 instance=ExtResource("22_13cyb")]
-position = Vector2(1412, 1479)
-
-[node name="CavernBrazier3" parent="." unique_id=934851976 instance=ExtResource("22_13cyb")]
-position = Vector2(3064, 1510)
-
-[node name="CavernBrazier4" parent="." unique_id=2056115634 instance=ExtResource("22_13cyb")]
-position = Vector2(2416, 1433)
-
-[node name="CavernFountain" parent="." unique_id=144201951 instance=ExtResource("26_rac3r")]
-position = Vector2(2408, 1771)
-
-[node name="NuagePluie" parent="." unique_id=656791820 instance=ExtResource("23_fsgux")]
-position = Vector2(1611, 1143)
-
-[node name="NuagePluie2" parent="." unique_id=836557350 instance=ExtResource("23_fsgux")]
-position = Vector2(2750, 967)
-
-[node name="NuagePluie3" parent="." unique_id=1223752022 instance=ExtResource("23_fsgux")]
-position = Vector2(3795, 1320)
-scale = Vector2(2.25, 2.25)
-
-[node name="CavernMushroom" parent="." unique_id=953444531 instance=ExtResource("26_dli7e")]
-position = Vector2(2162, 1658)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom2" parent="." unique_id=1337588901 instance=ExtResource("26_dli7e")]
-position = Vector2(2162, 1658)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom3" parent="." unique_id=173717151 instance=ExtResource("26_dli7e")]
-position = Vector2(2162, 1658)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom4" parent="." unique_id=1713201106 instance=ExtResource("26_dli7e")]
-position = Vector2(2133, 1657)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom5" parent="." unique_id=232868705 instance=ExtResource("26_dli7e")]
-position = Vector2(2101, 1656)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom6" parent="." unique_id=1046872633 instance=ExtResource("26_dli7e")]
-position = Vector2(2101, 1656)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom7" parent="." unique_id=1968088324 instance=ExtResource("26_dli7e")]
-position = Vector2(2188, 1656)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom8" parent="." unique_id=1767416156 instance=ExtResource("26_dli7e")]
-position = Vector2(909.00006, 1656)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom9" parent="." unique_id=632865722 instance=ExtResource("26_dli7e")]
-position = Vector2(909.00006, 1656)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom10" parent="." unique_id=402723153 instance=ExtResource("26_dli7e")]
-position = Vector2(958, 1655)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom11" parent="." unique_id=900604371 instance=ExtResource("26_dli7e")]
-position = Vector2(1018, 1653)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom12" parent="." unique_id=1662950269 instance=ExtResource("26_dli7e")]
-position = Vector2(1020, 1654)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom13" parent="." unique_id=524060317 instance=ExtResource("26_dli7e")]
-position = Vector2(616, 1743)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom14" parent="." unique_id=1567798967 instance=ExtResource("26_dli7e")]
-position = Vector2(616, 1743)
-scale = Vector2(0.1, 0.1)
-
-[node name="CavernMushroom15" parent="." unique_id=1532631593 instance=ExtResource("26_dli7e")]
-position = Vector2(3546.0002, 1762)
-scale = Vector2(0.1, 0.1)
-
-[node name="Avant" type="Node2D" parent="." unique_id=397371594]
-
-[node name="DecoAvant" type="Node2D" parent="Avant" unique_id=1734032242]
-
-[node name="Character" parent="Avant" unique_id=804579613 node_paths=PackedStringArray("Hud") instance=ExtResource("18_u855g")]
-position = Vector2(120, 2061)
-Hud = NodePath("Hud")
-
-[node name="Hud" parent="Avant/Character" unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("21_m0l2m")]
-position = Vector2(-192, -2225)
-Player = NodePath("..")
-
 [node name="MontagneRocheAvant" type="Parallax2D" parent="." unique_id=549560578]
 visible = false
 scroll_scale = Vector2(1.2, 0.95)
@@ -842,7 +752,7 @@ script = ExtResource("20_jm78y")
 node = NodePath("..")
 
 [node name="Oiseau4" type="AnimatedSprite2D" parent="DCM_BirdSystem" unique_id=1925035265]
-position = Vector2(1835, 2092)
+position = Vector2(1835, 2068)
 sprite_frames = SubResource("SpriteFrames_2qk4x")
 animation = &"moveRight"
 flip_h = true
@@ -920,6 +830,100 @@ shape = SubResource("WorldBoundaryShape2D_7iq8t")
 position = Vector2(4917, 2260)
 NextScene = "res://TP2/niveau1.tscn"
 AfficherCredits = true
+
+[node name="Objets" type="Node2D" parent="." unique_id=1923328627]
+position = Vector2(2416, 1433)
+
+[node name="CavernBrazier" parent="Objets" unique_id=478060829 instance=ExtResource("22_13cyb")]
+position = Vector2(-2205, 158)
+
+[node name="CavernBrazier2" parent="Objets" unique_id=829381609 instance=ExtResource("22_13cyb")]
+position = Vector2(-1004, 46)
+
+[node name="CavernBrazier3" parent="Objets" unique_id=934851976 instance=ExtResource("22_13cyb")]
+position = Vector2(648, 77)
+
+[node name="CavernBrazier4" parent="Objets" unique_id=2056115634 instance=ExtResource("22_13cyb")]
+
+[node name="CavernFountain" parent="Objets" unique_id=144201951 instance=ExtResource("26_rac3r")]
+position = Vector2(-8, 338)
+
+[node name="NuagePluie" parent="Objets" unique_id=656791820 instance=ExtResource("23_fsgux")]
+position = Vector2(-805, -290)
+
+[node name="NuagePluie2" parent="Objets" unique_id=836557350 instance=ExtResource("23_fsgux")]
+position = Vector2(334, -466)
+
+[node name="NuagePluie3" parent="Objets" unique_id=1223752022 instance=ExtResource("23_fsgux")]
+position = Vector2(1379, -113)
+scale = Vector2(2.25, 2.25)
+
+[node name="CavernMushroom" parent="Objets" unique_id=953444531 instance=ExtResource("26_dli7e")]
+position = Vector2(-254, 225)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom2" parent="Objets" unique_id=1337588901 instance=ExtResource("26_dli7e")]
+position = Vector2(-254, 225)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom3" parent="Objets" unique_id=173717151 instance=ExtResource("26_dli7e")]
+position = Vector2(-254, 225)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom4" parent="Objets" unique_id=1713201106 instance=ExtResource("26_dli7e")]
+position = Vector2(-283, 224)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom5" parent="Objets" unique_id=232868705 instance=ExtResource("26_dli7e")]
+position = Vector2(-315, 223)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom6" parent="Objets" unique_id=1046872633 instance=ExtResource("26_dli7e")]
+position = Vector2(-315, 223)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom7" parent="Objets" unique_id=1968088324 instance=ExtResource("26_dli7e")]
+position = Vector2(-228, 223)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom8" parent="Objets" unique_id=1767416156 instance=ExtResource("26_dli7e")]
+position = Vector2(-1507, 223)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom9" parent="Objets" unique_id=632865722 instance=ExtResource("26_dli7e")]
+position = Vector2(-1507, 223)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom10" parent="Objets" unique_id=402723153 instance=ExtResource("26_dli7e")]
+position = Vector2(-1458, 222)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom11" parent="Objets" unique_id=900604371 instance=ExtResource("26_dli7e")]
+position = Vector2(-1398, 220)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom12" parent="Objets" unique_id=1662950269 instance=ExtResource("26_dli7e")]
+position = Vector2(-1396, 221)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom13" parent="Objets" unique_id=524060317 instance=ExtResource("26_dli7e")]
+position = Vector2(-1800, 310)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom14" parent="Objets" unique_id=1567798967 instance=ExtResource("26_dli7e")]
+position = Vector2(-1800, 310)
+scale = Vector2(0.1, 0.1)
+
+[node name="CavernMushroom15" parent="Objets" unique_id=1532631593 instance=ExtResource("26_dli7e")]
+position = Vector2(1130.0002, 329)
+scale = Vector2(0.1, 0.1)
+
+[node name="GhostPlateform" parent="Objets" unique_id=90819364 instance=ExtResource("24_rkapm")]
+position = Vector2(-527, -47.999985)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="GhostPlateform2" parent="Objets" unique_id=2041792375 instance=ExtResource("24_rkapm")]
+position = Vector2(-1873, 87)
 
 [node name="Ingredients" type="Node2D" parent="." unique_id=1994216443]
 
@@ -1005,83 +1009,200 @@ position = Vector2(92, 517)
 [node name="Destructible9" parent="Ingredients/Destructibles" unique_id=944256075 instance=ExtResource("29_c0kxh")]
 position = Vector2(-37, 518)
 
-[node name="Barrel" parent="Ingredients/Destructibles" unique_id=921496592 instance=ExtResource("30_aoxhq")]
-position = Vector2(32, 329)
+[node name="DestructiblesBarrel" type="Node2D" parent="Ingredients" unique_id=242195902]
 
-[node name="Barrel2" parent="Ingredients/Destructibles" unique_id=81387763 instance=ExtResource("30_aoxhq")]
-position = Vector2(59, 328)
+[node name="Barrel" parent="Ingredients/DestructiblesBarrel" unique_id=921496592 instance=ExtResource("30_aoxhq")]
+position = Vector2(1346, 2121)
 
-[node name="Barrel3" parent="Ingredients/Destructibles" unique_id=1991201586 instance=ExtResource("30_aoxhq")]
-position = Vector2(85, 328)
+[node name="Barrel2" parent="Ingredients/DestructiblesBarrel" unique_id=81387763 instance=ExtResource("30_aoxhq")]
+position = Vector2(1373, 2120)
 
-[node name="Barrel4" parent="Ingredients/Destructibles" unique_id=1209092011 instance=ExtResource("30_aoxhq")]
-position = Vector2(59, 298)
+[node name="Barrel3" parent="Ingredients/DestructiblesBarrel" unique_id=1991201586 instance=ExtResource("30_aoxhq")]
+position = Vector2(1399, 2120)
 
-[node name="Barrel5" parent="Ingredients/Destructibles" unique_id=1076780592 instance=ExtResource("30_aoxhq")]
-position = Vector2(1720, 329)
+[node name="Barrel4" parent="Ingredients/DestructiblesBarrel" unique_id=1209092011 instance=ExtResource("30_aoxhq")]
+position = Vector2(1373, 2090)
 
-[node name="Barrel6" parent="Ingredients/Destructibles" unique_id=163626738 instance=ExtResource("30_aoxhq")]
-position = Vector2(1747, 328)
+[node name="Barrel5" parent="Ingredients/DestructiblesBarrel" unique_id=1076780592 instance=ExtResource("30_aoxhq")]
+position = Vector2(3034, 2121)
 
-[node name="Barrel7" parent="Ingredients/Destructibles" unique_id=109307115 instance=ExtResource("30_aoxhq")]
-position = Vector2(1773, 328)
+[node name="Barrel6" parent="Ingredients/DestructiblesBarrel" unique_id=163626738 instance=ExtResource("30_aoxhq")]
+position = Vector2(3061, 2120)
 
-[node name="Barrel8" parent="Ingredients/Destructibles" unique_id=1650806101 instance=ExtResource("30_aoxhq")]
-position = Vector2(1747, 298)
+[node name="Barrel7" parent="Ingredients/DestructiblesBarrel" unique_id=109307115 instance=ExtResource("30_aoxhq")]
+position = Vector2(3087, 2120)
 
-[node name="Barrel9" parent="Ingredients/Destructibles" unique_id=1264838470 instance=ExtResource("30_aoxhq")]
-position = Vector2(2215, 247)
+[node name="Barrel8" parent="Ingredients/DestructiblesBarrel" unique_id=1650806101 instance=ExtResource("30_aoxhq")]
+position = Vector2(3061, 2090)
 
-[node name="Barrel10" parent="Ingredients/Destructibles" unique_id=267523868 instance=ExtResource("30_aoxhq")]
-position = Vector2(2242, 246)
+[node name="Barrel9" parent="Ingredients/DestructiblesBarrel" unique_id=1264838470 instance=ExtResource("30_aoxhq")]
+position = Vector2(3529, 2039)
 
-[node name="Barrel11" parent="Ingredients/Destructibles" unique_id=2097965533 instance=ExtResource("30_aoxhq")]
-position = Vector2(2103, 248)
+[node name="Barrel10" parent="Ingredients/DestructiblesBarrel" unique_id=267523868 instance=ExtResource("30_aoxhq")]
+position = Vector2(3556, 2038)
 
-[node name="Barrel12" parent="Ingredients/Destructibles" unique_id=1867647566 instance=ExtResource("30_aoxhq")]
-position = Vector2(2242, 216)
+[node name="Barrel11" parent="Ingredients/DestructiblesBarrel" unique_id=2097965533 instance=ExtResource("30_aoxhq")]
+position = Vector2(3417, 2040)
 
-[node name="Barrel13" parent="Ingredients/Destructibles" unique_id=1017547560 instance=ExtResource("30_aoxhq")]
-position = Vector2(-1191, 512)
+[node name="Barrel12" parent="Ingredients/DestructiblesBarrel" unique_id=1867647566 instance=ExtResource("30_aoxhq")]
+position = Vector2(3556, 2008)
 
-[node name="Barrel14" parent="Ingredients/Destructibles" unique_id=572853 instance=ExtResource("30_aoxhq")]
-position = Vector2(-990, 512)
+[node name="Barrel13" parent="Ingredients/DestructiblesBarrel" unique_id=1017547560 instance=ExtResource("30_aoxhq")]
+position = Vector2(40, 2273)
 
-[node name="Barrel15" parent="Ingredients/Destructibles" unique_id=141542371 instance=ExtResource("30_aoxhq")]
-position = Vector2(-1089, 513)
+[node name="Barrel14" parent="Ingredients/DestructiblesBarrel" unique_id=572853 instance=ExtResource("30_aoxhq")]
+position = Vector2(324, 2304)
 
-[node name="Barrel16" parent="Ingredients/Destructibles" unique_id=284190138 instance=ExtResource("30_aoxhq")]
-position = Vector2(-1089, 513)
+[node name="Barrel15" parent="Ingredients/DestructiblesBarrel" unique_id=141542371 instance=ExtResource("30_aoxhq")]
+position = Vector2(378, 2304)
 
-[node name="Barrel17" parent="Ingredients/Destructibles" unique_id=238241289 instance=ExtResource("30_aoxhq")]
-position = Vector2(-990, 481)
+[node name="Barrel16" parent="Ingredients/DestructiblesBarrel" unique_id=284190138 instance=ExtResource("30_aoxhq")]
+position = Vector2(40, 2242)
 
-[node name="Barrel19" parent="Ingredients/Destructibles" unique_id=243166095 instance=ExtResource("30_aoxhq")]
-position = Vector2(-990, 450)
+[node name="Barrel17" parent="Ingredients/DestructiblesBarrel" unique_id=238241289 instance=ExtResource("30_aoxhq")]
+position = Vector2(324, 2274)
 
-[node name="Barrel18" parent="Ingredients/Destructibles" unique_id=1361665713 instance=ExtResource("30_aoxhq")]
-position = Vector2(-919, 512)
+[node name="Barrel19" parent="Ingredients/DestructiblesBarrel" unique_id=243166095 instance=ExtResource("30_aoxhq")]
+position = Vector2(40, 2304)
 
-[node name="Barrel20" parent="Ingredients/Destructibles" unique_id=1314224578 instance=ExtResource("30_aoxhq")]
-position = Vector2(2736, 151)
+[node name="Barrel18" parent="Ingredients/DestructiblesBarrel" unique_id=1361665713 instance=ExtResource("30_aoxhq")]
+position = Vector2(352, 2304)
 
-[node name="Barrel21" parent="Ingredients/Destructibles" unique_id=1605741712 instance=ExtResource("30_aoxhq")]
-position = Vector2(2855, 152)
+[node name="Barrel20" parent="Ingredients/DestructiblesBarrel" unique_id=1314224578 instance=ExtResource("30_aoxhq")]
+position = Vector2(4050, 1943)
 
-[node name="Barrel22" parent="Ingredients/Destructibles" unique_id=869965359 instance=ExtResource("30_aoxhq")]
-position = Vector2(2613, 152)
+[node name="Barrel21" parent="Ingredients/DestructiblesBarrel" unique_id=1605741712 instance=ExtResource("30_aoxhq")]
+position = Vector2(4169, 1944)
 
-[node name="Barrel23" parent="Ingredients/Destructibles" unique_id=1448634015 instance=ExtResource("30_aoxhq")]
-position = Vector2(3315, 89)
+[node name="Barrel22" parent="Ingredients/DestructiblesBarrel" unique_id=869965359 instance=ExtResource("30_aoxhq")]
+position = Vector2(3927, 1944)
 
-[node name="Barrel24" parent="Ingredients/Destructibles" unique_id=659895728 instance=ExtResource("30_aoxhq")]
-position = Vector2(3482, 89)
+[node name="Barrel23" parent="Ingredients/DestructiblesBarrel" unique_id=1448634015 instance=ExtResource("30_aoxhq")]
+position = Vector2(4629, 1881)
+
+[node name="Barrel24" parent="Ingredients/DestructiblesBarrel" unique_id=659895728 instance=ExtResource("30_aoxhq")]
+position = Vector2(4796, 1881)
+
+[node name="Barrel25" parent="Ingredients/DestructiblesBarrel" unique_id=1082641169 instance=ExtResource("30_aoxhq")]
+position = Vector2(2829, 2304)
+
+[node name="Barrel26" parent="Ingredients/DestructiblesBarrel" unique_id=1211246516 instance=ExtResource("30_aoxhq")]
+position = Vector2(2829, 2275)
+
+[node name="Barrel27" parent="Ingredients/DestructiblesBarrel" unique_id=2142043525 instance=ExtResource("30_aoxhq")]
+position = Vector2(2829, 2245)
+
+[node name="Barrel28" parent="Ingredients/DestructiblesBarrel" unique_id=1351690556 instance=ExtResource("30_aoxhq")]
+position = Vector2(2828, 2214)
+
+[node name="Barrel29" parent="Ingredients/DestructiblesBarrel" unique_id=1542888662 instance=ExtResource("30_aoxhq")]
+position = Vector2(2827, 2182)
+
+[node name="Barrel30" parent="Ingredients/DestructiblesBarrel" unique_id=765299628 instance=ExtResource("30_aoxhq")]
+position = Vector2(2826, 2150)
+
+[node name="Barrel31" parent="Ingredients/DestructiblesBarrel" unique_id=664997550 instance=ExtResource("30_aoxhq")]
+position = Vector2(2826, 2150)
+
+[node name="Barrel32" parent="Ingredients/DestructiblesBarrel" unique_id=1428208735 instance=ExtResource("30_aoxhq")]
+position = Vector2(1974, 1960)
+
+[node name="Destructible" parent="Ingredients/DestructiblesBarrel" unique_id=1760285664 instance=ExtResource("29_c0kxh")]
+position = Vector2(4657, 1661)
+
+[node name="Destructible2" parent="Ingredients/DestructiblesBarrel" unique_id=1582417214 instance=ExtResource("29_c0kxh")]
+position = Vector2(4785, 1659)
+
+[node name="Barrel33" parent="Ingredients/DestructiblesBarrel" unique_id=748881652 instance=ExtResource("30_aoxhq")]
+position = Vector2(2143, 1960)
 
 [node name="Skull" type="Sprite2D" parent="Ingredients" unique_id=1488638416]
 z_index = 1
 z_as_relative = false
 position = Vector2(732, 2261)
 texture = ExtResource("30_yjvq8")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1948314301]
+position = Vector2(4917, 2260)
+
+[node name="Chevalier1" parent="Enemies" unique_id=981682141 node_paths=PackedStringArray("Character") instance=ExtResource("32_gdwch")]
+position = Vector2(-4825, 30)
+ProjectileScene = ExtResource("33_4engc")
+Character = NodePath("../../Avant/Character")
+
+[node name="Chevalier2" parent="Enemies" unique_id=1547296725 node_paths=PackedStringArray("Character") instance=ExtResource("32_gdwch")]
+position = Vector2(-3998, 29)
+ProjectileScene = ExtResource("33_4engc")
+Character = NodePath("../../Avant/Character")
+
+[node name="Chevalier3" parent="Enemies" unique_id=708850162 node_paths=PackedStringArray("Character") instance=ExtResource("32_gdwch")]
+position = Vector2(-4457, -394)
+ProjectileScene = ExtResource("33_4engc")
+Character = NodePath("../../Avant/Character")
+
+[node name="Fache" parent="Enemies" unique_id=446632206 node_paths=PackedStringArray("Character") instance=ExtResource("34_yf7lw")]
+position = Vector2(-4010, -296)
+Character = NodePath("../../Avant/Character")
+
+[node name="Fache2" parent="Enemies" unique_id=1084645628 node_paths=PackedStringArray("Character") instance=ExtResource("34_yf7lw")]
+position = Vector2(-3436, -456)
+Character = NodePath("../../Avant/Character")
+
+[node name="Fache3" parent="Enemies" unique_id=2137378973 node_paths=PackedStringArray("Character") instance=ExtResource("34_yf7lw")]
+position = Vector2(-3406, -715)
+Character = NodePath("../../Avant/Character")
+
+[node name="Fache4" parent="Enemies" unique_id=849174011 node_paths=PackedStringArray("Character") instance=ExtResource("34_yf7lw")]
+position = Vector2(-3179, -543)
+Character = NodePath("../../Avant/Character")
+
+[node name="Fache5" parent="Enemies" unique_id=1564031342 node_paths=PackedStringArray("Character") instance=ExtResource("34_yf7lw")]
+position = Vector2(-2793, -615)
+Character = NodePath("../../Avant/Character")
+
+[node name="Fache6" parent="Enemies" unique_id=64174467 node_paths=PackedStringArray("Character") instance=ExtResource("34_yf7lw")]
+position = Vector2(-262, 28)
+Character = NodePath("../../Avant/Character")
+
+[node name="sans_cervelle" parent="Enemies" unique_id=271642449 node_paths=PackedStringArray("Character") instance=ExtResource("35_puajh")]
+position = Vector2(-2910, -298)
+Character = NodePath("../../Avant/Character")
+
+[node name="Oeuf" parent="Enemies" unique_id=370138255 node_paths=PackedStringArray("Character") instance=ExtResource("36_i73tn")]
+position = Vector2(-1821, -385)
+Character = NodePath("../../Avant/Character")
+
+[node name="Oeuf2" parent="Enemies" unique_id=1721678638 node_paths=PackedStringArray("Character") instance=ExtResource("36_i73tn")]
+position = Vector2(-1742, -385)
+Character = NodePath("../../Avant/Character")
+
+[node name="Oeuf3" parent="Enemies" unique_id=80574610 node_paths=PackedStringArray("Character") instance=ExtResource("36_i73tn")]
+position = Vector2(-1384, -788)
+Character = NodePath("../../Avant/Character")
+
+[node name="Oeuf4" parent="Enemies" unique_id=1885365087 node_paths=PackedStringArray("Character") instance=ExtResource("36_i73tn")]
+position = Vector2(-1075, -538)
+Character = NodePath("../../Avant/Character")
+
+[node name="Oeuf5" parent="Enemies" unique_id=1486632546 node_paths=PackedStringArray("Character") instance=ExtResource("36_i73tn")]
+position = Vector2(-930, -321)
+Character = NodePath("../../Avant/Character")
+
+[node name="goomba" parent="Enemies" unique_id=1227190931 node_paths=PackedStringArray("Character") instance=ExtResource("37_n645i")]
+position = Vector2(-205, -595)
+Character = NodePath("../../Avant/Character")
+
+[node name="Avant" type="Node2D" parent="." unique_id=397371594]
+
+[node name="DecoAvant" type="Node2D" parent="Avant" unique_id=1734032242]
+
+[node name="Character" parent="Avant" unique_id=804579613 node_paths=PackedStringArray("Hud") instance=ExtResource("18_u855g")]
+position = Vector2(120, 2061)
+Hud = NodePath("Hud")
+
+[node name="Hud" parent="Avant/Character" unique_id=573723219 node_paths=PackedStringArray("Player") instance=ExtResource("21_m0l2m")]
+position = Vector2(-192, -2225)
+Player = NodePath("..")
 
 [connection signal="body_entered" from="LaveEau/Area2D" to="LaveEau/Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="LaveEau/Area2D2" to="LaveEau/Area2D2" method="_on_body_entered"]

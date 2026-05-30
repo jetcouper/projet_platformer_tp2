@@ -1,5 +1,5 @@
-using System.Diagnostics.CodeAnalysis;
 using Godot;
+using Utils;
 
 public partial class Oeuf : Enemy
 {
@@ -13,9 +13,10 @@ public partial class Oeuf : Enemy
 
     public override void _Ready()
     {
+        Shield.EnsureValid();
+        Sprite.EnsureValid();
         base._Ready();
-        if (Shield != null)
-            Shield.AddShieldCollisionException(this);
+        Shield?.AddShieldCollisionException(this);
 
         Sprite.Play("inactive");
         ApplyIngredientState();
@@ -23,6 +24,8 @@ public partial class Oeuf : Enemy
 
     public void SetIngredientState(bool state)
     {
+        if (!this.IsValid())
+            return;
         IngredientState = state;
         ApplyIngredientState();
     }

@@ -16,8 +16,7 @@ public partial class Fountain : Node2D
 
     public override void _Ready()
     {
-        if (!_healArea.IsValid())
-            return;
+        _healArea.EnsureValid();
 
         _healArea.BodyEntered += OnBodyEntered;
         _healArea.BodyExited += OnBodyExited;
@@ -25,12 +24,18 @@ public partial class Fountain : Node2D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (!this.IsValid())
+            return;
+
         if (_playerHealth.IsValid())
             _playerHealth.Heal(HealPerSecond * (float)delta);
     }
 
     private void OnBodyEntered(Node2D body)
     {
+        if (!this.IsValid())
+            return;
+
         _playerHealth = body.GetNodeOrNull<DpmHealth>("DpmHealth");
         _playerController = body.GetNodeOrNull<DpmCharacterController>("DpmCharacterController");
 
@@ -40,6 +45,9 @@ public partial class Fountain : Node2D
 
     private void OnBodyExited(Node2D body)
     {
+        if (!this.IsValid())
+            return;
+
         if (_playerController.IsValid())
             _playerController.IsHealing = false;
 

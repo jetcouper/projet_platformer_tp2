@@ -1,6 +1,5 @@
-using System;
-using System.Diagnostics;
 using Godot;
+using Utils;
 
 public partial class Levier : Node2D
 {
@@ -15,56 +14,58 @@ public partial class Levier : Node2D
 
     bool CanBeActivated = false;
 
-    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        player.EnsureValid();
+
         sprite = GetNode<AnimatedSprite2D>("LeverSprite");
+        sprite.EnsureValid();
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta) { }
 
     public override void _Input(InputEvent @event)
     {
-        if (CanBeActivated && @event.IsActionPressed("interact"))
+        if (!this.IsValid())
+            return;
+        if (!CanBeActivated)
+            return;
+        if (!@event.IsActionPressed("interact"))
+            return;
+
+        sprite.SetFrameAndProgress(State ? 1 : 3, 0);
+        State = !State;
+
+        foreach (var ing in Ingredients)
         {
-            if (State)
-                sprite.SetFrameAndProgress(1, 0);
-            else
-                sprite.SetFrameAndProgress(3, 0);
-
-            State = !State;
-
-            foreach (var ing in Ingredients)
-            {
+            if (ing.IsValid())
                 ing.ChangeState();
-            }
         }
     }
 
     public void _on_body_entered(Node2D areaContact)
     {
-        if (areaContact == player)
-        {
-            if (!CanBeActivated)
-            {
-                CanBeActivated = true;
-                int currFrame = sprite.Frame;
-                sprite.SetFrameAndProgress(currFrame + 1, 0);
-            }
-        }
+        if (!this.IsValid())
+            return;
+        if (areaContact != player)
+            return;
+        if (CanBeActivated)
+            return;
+
+        CanBeActivated = true;
+        sprite.SetFrameAndProgress(sprite.Frame + 1, 0);
     }
 
     public void _on_body_exited(Node2D areaContact)
     {
-        if (areaContact == player)
-        {
-            if (CanBeActivated)
-            {
-                CanBeActivated = false;
-                int currFrame = sprite.Frame;
-                sprite.SetFrameAndProgress(currFrame - 1, 0);
-            }
-        }
+        if (!this.IsValid())
+            return;
+        if (areaContact != player)
+            return;
+        if (!CanBeActivated)
+            return;
+
+        CanBeActivated = false;
+        sprite.SetFrameAndProgress(sprite.Frame - 1, 0);
     }
 }

@@ -1,4 +1,5 @@
 using Godot;
+using Utils;
 
 public partial class OeufIngredient : Ingredient
 {
@@ -7,14 +8,15 @@ public partial class OeufIngredient : Ingredient
 
     public override void _Ready()
     {
-        if (Oeuf != null)
-        {
-            State = Oeuf.IngredientState;
-        }
+        Oeuf.EnsureValid();
+        State = Oeuf.IngredientState;
     }
 
     public override void ChangeState()
     {
+        if (!this.IsValid())
+            return;
+
         base.ChangeState();
         Oeuf?.SetIngredientState(State);
     }
@@ -27,9 +29,7 @@ public partial class OeufIngredient : Ingredient
     private void RemoveFromLevers(Node node)
     {
         if (node == null)
-        {
             return;
-        }
 
         if (node is Levier levier && levier.Ingredients != null)
         {

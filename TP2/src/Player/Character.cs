@@ -28,25 +28,15 @@ public partial class Character : CharacterBody2D
         Health.EnsureValid();
         Experience.EnsureValid();
         Animator.EnsureValid();
-
-        if (
-            !Controller.IsValid()
-            || !Health.IsValid()
-            || !Experience.IsValid()
-            || !Animator.IsValid()
-        )
-            return;
+        Hud.EnsureValid();
 
         Health.SetController(Controller);
         Controller.Health = Health;
         Controller.Experience = Experience;
         Animator.SetController(Controller);
 
-        if (Hud.IsValid())
-        {
-            Health.SetHealthObserver(Hud);
-            Experience.SetObserver(Hud);
-            Hud.Init(Experience);
-        }
+        Health.SetHealthObserver(Hud);
+        Experience.SetObserver(Hud);
+        Hud.Init(Experience);
     }
 }
