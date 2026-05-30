@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://binkb1bxlvi4x"]
-
-[ext_resource type="Script" uid="uid://dnngw65pbiyp6" path="res://TP2/src/MedLadder.cs" id="1_61b4j"]
-
-[node name="MedLadder" type="Node2D" unique_id=22173457 node_paths=PackedStringArray("Ladders")]
-script = ExtResource("1_61b4j")
-Ladders = [null, null]

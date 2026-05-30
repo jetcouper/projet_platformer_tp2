@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c2ryn4rd4ju44"]
+
+[ext_resource type="Texture2D" uid="uid://b86w3162p3r1c" path="res://Assets/Objects/08-Box/Idle.png" id="1_2gm5l"]
+[ext_resource type="Script" uid="uid://dom6bhdjr16fg" path="res://TP2/src/Enemy/ProjectileArc.cs" id="1_uvdl4"]
+[ext_resource type="PackedScene" uid="uid://ey1ebj4knnuc" path="res://TP2/scene/Enemy/projectile_shard_burst.tscn" id="2_burst"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uvdl4"]
+radius = 11.0
+
+[node name="Projectile" type="RigidBody2D" unique_id=1627085932]
+collision_layer = 8
+script = ExtResource("1_uvdl4")
+ShardBurstScene = ExtResource("2_burst")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1381120056]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=707688779]
+shape = SubResource("CircleShape2D_uvdl4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=330308172]
+texture = ExtResource("1_2gm5l")

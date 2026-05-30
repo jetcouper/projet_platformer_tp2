@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://d1e2s5e1qvguh"]
+
+[ext_resource type="Script" uid="uid://b3s01ot3nmshx" path="res://TP2/src/Ingredient/Destructible.cs" id="2_script"]
+[ext_resource type="PackedScene" uid="uid://b0sh04k6jr7t8" path="res://TP2/scene/Ingredient/death_barrel_particule.tscn" id="2_uxvq1"]
+[ext_resource type="PackedScene" uid="uid://omfmltdkrt17" path="res://TP2/scene/Ingredient/damage_barrel_particule.tscn" id="3_cubg6"]
+[ext_resource type="Texture2D" uid="uid://c665musqte8k7" path="res://Assets/barrel_idle.png" id="4_uxvq1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(24.235798, 18.37049)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(26, 30)
+
+[node name="Barrel" type="RigidBody2D" unique_id=921496592]
+script = ExtResource("2_script")
+ParticleScene = ExtResource("2_uxvq1")
+DamageParticleScene = ExtResource("3_cubg6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=111111111]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_uxvq1")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=222222222]
+scale = Vector2(0.69023657, 1.0149319)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=333333333]
+position = Vector2(-0.56604236, 0.2921713)
+scale = Vector2(1.4813943, 1.5772194)
+shape = SubResource("RectangleShape2D_hitbox")
+debug_color = Color(0.97193056, 0, 0.44784033, 0.41960785)
+
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=444444444]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_body")
+
+[connection signal="body_entered" from="Hitbox" to="." method="Take_Damage"]

@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://b7s1sk23u5eqp"]
+
+[ext_resource type="Texture2D" uid="uid://bvvo7evmstl5v" path="res://Assets/Enemies/Mushroom/Mushroom_1/Mushroom_1.png" id="1_pwioj"]
+[ext_resource type="Script" uid="uid://bjirlpn87yee0" path="res://TP2/src/Enemy/Oeuf.cs" id="1_tj655"]
+[ext_resource type="PackedScene" uid="uid://bpm4nwjanuypm" path="res://TP2/scene/Enemy/enemy_damage_particule.tscn" id="2_0i40c"]
+[ext_resource type="Shader" uid="uid://blgw1vc4cga8u" path="res://TP2/src/Enemy/Helpers/EnemyDamageShader.gdshader" id="2_qcyf6"]
+[ext_resource type="PackedScene" uid="uid://cmwvrkbxt3odq" path="res://TP2/scene/Enemy/shield.tscn" id="2_tj655"]
+[ext_resource type="PackedScene" uid="uid://ibbfp2rvne1v" path="res://TP2/scene/Enemy/enemy_death_particule.tscn" id="3_k4gk3"]
+[ext_resource type="Script" uid="uid://bb7cokgeuqidc" path="res://TP2/src/Enemy/OeufIngredient.cs" id="4_ingredient"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7320r"]
+shader = ExtResource("2_qcyf6")
+shader_parameter/flash_strength = 0.0
+shader_parameter/death_strength = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcyf6"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7320r"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i40c"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(192, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4gk3"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(216, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tb7ud"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(240, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qc4d4"]
+atlas = ExtResource("1_pwioj")
+region = Rect2(264, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3calb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcyf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7320r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i40c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4gk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tb7ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qc4d4")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pwioj"]
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tj655"]
+radius = 11.0
+
+[node name="Oeuf" type="CharacterBody2D" unique_id=370138255 node_paths=PackedStringArray("Shield", "Sprite")]
+scale = Vector2(2, 2)
+script = ExtResource("1_tj655")
+Shield = NodePath("Shield")
+Sprite = NodePath("AnimatedSprite2D")
+Vies = 1
+EnemyDamageParticleScene = ExtResource("2_0i40c")
+EnemyDeathParticleScene = ExtResource("3_k4gk3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=171932478]
+material = SubResource("ShaderMaterial_7320r")
+position = Vector2(0, -1.5)
+sprite_frames = SubResource("SpriteFrames_3calb")
+animation = &"inactive"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1262313623]
+position = Vector2(0, 0.5)
+shape = SubResource("CapsuleShape2D_pwioj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=316913310]
+collision_layer = 16
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=115670923]
+shape = SubResource("CapsuleShape2D_tj655")
+
+[node name="Shield" parent="." unique_id=1943420650 instance=ExtResource("2_tj655")]
+position = Vector2(-0.5, -4.5)
+scale = Vector2(0.8189686, 1.1462759)
+
+[node name="Ingredient" type="AnimatableBody2D" parent="." unique_id=1560275313 node_paths=PackedStringArray("Oeuf")]
+script = ExtResource("4_ingredient")
+Oeuf = NodePath("..")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnAreaBodyEntered"]

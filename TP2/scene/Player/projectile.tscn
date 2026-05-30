@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cbhpt2k6f7eeh"]
+
+[ext_resource type="Script" uid="uid://yms2tt4gcrtl" path="res://TP2/src/Player/Projectile.cs" id="1_3qy2h"]
+[ext_resource type="Texture2D" uid="uid://bafnxplmj2kyo" path="res://Assets/Bullet/bullet.png" id="2_3umr4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gx23l"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vj7w8"]
+radius = 8.0
+height = 18.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rer1c"]
+atlas = ExtResource("2_3umr4")
+region = Rect2(0, 48, 19, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omdx8"]
+atlas = ExtResource("2_3umr4")
+region = Rect2(19, 48, 19, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bsw4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rer1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omdx8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Projectile" type="RigidBody2D" unique_id=1770685157 node_paths=PackedStringArray("ScreenNotifier")]
+collision_layer = 8
+collision_mask = 3
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_gx23l")
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("1_3qy2h")
+Speed = 450.0
+ScreenNotifier = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=263463859]
+texture_filter = 2
+scale = Vector2(149.4745, 70.067)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=194350725]
+light_mask = 8
+visibility_layer = 54
+shape = SubResource("CapsuleShape2D_vj7w8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=203836279]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4bsw4")
+autoplay = "default"

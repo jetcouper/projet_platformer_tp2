@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bo7cwxo3debfh"]
+
+[ext_resource type="Script" uid="uid://c6ae433je5xlr" path="res://TP2/src/Ingredient/SlidingHorizontalDoor.cs" id="1_tn5w1"]
+[ext_resource type="Texture2D" uid="uid://brejcmuphaapx" path="res://Assets/Plateform/plateform.png" id="2_a32sj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8o1vv"]
+size = Vector2(297, 75)
+
+[node name="Door" type="AnimatableBody2D" unique_id=2061855038]
+sync_to_physics = false
+script = ExtResource("1_tn5w1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1171634846]
+shape = SubResource("RectangleShape2D_8o1vv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1308753911]
+texture = ExtResource("2_a32sj")

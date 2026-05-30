@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ey1ebj4knnuc"]
+
+[ext_resource type="Texture2D" uid="uid://be5kihnbpidsn" path="res://Assets/Particule/brackeys_vfx_bundle/particles/alpha/dirt_02_a.png" id="1_dirt"]
+[ext_resource type="Script" uid="uid://dc6lsu0amgldo" path="res://TP2/src/Enemy/ProjectileShardBurst.cs" id="2_script"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_shards"]
+emission_shape = 1
+emission_sphere_radius = 1.5
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 18.0
+initial_velocity_max = 42.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(0, 260, 0)
+scale_min = 0.06
+scale_max = 0.12
+
+[node name="ProjectileShardBurst" type="GPUParticles2D" unique_id=1123073340]
+emitting = false
+modulate = Color(0.5058824, 0.3372549, 0.18431373, 1)
+texture = ExtResource("1_dirt")
+lifetime = 0.22
+one_shot = true
+explosiveness = 1.0
+randomness = 0.55
+visibility_rect = Rect2(-16, -16, 32, 32)
+process_material = SubResource("ParticleProcessMaterial_shards")
+script = ExtResource("2_script")
