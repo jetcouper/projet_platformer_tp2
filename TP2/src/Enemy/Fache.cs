@@ -32,6 +32,12 @@ public partial class Fache : RangedEnemy
         RestartTimer();
     }
 
+    public override void _ExitTree()
+    {
+        if (Timer != null)
+            Timer.Timeout -= DecideNextAction;
+    }
+
     public void RandomNextShot()
     {
         Random rand = new Random();
@@ -67,20 +73,40 @@ public partial class Fache : RangedEnemy
 
     public async void Attack()
     {
+        if (!this.IsValid())
+            return;
+
         Sprite.EnsureValid();
         Sprite.Play("attack");
 
-        await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+        SceneTree tree = GetTree();
+        if (tree == null)
+            return;
+
+        await ToSignal(tree.CreateTimer(0.5), "timeout");
+
+        if (!this.IsValid() || GetTree() == null)
+            return;
 
         Shoot();
 
-        await ToSignal(GetTree().CreateTimer(0.5), "timeout");
+        tree = GetTree();
+        if (tree == null)
+            return;
+
+        await ToSignal(tree.CreateTimer(0.5), "timeout");
+
+        if (!this.IsValid() || GetTree() == null)
+            return;
 
         RestartTimer();
     }
 
     public async void Jump()
     {
+        if (!this.IsValid() || GetTree() == null)
+            return;
+
         if (!IsOnFloor())
             return;
 
@@ -93,8 +119,15 @@ public partial class Fache : RangedEnemy
 
         while (!IsOnFloor() || Velocity.Y < 0)
         {
-            await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
+            SceneTree tree = GetTree();
+            if (tree == null || !this.IsValid())
+                return;
+
+            await ToSignal(tree, SceneTree.SignalName.PhysicsFrame);
         }
+
+        if (!this.IsValid() || GetTree() == null)
+            return;
 
         RestartTimer();
     }

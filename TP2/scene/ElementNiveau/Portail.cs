@@ -5,6 +5,7 @@ public partial class Portail : Area2D
     [Export]
     public string NextScene = "";
     private bool _transitioning;
+    private bool _creditsShown;
 
     [Export]
     private CanvasLayer _overlayVictoire;
@@ -26,7 +27,13 @@ public partial class Portail : Area2D
     public override void _Ready()
     {
         BodyEntered += _on_body_entered;
-        _boutonRejouer.Pressed += OnRejouerPressed;
+
+        // Fallback in case exported node references were not resolved at runtime.
+        _overlayVictoire ??= GetNodeOrNull<CanvasLayer>("CanvasLayer");
+        _boutonRejouer ??= GetNodeOrNull<Button>("CanvasLayer/ColorRect/Button");
+
+        if (_boutonRejouer != null)
+            _boutonRejouer.Pressed += OnRejouerPressed;
     }
 
     private void OnRejouerPressed()
@@ -56,13 +63,26 @@ public partial class Portail : Area2D
             GetTree().ChangeSceneToFile(NextScene);
         else
         {
-            _overlayVictoire.Visible = true;
-            GetTree().Paused = true;
+            if (AfficherCredits)
+            {
+                ShowCredits();
+                return;
+            }
+
+            if (_overlayVictoire != null)
+            {
+                _overlayVictoire.Visible = true;
+                GetTree().Paused = true;
+            }
         }
     }
 
     private void ShowCredits()
     {
+        if (_creditsShown)
+            return;
+        _creditsShown = true;
+
         GetTree().Paused = true;
 
         CanvasLayer canvas = new() { ProcessMode = ProcessModeEnum.Always };

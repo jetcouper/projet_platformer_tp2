@@ -828,7 +828,7 @@ shape = SubResource("WorldBoundaryShape2D_7iq8t")
 
 [node name="Portail" parent="." unique_id=1220590042 instance=ExtResource("21_u855g")]
 position = Vector2(4917, 2260)
-NextScene = "res://TP2/niveau1.tscn"
+NextScene = "res://TP2/scene/Niveau/niveau1.tscn"
 AfficherCredits = true
 
 [node name="Objets" type="Node2D" parent="." unique_id=1923328627]
@@ -930,25 +930,25 @@ position = Vector2(-1873, 87)
 [node name="Levier" parent="Ingredients" unique_id=1212460187 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("26_n3r30")]
 position = Vector2(1044, 1983)
 scale = Vector2(0.3, 0.3)
-Ingredients = [NodePath("../VerticalDoor"), NodePath("../VerticalDoor2"), NodePath("../HorizontalDoor4")]
+Ingredients = []
 player = NodePath("../../Avant/Character")
 
 [node name="Levier2" parent="Ingredients" unique_id=767258805 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("26_n3r30")]
 position = Vector2(1378, 1823)
 scale = Vector2(0.3, 0.3)
-Ingredients = [NodePath("../HorizontalDoor")]
+Ingredients = []
 player = NodePath("../../Avant/Character")
 
 [node name="Levier3" parent="Ingredients" unique_id=401260067 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("26_n3r30")]
 position = Vector2(1209, 2312)
 scale = Vector2(0.3, 0.3)
-Ingredients = [NodePath("../VerticalDoor"), NodePath("../HorizontalDoor3")]
+Ingredients = []
 player = NodePath("../../Avant/Character")
 
 [node name="Levier4" parent="Ingredients" unique_id=808346425 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("26_n3r30")]
 position = Vector2(733, 2311)
 scale = Vector2(0.3, 0.3)
-Ingredients = [NodePath("../HorizontalDoor2"), NodePath("../VerticalDoor2")]
+Ingredients = []
 player = NodePath("../../Avant/Character")
 
 [node name="HorizontalDoor" parent="Ingredients" unique_id=2061855038 instance=ExtResource("27_yjvq8")]
@@ -1191,6 +1191,36 @@ Character = NodePath("../../Avant/Character")
 [node name="goomba" parent="Enemies" unique_id=1227190931 node_paths=PackedStringArray("Character") instance=ExtResource("37_n645i")]
 position = Vector2(-205, -595)
 Character = NodePath("../../Avant/Character")
+
+[node name="Levier" parent="Enemies" unique_id=1436107698 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("26_n3r30")]
+position = Vector2(-1948, -132)
+scale = Vector2(0.3, 0.3)
+Ingredients = [NodePath("../Oeuf/Ingredient")]
+player = NodePath("../../Avant/Character")
+
+[node name="Levier2" parent="Enemies" unique_id=1739394125 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("26_n3r30")]
+position = Vector2(-1939, -660)
+scale = Vector2(0.3, 0.3)
+Ingredients = [NodePath("../Oeuf2/Ingredient")]
+player = NodePath("../../Avant/Character")
+
+[node name="Levier3" parent="Enemies" unique_id=176574902 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("26_n3r30")]
+position = Vector2(-1289, 52)
+scale = Vector2(0.3, 0.3)
+Ingredients = [NodePath("../Oeuf3/Ingredient")]
+player = NodePath("../../Avant/Character")
+
+[node name="Levier4" parent="Enemies" unique_id=1008207151 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("26_n3r30")]
+position = Vector2(-1275, -212)
+scale = Vector2(0.3, 0.3)
+Ingredients = [NodePath("../Oeuf4/Ingredient")]
+player = NodePath("../../Avant/Character")
+
+[node name="Levier5" parent="Enemies" unique_id=1952159482 node_paths=PackedStringArray("Ingredients", "player") instance=ExtResource("26_n3r30")]
+position = Vector2(-2215, 52)
+scale = Vector2(0.3, 0.3)
+Ingredients = [NodePath("../Oeuf5/Ingredient")]
+player = NodePath("../../Avant/Character")
 
 [node name="Avant" type="Node2D" parent="." unique_id=397371594]
 
