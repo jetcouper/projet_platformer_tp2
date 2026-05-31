@@ -42,6 +42,8 @@
 [ext_resource type="PackedScene" uid="uid://bo7cwxo3debfh" path="res://TP2/scene/Ingredient/SlidingHorizontalDoor.tscn" id="39_i1vw4"]
 [ext_resource type="PackedScene" uid="uid://3bfrvchrw4ii" path="res://TP2/scene/Ingredient/Destructible.tscn" id="40_enhga"]
 [ext_resource type="PackedScene" uid="uid://d1e2s5e1qvguh" path="res://TP2/scene/Ingredient/barrel.tscn" id="41_gjlxb"]
+[ext_resource type="PackedScene" uid="uid://cynea8y881dae" path="res://TP2/scene/Ingredient/bomb.tscn" id="43_bw081"]
+[ext_resource type="PackedScene" path="res://TP2/scene/Ingredient/death_desctructible_particule.tscn" id="44_qsg5e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_84v53")
@@ -1049,3 +1051,73 @@ position = Vector2(4090, 2026)
 
 [node name="Barrel14" parent="ingredients/destructibles" unique_id=1446415472 instance=ExtResource("41_gjlxb")]
 position = Vector2(4289, 2305)
+
+[node name="Bomb" parent="ingredients/destructibles" unique_id=1748372264 instance=ExtResource("43_bw081")]
+position = Vector2(4289, 2277)
+ParticleScene = ExtResource("44_qsg5e")
+
+[node name="Bomb2" parent="ingredients/destructibles" unique_id=734288764 instance=ExtResource("43_bw081")]
+position = Vector2(502, 2244)
+
+[node name="Bomb3" parent="ingredients/destructibles" unique_id=625662124 instance=ExtResource("43_bw081")]
+position = Vector2(527, 2244)
+
+[node name="Bomb4" parent="ingredients/destructibles" unique_id=430973615 instance=ExtResource("43_bw081")]
+position = Vector2(483, 2240)
+
+[node name="Bomb5" parent="ingredients/destructibles" unique_id=1916858607 instance=ExtResource("43_bw081")]
+position = Vector2(515, 2223)
+
+[node name="Bomb6" parent="ingredients/destructibles" unique_id=1519592942 instance=ExtResource("43_bw081")]
+position = Vector2(1220, 1930)
+
+[node name="Bomb7" parent="ingredients/destructibles" unique_id=1559031952 instance=ExtResource("43_bw081")]
+position = Vector2(1255, 1852)
+
+[node name="Bomb8" parent="ingredients/destructibles" unique_id=1994574385 instance=ExtResource("43_bw081")]
+position = Vector2(1239, 1880)
+
+[node name="Bomb9" parent="ingredients/destructibles" unique_id=293300535 instance=ExtResource("43_bw081")]
+position = Vector2(4090, 1995)
+
+[node name="Bomb10" parent="ingredients/destructibles" unique_id=634211865 instance=ExtResource("43_bw081")]
+position = Vector2(4134, 2309)
+
+[node name="Bomb11" parent="ingredients/destructibles" unique_id=551673683 instance=ExtResource("43_bw081")]
+position = Vector2(4155, 2309)
+
+[node name="Bomb12" parent="ingredients/destructibles" unique_id=366385714 instance=ExtResource("43_bw081")]
+position = Vector2(4144, 2290)
+
+[node name="Bomb13" parent="ingredients/destructibles" unique_id=1310377833 instance=ExtResource("43_bw081")]
+position = Vector2(4144, 2290)
+
+[node name="Bomb14" parent="ingredients/destructibles" unique_id=2056909513 instance=ExtResource("43_bw081")]
+position = Vector2(4164, 2292)
+
+[node name="Bomb15" parent="ingredients/destructibles" unique_id=415182867 instance=ExtResource("43_bw081")]
+position = Vector2(4172, 2309)
+
+[node name="Bomb16" parent="ingredients/destructibles" unique_id=793231995 instance=ExtResource("43_bw081")]
+position = Vector2(4172, 2309)
+
+[node name="Bomb17" parent="ingredients/destructibles" unique_id=1531353479 instance=ExtResource("43_bw081")]
+position = Vector2(4150, 2274)
+
+[node name="Bomb18" parent="ingredients/destructibles" unique_id=315630260 instance=ExtResource("43_bw081")]
+position = Vector2(4181, 2290)
+
+[node name="Bomb19" parent="ingredients/destructibles" unique_id=1747174498 instance=ExtResource("43_bw081")]
+position = Vector2(4192, 2307)
+
+[node name="Bomb20" parent="ingredients/destructibles" unique_id=1594961015 instance=ExtResource("43_bw081")]
+position = Vector2(4192, 2307)
+
+[node name="Bomb21" parent="ingredients/destructibles" unique_id=1134770250 instance=ExtResource("43_bw081")]
+position = Vector2(4171, 2272)
+
+[node name="Bomb22" parent="ingredients/destructibles" unique_id=2120442590 instance=ExtResource("43_bw081")]
+position = Vector2(4160, 2256)
+
+[node name="Bomb23" parent="ingredients/destructibles" unique_id=1045373953 instance=ExtResource("43_bw081")]
+position = Vector2(4160, 2256)

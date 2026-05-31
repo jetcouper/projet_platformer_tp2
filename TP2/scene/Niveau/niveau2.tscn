@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://ceg52350muhuk" path="res://TP2/scene/Player/hud.tscn" id="21_m0l2m"]
 [ext_resource type="PackedScene" uid="uid://u2w6v2oaob8" path="res://TP2/scene/ElementNiveau/Portail.tscn" id="21_u855g"]
 [ext_resource type="PackedScene" uid="uid://cek1s47hobadr" path="res://TP2/scene/Objet/cavern_brazier.tscn" id="22_13cyb"]
+[ext_resource type="PackedScene" uid="uid://b0sh04k6jr7t8" path="res://TP2/scene/Ingredient/death_barrel_particule.tscn" id="22_ye6rg"]
 [ext_resource type="PackedScene" uid="uid://inqnajy3l3o5" path="res://TP2/scene/Objet/nuage_pluie.tscn" id="23_fsgux"]
 [ext_resource type="PackedScene" uid="uid://ragu8kg4e4fq" path="res://TP2/scene/Objet/ghost_plateform.tscn" id="24_rkapm"]
 [ext_resource type="PackedScene" uid="uid://dpi6k20kvt8nl" path="res://TP2/scene/Objet/cavern_mushroom.tscn" id="26_dli7e"]
@@ -38,6 +39,8 @@
 [ext_resource type="PackedScene" uid="uid://0agvrdgbh0rg" path="res://TP2/scene/Enemy/sans_cervelle.tscn" id="35_puajh"]
 [ext_resource type="PackedScene" uid="uid://b7s1sk23u5eqp" path="res://TP2/scene/Enemy/oeuf.tscn" id="36_i73tn"]
 [ext_resource type="PackedScene" uid="uid://pg5lk2xqe5sl" path="res://TP2/scene/Enemy/goomba_2.tscn" id="37_n645i"]
+[ext_resource type="PackedScene" uid="uid://cynea8y881dae" path="res://TP2/scene/Ingredient/bomb.tscn" id="37_rkapm"]
+[ext_resource type="PackedScene" uid="uid://dwd0meet2a50d" path="res://TP2/scene/Ingredient/damage_desctructible_particule.tscn" id="40_d4gy8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mfn6e"]
 texture = ExtResource("8_rac3r")
@@ -632,6 +635,7 @@ animations = [{
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7iq8t"]
 
 [node name="Niveau2" type="Node2D" unique_id=1948467130]
+position = Vector2(30, 0)
 
 [node name="ColorRect" type="TextureRect" parent="." unique_id=1923634205]
 offset_right = 5000.0
@@ -831,6 +835,181 @@ position = Vector2(4917, 2260)
 NextScene = "res://TP2/scene/Niveau/niveau1.tscn"
 AfficherCredits = true
 
+[node name="Destructibles" type="Node2D" parent="." unique_id=1426309345]
+position = Vector2(1314, 1792)
+
+[node name="Destructible" parent="Destructibles" unique_id=1982036280 instance=ExtResource("29_c0kxh")]
+position = Vector2(29, 517)
+
+[node name="Destructible2" parent="Destructibles" unique_id=1969293645 instance=ExtResource("29_c0kxh")]
+position = Vector2(29, 496)
+
+[node name="Destructible3" parent="Destructibles" unique_id=236028034 instance=ExtResource("29_c0kxh")]
+position = Vector2(30, 473)
+
+[node name="Destructible4" parent="Destructibles" unique_id=1381373401 instance=ExtResource("29_c0kxh")]
+position = Vector2(-3, 517)
+
+[node name="Destructible5" parent="Destructibles" unique_id=170519016 instance=ExtResource("29_c0kxh")]
+position = Vector2(-2, 494)
+
+[node name="Destructible6" parent="Destructibles" unique_id=1917828087 instance=ExtResource("29_c0kxh")]
+position = Vector2(62, 495)
+
+[node name="Destructible7" parent="Destructibles" unique_id=1229474679 instance=ExtResource("29_c0kxh")]
+position = Vector2(61, 518)
+
+[node name="Destructible8" parent="Destructibles" unique_id=1383394655 instance=ExtResource("29_c0kxh")]
+position = Vector2(92, 517)
+
+[node name="Destructible9" parent="Destructibles" unique_id=944256075 instance=ExtResource("29_c0kxh")]
+position = Vector2(-37, 518)
+
+[node name="Bomb" parent="Destructibles" unique_id=734288764 instance=ExtResource("37_rkapm")]
+position = Vector2(-1019, 251)
+ParticleScene = ExtResource("22_ye6rg")
+DamageParticleScene = ExtResource("40_d4gy8")
+
+[node name="Bomb2" parent="Destructibles" unique_id=1642212978 instance=ExtResource("37_rkapm")]
+position = Vector2(-1019, 235)
+ParticleScene = ExtResource("22_ye6rg")
+DamageParticleScene = ExtResource("40_d4gy8")
+
+[node name="Bomb3" parent="Destructibles" unique_id=2028971779 instance=ExtResource("37_rkapm")]
+position = Vector2(-1059, 283)
+ParticleScene = ExtResource("22_ye6rg")
+DamageParticleScene = ExtResource("40_d4gy8")
+
+[node name="Bomb4" parent="Destructibles" unique_id=1682897604 instance=ExtResource("37_rkapm")]
+position = Vector2(-967, 92)
+ParticleScene = ExtResource("22_ye6rg")
+DamageParticleScene = ExtResource("40_d4gy8")
+
+[node name="Bomb5" parent="Destructibles" unique_id=1097714600 instance=ExtResource("37_rkapm")]
+position = Vector2(-947, 91)
+ParticleScene = ExtResource("22_ye6rg")
+DamageParticleScene = ExtResource("40_d4gy8")
+
+[node name="Bomb6" parent="Destructibles" unique_id=795584258 instance=ExtResource("37_rkapm")]
+position = Vector2(-959, 74)
+ParticleScene = ExtResource("22_ye6rg")
+DamageParticleScene = ExtResource("40_d4gy8")
+
+[node name="Bomb7" parent="Destructibles" unique_id=1502333524 instance=ExtResource("37_rkapm")]
+position = Vector2(3482, 61)
+ParticleScene = ExtResource("22_ye6rg")
+DamageParticleScene = ExtResource("40_d4gy8")
+
+[node name="DestructiblesBarrel" type="Node2D" parent="." unique_id=242195902]
+
+[node name="Barrel" parent="DestructiblesBarrel" unique_id=921496592 instance=ExtResource("30_aoxhq")]
+position = Vector2(1346, 2121)
+
+[node name="Barrel2" parent="DestructiblesBarrel" unique_id=81387763 instance=ExtResource("30_aoxhq")]
+position = Vector2(1373, 2120)
+
+[node name="Barrel3" parent="DestructiblesBarrel" unique_id=1991201586 instance=ExtResource("30_aoxhq")]
+position = Vector2(1399, 2120)
+
+[node name="Barrel4" parent="DestructiblesBarrel" unique_id=1209092011 instance=ExtResource("30_aoxhq")]
+position = Vector2(1373, 2090)
+
+[node name="Barrel5" parent="DestructiblesBarrel" unique_id=1076780592 instance=ExtResource("30_aoxhq")]
+position = Vector2(3034, 2121)
+
+[node name="Barrel6" parent="DestructiblesBarrel" unique_id=163626738 instance=ExtResource("30_aoxhq")]
+position = Vector2(3061, 2120)
+
+[node name="Barrel7" parent="DestructiblesBarrel" unique_id=109307115 instance=ExtResource("30_aoxhq")]
+position = Vector2(3087, 2120)
+
+[node name="Barrel8" parent="DestructiblesBarrel" unique_id=1650806101 instance=ExtResource("30_aoxhq")]
+position = Vector2(3061, 2090)
+
+[node name="Barrel9" parent="DestructiblesBarrel" unique_id=1264838470 instance=ExtResource("30_aoxhq")]
+position = Vector2(3529, 2039)
+
+[node name="Barrel10" parent="DestructiblesBarrel" unique_id=267523868 instance=ExtResource("30_aoxhq")]
+position = Vector2(3556, 2038)
+
+[node name="Barrel11" parent="DestructiblesBarrel" unique_id=2097965533 instance=ExtResource("30_aoxhq")]
+position = Vector2(3417, 2040)
+
+[node name="Barrel12" parent="DestructiblesBarrel" unique_id=1867647566 instance=ExtResource("30_aoxhq")]
+position = Vector2(3556, 2008)
+
+[node name="Barrel13" parent="DestructiblesBarrel" unique_id=1017547560 instance=ExtResource("30_aoxhq")]
+position = Vector2(40, 2273)
+
+[node name="Barrel14" parent="DestructiblesBarrel" unique_id=572853 instance=ExtResource("30_aoxhq")]
+position = Vector2(324, 2304)
+
+[node name="Barrel15" parent="DestructiblesBarrel" unique_id=141542371 instance=ExtResource("30_aoxhq")]
+position = Vector2(378, 2304)
+
+[node name="Barrel16" parent="DestructiblesBarrel" unique_id=284190138 instance=ExtResource("30_aoxhq")]
+position = Vector2(40, 2242)
+
+[node name="Barrel17" parent="DestructiblesBarrel" unique_id=238241289 instance=ExtResource("30_aoxhq")]
+position = Vector2(324, 2274)
+
+[node name="Barrel19" parent="DestructiblesBarrel" unique_id=243166095 instance=ExtResource("30_aoxhq")]
+position = Vector2(40, 2304)
+
+[node name="Barrel18" parent="DestructiblesBarrel" unique_id=1361665713 instance=ExtResource("30_aoxhq")]
+position = Vector2(352, 2304)
+
+[node name="Barrel20" parent="DestructiblesBarrel" unique_id=1314224578 instance=ExtResource("30_aoxhq")]
+position = Vector2(4050, 1943)
+
+[node name="Barrel21" parent="DestructiblesBarrel" unique_id=1605741712 instance=ExtResource("30_aoxhq")]
+position = Vector2(4169, 1944)
+
+[node name="Barrel22" parent="DestructiblesBarrel" unique_id=869965359 instance=ExtResource("30_aoxhq")]
+position = Vector2(3927, 1944)
+
+[node name="Barrel23" parent="DestructiblesBarrel" unique_id=1448634015 instance=ExtResource("30_aoxhq")]
+position = Vector2(4629, 1881)
+
+[node name="Barrel24" parent="DestructiblesBarrel" unique_id=659895728 instance=ExtResource("30_aoxhq")]
+position = Vector2(4796, 1881)
+
+[node name="Barrel25" parent="DestructiblesBarrel" unique_id=1082641169 instance=ExtResource("30_aoxhq")]
+position = Vector2(2829, 2304)
+
+[node name="Barrel26" parent="DestructiblesBarrel" unique_id=1211246516 instance=ExtResource("30_aoxhq")]
+position = Vector2(2829, 2275)
+
+[node name="Barrel27" parent="DestructiblesBarrel" unique_id=2142043525 instance=ExtResource("30_aoxhq")]
+position = Vector2(2829, 2245)
+
+[node name="Barrel28" parent="DestructiblesBarrel" unique_id=1351690556 instance=ExtResource("30_aoxhq")]
+position = Vector2(2828, 2214)
+
+[node name="Barrel29" parent="DestructiblesBarrel" unique_id=1542888662 instance=ExtResource("30_aoxhq")]
+position = Vector2(2827, 2182)
+
+[node name="Barrel30" parent="DestructiblesBarrel" unique_id=765299628 instance=ExtResource("30_aoxhq")]
+position = Vector2(2826, 2150)
+
+[node name="Barrel31" parent="DestructiblesBarrel" unique_id=664997550 instance=ExtResource("30_aoxhq")]
+position = Vector2(2826, 2150)
+
+[node name="Barrel32" parent="DestructiblesBarrel" unique_id=1428208735 instance=ExtResource("30_aoxhq")]
+position = Vector2(1974, 1960)
+
+[node name="Destructible" parent="DestructiblesBarrel" unique_id=1760285664 instance=ExtResource("29_c0kxh")]
+position = Vector2(4657, 1661)
+
+[node name="Destructible2" parent="DestructiblesBarrel" unique_id=1582417214 instance=ExtResource("29_c0kxh")]
+position = Vector2(4785, 1659)
+
+[node name="Barrel33" parent="DestructiblesBarrel" unique_id=748881652 instance=ExtResource("30_aoxhq")]
+position = Vector2(2143, 1960)
+
+[node name="Barrel34" parent="DestructiblesBarrel" unique_id=1959896997 instance=ExtResource("30_aoxhq")]
+position = Vector2(294, 2072)
+
 [node name="Objets" type="Node2D" parent="." unique_id=1923328627]
 position = Vector2(2416, 1433)
 
@@ -979,143 +1158,6 @@ GoesUp = false
 position = Vector2(1605, 1697)
 scale = Vector2(0.8, 0.8)
 
-[node name="Destructibles" type="Node2D" parent="Ingredients" unique_id=1426309345]
-position = Vector2(1314, 1792)
-
-[node name="Destructible" parent="Ingredients/Destructibles" unique_id=1982036280 instance=ExtResource("29_c0kxh")]
-position = Vector2(29, 517)
-
-[node name="Destructible2" parent="Ingredients/Destructibles" unique_id=1969293645 instance=ExtResource("29_c0kxh")]
-position = Vector2(29, 496)
-
-[node name="Destructible3" parent="Ingredients/Destructibles" unique_id=236028034 instance=ExtResource("29_c0kxh")]
-position = Vector2(30, 473)
-
-[node name="Destructible4" parent="Ingredients/Destructibles" unique_id=1381373401 instance=ExtResource("29_c0kxh")]
-position = Vector2(-3, 517)
-
-[node name="Destructible5" parent="Ingredients/Destructibles" unique_id=170519016 instance=ExtResource("29_c0kxh")]
-position = Vector2(-2, 494)
-
-[node name="Destructible6" parent="Ingredients/Destructibles" unique_id=1917828087 instance=ExtResource("29_c0kxh")]
-position = Vector2(62, 495)
-
-[node name="Destructible7" parent="Ingredients/Destructibles" unique_id=1229474679 instance=ExtResource("29_c0kxh")]
-position = Vector2(61, 518)
-
-[node name="Destructible8" parent="Ingredients/Destructibles" unique_id=1383394655 instance=ExtResource("29_c0kxh")]
-position = Vector2(92, 517)
-
-[node name="Destructible9" parent="Ingredients/Destructibles" unique_id=944256075 instance=ExtResource("29_c0kxh")]
-position = Vector2(-37, 518)
-
-[node name="DestructiblesBarrel" type="Node2D" parent="Ingredients" unique_id=242195902]
-
-[node name="Barrel" parent="Ingredients/DestructiblesBarrel" unique_id=921496592 instance=ExtResource("30_aoxhq")]
-position = Vector2(1346, 2121)
-
-[node name="Barrel2" parent="Ingredients/DestructiblesBarrel" unique_id=81387763 instance=ExtResource("30_aoxhq")]
-position = Vector2(1373, 2120)
-
-[node name="Barrel3" parent="Ingredients/DestructiblesBarrel" unique_id=1991201586 instance=ExtResource("30_aoxhq")]
-position = Vector2(1399, 2120)
-
-[node name="Barrel4" parent="Ingredients/DestructiblesBarrel" unique_id=1209092011 instance=ExtResource("30_aoxhq")]
-position = Vector2(1373, 2090)
-
-[node name="Barrel5" parent="Ingredients/DestructiblesBarrel" unique_id=1076780592 instance=ExtResource("30_aoxhq")]
-position = Vector2(3034, 2121)
-
-[node name="Barrel6" parent="Ingredients/DestructiblesBarrel" unique_id=163626738 instance=ExtResource("30_aoxhq")]
-position = Vector2(3061, 2120)
-
-[node name="Barrel7" parent="Ingredients/DestructiblesBarrel" unique_id=109307115 instance=ExtResource("30_aoxhq")]
-position = Vector2(3087, 2120)
-
-[node name="Barrel8" parent="Ingredients/DestructiblesBarrel" unique_id=1650806101 instance=ExtResource("30_aoxhq")]
-position = Vector2(3061, 2090)
-
-[node name="Barrel9" parent="Ingredients/DestructiblesBarrel" unique_id=1264838470 instance=ExtResource("30_aoxhq")]
-position = Vector2(3529, 2039)
-
-[node name="Barrel10" parent="Ingredients/DestructiblesBarrel" unique_id=267523868 instance=ExtResource("30_aoxhq")]
-position = Vector2(3556, 2038)
-
-[node name="Barrel11" parent="Ingredients/DestructiblesBarrel" unique_id=2097965533 instance=ExtResource("30_aoxhq")]
-position = Vector2(3417, 2040)
-
-[node name="Barrel12" parent="Ingredients/DestructiblesBarrel" unique_id=1867647566 instance=ExtResource("30_aoxhq")]
-position = Vector2(3556, 2008)
-
-[node name="Barrel13" parent="Ingredients/DestructiblesBarrel" unique_id=1017547560 instance=ExtResource("30_aoxhq")]
-position = Vector2(40, 2273)
-
-[node name="Barrel14" parent="Ingredients/DestructiblesBarrel" unique_id=572853 instance=ExtResource("30_aoxhq")]
-position = Vector2(324, 2304)
-
-[node name="Barrel15" parent="Ingredients/DestructiblesBarrel" unique_id=141542371 instance=ExtResource("30_aoxhq")]
-position = Vector2(378, 2304)
-
-[node name="Barrel16" parent="Ingredients/DestructiblesBarrel" unique_id=284190138 instance=ExtResource("30_aoxhq")]
-position = Vector2(40, 2242)
-
-[node name="Barrel17" parent="Ingredients/DestructiblesBarrel" unique_id=238241289 instance=ExtResource("30_aoxhq")]
-position = Vector2(324, 2274)
-
-[node name="Barrel19" parent="Ingredients/DestructiblesBarrel" unique_id=243166095 instance=ExtResource("30_aoxhq")]
-position = Vector2(40, 2304)
-
-[node name="Barrel18" parent="Ingredients/DestructiblesBarrel" unique_id=1361665713 instance=ExtResource("30_aoxhq")]
-position = Vector2(352, 2304)
-
-[node name="Barrel20" parent="Ingredients/DestructiblesBarrel" unique_id=1314224578 instance=ExtResource("30_aoxhq")]
-position = Vector2(4050, 1943)
-
-[node name="Barrel21" parent="Ingredients/DestructiblesBarrel" unique_id=1605741712 instance=ExtResource("30_aoxhq")]
-position = Vector2(4169, 1944)
-
-[node name="Barrel22" parent="Ingredients/DestructiblesBarrel" unique_id=869965359 instance=ExtResource("30_aoxhq")]
-position = Vector2(3927, 1944)
-
-[node name="Barrel23" parent="Ingredients/DestructiblesBarrel" unique_id=1448634015 instance=ExtResource("30_aoxhq")]
-position = Vector2(4629, 1881)
-
-[node name="Barrel24" parent="Ingredients/DestructiblesBarrel" unique_id=659895728 instance=ExtResource("30_aoxhq")]
-position = Vector2(4796, 1881)
-
-[node name="Barrel25" parent="Ingredients/DestructiblesBarrel" unique_id=1082641169 instance=ExtResource("30_aoxhq")]
-position = Vector2(2829, 2304)
-
-[node name="Barrel26" parent="Ingredients/DestructiblesBarrel" unique_id=1211246516 instance=ExtResource("30_aoxhq")]
-position = Vector2(2829, 2275)
-
-[node name="Barrel27" parent="Ingredients/DestructiblesBarrel" unique_id=2142043525 instance=ExtResource("30_aoxhq")]
-position = Vector2(2829, 2245)
-
-[node name="Barrel28" parent="Ingredients/DestructiblesBarrel" unique_id=1351690556 instance=ExtResource("30_aoxhq")]
-position = Vector2(2828, 2214)
-
-[node name="Barrel29" parent="Ingredients/DestructiblesBarrel" unique_id=1542888662 instance=ExtResource("30_aoxhq")]
-position = Vector2(2827, 2182)
-
-[node name="Barrel30" parent="Ingredients/DestructiblesBarrel" unique_id=765299628 instance=ExtResource("30_aoxhq")]
-position = Vector2(2826, 2150)
-
-[node name="Barrel31" parent="Ingredients/DestructiblesBarrel" unique_id=664997550 instance=ExtResource("30_aoxhq")]
-position = Vector2(2826, 2150)
-
-[node name="Barrel32" parent="Ingredients/DestructiblesBarrel" unique_id=1428208735 instance=ExtResource("30_aoxhq")]
-position = Vector2(1974, 1960)
-
-[node name="Destructible" parent="Ingredients/DestructiblesBarrel" unique_id=1760285664 instance=ExtResource("29_c0kxh")]
-position = Vector2(4657, 1661)
-
-[node name="Destructible2" parent="Ingredients/DestructiblesBarrel" unique_id=1582417214 instance=ExtResource("29_c0kxh")]
-position = Vector2(4785, 1659)
-
-[node name="Barrel33" parent="Ingredients/DestructiblesBarrel" unique_id=748881652 instance=ExtResource("30_aoxhq")]
-position = Vector2(2143, 1960)
-
 [node name="Skull" type="Sprite2D" parent="Ingredients" unique_id=1488638416]
 z_index = 1
 z_as_relative = false
@@ -1221,6 +1263,9 @@ position = Vector2(-2215, 52)
 scale = Vector2(0.3, 0.3)
 Ingredients = [NodePath("../Oeuf5/Ingredient")]
 player = NodePath("../../Avant/Character")
+
+[node name="Destructible" parent="Enemies" unique_id=975816670 instance=ExtResource("29_c0kxh")]
+position = Vector2(-163, 47)
 
 [node name="Avant" type="Node2D" parent="." unique_id=397371594]
 
